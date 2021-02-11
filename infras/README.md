@@ -1,4 +1,4 @@
-## Terraform
+## Infrastructure Layer
 
 ```
 $kubectl get nodes
