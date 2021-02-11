@@ -26,14 +26,15 @@ resource "helm_release" "monitoring" {
   namespace        = "monitoring"
   create_namespace = true
 
-  values = [
-    file("helm-values/monitoring.yaml")
-  ]
+  // Disabled values from yaml. (including persistent for prometheus and grafana)
+  // values = [
+  //   file("helm-values/monitoring.yaml")
+  // ]
 
-  set {
-    name  = "valuesChecksum"
-    value = filemd5("helm-values/monitoring.yaml")
-  }
+  // set {
+  //   name  = "valuesChecksum"
+  //   value = filemd5("helm-values/monitoring.yaml")
+  // }
 }
 
 resource "kubernetes_config_map" "default-metallb-config" {

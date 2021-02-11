@@ -1,7 +1,7 @@
 # PV
 longhorn_enabled = true
 
-monitoring_enabled = false
+monitoring_enabled = true
 
 vault_enabled = false
 
