@@ -8,6 +8,8 @@ init:
 plan:
 	@cd infras && terraform plan
 
+fmt: 
+	@cd infras && terraform fmt
 apply:
 	@cd infras && terraform apply -auto-approve
 

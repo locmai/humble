@@ -6,3 +6,12 @@ resource "helm_release" "longhorn" {
   namespace        = "longhorn"
   create_namespace = true
 }
+
+resource "helm_release" "vault" {
+  count            = var.vault_enabled ? 1 : 0
+  name             = "vault"
+  repository       = "https://helm.releases.hashicorp.com"
+  chart            = "vault"
+  namespace        = "vault"
+  create_namespace = true
+}
