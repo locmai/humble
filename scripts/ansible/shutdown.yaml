@@ -1,0 +1,8 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Shutdown ALL
+    become: yes
+    become_user: root
+    community.general.shutdown:
+      delay: 60

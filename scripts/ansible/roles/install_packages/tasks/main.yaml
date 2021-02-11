@@ -1,0 +1,7 @@
+---
+- include_tasks: variables.yaml
+
+- name: Ensure all default packages are installed.
+  apt:
+    name: "{{ default_packages }}"
+    state: present

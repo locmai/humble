@@ -1,0 +1,8 @@
+---
+- name: Include variables.
+  include_vars: "main.yaml"
+
+- name: Define default_packages to be installed.
+  set_fact:
+    default_packages: "{{ __default_packages | list }}"
+  when: default_packages is not defined

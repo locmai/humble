@@ -1,0 +1,20 @@
+---
+# Variable configuration.
+- include_tasks: variables.yaml
+
+- include_tasks: setup.yaml
+
+- include_tasks: initialize.yaml
+
+- include_tasks: configure.yaml
+
+- name: Ensure PostgreSQL is started and enabled on boot.
+  service:
+    name: "{{ postgresql_daemon }}"
+    state: "{{ postgresql_service_state }}"
+    enabled: "{{ postgresql_service_enabled }}"
+
+# Configure PostgreSQL.
+- import_tasks: users.yaml
+- import_tasks: databases.yaml
+- import_tasks: users_props.yaml

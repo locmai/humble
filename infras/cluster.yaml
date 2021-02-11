@@ -1,0 +1,9 @@
+services:
+  kubelet:
+    extra_args:
+      resolv-conf: "/run/systemd/resolve/resolv.conf"
+    extra_binds:
+      - "/etc/iscsi:/etc/iscsi"
+      - "/sbin/iscsiadm:/sbin/iscsiadm"
+      - "/lib/modules"
+      - "/usr/libexec/kubernetes/kubelet-plugins/volume/exec:/usr/libexec/kubernetes/kubelet-plugins/volume/exec"

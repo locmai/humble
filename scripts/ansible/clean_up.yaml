@@ -1,0 +1,35 @@
+- name: Cleanup packages
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: Clean Rook path
+      file:
+        state: absent
+        path: "/var/lib/rook"
+    - name: Clean Longhorn path
+      file:
+        state: absent
+        path: "/var/lib/longhorn"
+    - name: Get info on docker host and list images
+      docker_host_info:
+        containers: yes
+      register: docker_host
+    - name: Stop all containers
+      shell: "docker container stop $(docker container ls -aq)"
+      when: docker_host.containers | length != 0
+    - name: Prune everything
+      community.general.docker_prune:
+        containers: yes
+        networks: yes
+        volumes: yes
+    - name: Clean network and directories related
+      shell: |
+        ip link delete cni0
+        ip link delete flannel.1
+        rm -rf /var/lib/cni/
+        rm -rf /var/lib/kubelet/*
+        rm -rf /run/flannel
+        rm -rf /etc/cni/
+        rm -rf /usr/libexec/kubernetes
+        rm -rf /etc/kubernetes

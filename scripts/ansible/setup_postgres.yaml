@@ -1,0 +1,11 @@
+- name: Create a PostgreSQL DB server
+  hosts: db
+  vars_prompt:
+    - name: postgresql_user
+      prompt: What is your postgresql_user name?
+      private: no
+    - name: postgresql_pass
+      prompt: What is your postgresql_user password?
+  become: yes
+  roles:
+  - createdb

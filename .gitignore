@@ -1,0 +1,6 @@
+.DS_Store
+*.log
+plan
+.terraform/
+kube_config_cluster.yml
+kube_config.yml
