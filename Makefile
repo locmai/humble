@@ -10,6 +10,7 @@ plan:
 
 fmt: 
 	@cd infras && terraform fmt
+
 apply:
 	@cd infras && terraform apply -auto-approve
 
@@ -17,4 +18,4 @@ destroy:
 	@cd infras && terraform destroy
 	
 cleanup:
-	@cd ../scripts/ansible/ && ansible-playbook clean_up.yaml -K
+	@cd scripts/ansible/ && ansible-playbook clean_up.yaml -K

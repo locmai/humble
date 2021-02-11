@@ -3,12 +3,16 @@ variable "longhorn_enabled" {
   default = false
 }
 
-variable "grafana_enabled" {
+variable "monitoring_enabled" {
   type    = bool
   default = false
 }
 
-variable "prometheus_enabled" {
+variable "vault_enabled" {
   type    = bool
   default = false
+}
+
+variable "default_pool" {
+  type = string
 }

@@ -33,12 +33,13 @@ resource "rke_cluster" "cluster" {
   }
 
   addons_include = [
-    "https://raw.githubusercontent.com/istio/istio/release-1.9/samples/addons/prometheus.yaml",
-    "https://raw.githubusercontent.com/istio/istio/release-1.9/samples/addons/grafana.yaml",
+    "https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml",
+    "https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml",
   ]
 }
 
 resource "local_file" "kube_config_yaml" {
-  filename = "${path.root}/kube_config.yml"
-  content  = rke_cluster.cluster.kube_config_yaml
+  depends_on = [rke_cluster.cluster]
+  filename   = "${path.root}/kube_config.yml"
+  content    = rke_cluster.cluster.kube_config_yaml
 }
