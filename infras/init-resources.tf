@@ -16,7 +16,19 @@ resource "helm_release" "vault" {
   namespace        = "vault"
   create_namespace = true
   values = [
-     file("helm-values/vault.yaml")
+    file("helm-values/vault.yaml")
+  ]
+}
+
+resource "helm_release" "nginx-ingress" {
+  name             = "nginx"
+  repository       = "https://helm.nginx.com/stable"
+  chart            = "nginx-ingress"
+  namespace        = "nginx"
+  create_namespace = true
+
+  values = [
+    file("helm-values/nginx-ingress.yaml")
   ]
 }
 
@@ -44,7 +56,7 @@ resource "kubernetes_config_map" "default-metallb-config" {
   depends_on = [rke_cluster.cluster]
 
   metadata {
-    name      = "metallb-config"
+    name      = "config"
     namespace = "metallb-system"
   }
 
@@ -54,7 +66,7 @@ resource "kubernetes_config_map" "default-metallb-config" {
         - name: default-pool
           protocol: layer2
           addresses:
-          - var.default_pool
+          - 192.168.1.100-192.168.1.200
         EOF
   }
 }
