@@ -15,6 +15,9 @@ resource "helm_release" "vault" {
   chart            = "vault"
   namespace        = "vault"
   create_namespace = true
+  values = [
+     file("helm-values/vault.yaml")
+  ]
 }
 
 resource "helm_release" "monitoring" {
