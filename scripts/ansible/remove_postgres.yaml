@@ -1,0 +1,8 @@
+---
+- hosts: db
+  become: true
+
+  tasks:
+    - name: Remove PostgreSQL packages
+      apt: name={{ item }} state=absent update_cache=yes
+      loop: [ 'postgresql', 'postgresql-contrib', 'libpq-dev', 'ython3-psycopg2']
