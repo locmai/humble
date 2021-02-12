@@ -7,8 +7,18 @@ resource "helm_release" "longhorn" {
   create_namespace = true
 }
 
-resource "helm_release" "vault" {
+resource "helm_release" "consul" {
   depends_on       = [helm_release.longhorn]
+  count            = var.vault_enabled ? 1 : 0
+  name             = "consul"
+  repository       = "https://helm.releases.hashicorp.com"
+  chart            = "consul"
+  namespace        = "vault"
+  create_namespace = true
+}
+
+resource "helm_release" "vault" {
+  depends_on       = [helm_release.longhorn, helm_release.consul]
   count            = var.vault_enabled ? 1 : 0
   name             = "vault"
   repository       = "https://helm.releases.hashicorp.com"
@@ -18,6 +28,11 @@ resource "helm_release" "vault" {
   values = [
     file("helm-values/vault.yaml")
   ]
+
+  set {
+    name  = "server.ha.enabled"
+    value = "true"
+  }
 }
 
 resource "helm_release" "nginx-ingress" {
