@@ -1,0 +1,15 @@
+- name: Install packages
+  hosts: master
+  become: yes
+  roles:
+  - ddns
+  vars_prompt:
+    - name: "api_key"
+      prompt: "CloudFlare API Key"
+      private: no
+    - name: "zone"
+      prompt: "Zone name"
+      private: no
+    - name: "env"
+      prompt: "Environment name"
+      private: no
