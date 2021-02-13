@@ -35,15 +35,32 @@ resource "helm_release" "vault" {
   }
 }
 
-resource "helm_release" "nginx-ingress" {
-  name             = "nginx"
-  repository       = "https://helm.nginx.com/stable"
-  chart            = "nginx-ingress"
+resource "helm_release" "nginx" {
+  name       = "nginx"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  chart      = "ingress-nginx"
+  version    = "3.10.1"
+
   namespace        = "nginx"
   create_namespace = true
 
   values = [
     file("helm-values/nginx-ingress.yaml")
+  ]
+}
+
+resource "helm_release" "argocd" {
+  // Depends on Nginx Ingress for ArgoCD Web UI
+  depends_on = [helm_release.nginx]
+
+  name             = "argocd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  namespace        = "argocd"
+  create_namespace = true
+
+  values = [
+    file("helm-values/argocd.yaml")
   ]
 }
 
@@ -83,5 +100,26 @@ resource "kubernetes_config_map" "default-metallb-config" {
           addresses:
           - 192.168.1.100-192.168.1.200
         EOF
+  }
+}
+
+resource "kubernetes_ingress" "argocd_ingress" {
+  metadata {
+    name      = "argocd-ingress"
+    namespace = helm_release.argocd.namespace
+  }
+
+  spec {
+    rule {
+      host = "argocd.locmai.dev"
+      http {
+        path {
+          backend {
+            service_name = "argocd-server"
+            service_port = 80
+          }
+        }
+      }
+    }
   }
 }
