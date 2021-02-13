@@ -1,0 +1,15 @@
+installCRDs: false
+
+server:
+    ingress:
+        enabled: false
+        hosts:
+        - argocd.locmai.dev
+        labels:
+            kubernetes.io/ingress.class: "nginx"
+        paths:
+        - /
+        https: false
+    
+    extraArgs:
+    - --insecure

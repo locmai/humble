@@ -5,4 +5,4 @@ plan
 kube_config_cluster.yml
 kube_config.yml
 terraform.tfstate
-terraform.tfstate.backup
+terraform.tfstate**
