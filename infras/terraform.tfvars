@@ -15,9 +15,9 @@ dev_domain = "locmai.dev"
 
 dev_sub_domains = {
   argocd = {
+    namespace    = "argocd"
     service_name = "argocd-server"
     service_port = 80
     subdomain    = "argocd"
-    namespace    = "argocd"
   }
 }
