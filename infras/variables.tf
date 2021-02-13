@@ -13,10 +13,6 @@ variable "vault_enabled" {
   default = false
 }
 
-variable "default_pool" {
-  type = string
-}
-
 variable "cloudflare_email" {
   type = string
 }
