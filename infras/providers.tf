@@ -12,3 +12,8 @@ provider "helm" {
 provider "kubernetes" {
   config_path = local_file.kube_config_yaml.filename
 }
+
+provider "cloudflare" {
+  email   = var.cloudflare_email
+  api_key = var.cloudflare_api_key
+}

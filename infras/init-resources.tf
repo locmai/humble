@@ -103,20 +103,43 @@ resource "kubernetes_config_map" "default-metallb-config" {
   }
 }
 
-resource "kubernetes_ingress" "argocd_ingress" {
+// resource "kubernetes_ingress" "argocd_ingress" {
+//   metadata {
+//     name      = "argocd-ingress"
+//     namespace = helm_release.argocd.namespace
+//   }
+
+//   spec {
+//     rule {
+//       host = "argocd.locmai.dev"
+//       http {
+//         path {
+//           backend {
+//             service_name = "argocd-server"
+//             service_port = 80
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+resource "kubernetes_ingress" "dev_ingresses" {
+  for_each = var.dev_sub_domains
+
   metadata {
-    name      = "argocd-ingress"
-    namespace = helm_release.argocd.namespace
+    name      = "${each.value["subdomain"]}-ingress"
+    namespace = each.value["namespace"]
   }
 
   spec {
     rule {
-      host = "argocd.locmai.dev"
+      host = "${each.value["subdomain"]}.${var.dev_domain}"
       http {
         path {
           backend {
-            service_name = "argocd-server"
-            service_port = 80
+            service_name = each.value["service_name"]
+            service_port = each.value["service_port"]
           }
         }
       }
