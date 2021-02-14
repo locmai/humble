@@ -32,3 +32,11 @@ TBD
 - Vault
 - Monitoring: Grafana + Prometheus
 - Logging: Grafana + Loki
+
+### Layer 3: Applications
+
+- Black Ping
+- Yuta Reborn
+- TBA
+
+[Progress checklist](https://github.com/locmai/humble/blob/main/docs/checklist.md)
