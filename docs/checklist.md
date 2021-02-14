@@ -27,4 +27,4 @@
 ### Layer 3: Applications
 
 - [ ] Black Ping
-- [] Yuta Reborn
+- [ ] Yuta Reborn
