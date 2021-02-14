@@ -9,6 +9,7 @@
 - [x] NEC servers
 - [x] Local SSH keys
 - [x] Local packages
+- [x] CloudFlare DDNS
 
 ### Layer 1 - all provisioned by Terraform and configured by Ansible:
 

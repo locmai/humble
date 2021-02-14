@@ -17,6 +17,7 @@ TBD
 - NEC servers
 - Local SSH keys
 - Local packages
+- CloudFlare DDNS
 - (*) Local: the original content initialized from the laptop.
 
 ### Layer 1 - all provisioned by Terraform and configured by Ansible:
@@ -27,11 +28,11 @@ TBD
 
 ### Layer 2: Platform
 
-- GitHub
-- ArgoCD
+- [GitHub](https://github.com/locmai/humble)
+- [ArgoCD](https://argocd.locmai.dev)
 - Vault
-- Monitoring: Grafana + Prometheus
-- Logging: Grafana + Loki
+- Monitoring: [Grafana](https://grafana.locmai.dev) + Prometheus
+- Logging: [Grafana](https://grafana.locmai.dev) + Loki
 
 ### Layer 3: Applications
 
