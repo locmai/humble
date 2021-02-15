@@ -64,16 +64,6 @@ resource "helm_release" "argocd" {
   ]
 }
 
-resource "helm_release" "monitoring" {
-  depends_on       = [helm_release.longhorn]
-  count            = var.monitoring_enabled ? 1 : 0
-  name             = "monitoring"
-  repository       = "https://prometheus-community.github.io/helm-charts"
-  chart            = "kube-prometheus-stack"
-  namespace        = "monitoring"
-  create_namespace = true
-}
-
 resource "kubernetes_config_map" "default-metallb-config" {
   depends_on = [rke_cluster.cluster]
 
