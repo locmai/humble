@@ -18,7 +18,7 @@ spec:
   source:
     chart: blackping
     repoURL: https://locmai.github.io/blackping/
-    targetRevision: 0.0.2
+    targetRevision: 0.0.3
     helm:
       releaseName: blackping
       values: |
@@ -38,4 +38,6 @@ spec:
 
             PERIOD=600
             {{- end }}`}}
+        serviceAccount:
+          name: "apps"
 {{- end }}
