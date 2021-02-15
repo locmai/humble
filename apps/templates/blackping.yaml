@@ -29,7 +29,7 @@ spec:
           vault.hashicorp.com/agent-inject-secret-env: "kv/postgres"
           vault.hashicorp.com/role: "blackping"
           vault.hashicorp.com/agent-inject-template-env: |
-            {{` {{- with secret "kv/postgres" -}}
+            {{`{{- with secret "kv/postgres" -}}
             POSTGRES_HOST="{{ .Data.db_host }}"
             POSTGRES_PORT={{ .Data.db_port }}
             POSTGRES_USER="{{ .Data.username }}"
@@ -37,5 +37,5 @@ spec:
             POSTGRES_DB="{{ .Data.db_name }}"
 
             PERIOD=600
-            {{- end }} `}}
+            {{- end }}`}}
 {{- end }}
