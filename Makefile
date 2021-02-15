@@ -33,3 +33,7 @@ platform:
 .PHONY: infras
 infras:
 	make -C infras
+
+.PHONY: apps
+apps:
+	make -C apps

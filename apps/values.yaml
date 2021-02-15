@@ -1,0 +1,7 @@
+argocd:
+  namespace: argocd
+  project: apps
+  targetRevision: main
+
+blackping:
+    enabled: false
