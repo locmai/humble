@@ -5,6 +5,8 @@ argocd:
 
 blackping:
   enabled: false
+  image:
+    tag: 0.0.3
 
 # Apps Database
 postgresql:
