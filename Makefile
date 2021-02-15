@@ -29,3 +29,7 @@ start-ddns:
 .PHONY: platform
 platform:
 	make -C platform
+
+.PHONY: infras
+infras:
+	make -C infras
