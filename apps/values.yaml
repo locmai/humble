@@ -4,7 +4,7 @@ argocd:
   targetRevision: main
 
 blackping:
-  enabled: false
+  enabled: true
   image:
     tag: 0.0.3
 
