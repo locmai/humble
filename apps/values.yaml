@@ -4,7 +4,7 @@ argocd:
   targetRevision: main
 
 blackping:
-  enabled: false
+  enabled: true
 
 # Apps Database
 postgresql:
