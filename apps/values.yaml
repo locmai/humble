@@ -4,9 +4,12 @@ argocd:
   targetRevision: main
 
 blackping:
-  enabled: false
+  # Chart Version
+  targetRevision: 0.0.6
+  enabled: true
   image:
-    tag: 0.0.6
+    tag: 0.0.7
+  
 
 # Apps Database
 postgresql:

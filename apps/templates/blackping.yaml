@@ -18,7 +18,7 @@ spec:
   source:
     chart: blackping
     repoURL: https://locmai.github.io/blackping/
-    targetRevision: 0.0.4
+    targetRevision: {{ .Values.blackping.targetRevision }}
     helm:
       releaseName: blackping
       values: |
