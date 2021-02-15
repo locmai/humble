@@ -4,9 +4,9 @@ argocd:
   targetRevision: main
 
 blackping:
-  enabled: false
+  enabled: true
   image:
-    tag: 0.0.5
+    tag: 0.0.6
 
 # Apps Database
 postgresql:
