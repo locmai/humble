@@ -5,7 +5,7 @@ argocd:
 
 # Kube Prometheus + Grafana stack 
 monitoring:
-    enabled: true
+    enabled: false
     namespace: monitoring
 
 loki:
