@@ -13,6 +13,7 @@ spec:
     server: '*'
   sourceRepos:
   - git@github.com:locmai/humble.git
+  - https://charts.bitnami.com/bitnami
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

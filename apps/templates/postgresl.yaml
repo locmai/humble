@@ -1,0 +1,24 @@
+{{- if .Values.postgresql.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-postgresql
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: postgresql
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 8.6.4
+    helm:
+      releaseName: postgresql
+{{- end }}
