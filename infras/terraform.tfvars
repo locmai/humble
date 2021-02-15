@@ -13,12 +13,16 @@ dev_domain = "locmai.dev"
 
 dev_sub_domains = {
   argocd = {
+    annotations = {
+      "nginx.ingress.kubernetes.io/ssl-passthrough" = "true"
+    }
     namespace    = "argocd"
     service_name = "argocd-server"
     service_port = 80
     subdomain    = "argocd"
   },
   grafana = {
+    annotations  = {}
     namespace    = "monitoring"
     service_name = "monitoring-grafana"
     service_port = 80
