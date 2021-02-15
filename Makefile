@@ -12,7 +12,7 @@ fmt:
 	@cd infras && terraform fmt
 
 apply:
-	@cd infras && terraform apply -auto-approve
+	@cd infras && terraform apply
 
 destroy:
 	@cd infras && terraform destroy
