@@ -38,6 +38,7 @@ TBD
 
 - Black Ping
 - Yuta Reborn
+- Personal Blog
 - TBA
 
 [Progress checklist](https://github.com/locmai/humble/blob/main/docs/checklist.md)

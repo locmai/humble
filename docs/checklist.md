@@ -23,9 +23,10 @@
 - [x] ArgoCD
 - [x] Vault
 - [x] Monitoring: Grafana + Prometheus
-- [ ] Logging: Grafana + Loki
+- [x] Logging: Grafana + Loki
 
 ### Layer 3: Applications
 
-- [ ] Black Ping
+- [x] Black Ping
 - [ ] Yuta Reborn
+- [ ] Personal Blog
