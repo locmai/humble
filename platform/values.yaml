@@ -1,0 +1,8 @@
+argocd:
+  namespace: argocd
+  project: platform
+  targetRevision: master
+
+loki:
+    enabled: false
+    namespace: monitoring
