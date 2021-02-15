@@ -27,5 +27,5 @@ start-ddns:
 	@cd scripts/ansible/ && ansible-playbook start_ddns.yaml -K
 
 .PHONY: platform
-infra:
+platform:
 	make -C platform
