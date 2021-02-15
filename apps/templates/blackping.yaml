@@ -31,7 +31,7 @@ spec:
           vault.hashicorp.com/agent-inject-template-env: |
             {{`{{- with secret "kv/postgres" -}}
             POSTGRES_HOST="{{ .Data.db_host }}"
-            POSTGRES_PORT={{ .Data.db_port }}
+            POSTGRES_PORT="{{ .Data.db_port }}"
             POSTGRES_USER="{{ .Data.username }}"
             POSTGRES_PASS="{{ .Data.password }}"
             POSTGRES_DB="{{ .Data.db_name }}"
