@@ -12,6 +12,7 @@ spec:
   - namespace: '*'
     server: '*'
   sourceRepos:
+  - git@github.com:locmai/humble.git
   - https://grafana.github.io/helm-charts
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -39,9 +40,9 @@ spec:
     namespace: platform
   source:
     path: 'platform'
-    repoURL: https://github.com/locmai/humble.git
-    targetRevision: master
+    repoURL: git@github.com:locmai/humble.git
+    targetRevision: main
     helm:
       values: |
         argocd:
-          targetRevision: master
+          targetRevision: main
