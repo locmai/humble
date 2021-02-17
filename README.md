@@ -13,6 +13,8 @@ TBD
 ```sh
 touch ./infras/kube_config.yml
 make infras
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+make start-ddns
 make platform
 make apps
 ```
