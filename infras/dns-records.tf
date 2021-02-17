@@ -1,4 +1,4 @@
-resource "cloudflare_record" "root_record" {
+resource "cloudflare_record" "dev_root_record" {
   zone_id = var.cloudflare_zone_id
   name    = "locmai.dev"
   // Random IP, real IP will be managed by DDNS
@@ -13,7 +13,7 @@ resource "cloudflare_record" "root_record" {
   }
 }
 
-resource "cloudflare_record" "www_record" {
+resource "cloudflare_record" "dev_www_record" {
   zone_id = var.cloudflare_zone_id
   name    = "www"
   value   = "locmai.dev"
@@ -21,7 +21,7 @@ resource "cloudflare_record" "www_record" {
   proxied = true
 }
 
-resource "cloudflare_record" "dev_records" {
+resource "cloudflare_record" "dev_ingress_records" {
   for_each = var.dev_sub_domains
 
   zone_id = var.cloudflare_zone_id

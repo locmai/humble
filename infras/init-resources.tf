@@ -64,7 +64,7 @@ resource "helm_release" "argocd" {
   ]
 }
 
-resource "kubernetes_config_map" "default-metallb-config" {
+resource "kubernetes_config_map" "default_metallb_config" {
   depends_on = [rke_cluster.cluster]
 
   metadata {

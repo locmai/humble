@@ -12,9 +12,11 @@ fmt:
 	@cd infras && terraform fmt
 
 apply:
+	tfenv use 0.14.5
 	@cd infras && terraform apply
 
 destroy:
+	tfenv use 0.14.5
 	@cd infras && terraform destroy
 
 clean:
