@@ -6,7 +6,7 @@ argocd:
 blackping:
   # Chart Version
   targetRevision: 0.0.6
-  enabled: true
+  enabled: false
   image:
     tag: 0.0.7
   
