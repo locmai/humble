@@ -26,6 +26,9 @@ cleanup-nodes:
 start-ddns:
 	@cd scripts/ansible/ && ansible-playbook start_ddns.yaml -K
 
+shutdown:
+	@cd scripts/ansible/ && ansible-playbook shutdown.yaml -K
+
 .PHONY: platform
 platform:
 	make -C platform

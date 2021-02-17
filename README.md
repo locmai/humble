@@ -31,10 +31,10 @@ TBD
 ### Layer 2: Platform
 
 - [GitHub](https://github.com/locmai/humble)
-- [ArgoCD](https://argocd.locmai.dev)
+- ArgoCD
 - Vault
-- Monitoring: [Grafana](https://grafana.locmai.dev) + Prometheus
-- Logging: [Grafana](https://grafana.locmai.dev) + Loki
+- Monitoring: Grafana + Prometheus
+- Logging: Grafana+ Loki
 
 ### Layer 3: Applications
 
