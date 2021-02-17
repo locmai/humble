@@ -31,13 +31,13 @@ start-ddns:
 shutdown:
 	@cd scripts/ansible/ && ansible-playbook shutdown.yaml -K
 
-.PHONY: platform
-platform:
-	make -C platform
-
 .PHONY: infras
 infras:
 	make -C infras
+
+.PHONY: platform
+platform:
+	make -C platform
 
 .PHONY: apps
 apps:

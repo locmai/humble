@@ -8,6 +8,15 @@ Infrastructures and Application Deployments as Code repository.
 
 TBD
 
+## Getting Started
+
+```sh
+touch ./infras/kube_config.yml
+make infras
+make platform
+make apps
+```
+
 ## Layer Stack:
 
 - Each layer will use an isolated tfstate.
