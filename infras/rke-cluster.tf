@@ -4,9 +4,6 @@ resource "rke_cluster" "cluster" {
 
   cluster_yaml = file("cluster.yaml")
 
-  # Yes, ignoring the Docker version, I live dangerously
-  ignore_docker_version = true
-
   dynamic "nodes" {
     for_each = local.nodes
 
