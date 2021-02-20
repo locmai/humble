@@ -6,6 +6,7 @@ init:
 	@cd infras && terraform init
 
 plan:
+	tfenv use 0.14.5
 	@cd infras && terraform plan
 
 fmt: 

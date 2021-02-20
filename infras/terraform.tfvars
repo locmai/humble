@@ -3,7 +3,7 @@ longhorn_enabled = true
 
 monitoring_enabled = false
 
-vault_enabled = true
+vault_enabled = false
 
 cloudflare_email = "locmai0201@gmail.com"
 

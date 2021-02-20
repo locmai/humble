@@ -31,7 +31,7 @@ resource "helm_release" "vault" {
 
   set {
     name  = "server.ha.enabled"
-    value = "true"
+    value = "false"
   }
 }
 
