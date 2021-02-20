@@ -1,4 +1,5 @@
 resource "helm_release" "longhorn" {
+  depends_on       = [rke_cluster.cluster]
   count            = var.longhorn_enabled ? 1 : 0
   name             = "longhorn"
   repository       = "https://charts.longhorn.io"
@@ -7,18 +8,18 @@ resource "helm_release" "longhorn" {
   create_namespace = true
 }
 
-resource "helm_release" "consul" {
-  depends_on       = [helm_release.longhorn]
-  count            = var.vault_enabled ? 1 : 0
-  name             = "consul"
-  repository       = "https://helm.releases.hashicorp.com"
-  chart            = "consul"
-  namespace        = "vault"
-  create_namespace = true
-}
+// resource "helm_release" "consul" {
+//   depends_on       = [helm_release.longhorn]
+//   count            = var.vault_enabled ? 1 : 0
+//   name             = "consul"
+//   repository       = "https://helm.releases.hashicorp.com"
+//   chart            = "consul"
+//   namespace        = "vault"
+//   create_namespace = true
+// }
 
 resource "helm_release" "vault" {
-  depends_on       = [helm_release.longhorn, helm_release.consul]
+  depends_on       = [helm_release.longhorn]
   count            = var.vault_enabled ? 1 : 0
   name             = "vault"
   repository       = "https://helm.releases.hashicorp.com"
@@ -36,6 +37,7 @@ resource "helm_release" "vault" {
 }
 
 resource "helm_release" "nginx" {
+  depends_on = [rke_cluster.cluster]
   name       = "nginx"
   repository = "https://kubernetes.github.io/ingress-nginx"
   chart      = "ingress-nginx"
@@ -49,9 +51,15 @@ resource "helm_release" "nginx" {
   ]
 }
 
+resource "kubernetes_namespace" "argocd" {
+  metadata {
+    name = "argocd"
+  }
+}
+
 resource "helm_release" "argocd" {
   // Depends on Nginx Ingress for ArgoCD Web UI
-  depends_on = [helm_release.nginx]
+  depends_on = [helm_release.nginx, kubernetes_namespace.argocd]
 
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
@@ -84,11 +92,13 @@ resource "kubernetes_config_map" "default_metallb_config" {
 }
 
 resource "kubernetes_ingress" "dev_ingresses" {
+  depends_on = [rke_cluster.cluster]
+
   for_each = var.dev_sub_domains
 
   metadata {
-    name      = "${each.value["subdomain"]}-ingress"
-    namespace = each.value["namespace"]
+    name        = "${each.value["subdomain"]}-ingress"
+    namespace   = each.value["namespace"]
     annotations = each.value["annotations"]
   }
 
@@ -106,3 +116,4 @@ resource "kubernetes_ingress" "dev_ingresses" {
     }
   }
 }
+
