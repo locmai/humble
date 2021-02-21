@@ -40,7 +40,7 @@ spec:
     name: in-cluster
     namespace: apps
   source:
-    path: 'apps'
+    path: 'apps/argocd'
     repoURL: git@github.com:locmai/humble.git
     targetRevision: main
     helm:
