@@ -1,36 +1,38 @@
 ping:
 	@echo "Pinging the hosts ..." 
-	@cd scripts/ansible && ansible all -m ping
+	@cd metal/ansible && ansible all -m ping
 
 init:
-	@cd infras && terraform init
+	tfenv use 0.14.5
+	@cd infras/terraform && terraform init
 
 plan:
 	tfenv use 0.14.5
-	@cd infras && terraform plan
+	@cd infras/terraform && terraform plan
 
-fmt: 
-	@cd infras && terraform fmt
+fmt:
+	tfenv use 0.14.5
+	@cd infras/terraform && terraform fmt
 
 apply:
 	tfenv use 0.14.5
-	@cd infras && terraform apply
+	@cd infras/terraform && terraform apply
 
 destroy:
 	tfenv use 0.14.5
-	@cd infras && terraform destroy
+	@cd infras/terraform && terraform destroy
 
 clean:
-	@rm -rf infras/terraform.tfstate.** infras/dev.log infras/rke_debug.log
+	@rm -rf infras/terraform/terraform.tfstate.** infras/terraform/dev.log infras/terraform/rke_debug.log
 
 cleanup-nodes:
-	@cd scripts/ansible/ && ansible-playbook clean_up.yaml -K
+	@cd metal/ansible/ && ansible-playbook clean_up.yaml -K
 
 start-ddns:
-	@cd scripts/ansible/ && ansible-playbook start_ddns.yaml -K
+	@cd infras/ansible/ && ansible-playbook start_ddns.yaml -K
 
 shutdown:
-	@cd scripts/ansible/ && ansible-playbook shutdown.yaml -K
+	@cd metal/ansible/ && ansible-playbook shutdown.yaml -K
 
 .PHONY: infras
 infras:

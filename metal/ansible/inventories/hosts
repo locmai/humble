@@ -1,0 +1,11 @@
+[db]
+node01
+
+[kv]
+node01
+
+[all]
+node[01:04]
+
+[master]
+node01

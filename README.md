@@ -37,7 +37,7 @@ make apps
 - The above layers (layers with higher order) could be depended on the lower layers.
 - Other shared components must be able for versioning and configurable (with custom data/parameters)
 
-### Layer 0: Metal
+### Layer 0 - Metal
 
 - NEC servers
 - Local SSH keys
@@ -66,3 +66,37 @@ make apps
 - TBA
 
 [Progress checklist](https://github.com/locmai/humble/blob/main/docs/checklist.md)
+
+## Folder Structure
+
+```
+tree -L 2
+.
+├── Makefile
+├── README.md
+├── apps
+│   ├── Makefile
+│   ├── README.md
+│   └── argocd
+├── docs
+│   ├── README.md
+│   └── checklist.md
+├── infras
+│   ├── Makefile
+│   ├── ansible
+│   └── terraform
+├── metal
+│   └── ansible
+├── platform
+│   ├── Makefile
+│   ├── README.md
+│   ├── argocd
+│   └── terraform
+├── scripts
+│   └── README.md
+└── tests
+    └── volumes
+```
+
+- Root directories divided by the layers and 
+- Inside each layer directory, the folders will be divided based on the provisioner (terraform, argocd, ansible, etc.)
