@@ -21,7 +21,7 @@ For bare metal nodes:
 - Internet connection
 - openssh installed
 
-### Building the layer:
+### Building the layer
 ```sh
 touch ./infras/kube_config.yml
 make infras
@@ -31,7 +31,7 @@ make platform
 make apps
 ```
 
-## Layered Stack:
+## Layered Stack
 
 - Each layer uses an isolated tfstate.
 - The above layers (layers with higher order) could be depended on the lower layers.

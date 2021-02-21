@@ -1,4 +1,4 @@
-## Layered Stack:
+## Layered Stack
 
 - Each layer will use an isolated tfstate.
 - The above layers (layers with higher order) could be depended on the lower layers.
