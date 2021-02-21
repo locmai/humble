@@ -1,15 +1,27 @@
 ## Humble Project
 
-Infrastructures and Application Deployments as Code repository.
-
-![humble](https://github.com/locmai/humble/blob/main/docs/humble_kendrick_lamar.jpg?raw=true)
+This repository contains the code for personal infrastructure workspaces and application deployments.
 
 ## Overview
 
-TBD
+The project is inspired by my [Khue's homelab](https://github.com/khuedoan/homelab)
 
-## Getting Started
+## Usage
 
+### Prerequisite
+
+For the controller:
+- SSH keys in ~/.ssh/{id_rsa,id_rsa.pub}
+make
+- terraform (0.14.5 or above)
+- ansible & python3
+- make
+
+For bare metal nodes:
+- Internet connection
+- openssh installed
+
+### Building the layer:
 ```sh
 touch ./infras/kube_config.yml
 make infras
@@ -19,35 +31,34 @@ make platform
 make apps
 ```
 
-## Layer Stack:
+## Layered Stack:
 
-- Each layer will use an isolated tfstate.
+- Each layer uses an isolated tfstate.
 - The above layers (layers with higher order) could be depended on the lower layers.
 - Other shared components must be able for versioning and configurable (with custom data/parameters)
 
-### Layer 0: Metal/Genesis
+### Layer 0: Metal
 
 - NEC servers
 - Local SSH keys
 - Local packages
 - CloudFlare DDNS
-- (*) Local: the original content initialized from the laptop.
 
 ### Layer 1 - all provisioned by Terraform and configured by Ansible:
 
-- RKE clusters
-- Network: MetalLB with Nginx Ingress
-- Storage: Longhorn
+- **Workload Orchestrator:** RKE clusters
+- **Networking:** MetalLB with Nginx Ingress
+- **Storage Managmenet:** Longhorn
+- **Secret Management:** Vault
 
-### Layer 2: Platform
+### Layer 2 - Platform
 
-- [GitHub](https://github.com/locmai/humble)
-- ArgoCD
-- Vault
-- Monitoring: Grafana + Prometheus
-- Logging: Grafana+ Loki
+- **Source Version Control:** GitHub
+- **Continuous Delivery:** ArgoCD + Keel
+- **Monitoring:** Grafana + Prometheus
+- **Logging:** Grafana+ Loki
 
-### Layer 3: Applications
+### Layer 3 - Applications
 
 - Black Ping
 - Yuta Reborn

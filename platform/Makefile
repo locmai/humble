@@ -1,4 +1,4 @@
 .POSIX:
 
 default:
-	kubectl apply -f main.yaml
+	kubectl apply -f argocd/main.yaml

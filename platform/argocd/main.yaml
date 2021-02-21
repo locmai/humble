@@ -40,7 +40,7 @@ spec:
     name: in-cluster
     namespace: platform
   source:
-    path: 'platform'
+    path: 'platform/argocd'
     repoURL: git@github.com:locmai/humble.git
     targetRevision: main
     helm:
