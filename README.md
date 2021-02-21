@@ -4,7 +4,7 @@ This repository contains the code for personal infrastructure workspaces and app
 
 ## Overview
 
-The project is inspired by my [Khue's homelab](https://github.com/khuedoan/homelab)
+The project is inspired by my co-worker's works - [Khue's homelab](https://github.com/khuedoan/homelab)
 
 ## Usage
 
