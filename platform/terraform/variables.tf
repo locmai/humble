@@ -25,7 +25,7 @@ variable "cloudflare_zone_id" {
   type = string
 }
 
-variable "platform_sub_domains" {
+variable "dev_platform_sub_domains" {
   type = map(object({
     annotations  = map(any)
     namespace    = string

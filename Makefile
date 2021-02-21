@@ -16,6 +16,7 @@ fmt:
 
 apply:
 	tfenv use 0.14.5
+	touch ./infras/kube_config.yml
 	@cd infras/terraform && terraform apply
 
 destroy:
