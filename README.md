@@ -12,7 +12,6 @@ The project is inspired by my co-worker's works - [Khue's homelab](https://githu
 
 For the controller:
 - SSH keys in ~/.ssh/{id_rsa,id_rsa.pub}
-make
 - terraform (0.14.5 or above)
 - ansible & python3
 - make
