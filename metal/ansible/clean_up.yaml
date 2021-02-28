@@ -3,6 +3,9 @@
   become: yes
   become_user: root
   tasks:
+    - name: Reboot the machine before cleaning up
+      reboot:
+        reboot_timeout: 3600
     - name: Clean Rook path
       file:
         state: absent
