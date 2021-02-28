@@ -10,6 +10,7 @@
 - [x] Local SSH keys
 - [x] Local packages
 - [x] CloudFlare DDNS
+- [x] Netdata Agent
 
 ### Layer 1 - all provisioned by Terraform and configured by Ansible:
 

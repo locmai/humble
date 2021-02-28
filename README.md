@@ -41,6 +41,7 @@ make apps
 - Local SSH keys
 - Local packages
 - CloudFlare DDNS
+- Netdata Agent
 
 ### Layer 1 - all provisioned by Terraform and configured by Ansible:
 
@@ -61,7 +62,6 @@ make apps
 - Black Ping
 - Yuta Reborn
 - Personal Blog
-- TBA
 
 [Progress checklist](https://github.com/locmai/humble/blob/main/docs/checklist.md)
 
