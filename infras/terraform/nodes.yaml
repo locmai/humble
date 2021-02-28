@@ -1,12 +1,12 @@
 node01:
   id: node01
-  roles: ["controlplane", "worker", "etcd"]
+  roles: ["controlplane","etcd"]
 node02:
   id: node02
-  roles: ["controlplane", "worker", "etcd"]
+  roles: ["worker"]
 node03:
   id: node03
-  roles: ["controlplane", "worker", "etcd"]
+  roles: ["worker"]
 node04:
   id: node04
   roles: ["worker"]

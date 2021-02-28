@@ -21,6 +21,14 @@ resource "cloudflare_record" "dev_www_record" {
   proxied = true
 }
 
+resource "cloudflare_record" "dev_status_record" {
+  zone_id = var.cloudflare_zone_id
+  name    = "status"
+  value   = "statuspage.betteruptime.com"
+  type    = "CNAME"
+  proxied = false
+}
+
 resource "cloudflare_record" "dev_ingress_records" {
   for_each = var.dev_sub_domains
 
