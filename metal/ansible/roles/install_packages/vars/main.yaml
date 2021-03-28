@@ -1,3 +1,5 @@
 ---
-__default_packages:
+__apt_default_packages:
   - lvm2
+__snap_default_packages:
+  - lxd

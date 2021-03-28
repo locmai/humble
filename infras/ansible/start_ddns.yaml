@@ -1,5 +1,5 @@
 - name: Start DDNS
-  hosts: master
+  hosts: nodes
   become: yes
   roles:
   - ddns

@@ -1,7 +1,12 @@
 ---
 - include_tasks: variables.yaml
 
-- name: Ensure all default packages are installed.
+- name: Ensure all apt default packages are installed.
   apt:
-    name: "{{ default_packages }}"
+    name: "{{ apt_default_packages }}"
+    state: present
+
+- name: Ensure all snap default packages are installed.
+  community.general.snap:
+    name: "{{ snap_default_packages }}"
     state: present

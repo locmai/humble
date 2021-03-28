@@ -35,6 +35,10 @@ start-ddns:
 shutdown:
 	@cd metal/ansible/ && ansible-playbook shutdown.yaml -K
 
+.PHONY: metal
+metal:
+	make -C metal
+
 .PHONY: infras
 infras:
 	make -C infras

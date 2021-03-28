@@ -7,7 +7,7 @@ node01
 [controller]
 localhost ansible_connection=local
 
-[all]
+[nodes]
 node01 ansible_host=192.168.1.50
 node02 ansible_host=192.168.1.51
 node03 ansible_host=192.168.1.52

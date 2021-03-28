@@ -1,5 +1,5 @@
 - name: Install packages
-  hosts: all
+  hosts: nodes
   become: yes
   roles:
   - netdata

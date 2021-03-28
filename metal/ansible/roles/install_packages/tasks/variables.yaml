@@ -2,7 +2,12 @@
 - name: Include variables.
   include_vars: "main.yaml"
 
+- name: Define apt_default_packages to be installed.
+  set_fact:
+    apt_default_packages: "{{ __apt_default_packages | list }}"
+  when: apt_default_packages is not defined
+
 - name: Define default_packages to be installed.
   set_fact:
-    default_packages: "{{ __default_packages | list }}"
-  when: default_packages is not defined
+    snap_default_packages: "{{ __snap_default_packages | list }}"
+  when: snap_default_packages is not defined
