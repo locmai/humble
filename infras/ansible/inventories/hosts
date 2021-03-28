@@ -1,11 +1,14 @@
-[db]
+[master]
 node01
-
-[kv]
-node01
-
-[all]
-node[01:04]
 
 [master]
 node01
+
+[controller]
+localhost ansible_connection=local
+
+[all]
+node01 ansible_host=192.168.1.50
+node02 ansible_host=192.168.1.51
+node03 ansible_host=192.168.1.52
+node04 ansible_host=192.168.1.53

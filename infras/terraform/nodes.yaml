@@ -1,12 +1,16 @@
 node01:
   id: node01
-  roles: ["controlplane","etcd"]
+  ip: "192.168.1.50"
+  roles: ["controlplane", "etcd"]
 node02:
   id: node02
-  roles: ["worker"]
+  ip: "192.168.1.51"
+  roles: ["controlplane", "etcd", "worker"]
 node03:
   id: node03
-  roles: ["worker"]
+  ip: "192.168.1.52"
+  roles: ["controlplane", "etcd", "worker"]
 node04:
   id: node04
+  ip: "192.168.1.53"
   roles: ["worker"]
