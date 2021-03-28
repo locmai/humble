@@ -8,7 +8,7 @@ resource "rke_cluster" "cluster" {
     for_each = local.nodes
 
     content {
-      address = nodes.value.id
+      address = nodes.value.ip
       user    = local.ssh_user
       role    = nodes.value.roles
       ssh_key = local.ssh_key
