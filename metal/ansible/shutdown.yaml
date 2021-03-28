@@ -5,4 +5,5 @@
     become: yes
     become_user: root
     community.general.shutdown:
-      delay: 60
+      delay: 0
+    ignore_unreachable: yes
