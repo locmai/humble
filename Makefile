@@ -35,6 +35,9 @@ start-ddns:
 shutdown:
 	@cd metal/ansible/ && ansible-playbook shutdown.yaml -K
 
+wake:
+	@cd metal/ansible/ && ansible-playbook wake.yaml
+
 .PHONY: metal
 metal:
 	make -C metal
