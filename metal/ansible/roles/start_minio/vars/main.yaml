@@ -1,0 +1,3 @@
+---
+minio_root_user: "minio"
+minio_root_password: "miniostorage"

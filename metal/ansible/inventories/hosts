@@ -1,7 +1,4 @@
-[master]
-node01
-
-[master]
+[backend]
 node01
 
 [controller]

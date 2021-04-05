@@ -1,4 +1,4 @@
-- name: Start DDNS
+- name: Ansible-ing the infrastructure layer
   hosts: nodes
   become: yes
   roles:

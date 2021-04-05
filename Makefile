@@ -2,41 +2,19 @@ ping:
 	@echo "Pinging the hosts ..." 
 	@cd metal/ansible && ansible all -m ping
 
-init:
-	tfenv use 0.14.5
-	@cd infras/terraform && terraform init
-
-plan:
-	tfenv use 0.14.5
-	@cd infras/terraform && terraform plan
-
-fmt:
-	tfenv use 0.14.5
-	@cd infras/terraform && terraform fmt
-
-apply:
-	tfenv use 0.14.5
-	touch ./infras/kube_config.yml
-	@cd infras/terraform && terraform apply
-
-destroy:
-	tfenv use 0.14.5
-	@cd infras/terraform && terraform destroy
-
 clean:
 	@rm -rf infras/terraform/terraform.tfstate.** infras/terraform/dev.log infras/terraform/rke_debug.log
 
 cleanup-nodes:
-	@cd metal/ansible/ && ansible-playbook clean_up.yaml -K
-
-start-ddns:
-	@cd infras/ansible/ && ansible-playbook start_ddns.yaml -K
+	@cd scripts/ansible/ && ansible-playbook clean_up.yaml -K
 
 shutdown:
-	@cd metal/ansible/ && ansible-playbook shutdown.yaml -K
+	@cd scripts/ansible/ && ansible-playbook shutdown.yaml -K
 
 wake:
-	@cd metal/ansible/ && ansible-playbook wake.yaml
+	@cd scripts/ansible/ && ansible-playbook wake.yaml
+
+all: metal infras platform apps
 
 .PHONY: metal
 metal:

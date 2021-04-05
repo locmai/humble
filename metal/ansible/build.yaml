@@ -1,0 +1,7 @@
+- name: Ansible-ing the metal layer
+  hosts: nodes
+  become: yes
+  roles:
+  - install_packages
+  - install_docker
+  - start_minio

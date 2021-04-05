@@ -1,0 +1,14 @@
+- name: Run the genesis minio
+  docker_container:
+    name: 'genesis-minio'
+    image: minio/minio
+    command: server /data
+    restart_policy: always
+    volumes:
+    - /mnt/minio_data:/data
+    - /mnt/minio_etc:/etc
+    ports:
+    - 9000:9000
+    env:
+      MINIO_ROOT_USER: "{{ minio_root_user }}"
+      MINIO_ROOT_PASSWORD: "{{ minio_root_password }}"

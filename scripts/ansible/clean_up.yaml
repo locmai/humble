@@ -1,16 +1,16 @@
 - name: Cleanup packages
-  hosts: all
+  hosts: nodes
   become: yes
   become_user: root
   tasks:
     - name: Reboot the machine before cleaning up
       reboot:
         reboot_timeout: 3600
-    - name: Clean Rook path
+    - name: Clean Rook directory
       file:
         state: absent
         path: "/var/lib/rook"
-    - name: Clean Longhorn path
+    - name: Clean Longhorn directory
       file:
         state: absent
         path: "/var/lib/longhorn"

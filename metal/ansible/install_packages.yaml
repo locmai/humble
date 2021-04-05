@@ -1,5 +1,0 @@
-- name: Install packages
-  hosts: nodes
-  become: yes
-  roles:
-  - install_packages

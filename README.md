@@ -22,9 +22,9 @@ For bare metal nodes:
 
 ### Building the layer
 ```sh
+make metal
 make infras
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-make start-ddns
 make platform
 make apps
 ```
