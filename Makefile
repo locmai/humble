@@ -9,7 +9,7 @@ cleanup-nodes:
 	@cd scripts/ansible/ && ansible-playbook clean_up.yaml -K
 
 shutdown:
-	@cd scripts/ansible/ && ansible-playbook shutdown.yaml -K
+	@cd scripts/ansible/ && ansible-playbook shut_down_all.yaml -K
 
 wake:
 	@cd scripts/ansible/ && ansible-playbook wake.yaml
