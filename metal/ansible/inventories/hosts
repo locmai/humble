@@ -9,3 +9,8 @@ node01 ansible_host=192.168.1.50 mac='00:23:24:c5:84:a7'
 node02 ansible_host=192.168.1.51 mac='00:23:24:d1:f5:1e'
 node03 ansible_host=192.168.1.52 mac='00:23:24:d9:38:9d'
 node04 ansible_host=192.168.1.53 mac='00:23:24:d1:f4:0c'
+
+[etcd]
+node01 ansible_host=192.168.1.50 mac='00:23:24:c5:84:a7'
+node02 ansible_host=192.168.1.51 mac='00:23:24:d1:f5:1e'
+node03 ansible_host=192.168.1.52 mac='00:23:24:d9:38:9d'

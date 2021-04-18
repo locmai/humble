@@ -12,7 +12,7 @@ shutdown:
 	@cd scripts/ansible/ && ansible-playbook shut_down_all.yaml -K
 
 wake:
-	@cd scripts/ansible/ && ansible-playbook wake.yaml
+	@cd scripts/ansible/ && ansible-playbook wake_all.yaml
 
 all: metal infras platform apps
 

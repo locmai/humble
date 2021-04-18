@@ -1,7 +1,7 @@
 - hosts: nodes
   gather_facts: false
   tasks:
-  - name: Shutdown ALL
+  - name: Shutdown all nodes
     become: yes
     become_user: root
     community.general.shutdown:

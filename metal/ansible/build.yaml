@@ -4,4 +4,9 @@
   roles:
   - install_packages
   - install_docker
-  - start_minio
+
+- name: Initilize the ETCD
+  hosts: etcd
+  become: yes
+  roles:
+  - init_etcd
