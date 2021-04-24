@@ -8,16 +8,6 @@ resource "helm_release" "longhorn" {
   create_namespace = true
 }
 
-// resource "helm_release" "consul" {
-//   depends_on       = [helm_release.longhorn]
-//   count            = var.vault_enabled ? 1 : 0
-//   name             = "consul"
-//   repository       = "https://helm.releases.hashicorp.com"
-//   chart            = "consul"
-//   namespace        = "vault"
-//   create_namespace = true
-// }
-
 resource "helm_release" "vault" {
   depends_on       = [helm_release.longhorn]
   count            = var.vault_enabled ? 1 : 0
