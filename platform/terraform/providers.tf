@@ -4,7 +4,7 @@ provider "rke" {
 }
 
 provider "kubernetes" {
-  config_path = local_file.kube_config_yaml.filename
+  config_path = "../../infras/terraform/kube_config.yml"
 }
 
 provider "cloudflare" {

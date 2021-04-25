@@ -12,6 +12,8 @@ spec:
     automated:
       selfHeal: true
       prune: true
+    syncOptions:
+      - CreateNamespace=true
   destination:
     name: in-cluster
     namespace: {{ .Values.loki.namespace }}

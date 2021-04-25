@@ -1,6 +1,4 @@
 resource "kubernetes_ingress" "dev_platform_ingresses" {
-  depends_on = [rke_cluster.cluster]
-
   for_each = var.dev_platform_sub_domains
 
   metadata {
