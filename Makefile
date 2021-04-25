@@ -1,11 +1,7 @@
 ping:
-	@echo "Pinging the hosts ..." 
 	@cd metal/ansible && ansible all -m ping
 
 clean:
-	@rm -rf infras/terraform/terraform.tfstate.** infras/terraform/dev.log infras/terraform/rke_debug.log
-
-cleanup-nodes:
 	@cd scripts/ansible/ && ansible-playbook clean_up.yaml -K
 
 shutdown:
@@ -14,7 +10,7 @@ shutdown:
 wake:
 	@cd scripts/ansible/ && ansible-playbook wake_all.yaml
 
-all: metal infras platform apps
+all: metal infras platform apps todo
 
 .PHONY: metal
 metal:
@@ -31,3 +27,7 @@ platform:
 .PHONY: apps
 apps:
 	make -C apps
+
+.PHONY: todo
+todo:
+	make -C docs

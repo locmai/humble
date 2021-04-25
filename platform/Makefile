@@ -1,4 +1,4 @@
 .POSIX:
 
 default:
-	kubectl apply -f argocd/main.yaml
+	kubectl --kubeconfig ../infras/terraform/kube_config.yml apply -f argocd/main.yaml

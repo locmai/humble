@@ -23,7 +23,7 @@ resource "cloudflare_record" "dev_www_record" {
 
 resource "cloudflare_record" "dev_status_record" {
   zone_id = var.cloudflare_zone_id
-  name    = "status"
+  name    = "ping"
   value   = "statuspage.betteruptime.com"
   type    = "CNAME"
   proxied = false

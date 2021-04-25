@@ -21,11 +21,6 @@
     - name: Stop all containers
       shell: "docker container stop $(docker container ls -aq)"
       when: docker_host.containers | length != 0
-    - name: Prune everything
-      community.general.docker_prune:
-        containers: yes
-        networks: yes
-        volumes: yes
     - name: Clean network and directories related
       shell: |
         ip link delete cni0
@@ -36,3 +31,5 @@
         rm -rf /etc/cni/
         rm -rf /usr/libexec/kubernetes
         rm -rf /etc/kubernetes
+        rm -rf /var/lib/rancher
+        rm -rf /var/lib/etcd

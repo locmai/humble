@@ -31,11 +31,11 @@ resource "rke_cluster" "cluster" {
     }
   }
 
-  # addons_include = [
-  #   "https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml",
-  #   "https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml",
-  #   "https://raw.githubusercontent.com/locmai/humble/main/tests/volumes/storageclass.yaml",
-  # ]
+  addons_include = [
+    "https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml",
+    "https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml",
+    "https://raw.githubusercontent.com/locmai/humble/main/tests/volumes/storageclass.yaml",
+  ]
 }
 
 resource "local_file" "kube_config_yaml" {

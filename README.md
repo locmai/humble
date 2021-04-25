@@ -43,25 +43,28 @@ make apps
 - CloudFlare DDNS
 - Netdata Agent
 
-### Layer 1 - all provisioned by Terraform and configured by Ansible:
+### Layer 1 - Infrastructure
 
 - **Workload Orchestrator:** RKE clusters
 - **Networking:** MetalLB with Nginx Ingress
-- **Storage Managmenet:** Longhorn
+- **Storage Management:** Longhorn
 - **Secret Management:** Vault
 
 ### Layer 2 - Platform
 
 - **Source Version Control:** GitHub
-- **Continuous Delivery:** ArgoCD + Keel
-- **Monitoring:** Grafana + Prometheus
-- **Logging:** Grafana+ Loki
+- **Continuous Delivery:** ArgoCD, Keel
+- **Telemetry** Grafana, Prometheus, Loki, Jaeger
 
 ### Layer 3 - Applications
 
 - Black Ping
 - Yuta Reborn
 - Personal Blog
+
+#### Notes:
+(1) All provisioned by Terraform and configured by Ansible
+(2) All provisioned and configured by ArgoCD with GitHub
 
 [Progress checklist](https://github.com/locmai/humble/blob/main/docs/checklist.md)
 
@@ -98,3 +101,4 @@ tree -L 2
 
 - Root directories divided by the layers and 
 - Inside each layer directory, the folders will be divided based on the provisioner (terraform, argocd, ansible, etc.)
+

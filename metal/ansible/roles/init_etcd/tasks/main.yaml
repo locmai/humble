@@ -7,7 +7,7 @@
 
 - name: Create etcd-data directory
   ansible.builtin.file:
-    path: /var/lib/etcd
+    path: /var/lib/genesis/etcd
     state: directory
     mode: '0644'
 
@@ -18,7 +18,7 @@
     restart_policy: unless-stopped
     volumes:
     - /usr/share/ca-certificates/:/etc/ssl/certs
-    - /var/lib/etcd:/etcd-data
+    - /var/lib/genesis/etcd:/etcd-data
     ports:
     - "2480:2480"
     - "2479:2479"

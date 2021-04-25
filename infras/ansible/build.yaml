@@ -1,5 +1,5 @@
 - name: Ansible-ing the infrastructure layer
-  hosts: nodes
+  hosts: etcd
   become: yes
   roles:
   - ddns
