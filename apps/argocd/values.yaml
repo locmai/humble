@@ -13,4 +13,4 @@ blackping:
 
 # Apps Database
 postgresql:
-  enabled: false
+  enabled: true
