@@ -17,6 +17,13 @@ dev_sub_domains = {
         service_name = "argocd-server"
         service_port = 80
         subdomain    = "argocd"
+    },
+    vault = {
+        annotations  = {}
+        namespace    = "vault"
+        service_name = "vault-ui"
+        service_port = 8200
+        subdomain    = "vault"
     }
 }
 
