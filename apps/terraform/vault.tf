@@ -34,3 +34,4 @@ resource "kubernetes_service_account" "apps" {
         namespace = "apps"
     }
 }
+
