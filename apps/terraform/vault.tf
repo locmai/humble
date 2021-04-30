@@ -13,7 +13,7 @@ resource "vault_policy" "apps_all" {
   name = "apps_all"
 
   policy = <<EOT
-path "*" {
+path "${vault_mount.kvv2-postgresql.path}" {
   capabilities = [ "create", "update", "read", "delete", "list" ]
 }
 EOT
