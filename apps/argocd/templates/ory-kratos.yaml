@@ -25,6 +25,7 @@ spec:
       releaseName: ory-kratos
       values: |
         serviceAccount:
+          enabled: true
           name: "apps"
         deployment:
           annotations:

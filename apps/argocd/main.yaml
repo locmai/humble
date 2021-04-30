@@ -15,6 +15,7 @@ spec:
   - git@github.com:locmai/humble.git
   - https://charts.bitnami.com/bitnami
   - https://locmai.github.io/blackping/
+  - https://locmai.github.io/ory-k8s/
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
