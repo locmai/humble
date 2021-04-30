@@ -32,13 +32,4 @@ spec:
         replication:
           enabled: true
           readReplicas: 3
-        commonAnnotations:
-          vault.hashicorp.com/agent-inject: "true"
-          vault.hashicorp.com/agent-inject-secret-postgresql: "secrets/postgresql"
-          vault.hashicorp.com/role: "postgresql_read_only"
-          vault.hashicorp.com/agent-inject-template-postgresql: |
-            {{`{{ with secret "secrets/postgresql" -}}
-              export POSTGRES_PASSWORD="{{ .Data.data.password }}"
-            {{- end }}`}}
-
 {{- end }}
