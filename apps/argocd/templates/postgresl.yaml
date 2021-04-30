@@ -21,4 +21,15 @@ spec:
     targetRevision: 8.6.4
     helm:
       releaseName: postgresql
+      values: |
+        commonAnnotations:
+          vault.hashicorp.com/agent-inject: "true"
+          vault.hashicorp.com/agent-inject-secret-postgresql: "secrets/postgresql"
+          vault.hashicorp.com/role: "postgresql_read_only"
+          vault.hashicorp.com/agent-inject-template-postgresql: |
+            {{ with secret "secrets/postgresql" -}}
+              export POSTGRES_PASSWORD="{{ .Data.data.password }}"
+            {{- end }}
+        serviceAccount:
+          enabled: true
 {{- end }}
