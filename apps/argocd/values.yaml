@@ -9,7 +9,11 @@ blackping:
   enabled: false
   image:
     tag: 0.0.7
-  
+
+ory-kratos:
+  # Chart Version
+  targetRevision: 0.9.1
+  enabled: false
 
 # Apps Database
 postgresql:

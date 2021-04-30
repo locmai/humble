@@ -31,6 +31,11 @@ resource "random_password" "postgresql_password" {
   special          = false
 }
 
+resource "random_password" "kratos_password" {
+  length           = 16
+  special          = false
+}
+
 resource "vault_mount" "kvv2-postgresql" {
   path        = "secret/posgresql"
   type        = "kv-v2"
@@ -42,7 +47,10 @@ resource "vault_generic_secret" "postgresql" {
   data_json = <<EOT
 {
   "username": "${local.postgresql_username}",
-  "password": "${random_password.postgresql_password.result}"
+  "password": "${random_password.postgresql_password.result}",
+  "kratos_username": "kratos",
+  "kratos_password" : "${random_password.kratos_password.result}",
+  "kratos_database": "kratos"
 }
 EOT
 }

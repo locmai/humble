@@ -1,0 +1,38 @@
+{{- if .Values.ory-kratos.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-ory-kratos
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: kratos
+    repoURL: https://locmai.github.io/ory-k8s/
+    targetRevision: {{ .Values.ory-kratos.targetRevision }}
+    helm:
+      releaseName: ory-kratos
+      values: |
+        serviceAccount:
+          name: "apps"
+        deployment:
+          annotations:
+            vault.hashicorp.com/agent-inject: "true"
+            vault.hashicorp.com/agent-inject-secret-postgresql: 'secret/data/postgresql'
+            vault.hashicorp.com/role: "apps"
+            vault.hashicorp.com/agent-inject-template-postgresql: |
+              {{`{{ with secret "secret/data/postgresql" -}}
+                export DSN="postgres://{{ .Data.data.kratos_username }}:{{ .Data.data.kratos_password }}@postgresql:5432/{{ .Data.data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
+              {{- end }}`}}
+{{- end }}
