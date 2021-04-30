@@ -10,7 +10,7 @@ blackping:
   image:
     tag: 0.0.7
 
-ory-kratos:
+ory_kratos:
   # Chart Version
   targetRevision: 0.9.1
   enabled: false

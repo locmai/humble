@@ -1,4 +1,4 @@
-{{- if .Values.ory-kratos.enabled }}
+{{- if .Values.ory_kratos.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -20,7 +20,7 @@ spec:
   source:
     chart: kratos
     repoURL: https://locmai.github.io/ory-k8s/
-    targetRevision: {{ .Values.ory-kratos.targetRevision }}
+    targetRevision: {{ .Values.ory_kratos.targetRevision }}
     helm:
       releaseName: ory-kratos
       values: |
