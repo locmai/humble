@@ -32,4 +32,7 @@ spec:
             {{- end }}`}}
         serviceAccount:
           enabled: true
+        global:
+          postgresql:
+            storageClass: longhorn-default
 {{- end }}
