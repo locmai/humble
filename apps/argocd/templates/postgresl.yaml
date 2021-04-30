@@ -31,5 +31,5 @@ spec:
           storageClass: longhorn-default
         replication:
           enabled: true
-          readReplicas: 2
+          readReplicas: 1
 {{- end }}
