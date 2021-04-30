@@ -27,6 +27,8 @@ spec:
         global:
           postgresql:
             storageClass: longhorn-default
+        persistence:
+          storageClass: longhorn-default
         commonAnnotations:
           vault.hashicorp.com/agent-inject: "true"
           vault.hashicorp.com/agent-inject-secret-postgresql: "secrets/postgresql"
