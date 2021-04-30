@@ -13,7 +13,7 @@ resource "vault_policy" "apps" {
   name = "apps"
 
   policy = <<EOT
-path "secret*" {
+path "secret/postgresql/*" {
   capabilities = [ "create", "update", "read", "delete", "list" ]
 }
 EOT
