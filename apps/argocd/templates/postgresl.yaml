@@ -22,6 +22,11 @@ spec:
     helm:
       releaseName: postgresql
       values: |
+        serviceAccount:
+          enabled: true
+        global:
+          postgresql:
+            storageClass: longhorn-default
         commonAnnotations:
           vault.hashicorp.com/agent-inject: "true"
           vault.hashicorp.com/agent-inject-secret-postgresql: "secrets/postgresql"
@@ -30,9 +35,5 @@ spec:
             {{`{{ with secret "secrets/postgresql" -}}
               export POSTGRES_PASSWORD="{{ .Data.data.password }}"
             {{- end }}`}}
-        serviceAccount:
-          enabled: true
-        global:
-          postgresql:
-            storageClass: longhorn-default
+
 {{- end }}
