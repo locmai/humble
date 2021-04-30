@@ -23,4 +23,9 @@ spec:
     targetRevision: 13.7.2
     helm:
       releaseName: monitoring
+      values: |
+        prometheus:
+          prometheusSpec:
+            serviceMonitorSelectorNilUsesHelmValues: false
+            serviceMonitorNamespaceSelector: {}
 {{- end }}
