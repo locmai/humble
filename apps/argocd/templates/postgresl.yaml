@@ -29,6 +29,9 @@ spec:
             storageClass: longhorn-default
         persistence:
           storageClass: longhorn-default
+        replication:
+          enabled: true
+          readReplicas: 2
         commonAnnotations:
           vault.hashicorp.com/agent-inject: "true"
           vault.hashicorp.com/agent-inject-secret-postgresql: "secrets/postgresql"
