@@ -47,8 +47,9 @@ spec:
           enabled: true
           name: "postgresql"
         deployment:
+          command: ["/bin/bash"]
           args:
-            - "."
+            - "source"
             - "/vault/secrets/config"
             - "&&"
             - "kratos"
