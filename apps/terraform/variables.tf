@@ -2,3 +2,30 @@ variable "default_namespace" {
     type = string
     default = "apps"
 }
+
+variable "cloudflare_email" {
+  type = string
+}
+
+variable "dev_domain" {
+  type = string
+}
+
+variable "cloudflare_zone_id" {
+  type = string
+}
+
+variable "cloudflare_api_token" {
+  type = string
+}
+
+variable "dev_sub_domains" {
+  type = map(object({
+    annotations  = map(any)
+    namespace    = string
+    service_name = string
+    service_port = number
+    subdomain    = string
+  }))
+  default = {}
+}
