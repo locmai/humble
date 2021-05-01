@@ -24,6 +24,12 @@ spec:
     helm:
       releaseName: ory-kratos
       values: |
+        kratos:
+          development: true
+          # autoMigrate is relying on a simple initContainer mechanism
+          # Do not turn it on if the replicaCount > 1
+          autoMigrate: true
+
         serviceAccount:
           enabled: true
           name: "postgresql"

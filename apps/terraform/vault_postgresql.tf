@@ -1,5 +1,5 @@
 resource "vault_mount" "kvv2_postgresql" {  
-  path        = "secret/posgresql"
+  path        = "secret/postgresql"
   type        = "kv-v2"
 }
 
