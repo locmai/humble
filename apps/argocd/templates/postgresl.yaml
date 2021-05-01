@@ -30,6 +30,6 @@ spec:
         persistence:
           storageClass: longhorn-default
         replication:
-          enabled: true
+          enabled: false
           readReplicas: 1
 {{- end }}
