@@ -14,25 +14,26 @@ injector:
   replicas: 1
   metrics:
     enabled: true
-  image:
-    repository: "hashicorp/vault-k8s"
-    tag: "0.8.0"
-    pullPolicy: IfNotPresent
-  agentImage:
-    repository: "vault"
-    tag: "1.6.2"
+  agentDefaults:
+    # For more information on configuring resources, see the K8s documentation:
+    # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    cpuLimit: "500m"
+    cpuRequest: "250m"
+    memLimit: "128Mi"
+    memRequest: "64Mi"
+
+    # Default template type for secrets when no custom template is specified.
+    # Possible values include: "json" and "map".
+    template: "map"
+
+  # Mount Path of the Vault Kubernetes Auth Method.
+  authPath: "auth/kubernetes"
+
+  # Configures the log verbosity of the injector.
+  # Supported log levels include: trace, debug, info, warn, error
+  logLevel: "trace"
 
 server:
-  # Resource requests, limits, etc. for the server cluster placement. This
-  # should map directly to the value of the resources field for a PodSpec.
-  # By default no direct resource request is made.
-
-  image:
-    repository: "vault"
-    tag: "1.6.2"
-    # Overrides the default Image Pull Policy
-    pullPolicy: IfNotPresent
-
   # Configure the Update Strategy Type for the StatefulSet
   # See https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
   updateStrategyType: "OnDelete"
@@ -66,12 +67,7 @@ server:
         paths: []
 
     tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
 
-  # OpenShift only - create a route to expose the service
-  # The created route will be of type passthrough
 
   readinessProbe:
     enabled: true
@@ -217,7 +213,7 @@ server:
     mountPath: "/vault/data"
     # Name of the storage class to use.  If null it will use the
     # configured default Storage Class.
-    storageClass: null
+    storageClass: "longhorn-default"
     # Access Mode of the storage device being used for the PVC
     accessMode: ReadWriteOnce
     # Annotations to apply to the PVC
@@ -234,6 +230,7 @@ server:
     size: 2Gi
     # Location where the PVC will be mounted.
     mountPath: "/vault/audit"
+    storageClass: "longhorn-default"
     # Name of the storage class to use.  If null it will use the
     # configured default Storage Class.
     storageClass: null
