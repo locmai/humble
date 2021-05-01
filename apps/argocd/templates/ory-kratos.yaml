@@ -47,12 +47,21 @@ spec:
           enabled: true
           name: "postgresql"
         deployment:
+          args:
+          - "source"
+          - "/vault/secrets/config"
+          - "&&""
+          - "kratos"
+          - "serve"
+          - "all"
+          - "--config"
+          - "/etc/config/kratos.yaml"
           annotations:
             vault.hashicorp.com/agent-inject: "true"
-            vault.hashicorp.com/agent-inject-secret-postgresql: 'secret/postgresql/data'
+            vault.hashicorp.com/agent-inject-secret-config: 'secret/postgresql/data'
             vault.hashicorp.com/role: "postgresql_read_only"
-            vault.hashicorp.com/agent-inject-template-postgresql: |
+            vault.hashicorp.com/agent-inject-template-config: |
               {{`{{ with secret "secret/postgresql/data" -}}
-                export DSN="postgres://{{ .Data.kratos_username }}:{{ .Data.kratos_password }}@postgresql:5432/{{ .Data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
+                export DSN="postgres://{{ .Data.data.kratos_username }}:{{ .Data.data.kratos_password }}@postgresql:5432/{{ .Data.data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
               {{- end }}`}}
 {{- end }}

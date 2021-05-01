@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app
+  namespace: apps
   labels:
     app: vault-agent-demo
 spec:
@@ -14,23 +15,26 @@ spec:
     metadata:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-inject-secret-helloworld: "secret/helloworld/data"
-        vault.hashicorp.com/agent-inject-template-helloworld: |
-          {{- with secret "secret/helloworld/data" -}}
-          postgresql://{{ .Data.username }}:{{ .Data.password }}@postgres:5432/wizard
+        vault.hashicorp.com/agent-inject-secret-config: 'secret/postgresql/data'
+        vault.hashicorp.com/role: "postgresql_read_only"
+        vault.hashicorp.com/agent-inject-template-config: |
+          {{ with secret "secret/postgresql/data" -}}
+            export DSN="postgres://{{ .Data.data.kratos_username }}:{{ .Data.data.kratos_password }}@postgresql:5432/{{ .Data.data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
           {{- end }}
-        vault.hashicorp.com/role: "myapp"
       labels:
         app: vault-agent-demo
     spec:
-      serviceAccountName: app
+      serviceAccountName: postgresql
       containers:
       - name: app
-        image: jweissig/app:0.0.1
+        image: alpine:latest
+        args:
+          ['sh', '-c', 'source /vault/secrets/config && env']
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: app
+  namespace: apps
   labels:
     app: vault-agent-demo
