@@ -17,4 +17,4 @@ ory_kratos:
 
 # Apps Database
 postgresql:
-  enabled: false
+  enabled: true
