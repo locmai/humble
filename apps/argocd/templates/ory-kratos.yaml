@@ -29,7 +29,13 @@ spec:
           # autoMigrate is relying on a simple initContainer mechanism
           # Do not turn it on if the replicaCount > 1
           autoMigrate: false
-
+          
+          selfservice:
+            methods:
+              password:
+                enabled: false
+              oidc:
+                enabled: false
         serviceAccount:
           enabled: true
           name: "postgresql"
