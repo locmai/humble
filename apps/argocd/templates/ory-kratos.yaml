@@ -29,6 +29,8 @@ spec:
           name: "postgresql"
         deployment:
           annotations:
+            vault.hashicorp.com/auth-type: "kubernetes"
+            vault.hashicorp.com/auth-path: "auth/kubernetes"
             vault.hashicorp.com/agent-inject: "true"
             vault.hashicorp.com/agent-inject-secret-postgresql: 'secret/postgresql'
             vault.hashicorp.com/role: "postgresql_read_only"
