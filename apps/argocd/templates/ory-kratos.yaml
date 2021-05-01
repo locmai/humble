@@ -57,6 +57,6 @@ spec:
             vault.hashicorp.com/role: "postgresql_read_only"
             vault.hashicorp.com/agent-inject-template-config: |
               {{`{{ with secret "secret/postgresql/data" -}}
-                export DSN="postgres://{{ .Data.data.kratos_username }}:{{ .Data.data.kratos_password }}@postgresql-postgresql-primary-0.postgresql-headless:5432/{{ .Data.data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
+                export DSN="postgres://{{ .Data.data.kratos_username }}:{{ .Data.data.kratos_password }}@postgresql:5432/{{ .Data.data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
               {{- end }}`}}
 {{- end }}
