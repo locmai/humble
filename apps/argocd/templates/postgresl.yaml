@@ -29,6 +29,10 @@ spec:
             storageClass: longhorn-default
         persistence:
           storageClass: longhorn-default
+        metrics:
+          enabled: true
+          serviceMonitor:
+            enabled: true
         replication:
           enabled: false
           readReplicas: 1
