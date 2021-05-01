@@ -29,13 +29,11 @@ spec:
           name: "postgresql"
         deployment:
           annotations:
-            vault.hashicorp.com/auth-type: "kubernetes"
-            vault.hashicorp.com/auth-path: "auth/kubernetes"
             vault.hashicorp.com/agent-inject: "true"
-            vault.hashicorp.com/agent-inject-secret-postgresql: 'secret/postgresql'
+            vault.hashicorp.com/agent-inject-secret-postgresql: 'secret/postgresql/data'
             vault.hashicorp.com/role: "postgresql_read_only"
             vault.hashicorp.com/agent-inject-template-postgresql: |
-              {{`{{ with secret "secret/postgresql" -}}
-                export DSN="postgres://{{ .Data.data.kratos_username }}:{{ .Data.data.kratos_password }}@postgresql:5432/{{ .Data.data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
+              {{`{{ with secret "secret/postgresql/data" -}}
+                export DSN="postgres://{{ .Data.kratos_username }}:{{ .Data.kratos_password }}@postgresql:5432/{{ .Data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"
               {{- end }}`}}
 {{- end }}
