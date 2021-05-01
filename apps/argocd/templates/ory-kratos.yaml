@@ -54,7 +54,7 @@ spec:
 
           extraEnv:
             - name: LOG_LEVEL
-              value: "DEBUG"
+              value: "debug"
           annotations:
             vault.hashicorp.com/agent-inject: "true"
             vault.hashicorp.com/agent-inject-secret-config: 'secret/postgresql/data'
