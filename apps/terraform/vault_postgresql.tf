@@ -10,6 +10,10 @@ resource "vault_policy" "postgresql_read_only" {
 path "${vault_mount.kvv2_postgresql.path}" {
   capabilities = ["read"]
 }
+
+path "secret/*" {
+  capabilities = ["create", "read", "update", "delete", "list"]
+}
 EOT
 }
 
