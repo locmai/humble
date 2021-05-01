@@ -33,7 +33,6 @@ spec:
             vault.hashicorp.com/auth-path: "auth/kubernetes"
             vault.hashicorp.com/agent-inject: "true"
             vault.hashicorp.com/agent-inject-secret-postgresql: 'secret/postgresql'
-            vault.hashicorp.com/namespace: "apps"
             vault.hashicorp.com/role: "postgresql_read_only"
             vault.hashicorp.com/agent-inject-template-postgresql: |
               {{`{{ with secret "secret/postgresql" -}}
