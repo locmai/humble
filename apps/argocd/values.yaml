@@ -13,7 +13,7 @@ blackping:
 ory_kratos:
   # Chart Version
   targetRevision: 0.9.10
-  enabled: false
+  enabled: true
 
 # Apps Database
 postgresql:
