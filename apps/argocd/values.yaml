@@ -21,4 +21,4 @@ postgresql:
 
 # App IAM:
 keycloak:
-  enabled: false
+  enabled: true
