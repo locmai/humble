@@ -41,7 +41,7 @@ spec:
             courier:
               smtp:
                 connection_uri: "smtp://whatever.com"
-            identitySchemas:
+            identity:
               "identity.default.schema.json": |
                 {
                   "$id": "https://example.com/registration.schema.json",
