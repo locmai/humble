@@ -50,14 +50,7 @@ spec:
           command: ["/bin/sh"]
           args:
             - "-c"
-            - "."
-            - "/vault/secrets/config"
-            - "&&"
-            - "kratos"
-            - "serve"
-            - "all"
-            - "--config"
-            - "/etc/config/kratos.yaml"
+            - ". /vault/secrets/config && kratos serve all -config /etc/config/kratos.yaml"
           annotations:
             vault.hashicorp.com/agent-inject: "true"
             vault.hashicorp.com/agent-inject-secret-config: 'secret/postgresql/data'
