@@ -12,7 +12,7 @@ blackping:
 
 ory_kratos:
   # Chart Version
-  targetRevision: 0.9.6
+  targetRevision: 0.9.7
   enabled: true
 
 # Apps Database

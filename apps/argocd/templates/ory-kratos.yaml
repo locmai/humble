@@ -48,14 +48,14 @@ spec:
           name: "postgresql"
         deployment:
           args:
-          - "source"
-          - "/vault/secrets/config"
-          - "&&""
-          - "kratos"
-          - "serve"
-          - "all"
-          - "--config"
-          - "/etc/config/kratos.yaml"
+            - "source"
+            - "/vault/secrets/config"
+            - "&&"
+            - "kratos"
+            - "serve"
+            - "all"
+            - "--config"
+            - "/etc/config/kratos.yaml"
           annotations:
             vault.hashicorp.com/agent-inject: "true"
             vault.hashicorp.com/agent-inject-secret-config: 'secret/postgresql/data'
