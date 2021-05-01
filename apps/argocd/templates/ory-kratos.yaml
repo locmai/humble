@@ -36,6 +36,38 @@ spec:
                 enabled: false
               oidc:
                 enabled: false
+            default_browser_return_url: "https://localhostofnothing.com"
+          courier:
+            smtp:
+              connection_uri: "smtp://whatever.com"
+          identitySchemas:
+            "identity.default.schema.json": |
+              {
+              "$id": "https://example.com/registration.schema.json",
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "title": "User",
+              "type": "object",
+              "properties": {
+                "traits": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "ory.sh/kratos": {
+                        "credentials": {
+                          "password": {
+                            "identifier": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
         serviceAccount:
           enabled: true
           name: "postgresql"
