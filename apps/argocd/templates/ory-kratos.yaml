@@ -26,7 +26,7 @@ spec:
       values: |
         serviceAccount:
           enabled: true
-          name: "apps"
+          name: "postgresql"
         deployment:
           annotations:
             vault.hashicorp.com/agent-inject: "true"
