@@ -18,3 +18,7 @@ ory_kratos:
 # Apps Database
 postgresql:
   enabled: true
+
+# App IAM:
+keycloak:
+  enabled: true

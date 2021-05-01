@@ -16,6 +16,7 @@ spec:
   - https://charts.bitnami.com/bitnami
   - https://locmai.github.io/blackping/
   - https://locmai.github.io/ory-k8s/
+  - https://codecentric.github.io/helm-charts
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
