@@ -31,7 +31,7 @@ spec:
           annotations:
             vault.hashicorp.com/agent-inject: "true"
             vault.hashicorp.com/agent-inject-secret-postgresql: 'secret/postgresql'
-            vault.hashicorp.com/role: "apps"
+            vault.hashicorp.com/role: "postgresql_read_only"
             vault.hashicorp.com/agent-inject-template-postgresql: |
               {{`{{ with secret "secret/postgresql" -}}
                 export DSN="postgres://{{ .Data.data.kratos_username }}:{{ .Data.data.kratos_password }}@postgresql:5432/{{ .Data.data.kratos_database }}?sslmode=disable&max_conns=20&max_idle_conns=4"

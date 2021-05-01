@@ -1,10 +1,6 @@
-resource "vault_kubernetes_auth_backend_role" "postgresql" {
-  backend                          = vault_auth_backend.kubernetes.path
-  role_name                        = "postgresql"
-  bound_service_account_names      = ["postgresql"]
-  bound_service_account_namespaces = [var.default_namespace]
-  token_ttl                        = 3600
-  token_policies                   = ["postgresql"]
+resource "vault_mount" "kvv2_postgresql" {
+  path        = "secret/posgresql"
+  type        = "kv-v2"
 }
 
 resource "vault_kubernetes_auth_backend_role" "postgresql_read_only" {
@@ -17,10 +13,10 @@ resource "vault_kubernetes_auth_backend_role" "postgresql_read_only" {
 }
 
 resource "vault_policy" "postgresql_read_only" {
-  name = "postgresql_read_only"
+  name = vault_kubernetes_auth_backend_role.postgresql_read_only.name
 
   policy = <<EOT
-path "${vault_mount.kvv2-postgresql.path}" {
+path "${vault_mount.kvv2_postgresql.path}" {
   capabilities = ["read"]
 }
 EOT
@@ -36,13 +32,8 @@ resource "random_password" "kratos_password" {
   special          = false
 }
 
-resource "vault_mount" "kvv2-postgresql" {
-  path        = "secret/posgresql"
-  type        = "kv-v2"
-}
-
 resource "vault_generic_secret" "postgresql" {
-  path = "${vault_mount.kvv2-postgresql.path}/data"
+  path = "${vault_mount.kvv2_postgresql.path}/data"
 
   data_json = <<EOT
 {
