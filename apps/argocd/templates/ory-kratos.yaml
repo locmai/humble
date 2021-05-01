@@ -48,7 +48,7 @@ spec:
           name: "postgresql"
         deployment:
           args:
-            - "source"
+            - "."
             - "/vault/secrets/config"
             - "&&"
             - "kratos"
