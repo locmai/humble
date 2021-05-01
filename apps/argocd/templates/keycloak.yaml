@@ -30,7 +30,7 @@ spec:
             enabled: false
         serviceMonitor:
           enabled: true
-        extraEnv:
+        extraEnv: |
           - name: PROXY_ADDRESS_FORWARDING
             value: "true"
 {{- end }}
