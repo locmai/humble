@@ -29,6 +29,7 @@ spec:
             storageClass: longhorn-default
         persistence:
           storageClass: longhorn-default
+        postgresqlDatabase: "kratos"
         metrics:
           enabled: true
           serviceMonitor:
