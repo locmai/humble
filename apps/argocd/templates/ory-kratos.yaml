@@ -54,10 +54,10 @@ spec:
               default_browser_return_url: "https://localhostofnothing.com"
             serve:
               public:
-                base_url: public.kratos.locmai.dev
+                base_url: "https://public.kratos.locmai.dev"
                 port: 4433
               admin:
-                base_url: admin.kratos.locmai.dev
+                base_url: "https://admin.kratos.locmai.dev"
                 port: 4434
 
             courier:
