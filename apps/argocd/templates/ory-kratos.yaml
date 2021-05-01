@@ -41,7 +41,8 @@ spec:
             courier:
               smtp:
                 connection_uri: "smtp://whatever.com"
-            identity: "dummy"
+            identity: 
+              default_schema_url: "https://raw.githubusercontent.com/locmai/humble/main/apps/argocd/apps/identity.schema.json"
         serviceAccount:
           enabled: true
           name: "postgresql"
