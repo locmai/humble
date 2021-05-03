@@ -23,11 +23,17 @@
 
 - [x] GitHub
 - [x] ArgoCD
-- [x] Monitoring: Grafana + Prometheus
-- [ ] Logging: Grafana + Loki
+- [ ] Observability: Grafana + Prometheus
+  - [x] Prometheus
+  - [x] Graphite
+  - [x] Grafana
+  - [x] Loki
+- [ ] Performance synthesis:
+  - [ ] Locust
+  - [ ] Sitespeed.io
 
 ### Layer 3 - Applications
 
 - [ ] Black Ping
 - [ ] Yuta Reborn
-- [ ] Personal Blog
+- [x] Personal Blog

@@ -54,7 +54,7 @@ make apps
 
 - **Source Version Control:** GitHub
 - **Continuous Delivery:** ArgoCD, Keel
-- **Telemetry** Grafana, Prometheus, Loki, Jaeger
+- **Observability** Grafana, Prometheus, Loki, Jaeger, etc.
 
 ### Layer 3 - Applications
 
