@@ -28,4 +28,10 @@ spec:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
             serviceMonitorNamespaceSelector: {}
+        
+        grafana:
+          additionalDataSources:
+            - name: Graphite
+              type: graphite
+              url: http://graphite:8080
 {{- end }}
