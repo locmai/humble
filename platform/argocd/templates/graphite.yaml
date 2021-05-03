@@ -20,6 +20,7 @@ spec:
   source:
     chart: graphite
     repoURL: https://kiwigrid.github.io
+    targetRevision: 0.7.2
     helm:
       releaseName: graphite
       values: |
