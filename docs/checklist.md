@@ -23,7 +23,7 @@
 
 - [x] GitHub
 - [x] ArgoCD
-- [ ] Observability: Grafana + Prometheus
+- [x] Observability
   - [x] Prometheus
   - [x] Graphite
   - [x] Grafana
