@@ -15,6 +15,7 @@ spec:
   - git@github.com:locmai/humble.git
   - https://grafana.github.io/helm-charts
   - https://prometheus-community.github.io/helm-charts
+  - https://kiwigrid.github.io
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

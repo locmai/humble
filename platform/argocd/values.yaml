@@ -5,10 +5,12 @@ argocd:
 
 # Kube Prometheus + Grafana stack 
 monitoring:
-    enabled: true
-    namespace: monitoring
+  enabled: true
+  namespace: monitoring
 
 loki:
-    enabled: true
-    namespace: monitoring
+  enabled: true
+  namespace: monitoring
 
+graphite:
+  enabled: true

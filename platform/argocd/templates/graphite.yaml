@@ -1,0 +1,29 @@
+{{- if .Values.graphite.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-graphite
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.monitoring.namespace }}
+  source:
+    chart: graphite
+    repoURL: https://kiwigrid.github.io
+    targetRevision: 2.3.1
+    helm:
+      releaseName: graphite
+      values: |
+        persistence:
+          size: 128Mi
+{{- end }}
