@@ -16,5 +16,10 @@ terraform {
       version = ">= 2.0"
       source  = "cloudflare/cloudflare"
     }
+
+    github = {
+      version = ">= 4.9.3"
+      source  = "hashicorp/github"
+    }
   }
 }

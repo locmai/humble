@@ -17,3 +17,8 @@ provider "cloudflare" {
   email     = var.cloudflare_email
   api_token = var.cloudflare_api_token
 }
+
+# Configure the GitHub Provider
+provider "github" {
+  owner = var.github_owner
+}

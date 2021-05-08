@@ -1,3 +1,8 @@
+variable "github_owner" {
+  type = string
+  default = "locmai"
+}
+
 variable "longhorn_enabled" {
   type    = bool
   default = false

@@ -11,10 +11,10 @@ terraform {
       version = ">= 2.0.2"
       source  = "hashicorp/helm"
     }
-
+    
     cloudflare = {
       version = ">= 2.0"
       source  = "cloudflare/cloudflare"
-    }
+    }    
   }
 }
