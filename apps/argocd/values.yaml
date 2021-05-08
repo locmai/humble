@@ -21,4 +21,8 @@ postgresql:
 
 # App IAM:
 keycloak:
+  enabled: false
+
+# Development SMTP server
+mailhog:
   enabled: true

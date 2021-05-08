@@ -1,0 +1,24 @@
+{{- if .Values.mailhog.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-mailhog
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: mailhog
+    repoURL: https://codecentric.github.io/helm-charts
+    targetRevision: 10.4.0
+    helm:
+      releaseName: mailhog
+{{- end }}
