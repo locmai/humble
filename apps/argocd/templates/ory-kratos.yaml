@@ -54,15 +54,15 @@ spec:
               default_browser_return_url: "https://localhostofnothing.com"
             serve:
               public:
-                base_url: "https://public.kratos.locmai.dev"
+                base_url: "http://localhost"
                 port: 4433
               admin:
-                base_url: "https://admin.kratos.locmai.dev"
+                base_url: "http://localhost"
                 port: 4434
 
             courier:
               smtp:
-                connection_uri: "smtp://whatever.com"
+                connection_uri: "smtp://mailhog.apps.svc:1025"
             identity: 
               default_schema_url: "https://raw.githubusercontent.com/locmai/humble/main/apps/argocd/apps/identity.schema.json"
         serviceAccount:
