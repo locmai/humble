@@ -34,4 +34,17 @@ spec:
             - name: Graphite
               type: graphite
               url: http://graphite:8080
+
+              persistence:
+                type: pvc
+                enabled: true
+                storageClassName: longhorn-default
+                accessModes:
+                  - ReadWriteOnce
+                size: 1Gi
+                finalizers:
+                  - kubernetes.io/pvc-protection
+                inMemory:
+                  enabled: true
+                  sizeLimit: 300Mi
 {{- end }}
