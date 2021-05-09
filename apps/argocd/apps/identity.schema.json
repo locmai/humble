@@ -31,9 +31,6 @@
                 "password": {
                   "identifier": true
                 }
-              },
-              "recovery": {
-                "via": "email"
               }
             }
           }
