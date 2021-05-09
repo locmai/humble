@@ -15,7 +15,7 @@ curl --request POST -sL \
     --request POST \
     --data '{
   "expires_in": "12h",
-  "identity_id": "83959fbc-f7a2-4a30-a76f-1737c69b366d"
+  "identity_id": "35e8e812-c211-45b2-b6d1-c5ad58572b81"
 }' \
     http://localhost:4434/recovery/link
 

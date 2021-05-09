@@ -7,9 +7,6 @@
       "traits": {
         "type": "object",
         "properties": {
-          "first_name": {
-            "type": "string"
-          },
           "email": {
             "type": "string",
             "format": "email",
