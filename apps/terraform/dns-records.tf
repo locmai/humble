@@ -33,7 +33,7 @@ resource "kubernetes_ingress" "dev_ingresses" {
 }
 
 resource "kubernetes_ingress" "prod_ingresses" {
-  for_each = var.dev_sub_domains
+  for_each = var.prod_sub_domains
 
   metadata {
     name        = "${each.value["subdomain"]}-ingress"
