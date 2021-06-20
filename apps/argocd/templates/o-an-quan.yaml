@@ -25,7 +25,9 @@ spec:
       releaseName: o-an-quan
       values: |
         backend:
-          tag: 0.0.1
+          image:
+            tag: 0.0.1
         frontend:
-          tag: 0.0.2
+          image:
+            tag: 0.0.2
 {{- end }}
