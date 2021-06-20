@@ -23,4 +23,9 @@ spec:
     targetRevision: {{ .Values.o_an_quan.targetRevision }}
     helm:
       releaseName: o-an-quan
+      values: |
+        backend:
+          tag: 0.0.1
+        frontend:
+          tag: 0.0.2
 {{- end }}
