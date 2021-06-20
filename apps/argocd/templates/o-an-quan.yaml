@@ -42,9 +42,12 @@ spec:
             tag: 0.0.2
           resources:
             requests:
-              memory: "1000Mi"
-              cpu: "500m"
-            limits:
               memory: "1500Mi"
+              cpu: "700m"
+            limits:
+              memory: "2000Mi"
               cpu: "1000m"
+          baseurl: "https://oanquan.locmai.dev"
+          socketurl: "https://oanquan-api.locmai.dev"
+          socketport: 433
 {{- end }}
