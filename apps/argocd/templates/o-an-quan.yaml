@@ -24,7 +24,6 @@ spec:
     helm:
       releaseName: o-an-quan
       values: |
-        nameOverride: "oanquan"
         backend:
           image:
             tag: 0.0.1
@@ -35,6 +34,9 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "1000m"
+          baseurl: "https://oanquan-api.locmai.dev"
+          socketurl: "https://oanquan-api.locmai.dev"
+          socketport: 433
         frontend:
           image:
             tag: 0.0.2
