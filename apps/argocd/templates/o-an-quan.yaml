@@ -39,7 +39,7 @@ spec:
           socketport: 433
         frontend:
           image:
-            tag: 0.0.2
+            tag: 0.0.3
           resources:
             requests:
               memory: "1500Mi"
