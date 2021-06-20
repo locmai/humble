@@ -29,5 +29,5 @@ mailhog:
 
 # o-an-quan project https://github.com/sieuvb/o-an-quan
 o_an_quan:
-  enabled: true
-  targetRevision: 0.0.18
+  enabled: false
+  targetRevision: 0.1.0
