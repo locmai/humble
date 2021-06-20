@@ -24,6 +24,7 @@ spec:
     helm:
       releaseName: o-an-quan
       values: |
+        nameOverride: "oanquan"
         backend:
           image:
             tag: 0.0.1
