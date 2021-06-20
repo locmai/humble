@@ -34,11 +34,6 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "1000m"
-
-          baseurl: "https://oanquan.locmai.dev"
-          socketurl: "https://oanquan-api.locmai.dev"
-          socketport: "443"
-
         frontend:
           image:
             tag: 0.0.2
