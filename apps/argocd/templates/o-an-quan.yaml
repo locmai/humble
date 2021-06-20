@@ -39,9 +39,9 @@ spec:
             tag: 0.0.2
           resources:
             requests:
-              memory: "512Mi"
+              memory: "1000Mi"
               cpu: "500m"
             limits:
-              memory: "1000Mi"
+              memory: "1500Mi"
               cpu: "1000m"
 {{- end }}
