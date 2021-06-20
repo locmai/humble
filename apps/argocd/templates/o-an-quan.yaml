@@ -34,7 +34,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "1000m"
-          extraEnv:
+          extraEnv: |
             - name: REACT_APP_BASE_URL
               value: https://oanquan.locmai.dev
             - name: REACT_APP_SOCKET_URL
@@ -51,11 +51,4 @@ spec:
             limits:
               memory: "1500Mi"
               cpu: "1000m"
-          extraEnv:
-            - name: REACT_APP_BASE_URL
-              value: https://oanquan.locmai.dev
-            - name: REACT_APP_SOCKET_URL
-              value: https://oanquan-api.locmai.dev
-            - name: REACT_APP_SOCKET_PORT
-              value: 443
 {{- end }}
