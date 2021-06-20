@@ -27,7 +27,9 @@ spec:
         backend:
           image:
             tag: 0.0.1
+          resources: {}
         frontend:
           image:
             tag: 0.0.2
+          resources: {}
 {{- end }}
