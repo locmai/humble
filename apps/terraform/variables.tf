@@ -11,6 +11,10 @@ variable "dev_domain" {
   type = string
 }
 
+variable "prod_domain" {
+  type = string
+}
+
 variable "cloudflare_zone_id" {
   type = string
 }
@@ -24,6 +28,17 @@ variable "cloudflare_api_token" {
 }
 
 variable "dev_sub_domains" {
+  type = map(object({
+    annotations  = map(any)
+    namespace    = string
+    service_name = string
+    service_port = number
+    subdomain    = string
+  }))
+  default = {}
+}
+
+variable "prod_sub_domains" {
   type = map(object({
     annotations  = map(any)
     namespace    = string
