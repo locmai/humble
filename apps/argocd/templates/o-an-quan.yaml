@@ -1,0 +1,26 @@
+{{- if .Values.o_an_quan.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-o-an-quan
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: o-an-quan
+    repoURL: https://locmai.github.io/ory-k8s/
+    targetRevision: {{ .Values.o_an_quan.targetRevision }}
+    helm:
+      releaseName: o-an-quan
+{{- end }}

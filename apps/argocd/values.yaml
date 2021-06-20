@@ -26,3 +26,8 @@ keycloak:
 # Development SMTP server
 mailhog:
   enabled: true
+
+# o-an-quan project https://github.com/sieuvb/o-an-quan
+o_an_quan:
+  enabled: false
+  targetRevision: 0.0.7

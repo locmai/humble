@@ -15,6 +15,7 @@ spec:
   - git@github.com:locmai/humble.git
   - https://charts.bitnami.com/bitnami
   - https://locmai.github.io/blackping/
+  - https://locmai.github.io/charts/
   - https://locmai.github.io/ory-k8s/
   - https://codecentric.github.io/helm-charts
 ---
