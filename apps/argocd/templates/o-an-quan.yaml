@@ -27,9 +27,21 @@ spec:
         backend:
           image:
             tag: 0.0.1
-          resources: {}
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1000m"
         frontend:
           image:
             tag: 0.0.2
-          resources: {}
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1000m"
 {{- end }}
