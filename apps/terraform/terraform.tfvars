@@ -1,5 +1,7 @@
 cloudflare_email = "locmai0201@gmail.com"
 
+dev_domain = "locmai.dev"
+
 prod_domain = "maibaloc.com"
 
 cloudflare_zone_id = "7ca29071dbe54a078c0fbf643d3c0923"
