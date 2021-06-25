@@ -36,7 +36,7 @@ spec:
               cpu: "1000m"
           baseurl: "https://oanquan.locmai.dev"
           socketurl: "https://oanquan-api.locmai.dev"
-          socketport: 433
+          socketport: 443
         frontend:
           image:
             tag: 0.0.8
@@ -49,5 +49,5 @@ spec:
               cpu: "1000m"
           baseurl: "https://oanquan.locmai.dev"
           socketurl: "https://oanquan-api.locmai.dev"
-          socketport: 433
+          socketport: 443
 {{- end }}
