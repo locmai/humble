@@ -39,7 +39,7 @@ spec:
           socketport: 443
         frontend:
           image:
-            tag: 0.0.8
+            tag: 0.0.9
           resources:
             requests:
               memory: "1500Mi"
