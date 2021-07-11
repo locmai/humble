@@ -26,4 +26,6 @@ spec:
           enabled: true
           hosts:
           - host: file.locmai.dev
+            paths:
+            - /
 {{- end }}
