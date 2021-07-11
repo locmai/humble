@@ -31,3 +31,6 @@ mailhog:
 o_an_quan:
   enabled: true
   targetRevision: 0.1.1
+
+filebrowser:
+  enabled: true
