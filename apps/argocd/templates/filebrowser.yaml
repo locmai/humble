@@ -18,7 +18,12 @@ spec:
   source:
     chart: filebrowser
     repoURL: https://locmai.github.io/charts/
-    targetRevision: 0.0.1
+    targetRevision: 0.0.2
     helm:
       releaseName: filebrowser
+      values: |
+        ingress:
+          enabled: false
+          hosts:
+          - host: file.locmai.dev
 {{- end }}
