@@ -26,7 +26,7 @@ spec:
       values: |
         backend:
           image:
-            tag: 0.0.1
+            tag: 0.0.2
           resources:
             requests:
               memory: "256Mi"
@@ -39,7 +39,7 @@ spec:
           socketport: 443
         frontend:
           image:
-            tag: 0.0.10
+            tag: 0.0.11
           resources:
             requests:
               memory: "1500Mi"
