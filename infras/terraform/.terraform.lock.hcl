@@ -26,6 +26,7 @@ provider "registry.terraform.io/hashicorp/github" {
   constraints = ">= 4.9.3"
   hashes = [
     "h1:T0xvEVYTMksWB0qmb8kasbpTCQ1XZmQsdpnjiN36gaY=",
+    "h1:uA68i/oFTNsAoh3Ht1sk2+T/g0iGorvuYZmN2HlmRfk=",
     "zh:1719afd817673ba7f8419e1a9689aa057fac84630a4be9113f98bb3c04869043",
     "zh:2ca7d4e5d01a907723d93c87770101de18e8d44559d4d3c3a8e4f9057ce29f6c",
     "zh:46fe5d08a07d524efaf8e4fde40152ce541b9273812bdd651edf591d645f7a97",

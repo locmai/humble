@@ -39,7 +39,6 @@ resource "rke_cluster" "cluster" {
 }
 
 resource "local_file" "kube_config_yaml" {
-  depends_on = [rke_cluster.cluster]
   filename   = "${path.root}/kube_config.yml"
   content    = rke_cluster.cluster.kube_config_yaml
 }
