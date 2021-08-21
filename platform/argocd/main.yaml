@@ -18,6 +18,7 @@ spec:
   - https://prometheus-community.github.io/helm-charts
   - https://kiwigrid.github.io
   - https://sonatype.github.io/helm3-charts/
+  - https://charts.jetstack.io
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
