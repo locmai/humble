@@ -30,9 +30,10 @@ spec:
             serviceMonitorNamespaceSelector: {}
 
         grafana:
-          image:
-            repository: omegavveapon/kopf-k8s-sidecar
-            tag: 1.3.4
+          sidecar:
+            image:
+              repository: omegavveapon/kopf-k8s-sidecar
+              tag: 1.3.4
           dashboardProviders:
             dashboardproviders.yaml:
               apiVersion: 1
