@@ -20,3 +20,8 @@ loki:
 
 graphite:
   enabled: true
+
+certManager:
+  enabled: true
+  installCRDs: true
+  targetRevision: v1.5.2
