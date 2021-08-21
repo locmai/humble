@@ -24,4 +24,5 @@ graphite:
 certManager:
   enabled: true
   installCRDs: true
+  namespace: argocd
   targetRevision: v1.5.2
