@@ -12,7 +12,7 @@ spec:
   - namespace: '*'
     server: '*'
   sourceRepos:
-  - git@github.com:locmai/humble.git
+  - git@github.com:locmai/**
   - https://grafana.github.io/helm-charts
   - https://prometheus-community.github.io/helm-charts
   - https://kiwigrid.github.io

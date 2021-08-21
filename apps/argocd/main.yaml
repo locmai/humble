@@ -12,7 +12,7 @@ spec:
   - namespace: '*'
     server: '*'
   sourceRepos:
-  - git@github.com:locmai/humble.git
+  - git@github.com:locmai/**
   - https://charts.bitnami.com/bitnami
   - https://locmai.github.io/blackping/
   - https://locmai.github.io/charts/
