@@ -1,5 +1,9 @@
 installCRDs: false
 
+global:
+  image:
+    tag: v2.1.0
+
 server:
     ingress:
         enabled: false
@@ -23,3 +27,5 @@ repoServer:
         enabled: true
         serviceMonitor:
             enabled: true
+    image:
+        tag: v2.0.0
