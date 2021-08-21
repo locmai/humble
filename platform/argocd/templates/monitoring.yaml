@@ -30,19 +30,6 @@ spec:
             serviceMonitorNamespaceSelector: {}
 
         grafana:
-          dashboardProviders:
-            dashboardproviders.yaml:
-              apiVersion: 1
-              providers:
-                - name: 'hostmetrics'
-                  orgId: 1
-                  folder: 'Host Metrics'
-                  type: file
-                  disableDeletion: true
-                  allowUiUpdates: false
-                  editable: false
-                  options:
-                    path: /var/lib/grafana/dashboards/hostmetrics
           sidecar:
             image:
               repository: omegavveapon/kopf-k8s-sidecar
