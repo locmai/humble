@@ -38,7 +38,7 @@ spec:
               enabled: true
               label: grafana_dashboard
               folder: /tmp/dashboards
-              searchNamespace: grafana-dashboards
+              searchNamespace: monitoring
               provider:
                 foldersFromFilesStructure: true
               annotations:
