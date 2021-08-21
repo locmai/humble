@@ -19,6 +19,6 @@ spec:
     namespace: {{ .Values.dashboard.namespace }}
   source:
     repoURL: 'https://github.com/locmai/humble-grafana-dashboards.git'
-    path: /
+    path: ./
     targetRevision: {{ .Values.dashboard.targetRevision }}
 {{- end }}
