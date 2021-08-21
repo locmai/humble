@@ -18,7 +18,7 @@ spec:
     name: in-cluster
     namespace: {{ .Values.dashboard.namespace }}
   source:
-    repoURL: 'git@github.com:locmai/humble-grafana-dashboards.git'
+    repoURL: 'https://github.com/locmai/humble-grafana-dashboards.git'
     path: /
     targetRevision: {{ .Values.dashboard.targetRevision }}
 {{- end }}
