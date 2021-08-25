@@ -60,6 +60,4 @@ spec:
                 inMemory:
                   enabled: true
                   sizeLimit: 300Mi
-          plugins:
-          - image-renderer
 {{- end }}
