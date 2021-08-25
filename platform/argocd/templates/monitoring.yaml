@@ -61,5 +61,5 @@ spec:
                   enabled: true
                   sizeLimit: 300Mi
           plugins:
-          - grafana-image-renderer
+          - image-renderer
 {{- end }}
