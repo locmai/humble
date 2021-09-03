@@ -26,3 +26,8 @@ certManager:
   installCRDs: true
   namespace: argocd
   targetRevision: v1.5.2
+
+tekton:
+  enabled: true
+  targetRevision: main
+  namespace: tekton
