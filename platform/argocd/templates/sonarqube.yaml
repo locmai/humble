@@ -20,7 +20,7 @@ spec:
   source:
     chart: sonarqube
     repoURL: https://SonarSource.github.io/helm-chart-sonarqube
-    targetRevision: 1.1.3
+    targetRevision: master
     helm:
       releaseName: sonarqube
       values: |
