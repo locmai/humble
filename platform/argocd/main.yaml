@@ -19,6 +19,7 @@ spec:
   - https://kiwigrid.github.io
   - https://sonatype.github.io/helm3-charts/
   - https://charts.jetstack.io
+  - https://SonarSource.github.io/helm-chart-sonarqube
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

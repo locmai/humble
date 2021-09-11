@@ -14,12 +14,12 @@ dashboard:
   namespace: monitoring
   targetRevision: main
 
+graphite:
+  enabled: true
+
 loki:
   enabled: true
   namespace: monitoring
-
-graphite:
-  enabled: true
 
 certManager:
   enabled: true
@@ -31,3 +31,6 @@ tekton:
   enabled: true
   targetRevision: main
   namespace: tekton
+
+sonarqube:
+  enabled: true
