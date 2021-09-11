@@ -11,5 +11,12 @@ dev_platform_sub_domains = {
         service_name = "monitoring-grafana"
         service_port = 80
         subdomain    = "grafana"
+    },
+    sonarqube = {
+        annotations  = {}
+        namespace    = "sonarqube"
+        service_name = "sonarqube-sonarqube"
+        service_port = 9000
+        subdomain    = "sonarqube"
     }
 }
