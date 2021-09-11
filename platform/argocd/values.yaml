@@ -34,3 +34,4 @@ tekton:
 
 sonarqube:
   enabled: true
+  namespace: sonarqube
