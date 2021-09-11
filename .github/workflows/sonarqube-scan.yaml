@@ -1,11 +1,11 @@
-name: Build
+name: Code quality checking
 on:
   pull_request:
     branches:
       - main
 jobs:
   build:
-    name: Build
+    name: SonarQube scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
