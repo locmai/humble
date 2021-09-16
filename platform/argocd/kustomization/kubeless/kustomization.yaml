@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
 - https://github.com/kubeless/kubeless/releases/download/v1.0.8/kubeless-v1.0.8.yaml
+- https://raw.githubusercontent.com/kubeless/kubeless-ui/master/k8s.yaml
