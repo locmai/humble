@@ -32,6 +32,11 @@ tekton:
   targetRevision: main
   namespace: tekton
 
+kubeless:
+  enabled: true
+  targetRevision: main
+  namespace: kubeless
+
 sonarqube:
   enabled: true
   namespace: sonarqube
