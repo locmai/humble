@@ -33,10 +33,10 @@ tekton:
   namespace: tekton
 
 kubeless:
-  enabled: true
+  enabled: false
   targetRevision: main
   namespace: kubeless
 
 sonarqube:
-  enabled: true
+  enabled: false
   namespace: sonarqube
