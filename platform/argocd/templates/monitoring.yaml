@@ -30,6 +30,9 @@ spec:
             serviceMonitorNamespaceSelector: {}
 
         grafana:
+          persistence:
+            enabled: true
+            storageClassName: longhorn-default
           sidecar:
             image:
               repository: omegavveapon/kopf-k8s-sidecar
