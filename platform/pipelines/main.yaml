@@ -39,7 +39,7 @@ spec:
     name: in-cluster
     namespace: pipelines
   source:
-    path: 'pipelines/argocd'
+    path: 'platform/pipelines'
     repoURL: git@github.com:locmai/humble.git
     targetRevision: main
     helm:

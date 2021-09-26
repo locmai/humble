@@ -15,7 +15,13 @@ server:
         enabled: true
         serviceMonitor:
             enabled: true
-
+    config:
+        configManagementPlugins: |-
+            - name: argocd-vault-plugin
+              generate:
+              command: ["argocd-vault-plugin"]
+              args: ["generate", "./"]
+ 
 controller:
     metrics:
         enabled: true
