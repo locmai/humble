@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pipelines
+  namespace: argocd
+spec:
+  description: ''
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - git@github.com:locmai/**
+  - https://github.com/locmai/**
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pipelines
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: pipelines
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /spec/syncPolicy/automated
+  destination:
+    name: in-cluster
+    namespace: pipelines
+  source:
+    path: 'pipelines/argocd'
+    repoURL: git@github.com:locmai/humble.git
+    targetRevision: main
+    helm:
+      values: |
+        argocd:
+          targetRevision: main
