@@ -42,7 +42,8 @@ spec:
     path: 'platform/pipelines'
     repoURL: git@github.com:locmai/humble.git
     targetRevision: main
-    helm:
-      values: |
-        argocd:
-          targetRevision: main
+    plugin:
+      name: argocd-vault-plugin-helm
+      env:
+        - name: helm_args
+          value: -f values.yaml 

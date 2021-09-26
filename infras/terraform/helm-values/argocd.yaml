@@ -19,9 +19,16 @@ server:
         configManagementPlugins: |-
             - name: argocd-vault-plugin
               generate:
-              command: ["argocd-vault-plugin"]
-              args: ["generate", "./"]
- 
+                command: ["argocd-vault-plugin"]
+                args: ["generate", "./"]
+            - name: argocd-vault-plugin-helm
+              init:
+                command: [sh, -c]
+                args: ["helm dependency build"]
+              generate:
+                command: ["sh", "-c"]
+                args: ["helm template $ARGOCD_APP_NAME . | argocd-vault-plugin generate -"] 
+
 controller:
     metrics:
         enabled: true
