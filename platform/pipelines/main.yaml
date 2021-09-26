@@ -48,7 +48,7 @@ spec:
         - name: helm_args
           value: -f values.yaml
         - name: VAULT_ADDR
-          value: https://vault-ui.vault.svc.cluster.local
+          value: http://vault-ui.vault.svc.cluster.local:8200
         - name: AVP_TYPE
           value: vault
         - name: AVP_AUTH_TYPE
