@@ -43,7 +43,7 @@ spec:
     repoURL: git@github.com:locmai/humble.git
     targetRevision: main
     plugin:
-      name: argocd-vault-plugin-helm
+      name: argocd-vault-plugin
       env:
         - name: helm_args
           value: -f values.yaml
