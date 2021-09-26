@@ -39,7 +39,7 @@ spec:
     name: in-cluster
     namespace: pipelines
   source:
-    path: 'platform/pipelines'
+    path: 'platform/pipelines/templates'
     repoURL: git@github.com:locmai/humble.git
     targetRevision: main
     plugin:
