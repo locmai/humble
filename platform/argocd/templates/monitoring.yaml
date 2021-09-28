@@ -46,6 +46,8 @@ spec:
                 foldersFromFilesStructure: true
               annotations:
                 k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
+          plugins:
+          - yesoreyeram-boomtheme-panel
           additionalDataSources:
             - name: Graphite
               type: graphite
