@@ -48,6 +48,11 @@ spec:
                 k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
           plugins:
           - yesoreyeram-boomtheme-panel
+          - flant-statusmap-panel
+          - vonage-status-panel
+          - natel-discrete-panel
+          - grafana-polystat-panel
+          - digiapulssi-breadcrumb-panel
           additionalDataSources:
             - name: Graphite
               type: graphite
