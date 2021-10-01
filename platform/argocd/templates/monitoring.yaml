@@ -53,6 +53,7 @@ spec:
           - natel-discrete-panel
           - grafana-polystat-panel
           - digiapulssi-breadcrumb-panel
+          - macropower-analytics-panel
           additionalDataSources:
             - name: Graphite
               type: graphite
