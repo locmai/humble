@@ -30,6 +30,7 @@ spec:
             serviceMonitorNamespaceSelector: {}
 
         grafana:
+          enabled: false
           image:
             tag: 8.2.1
           persistence:
