@@ -30,6 +30,8 @@ spec:
             serviceMonitorNamespaceSelector: {}
 
         grafana:
+          image:
+            tag: 8.2.1
           persistence:
             enabled: true
             storageClassName: longhorn-default
