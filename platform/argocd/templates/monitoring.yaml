@@ -34,7 +34,7 @@ spec:
           image:
             tag: 8.0.2
           persistence:
-            enabled: true
+            enabled: false
             storageClassName: longhorn-default
           sidecar:
             image:
