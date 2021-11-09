@@ -32,7 +32,7 @@ spec:
         grafana:
           enabled: true
           image:
-            tag: 8.2.1
+            tag: 8.0.2
           persistence:
             enabled: true
             storageClassName: longhorn-default
