@@ -1,3 +1,4 @@
+{{- if .Values.sonarqube.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
@@ -21,3 +22,4 @@ spec:
   selector:
     matchLabels:
       app: sonarqube
+{{- end }}
