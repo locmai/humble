@@ -40,3 +40,7 @@ kubeless:
 sonarqube:
   enabled: false
   namespace: sonarqube
+
+elasticsearch:
+  enabled: true
+  namespace: elasticsearch
