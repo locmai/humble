@@ -12,9 +12,9 @@ wake:
 
 all: metal infras platform apps todo
 
-.PHONY: metal
-metal:
-	make -C metal
+# .PHONY: metal
+# metal:
+# 	make -C metal
 
 .PHONY: infras
 infras:
@@ -31,3 +31,17 @@ apps:
 .PHONY: todo
 todo:
 	make -C docs
+
+# Revamp section
+init:
+	echo 'init'
+	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -P ""
+
+tools:
+	echo 'tools'
+
+metal:
+	echo 'metal'
+
+bootstrap:
+	echo 'bootstrap'
