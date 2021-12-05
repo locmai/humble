@@ -1,5 +1,5 @@
 .POSIX:
-default: init metal bootstrap
+default: metal bootstrap
 
 .PHONY: init
 init:
@@ -20,5 +20,6 @@ lint:
 	# make -C metal lint
 	echo 'Linting'
 
+.PHONY: tools
 tools:
-	echo 'tools'
+	make -C tools
