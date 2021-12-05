@@ -1,4 +1,8 @@
 .POSIX:
 
+env ?= "prod"
+
 default:
-	make -C ansible
+	ansible-playbook \
+		--inventory inventories/${env}.ini \
+		boot.yml
