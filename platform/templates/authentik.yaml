@@ -30,8 +30,8 @@ spec:
           # performance data to sentry.beryju.org, and is fully opt-in
           error_reporting:
           enabled: true
-        postgresql:
-          password: "ThisIsNotASecurePassword"
+          postgresql:
+            password: "ThisIsNotASecurePassword"
 
         postgresql:
          enabled: true
