@@ -1,8 +1,8 @@
-{{- if .Values.longhorn.enabled }}
+{{- if .Values.loki.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-longhorn
+  name: {{ .Values.argocd.project }}-loki-stack
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,13 +16,11 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.longhorn.namespace }}
+    namespace: {{ .Values.loki.namespace }}
   source:
-    chart: longhorn
-    repoURL: https://charts.longhorn.io
-    targetRevision: 1.2.2
+    chart: loki-stack
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 2.5.0
     helm:
-      releaseName: longhorn
-      values: |
-        mock: mock
+      releaseName: loki-stack
 {{- end }}

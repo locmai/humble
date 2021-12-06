@@ -12,3 +12,11 @@ ingress_nginx:
 monitoring:
   enabled: true
   namespace: observability
+
+loki:
+  enabled: true
+  namespace: observability
+
+metallb:
+  enabled: true
+  namespace: metallb-system

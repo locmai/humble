@@ -1,0 +1,33 @@
+{{- if .Values.metallb.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-metallb
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.metallb.namespace }}
+  source:
+    chart: metallb
+    repoURL: https://metallb.github.io/metallb
+    targetRevision: 0.11.0
+    helm:
+      releaseName: metallb
+      values: |
+        configInline:
+          address-pools:
+          - name: default
+            protocol: layer2
+            addresses:
+            - 192.168.1.150-192.168.1.180
+{{- end }}
