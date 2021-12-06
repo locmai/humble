@@ -1,14 +1,14 @@
+# Default
 argocd:
  project: system
  namespace: argocd
 
+# Storage
 longhorn:
   enabled: true
   namespace: longhorn-system
 
-ingress_nginx:
-  enabled: true
-
+# Observability
 monitoring:
   enabled: true
   namespace: observability
@@ -17,6 +17,16 @@ loki:
   enabled: true
   namespace: observability
 
+dashboard:
+  enabled: true
+  namespace: observability
+  targetRevision: main
+
+# Ingress / Load balancer
 metallb:
   enabled: true
   namespace: metallb-system
+
+ingress_nginx:
+  enabled: true
+
