@@ -5,6 +5,9 @@ metadata:
   namespace: argocd
 spec:
   description: apps project
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
   destinations:
   - namespace: '*'
     server: '*'
