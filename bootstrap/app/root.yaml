@@ -5,6 +5,9 @@ metadata:
   namespace: argocd
 spec:
   description: root project
+  destinations:
+  - namespace: '*'
+    server: '*'
   sourceRepos:
   - git@github.com:locmai/**
   - https://github.com/locmai/**
@@ -34,7 +37,7 @@ spec:
     namespace: platform
   source:
     path: 'bootstrap/app'
-    repoURL: git@github.com:locmai/humble.git
+    repoURL: https://github.com/locmai/humble.git
     targetRevision: main
     helm:
       values: |

@@ -12,7 +12,7 @@ metal:
 
 .PHONY: bootstrap
 bootstrap:
-	echo 'bootstrap'
+	make -C bootstrap
 
 .PHONY: lint
 lint:

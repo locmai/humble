@@ -3,7 +3,7 @@
 
 KUBECONFIG = ../metal/kubeconfig.yaml
 
-default: argocd root-app
+default: argocd app
 
 .PHONY: argocd
 argocd:
