@@ -6,5 +6,5 @@ ingress_nginx:
   enabled: true
 
 monitoring:
- enabled: true
- namespace: observability
+  enabled: true
+  namespace: observability
