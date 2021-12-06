@@ -3,44 +3,20 @@ argocd:
   project: platform
   targetRevision: main
 
-# Kube Prometheus + Grafana stack 
-monitoring:
-  enabled: true
-  namespace: monitoring
+# Secret managment
+vault:
+  enabled: false
 
-# Enable Grafana Dashboards app
-dashboard:
-  enabled: true
-  namespace: monitoring
-  targetRevision: main
-
-graphite:
-  enabled: true
-
-loki:
-  enabled: true
-  namespace: monitoring
-
-certManager:
-  enabled: true
-  installCRDs: true
-  namespace: argocd
-  targetRevision: v1.5.2
-
+# Workflow engine
 tekton:
   enabled: true
-  targetRevision: main
-  namespace: tekton
 
-kubeless:
-  enabled: false
-  targetRevision: main
-  namespace: kubeless
-
-sonarqube:
-  enabled: false
-  namespace: sonarqube
-
-elasticsearch:
+# IAM
+authentik:
   enabled: true
-  namespace: elasticsearch
+  namespace: platform
+
+# SCM
+gitea:
+  enabled: true
+  namespace: platform

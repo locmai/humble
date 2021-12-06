@@ -1,8 +1,8 @@
-{{- if .Values.dashboard.enabled }}
+{{- if .Values.gitea.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-dashboard
+  name: {{ .Values.argocd.project }}-gitea
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,9 +16,11 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.dashboard.namespace }}
+    namespace: {{ .Values.gitea.namespace }}
   source:
-    repoURL: 'https://github.com/locmai/humble-grafana-dashboards.git'
-    path: ./
-    targetRevision: {{ .Values.dashboard.targetRevision }}
+    chart: gitea
+    repoURL: https://dl.gitea.io/charts/
+    targetRevision: 4.1.1
+    helm:
+      releaseName: gitea
 {{- end }}
