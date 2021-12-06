@@ -1,0 +1,34 @@
+- name: Download ISO
+  get_url:
+    url: "{{ iso_url }}"
+    dest: "{{ role_path }}/files/data/iso/{{ iso_url | basename }}"
+    checksum: "{{ iso_checksum }}"
+  register: iso
+
+- name: Extract the ISO
+  command:
+    cmd: "xorriso -osirrox on -indev {{ iso.dest }} -extract / {{ role_path }}/files/data/os"
+    creates: "{{ role_path }}/files/data/os/.treeinfo"
+
+- name: Render DHCP config
+  template:
+    src: dhcpd.conf.j2
+    dest: "{{ role_path }}/files/data/pxe-config/dhcpd.conf"
+
+- name: Render GRUB config
+  template:
+    src: grub.cfg.j2
+    dest: "{{ role_path }}/files/data/pxe-config/grub.cfg"
+
+- name: Render machine specific init config
+  template:
+    src: kickstart.inst.ks.j2
+    dest: "{{ role_path }}/files/data/init-config/{{ hostvars[item]['mac'] }}.inst.ks"
+  loop: "{{ groups['metal'] }}"
+
+- name: Start ephemeral PXE server
+  docker_compose:
+    project_src: "{{ role_path }}/files"
+    state: present
+    restarted: yes
+    build: yes

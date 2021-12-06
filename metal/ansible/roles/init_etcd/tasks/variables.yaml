@@ -1,4 +1,0 @@
----
-- name: Initial cluster string
-  set_fact:
-    initial_cluster_string: "etcd-node01=http://{{ hostvars[groups['etcd'][0]].ansible_host }}:2480,etcd-node02=http://{{ hostvars[groups['etcd'][1]].ansible_host }}:2480,etcd-node03=http://{{ hostvars[groups['etcd'][2]].ansible_host }}:2480"
