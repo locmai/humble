@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-monitoring
+  name: {{ .Values.argocd.project }}-ingress-nginx
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,7 +16,7 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.monitoring.namespace }}
+    namespace: ingress-nginx
   source:
     chart: ingress-nginx
     repoURL: https://kubernetes.github.io/ingress-nginx

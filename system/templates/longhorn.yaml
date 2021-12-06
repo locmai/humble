@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-monitoring
+  name: {{ .Values.argocd.project }}-longhorn
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -22,7 +22,7 @@ spec:
     repoURL: https://charts.longhorn.io
     targetRevision: 13.7.2
     helm:
-      releaseName: monitoring
+      releaseName: longhorn
       values: |
         prometheus:
         
