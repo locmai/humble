@@ -28,7 +28,11 @@ spec:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
             serviceMonitorNamespaceSelector: {}
-
+        prometheusOperator:
+          admissionWebhooks:
+            patch:
+              podAnnotations:
+                sidecar.istio.io/inject: "false"
         grafana:
           enabled: true
           image:
