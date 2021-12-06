@@ -23,7 +23,7 @@ spec:
     targetRevision: 4.0.3
     helm:
       releaseName: authentik
-      values:
+      values: |
         authentik:
           secret_key: "PleaseGenerateA50CharKey"
           # This sends anonymous usage-data, stack traces on errors and
@@ -33,9 +33,9 @@ spec:
         postgresql:
           password: "ThisIsNotASecurePassword"
 
-      postgresql:
-        enabled: true
-        postgresqlPassword: "ThisIsNotASecurePassword"
-      redis:
-        enabled: true
+        postgresql:
+         enabled: true
+         postgresqlPassword: "ThisIsNotASecurePassword"
+        redis:
+          enabled: true
 {{- end }}
