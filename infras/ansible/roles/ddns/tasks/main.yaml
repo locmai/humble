@@ -1,9 +1,0 @@
-- name: Create cloudflare-ddns container
-  docker_container:
-    name: 'cloudflare-ddns-{{ env }}'
-    image: locmai/cloudflare-ddns:0.0.1
-    restart_policy: always
-    env:
-      API_KEY: '{{ api_key }}'
-      ZONE: '{{ zone }}'
-      PROXIED: "true"
