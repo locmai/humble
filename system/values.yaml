@@ -1,3 +1,6 @@
+argocd:
+ project: system
+
 longhorn:
   enabled: true
   namespace: longhorn-system
