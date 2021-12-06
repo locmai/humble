@@ -14,34 +14,34 @@ spec:
   sourceRepos:
   - '*'
 ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: platform
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io
-# spec:
-#   project: platform
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-#     syncOptions:
-#       - CreateNamespace=true
-#   ignoreDifferences:
-#     - group: argoproj.io
-#       kind: Application
-#       jsonPointers:
-#         - /spec/syncPolicy/automated
-#   destination:
-#     name: in-cluster
-#     namespace: platform
-#   source:
-#     path: 'platform'
-#     repoURL: https://github.com/locmai/humble.git
-#     targetRevision: main
-#     helm:
-#       values: |
-#         argocd:
-#           targetRevision: main
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: platform
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /spec/syncPolicy/automated
+  destination:
+    name: in-cluster
+    namespace: platform
+  source:
+    path: 'platform'
+    repoURL: https://github.com/locmai/humble.git
+    targetRevision: main
+    helm:
+      values: |
+        argocd:
+          targetRevision: main

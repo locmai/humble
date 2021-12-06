@@ -1,8 +1,8 @@
-{{- if .Values.sonarqube.enabled }}
+{{- if .Values.vault.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-sonarqube
+  name: {{ .Values.argocd.project }}-vault
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,13 +16,13 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.sonarqube.namespace }}
+    namespace: {{ .Values.vault.namespace }}
   source:
-    chart: sonarqube
-    repoURL: https://SonarSource.github.io/helm-chart-sonarqube
-    targetRevision: 1.1.1+98
+    chart: vault
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.18.0
     helm:
-      releaseName: sonarqube
+      releaseName: vault
       values: |
         postgresql:
           metrics:
@@ -31,7 +31,4 @@ spec:
               enabled: true
               additionalLabels:
                 layer: platform
-          persistence:
-            enabled: true
-            storageClass: longhorn-default
 {{- end }}

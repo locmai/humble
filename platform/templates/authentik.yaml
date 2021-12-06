@@ -1,8 +1,8 @@
-{{- if .Values.elasticsearch.enabled }}
+{{- if .Values.authentik.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-elasticsearch
+  name: {{ .Values.argocd.project }}-authentik
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,14 +16,11 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.elasticsearch.namespace }}
+    namespace: {{ .Values.authentik.namespace }}
   source:
-    chart: elasticsearch
-    repoURL: https://helm.elastic.co
-    targetRevision: 8.0.0-SNAPSHOT
+    chart: authentik
+    repoURL: https://charts.goauthentik.io
+    targetRevision: 4.0.3
     helm:
-      releaseName: elasticsearch
-      values: |
-        persistence:
-          enabled: false
+      releaseName: authentik
 {{- end }}

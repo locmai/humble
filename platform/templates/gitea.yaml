@@ -1,8 +1,8 @@
-{{- if .Values.loki.enabled }}
+{{- if .Values.gitea.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-loki
+  name: {{ .Values.argocd.project }}-gitea
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,11 +16,11 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.loki.namespace }}
+    namespace: {{ .Values.gitea.namespace }}
   source:
-    chart: loki-stack
-    repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 2.3.1
+    chart: gitea
+    repoURL: https://dl.gitea.io/charts/
+    targetRevision: 4.1.1
     helm:
-      releaseName: loki-stack
+      releaseName: gitea
 {{- end }}
