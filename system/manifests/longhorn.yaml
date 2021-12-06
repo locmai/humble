@@ -1,0 +1,29 @@
+lo{{- if .Values.longhorn.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-monitoring
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.longhorn.namespace }}
+  source:
+    chart: longhorn
+    repoURL: https://charts.longhorn.io
+    targetRevision: 13.7.2
+    helm:
+      releaseName: monitoring
+      values: |
+        prometheus:
+        
+{{- end }}

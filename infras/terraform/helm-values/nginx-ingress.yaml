@@ -1,4 +1,0 @@
-controller:
-    service:
-        annotations:
-            metallb.universe.tf/address-pool: default-pool

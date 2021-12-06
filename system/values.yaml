@@ -1,0 +1,10 @@
+longhorn:
+  enabled: true
+  namespace: longhorn-system
+
+ingress_nginx:
+  enabled: true
+
+monitoring:
+ enabled: true
+ namespace: observability

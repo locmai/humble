@@ -1,3 +1,0 @@
-## Scripts
-
-Random/Misc scripts.
