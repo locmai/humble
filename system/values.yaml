@@ -30,3 +30,5 @@ metallb:
 ingress_nginx:
   enabled: true
 
+cert-manager:
+  enabled: true
