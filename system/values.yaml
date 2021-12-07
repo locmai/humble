@@ -32,3 +32,4 @@ ingress_nginx:
 
 cert-manager:
   enabled: true
+  namespace: cert-manager
