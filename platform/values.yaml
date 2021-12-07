@@ -7,9 +7,14 @@ argocd:
 vault:
   enabled: false
 
-# Workflow engine
+# Workflow engines
 tekton:
   enabled: true
+  namespace: ci
+
+actionRunnerController:
+  enabled: true
+  namespace: ci
 
 # IAM
 authentik:

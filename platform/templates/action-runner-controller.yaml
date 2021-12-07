@@ -1,8 +1,8 @@
-{{- if .Values.tekton.enabled }}
+{{- if .Values.actionRunnerController.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-tekton
+  name: {{ .Values.argocd.project }}-action-runner-controller
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -16,9 +16,9 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.tekton.namespace }}
+    namespace: {{ .Values.actionRunnerController.namespace }}
   source:
     repoURL: https://github.com/locmai/humble.git
-    path: 'platform/kustomization/tekton'
-    targetRevision: {{ .Values.tekton.targetRevision }}
+    path: 'platform/kustomization/action-runner-controller'
+    targetRevision: main
 {{- end }}
