@@ -1,4 +1,4 @@
-{{- if .Values.cert-manager.enabled }}
+{{- if .Values.certmanager.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -16,7 +16,7 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.cert-manager.namespace }}
+    namespace: {{ .Values.certmanager.namespace }}
   source:
     chart: cert-manager
     repoURL: https://charts.jetstack.io
