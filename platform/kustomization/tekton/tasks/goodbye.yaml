@@ -9,3 +9,5 @@ spec:
       script: |
         #!/bin/bash
         echo "Goodbye World!"
+        sleep 100
+        echo "Done sleeping.Goodbye World!"
