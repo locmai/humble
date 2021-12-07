@@ -12,10 +12,6 @@ tekton:
   enabled: true
   namespace: ci
 
-actionRunnerController:
-  enabled: true
-  namespace: ci
-
 # IAM
 authentik:
   enabled: true
