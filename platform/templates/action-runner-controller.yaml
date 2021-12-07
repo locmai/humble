@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-action-runner-controller
+  name: {{ .Values.argocd.project }}-actions-runner-controller
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -18,7 +18,9 @@ spec:
     name: in-cluster
     namespace: {{ .Values.actionRunnerController.namespace }}
   source:
-    repoURL: https://github.com/locmai/humble.git
-    path: 'platform/kustomization/action-runner-controller'
-    targetRevision: main
+    chart: actions-runner-controller
+    repoURL: https://actions-runner-controller.github.io/actions-runner-controller
+    targetRevision: 4.1.1
+    helm:
+      releaseName: actions-runner-controller
 {{- end }}
