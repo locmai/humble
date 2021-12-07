@@ -1,0 +1,26 @@
+{{- if .Values.etcd.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-etcd
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.etcd.namespace }}
+  source:
+    chart: etcd
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 3.5.1
+    helm:
+      releaseName: etcd
+{{- end }}

@@ -12,6 +12,10 @@ tekton:
   enabled: true
   namespace: ci
 
+etcd:
+  enabled: true
+  namespace: ci
+
 # IAM
 authentik:
   enabled: true
