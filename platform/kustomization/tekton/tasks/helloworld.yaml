@@ -5,7 +5,7 @@ metadata:
 spec:
   steps:
     - name: goodbye
-      image: archlinux
+      image: ubuntu
       script: |
         #!/bin/bash
         echo "Goodbye World!"
