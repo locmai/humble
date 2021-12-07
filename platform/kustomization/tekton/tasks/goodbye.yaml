@@ -1,11 +1,11 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: hello
+  name: goodbye
 spec:
   steps:
-    - name: hello
+    - name: goodbye
       image: ubuntu
       script: |
         #!/bin/bash
-        echo "Hello World!"
+        echo "Goodbye World!"
