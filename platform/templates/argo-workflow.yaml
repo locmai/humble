@@ -23,4 +23,7 @@ spec:
     targetRevision: 0.9.3
     helm:
       releaseName: argo-workflows
+      values:
+        server:
+          extraArgs: [--auth-mode=server]
 {{- end }}
