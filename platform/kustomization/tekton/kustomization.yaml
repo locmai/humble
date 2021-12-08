@@ -6,6 +6,7 @@ resources:
 - https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml
 - https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
 - https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
+- configmap.yaml
 # Tasks
 - tasks/helloworld.yaml
 - tasks/goodbye.yaml
