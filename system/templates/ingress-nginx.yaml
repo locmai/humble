@@ -25,10 +25,15 @@ spec:
       releaseName: ingress-nginx
       values: |
         controller:
+          service:
+            annotations:
+               metallb.universe.tf/address-pool: default
           metrics:
             enabled: true
             serviceMonitor:
               enabled: true
             additionalLabels:
               release: monitoring
+        admissionWebhooks:
+          enabled: false
 {{- end }}
