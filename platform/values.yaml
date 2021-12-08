@@ -18,7 +18,7 @@ etcd:
 
 argo_workflow:
   enabled: true
-  namespace: platform
+  namespace: kube-system
 
 # IAM
 authentik:
