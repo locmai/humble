@@ -8,7 +8,7 @@ resources:
 
 
 patches:
-- path: configmap-patch.yaml
+- path: argocd-cm-patch.yaml
+- path: argocd-cmd-params-cm-patch.yaml
 
 namespace: argocd
-
