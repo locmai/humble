@@ -23,3 +23,7 @@ lint:
 .PHONY: tools
 tools:
 	make -C tools
+
+.PHONY: global
+global:
+	make -C global

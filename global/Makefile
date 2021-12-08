@@ -1,11 +1,12 @@
+.POSIX:
+
 default:
-  pulumi up -y
+	pulumi up -y
 
 flush:
-  pulumi stack export > stack.json
-  # jq to remove pending_operations block
-  pulumi stack import --file stack.json
-  rm stack.json
+	pulumi stack export > stack.json
+	pulumi stack import --file stack.json
+	rm stack.json
 
 destroy:
-  pulumi destroy -y
+	pulumi destroy -y
