@@ -9,7 +9,7 @@ vault:
 
 # Workflow engines
 tekton:
-  enabled: true
+  enabled: false
   namespace: ci
 
 etcd:
