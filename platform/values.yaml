@@ -9,12 +9,16 @@ vault:
 
 # Workflow engines
 tekton:
-  enabled: true
+  enabled: false
   namespace: ci
 
 etcd:
   enabled: true
   namespace: ci
+
+argo_workflow:
+  enabled: true
+  namespace: platform
 
 # IAM
 authentik:

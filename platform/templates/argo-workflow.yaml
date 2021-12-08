@@ -1,0 +1,26 @@
+{{- if .Values.argo_workflow.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-argo-workflow
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argo_workflow.namespace }}
+  source:
+    chart: argo-workflows
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 0.9.3
+    helm:
+      releaseName: argo-workflows
+{{- end }}
