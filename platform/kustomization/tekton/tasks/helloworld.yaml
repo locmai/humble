@@ -4,8 +4,7 @@ metadata:
   name: hello
 spec:
   steps:
-    - name: hello
-      image: ubuntu
+    - name: whalesay
+      image: docker/whalesay:latest
       script: |
-        #!/bin/bash
-        echo "Hello World!"
+        cowsay "hello world"
