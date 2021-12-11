@@ -28,7 +28,7 @@ metallb:
   namespace: metallb-system
 
 ingress_nginx:
-  enabled: true
+  enabled: false
 
 certmanager:
   enabled: true
