@@ -13,7 +13,7 @@ tekton:
   namespace: ci
 
 etcd:
-  enabled: true
+  enabled: false
   namespace: ci
 
 argo_workflow:
