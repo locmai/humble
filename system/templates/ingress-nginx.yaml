@@ -36,4 +36,5 @@ spec:
               release: monitoring
         admissionWebhooks:
           enabled: false
+          failurePolicy: Ignore
 {{- end }}
