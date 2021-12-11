@@ -34,7 +34,7 @@ spec:
               enabled: true
             additionalLabels:
               release: monitoring
-        admissionWebhooks:
-          enabled: false
-          failurePolicy: Ignore
+          admissionWebhooks:
+            enabled: false
+            failurePolicy: Ignore
 {{- end }}
