@@ -27,7 +27,7 @@ spec:
         controller:
           service:
             annotations:
-               metallb.universe.tf/address-pool: default\
+              metallb.universe.tf/address-pool: default
           ingressClassResource:
             name: nginx
             enabled: true
