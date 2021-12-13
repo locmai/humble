@@ -26,6 +26,7 @@ spec:
       values: |
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-prod"
+          external-dns.alpha.kubernetes.io/exclude: 'true'
         hosts:
           - host: git.maibaloc.com
             paths:
