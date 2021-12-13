@@ -11,7 +11,8 @@ resource "cloudflare_argo_tunnel" "humble_tunnel" {
 
 resource "cloudflare_record" "tunnels" {
   for_each = toset([
-    "git"
+    "git",
+    "argocd"
   ])
 
   zone_id = data.cloudflare_zone.maibaloc_com.id
