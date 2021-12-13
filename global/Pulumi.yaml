@@ -1,6 +1,0 @@
-name: global
-runtime:
-  name: python
-  options:
-    virtualenv: venv
-description: Global layer

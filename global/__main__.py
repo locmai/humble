@@ -1,5 +1,0 @@
-from cloudflare import create_cloudflare_resources
-from kubernetes import create_kubernetes_resources
-
-create_cloudflare_resources()
-# create_kubernetes_resources()

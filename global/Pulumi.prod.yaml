@@ -1,5 +1,0 @@
-config:
-  cloudflare:apiToken:
-    secure: AAABAGjhUJbs+uirqwGL77m4qhYTCnZpk7QKEND9gm48SQ0ZXEQtLKabCqfJQq9aNqy3kjgRLln4Wu7IB3CuVVn7FEF8Ow8H
-  global:argo_tunnel_secret:
-    secure: AAABAMD+8ymDg1p8kHZVJQ6+/Vw6WX2e8FpicIqdpLFyOzy9cIRb4xgbP1LAFXnKk8NbXglmpU08Seg6zS3f0A==
