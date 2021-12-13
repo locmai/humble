@@ -1,7 +1,10 @@
-import pulumi_cloudflare as cloudflare
-from pulumi import ResourceOptions
+from base64 import b64encode
 
-from constants import PROD_DOMAIN, PROD_ZONE_ID, APPS
+import pulumi_cloudflare as cloudflare
+from pulumi import ResourceOptions, Config
+
+from constants import PROD_DOMAIN, PROD_ZONE_ID, PROD_ACCOUNT_ID, APPS
+
 
 def create_cloudflare_resources():
     root_record = cloudflare.Record(
@@ -31,3 +34,12 @@ def create_cloudflare_resources():
                 opts=ResourceOptions(depends_on=[root_record])
             )
         )
+
+    config = Config()
+    argo_tunnel_secret = str(b64encode(bytes(config.get('argo_tunnel_secret'), 'utf-8')))
+    root_argo_tunnel = cloudflare.ArgoTunnel(
+        name='prod-tunnel',
+        account_id=PROD_ACCOUNT_ID,
+        resource_name='prod-tunnel',
+        secret=argo_tunnel_secret
+    )

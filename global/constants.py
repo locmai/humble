@@ -1,5 +1,6 @@
 PROD_DOMAIN: str = 'maibaloc.com'
 PROD_ZONE_ID: str = '54464d6437d5b02346a086b882bed154'
+PROD_ACCOUNT_ID: str = '6544fae6badbb52ecd81ba920a4e33e0'
 
 DEV_DOMAIN: str = 'locmai.dev'
 DEV_ZONE_ID: str = '7ca29071dbe54a078c0fbf643d3c0923'
@@ -26,3 +27,5 @@ APPS = {
         'service_port': 80,
     },
 }
+
+STACK_NAME = 'locmai/global/prod'
