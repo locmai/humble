@@ -22,17 +22,6 @@ resource "cloudflare_record" "tunnels" {
   ttl     = 1 # Auto
 }
 
-resource "kubernetes_namespace" "namespaces" {
-  for_each = toset([
-    "cloudflared",
-    "external-dns",
-  ])
-
-  metadata {
-    name = each.key
-  }
-}
-
 resource "kubernetes_secret" "cloudflared_credentials" {
   metadata {
     name = "cloudflared-credentials"
