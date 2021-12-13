@@ -25,6 +25,4 @@ spec:
       releaseName: cert-manager
       values: |
         installCRDs: true
-        issuer:
-          email: locmai0201@gmail.com
 {{- end }}
