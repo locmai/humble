@@ -39,6 +39,7 @@ gitea:
         paths:
           - path: /
             pathType: Prefix
+            httpPort: 3000
     tls:
       - secretName: gitea-tls-certificate
         hosts:
