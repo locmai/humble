@@ -23,4 +23,16 @@ spec:
     targetRevision: 4.1.1
     helm:
       releaseName: gitea
+      values: |
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        hosts:
+          - host: git.maibaloc.com
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: gitea-tls-certificate
+            hosts:
+              - git.maibaloc.com
 {{- end }}
