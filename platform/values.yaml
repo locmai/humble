@@ -5,7 +5,7 @@ argocd:
 
 # Secret managment
 vault:
-  enabled: false
+  enabled: true
 
 # Workflow engines
 tekton:
