@@ -1,3 +1,8 @@
+argocd:
+  namespace: argocd
+  project: platform
+  targetRevision: main
+
 cloudflared_tunnel:
   namespace: cloudflared
 
