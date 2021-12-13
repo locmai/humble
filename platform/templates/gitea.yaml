@@ -24,16 +24,22 @@ spec:
     helm:
       releaseName: gitea
       values: |
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-prod"
-          external-dns.alpha.kubernetes.io/exclude: 'true'
-        hosts:
-          - host: git.maibaloc.com
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - secretName: gitea-tls-certificate
-            hosts:
-              - git.maibaloc.com
+        ingress:
+          enabled: true
+          annotations:
+            cert-manager.io/cluster-issuer: "letsencrypt-prod"
+            external-dns.alpha.kubernetes.io/exclude: 'true'
+          hosts:
+            - host: git.maibaloc.com
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: gitea-tls-certificate
+              hosts:
+                - git.maibaloc.com
+        gitea:
+          config:
+            server:
+              LANDING_PAGE: explore
 {{- end }}
