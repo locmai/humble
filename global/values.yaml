@@ -1,2 +1,5 @@
 cloudflared_tunnel:
   namespace: cloudflared
+
+external_dns:
+  namespace: external-dns

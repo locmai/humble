@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-cloudflared-tunnel
+  name: {{ .Values.argocd.project }}-external-dns
   namespace: {{ .Values.argocd.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -15,7 +15,7 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.cloudflared_tunnel.namespace }}
+    namespace: {{ .Values.external_dns.namespace }}
   source:
     chart: external-dns
     repoURL: https://kubernetes-sigs.github.io/external-dns/
