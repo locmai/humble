@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-cloudflared-tunnel
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.cloudflared_tunnel.namespace }}
+  source:
+    chart: external-dns
+    repoURL: https://kubernetes-sigs.github.io/external-dns/
+    targetRevision: 1.6.0
+    helm:
+      releaseName: argo-workflows
+      values: |
+        external-dns:
+          provider: cloudflare
+          env:
+          - name: CF_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: cloudflare-api-token
+                key: value
+          extraArgs:
+          - --annotation-filter=external-dns.alpha.kubernetes.io/exclude notin (true)

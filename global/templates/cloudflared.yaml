@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-cloudflared-tunnel
+  namespace: {{ .Values.argocd.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.cloudflared_tunnel.namespace }}
+  source:
+    chart: cloudflared
+    repoURL: https://khuedoan.github.io/charts
+    targetRevision: 0.1.7
+    helm:
+      releaseName: argo-workflows
+      values: |
+        tunnel: humble-tunnel
+        ingress:
+        - hostname: "*.maibaloc.com"
+          service: https://ingress-nginx-controller.ingress-nginx
+          originRequest:
+            noTLSVerify: true
+        - service: http_status:404
