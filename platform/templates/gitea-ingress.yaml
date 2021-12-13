@@ -33,7 +33,7 @@ spec:
               service:
                 name: gitea-http
                 port:
-                  number: {{ $httpPort }}
+                  number: {{ .httpPort }}
           {{- end }}
     {{- end }}
 {{- end }}
