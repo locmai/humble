@@ -1,0 +1,2 @@
+default:
+	tf apply -y

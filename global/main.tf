@@ -12,7 +12,8 @@ resource "cloudflare_argo_tunnel" "humble_tunnel" {
 resource "cloudflare_record" "tunnels" {
   for_each = toset([
     "git",
-    "argocd"
+    "argocd",
+    "authentik"
   ])
 
   zone_id = data.cloudflare_zone.maibaloc_com.id
@@ -57,6 +58,12 @@ resource "cloudflare_api_token" "external_dns" {
       in = local.public_ips
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      modified_on
+    ]
+  }
 }
 
 resource "kubernetes_secret" "external_dns_token" {
@@ -87,6 +94,12 @@ resource "cloudflare_api_token" "cert_manager" {
     request_ip {
       in = local.public_ips
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      modified_on
+    ]
   }
 }
 
