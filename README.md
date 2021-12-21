@@ -6,11 +6,11 @@ This repository contains the code for personal infrastructure workspaces and app
 
 TDB
 
-## Get started
+## Quickstart
 
 TBD
 
 ## Acknowledgements
 
-- Metal layer and the code structure inspired from [Khue Doan's homelab] (https://github.com/khuedoan/homelab)
+- Metal and global layers with the code structure inspired from [Khue Doan's homelab] (https://github.com/khuedoan/homelab)
 
