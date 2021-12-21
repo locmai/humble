@@ -37,6 +37,7 @@ spec:
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
             external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
           hosts:
             - host: authentik.maibaloc.com
               paths:
