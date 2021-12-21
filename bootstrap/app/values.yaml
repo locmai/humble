@@ -1,1 +1,8 @@
-enabled: true
+system:
+  enabled: true
+
+platform:
+  enabled: false
+
+apps:
+  enabled: false
