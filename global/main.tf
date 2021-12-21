@@ -9,18 +9,13 @@ resource "cloudflare_argo_tunnel" "humble_tunnel" {
   secret     = base64encode(random_password.tunnel_secret.result)
 }
 
-resource "cloudflare_record" "tunnels" {
-  for_each = toset([
-    "git",
-    "argocd",
-    "authentik"
-  ])
-
+# Not proxied, not accessible. Just a record for auto-created CNAMEs by external-dns.
+resource "cloudflare_record" "tunnel" {
   zone_id = data.cloudflare_zone.maibaloc_com.id
   type    = "CNAME"
-  name    = each.key
+  name    = "humble-tunnel"
   value   = "${cloudflare_argo_tunnel.humble_tunnel.id}.cfargotunnel.com"
-  proxied = true
+  proxied = false
   ttl     = 1 # Auto
 }
 

@@ -4,7 +4,7 @@ metadata:
   name: argocd-server
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    external-dns.alpha.kubernetes.io/exclude: 'true'
+    external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
 spec:
   ingressClassName: nginx
   rules:

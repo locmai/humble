@@ -1,2 +1,2 @@
 default:
-	tf apply -y
+	terraform apply -y
