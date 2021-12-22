@@ -21,7 +21,7 @@ spec:
     repoURL: https://khuedoan.github.io/charts
     targetRevision: 0.1.7
     helm:
-      releaseName: argo-workflows
+      releaseName: cloudflared
       values: |
         tunnel: humble-tunnel
         ingress:

@@ -21,7 +21,7 @@ spec:
     repoURL: https://kubernetes-sigs.github.io/external-dns/
     targetRevision: 1.6.0
     helm:
-      releaseName: argo-workflows
+      releaseName: external-dns
       values: |
         external-dns:
           provider: cloudflare
