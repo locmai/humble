@@ -19,7 +19,7 @@ spec:
           service:
             name: monitoring-grafana
             port:
-              name: http
+              number: 3000
   tls:
     - secretName: grafana-tls-certificate
       hosts:
