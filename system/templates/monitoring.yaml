@@ -41,7 +41,7 @@ spec:
           persistence:
             enabled: false
           ingress:
-            enabled: true
+            enabled: false
             ingressClassName: nginx
             annotations:
               external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
