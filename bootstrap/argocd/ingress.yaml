@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: argocd.maibaloc.com
+  - host: &host argocd.maibaloc.com
     http:
       paths:
       - path: /
@@ -22,4 +22,4 @@ spec:
   tls:
     - secretName: argocd-tls-certificate
       hosts:
-        - argocd.maibaloc.com
+        - &host
