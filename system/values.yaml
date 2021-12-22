@@ -33,6 +33,3 @@ ingress_nginx:
 certmanager:
   enabled: true
   namespace: cert-manager
-  issuer:
-    enabled: true # Move this to global layer
-    email: locmai0201@gmail.com

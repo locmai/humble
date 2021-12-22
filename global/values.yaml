@@ -8,3 +8,8 @@ cloudflared_tunnel:
 
 external_dns:
   namespace: external-dns
+
+certmanager:
+  issuer:
+    enabled: true
+    email: locmai0201@gmail.com
