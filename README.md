@@ -45,7 +45,7 @@ TBD
 
 ## Usage
 
-See the docs for detailed information on the architecture, installation and use of the platform.
+See the [docs](https://humble.maibaloc.com) for detailed information on the architecture, installation and use of the platform.
 
 ## Acknowledgements
 

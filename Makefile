@@ -1,5 +1,5 @@
 .POSIX:
-default: metal bootstrap
+default: metal bootstrap global
 
 .PHONY: init
 init:
@@ -13,12 +13,6 @@ metal:
 .PHONY: bootstrap
 bootstrap:
 	make -C bootstrap
-
-.PHONY: lint
-lint:
-	# TODO (feature) Add lint checks for everything
-	# make -C metal lint
-	echo 'Linting'
 
 .PHONY: tools
 tools:
