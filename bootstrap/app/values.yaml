@@ -5,7 +5,7 @@ system:
   enabled: true
 
 platform:
-  enabled: false
+  enabled: true
 
 apps:
-  enabled: false
+  enabled: true
