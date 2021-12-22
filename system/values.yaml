@@ -10,7 +10,7 @@ longhorn:
 
 # Observability
 monitoring:
-  enabled: true
+  enabled: false
   namespace: observability
 
 loki:
