@@ -34,5 +34,5 @@ certmanager:
   enabled: true
   namespace: cert-manager
   issuer:
-    enabled: false
+    enabled: true # Move this to global layer
     email: locmai0201@gmail.com
