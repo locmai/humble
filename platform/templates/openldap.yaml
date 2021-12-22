@@ -28,5 +28,21 @@ spec:
           enabled: false
 
         phpldapadmin:
-          enabled: false
+          enabled: true
+          ingress:
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: "letsencrypt-prod"
+              external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
+              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            path: /
+            ## Ingress Host
+            hosts:
+            - &host ldapadmin.maibaloc.com
+            tls:
+            - secretName: phpldapadmin-tls-secret
+              hosts:
+              - *host
+          env:
+            PHPLDAPADMIN_LDAP_HOSTS: openldap-openldap-stack-ha
 {{- end }}
