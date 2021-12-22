@@ -51,7 +51,7 @@ spec:
             tls:
               - secretName: grafana-tls-certificate
                 hosts:
-                  - &host
+                  - *host
           sidecar:
             image:
               repository: omegavveapon/kopf-k8s-sidecar

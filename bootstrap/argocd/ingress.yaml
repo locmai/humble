@@ -22,4 +22,4 @@ spec:
   tls:
     - secretName: argocd-tls-certificate
       hosts:
-        - &host
+        - *host
