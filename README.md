@@ -16,6 +16,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [x] OS installation from PXE boot
   - [x] Init configuration
 - [x] Everything as code
+- [x] Automation-first approach
 - [x] Common infrastructures and services
   - [x] Load balancers / Ingress controller
   - [x] Cloud native distributed block storage(longhorn.io)
@@ -50,4 +51,5 @@ See the [docs](https://humble.maibaloc.com) for detailed information on the arch
 ## Acknowledgements
 
 - A lot of great works from my [co-worker's homelab](https://github.com/khuedoan/homelab)
+- Awesome services from CloudFlare: DNS, Pages and Tunnel. The document of this project is hosted on CloudFlare as well.
 
