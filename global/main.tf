@@ -68,7 +68,7 @@ resource "kubernetes_secret" "external_dns_token" {
   }
 
   data = {
-    "value" = cloudflare_api_token.external_dns.value
+    "cloudflare_api_token" = cloudflare_api_token.external_dns.value
   }
 }
 
