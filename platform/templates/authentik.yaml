@@ -25,6 +25,8 @@ spec:
       releaseName: authentik
       values: |
         authentik:
+          image:
+            tag: "2021.12.3"
           secret_key: "PleaseGenerateA50CharKey"
           # This sends anonymous usage-data, stack traces on errors and
           # performance data to sentry.beryju.org, and is fully opt-in
