@@ -30,6 +30,7 @@ spec:
             serviceMonitorNamespaceSelector: {}
         prometheusOperator:
           admissionWebhooks:
+            failurePolicy: Ignore
             patch:
               enabled: true
         grafana:
