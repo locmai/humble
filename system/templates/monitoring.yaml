@@ -42,16 +42,6 @@ spec:
             enabled: false
           ingress:
             enabled: false
-            ingressClassName: nginx
-            annotations:
-              external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
-              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-            hosts:
-              - &host grafana.maibaloc.com
-            tls:
-              - secretName: grafana-tls-certificate
-                hosts:
-                  - *host
           sidecar:
             image:
               repository: omegavveapon/kopf-k8s-sidecar
