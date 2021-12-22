@@ -23,13 +23,10 @@ spec:
     helm:
       releaseName: external-dns
       values: |
-        external-dns:
-          provider: cloudflare
-          env:
-          - name: CF_API_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: cloudflare-api-token
-                key: value
-          extraArgs:
-          - --annotation-filter=external-dns.alpha.kubernetes.io/exclude notin (true)
+        provider: cloudflare
+        extraEnv:
+        - name: CF_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare-api-token
+              key: value
