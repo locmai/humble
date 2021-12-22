@@ -32,7 +32,7 @@ spec:
           admissionWebhooks:
             failurePolicy: Ignore
             patch:
-              enabled: true
+              enabled: false
         grafana:
           enabled: true
           image:
