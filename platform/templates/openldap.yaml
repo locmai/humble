@@ -24,8 +24,6 @@ spec:
     helm:
       releaseName: openldap
       values: |
-        adminPassword: null
-        configPassword: null
         ltb-passwd:
           enabled: false
 
