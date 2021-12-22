@@ -36,7 +36,8 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [ ] Alert rules and notifications
   - [ ] Distributed tracing
 - [ ] Demo services
-  - [ ] Saleor
+  - [ ] [Saleor](https://saleor.io/)
+  - [ ] [microservices-demo](https://github.com/locmai/microservices-demo)
 
 ## Technology Landscape
 
