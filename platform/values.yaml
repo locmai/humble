@@ -21,10 +21,6 @@ argo_workflow:
   namespace: kube-system
 
 # IAM
-openldap:
-  enabled: true
-  namespace: platform
-
 authentik:
   enabled: true
   namespace: platform
