@@ -31,9 +31,7 @@ spec:
         prometheusOperator:
           admissionWebhooks:
             patch:
-              enabled: false
-              podAnnotations:
-                sidecar.istio.io/inject: "false"
+              enabled: true
         grafana:
           enabled: true
           image:

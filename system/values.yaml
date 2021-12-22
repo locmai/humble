@@ -31,7 +31,8 @@ ingress_nginx:
   enabled: true
 
 certmanager:
-  enabled: false
+  enabled: true
   namespace: cert-manager
   issuer:
+    enabled: false
     email: locmai0201@gmail.com
