@@ -3,34 +3,8 @@ argocd:
   project: apps
   targetRevision: main
 
-blackping:
-  # Chart Version
-  targetRevision: 0.0.6
-  enabled: false
-  image:
-    tag: 0.0.7
-
-ory_kratos:
-  # Chart Version
-  targetRevision: 0.9.10
-  enabled: false
-
-# Apps Database
-postgresql:
-  enabled: true
-
-# App IAM:
-keycloak:
-  enabled: false
-
-# Development SMTP server
-mailhog:
-  enabled: true
-
-# o-an-quan project https://github.com/sieuvb/o-an-quan
-o_an_quan:
-  enabled: true
-  targetRevision: 0.1.1
+global:
+  domain: "placeholder.com"
 
 filebrowser:
   enabled: true

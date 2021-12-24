@@ -23,9 +23,5 @@ spec:
       releaseName: filebrowser
       values: |
         ingress:
-          enabled: true
-          hosts:
-          - host: file.locmai.dev
-            paths:
-            - /
+          enabled: false
 {{- end }}
