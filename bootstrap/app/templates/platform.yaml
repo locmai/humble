@@ -41,9 +41,12 @@ spec:
   source:
     path: 'platform'
     repoURL: https://github.com/locmai/humble.git
-    targetRevision: main
+    targetRevision: "{{ .Values.platform.targetRevision }}"
     helm:
       values: |
         argocd:
-          targetRevision: main
+          targetRevision: {{ .Values.platform.targetRevision }}
+
+        global:
+          domain: {{ .Values.global.domain }}
 {{- end }}

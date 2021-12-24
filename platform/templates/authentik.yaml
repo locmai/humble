@@ -38,16 +38,16 @@ spec:
           enabled: true
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
-            external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
+            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
             external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
           hosts:
-            - host: authentik.maibaloc.com
+            - host: &host "authentik.{{ .Values.global.domain }}"
               paths:
                 - path: "/"
                   pathType: Prefix
           tls:
             - hosts:
-              - authentik.maibaloc.com
+              - *host
 
         postgresql:
          enabled: true

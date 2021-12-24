@@ -1,11 +1,15 @@
 global:
   enabled: true
+  domain: "maibaloc.com"
 
 system:
   enabled: true
+  targetRevision: main
 
 platform:
   enabled: true
+  targetRevision: main
 
 apps:
   enabled: true
+  targetRevision: main

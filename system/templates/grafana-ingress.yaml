@@ -5,12 +5,12 @@ metadata:
   namespace: {{ .Values.monitoring.namespace }}
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
+    external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: nginx
   rules:
-  - host: &host grafana.maibaloc.com
+  - host: &host "grafana.{{ .Values.global.domain }}"
     http:
       paths:
       - path: /

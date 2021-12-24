@@ -3,6 +3,9 @@ argocd:
   project: platform
   targetRevision: main
 
+global:
+  domain: "placeholder.com"
+
 # Secret managment
 vault:
   enabled: false
@@ -31,17 +34,3 @@ gitea:
   namespace: platform
   ingress:
     enabled: true
-    annotations:
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
-      external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-    hosts:
-      - host: git.maibaloc.com
-        paths:
-          - path: /
-            pathType: Prefix
-            httpPort: 3000
-    tls:
-      - secretName: gitea-tls-certificate
-        hosts:
-          - git.maibaloc.com

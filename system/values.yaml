@@ -3,6 +3,9 @@ argocd:
  project: system
  namespace: argocd
 
+global:
+  domain: "placeholder.com"
+
 # Storage
 longhorn:
   enabled: true

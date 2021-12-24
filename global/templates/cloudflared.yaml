@@ -25,7 +25,7 @@ spec:
       values: |
         tunnel: humble-tunnel
         ingress:
-        - hostname: "*.maibaloc.com"
+        - hostname: "*.{{ .Values.global.domain }}"
           service: https://ingress-nginx-controller.ingress-nginx
           originRequest:
             noTLSVerify: true

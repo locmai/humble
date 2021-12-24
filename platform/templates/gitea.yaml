@@ -28,17 +28,17 @@ spec:
           enabled: false
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
-            external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
+            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
             external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
           hosts:
-            - host: git.maibaloc.com
+            - host: &host git.{{ .Values.global.domain }}
               paths:
                 - path: /
                   pathType: Prefix
           tls:
             - secretName: gitea-tls-certificate
               hosts:
-                - git.maibaloc.com
+                - *host
         gitea:
           config:
             server:
