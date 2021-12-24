@@ -17,6 +17,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [x] Init configuration
 - [x] Everything as code
 - [x] Automation-first approach
+- [x] Functional cluster powered by k3s
 - [x] Common infrastructures and services
   - [x] Load balancers / Ingress controller
   - [x] Secured internal and external DNS setup
