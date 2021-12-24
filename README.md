@@ -19,6 +19,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
 - [x] Automation-first approach
 - [x] Common infrastructures and services
   - [x] Load balancers / Ingress controller
+  - [x] Secured internal and external DNS setup
   - [x] Cloud native distributed block storage(longhorn.io)
   - [x] Secret management system
   - [ ] Mail server

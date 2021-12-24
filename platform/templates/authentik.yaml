@@ -34,8 +34,15 @@ spec:
           enabled: true
           postgresql:
             password: "ThisIsNotASecurePassword"
-          env:
-            
+          envValueFrom:
+            AK_ADMIN_PASS:
+              secretKeyRef:
+                key: ak_admin_pass
+                name: authentik-aka-secret
+            AK_ADMIN_TOKEN:
+              secretKeyRef:
+                key: ak_admin_token
+                name: authentik-aka-secret
         ingress:
           enabled: true
           annotations:
