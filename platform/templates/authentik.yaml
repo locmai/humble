@@ -37,7 +37,7 @@ spec:
         envValueFrom:
           AK_ADMIN_PASS:
             secretKeyRef:
-              key: ak_admin_pass
+              key: ak_admin_password
               name: authentik-aka-secret
           AK_ADMIN_TOKEN:
             secretKeyRef:
