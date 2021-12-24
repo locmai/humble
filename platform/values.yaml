@@ -10,14 +10,14 @@ vault:
 # Workflow engines
 tekton:
   enabled: false
-  namespace: ci
+  namespace: platform
 
 etcd:
   enabled: false
-  namespace: ci
+  namespace: platform
 
 argo_workflow:
-  enabled: true
+  enabled: false
   namespace: kube-system
 
 # IAM

@@ -24,5 +24,11 @@ spec:
     helm:
       releaseName: longhorn
       values: |
-        mock: mock
+        ingress:
+          enabled: true
+          host: &host longhorn
+          tlse: true
+          tlsSecret: longhorn-tls-certificate
+          annotations:
+            cert-manager.io/cluster-issuer: "letsencrypt-prod"
 {{- end }}
