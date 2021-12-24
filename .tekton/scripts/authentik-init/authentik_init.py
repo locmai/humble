@@ -65,7 +65,7 @@ payload = {
 
 
 # Create provider via /providers/oauth2
-provider_oauth2_api_url = f"{base_url}/providers/oauth2"
+provider_oauth2_api_url = f"{base_url}/providers/oauth2/"
 
 res = requests.post(provider_oauth2_api_url,
     headers={'Authorization': f"Bearer {ak_admin_token}"},
