@@ -25,8 +25,6 @@ spec:
       releaseName: authentik
       values: |
         authentik:
-          image:
-            tag: "2021.12.3"
           secret_key: "PleaseGenerateA50CharKey"
           # This sends anonymous usage-data, stack traces on errors and
           # performance data to sentry.beryju.org, and is fully opt-in
@@ -34,15 +32,17 @@ spec:
           enabled: true
           postgresql:
             password: "ThisIsNotASecurePassword"
-          envValueFrom:
-            AK_ADMIN_PASS:
-              secretKeyRef:
-                key: ak_admin_pass
-                name: authentik-aka-secret
-            AK_ADMIN_TOKEN:
-              secretKeyRef:
-                key: ak_admin_token
-                name: authentik-aka-secret
+        image:
+            tag: "2021.12.3"
+        envValueFrom:
+          AK_ADMIN_PASS:
+            secretKeyRef:
+              key: ak_admin_pass
+              name: authentik-aka-secret
+          AK_ADMIN_TOKEN:
+            secretKeyRef:
+              key: ak_admin_token
+              name: authentik-aka-secret
         ingress:
           enabled: true
           annotations:
