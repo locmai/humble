@@ -26,7 +26,7 @@ spec:
       values: |
         ingress:
           enabled: true
-          host: &host longhorn
+          host: &host longhorn.maibaloc.com
           tlse: true
           tlsSecret: longhorn-tls-certificate
           annotations:
