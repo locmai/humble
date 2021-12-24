@@ -27,7 +27,7 @@ argo_workflow:
 
 # IAM
 authentik:
-  enabled: true
+  enabled: false
   namespace: platform
 
 # SCM
