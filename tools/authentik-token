@@ -1,0 +1,2 @@
+#!/bin/sh
+kubectl -n platform get secret authentik-aka-secret -o jsonpath="{.data.ak_admin_token}" | base64 -d
