@@ -7,4 +7,4 @@ global:
   domain: "placeholder.com"
 
 filebrowser:
-  enabled: true
+  enabled: false
