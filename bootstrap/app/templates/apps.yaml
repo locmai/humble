@@ -41,9 +41,9 @@ spec:
   source:
     path: 'apps'
     repoURL: https://github.com/locmai/humble.git
-    targetRevision: "{{ .Values.app.targetRevision }}"
+    targetRevision: "{{ .Values.apps.targetRevision }}"
     helm:
       values: |
         argocd:
-          targetRevision: {{ .Values.app.targetRevision }}
+          targetRevision: {{ .Values.apps.targetRevision }}
 {{- end }}
