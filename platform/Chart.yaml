@@ -3,3 +3,8 @@ appVersion: "1.0"
 description: Bootstrap the platform layer
 name: platform
 version: 0.2.0
+
+dependencies:
+  - name: common
+    version: 1.10.3
+    repository: https://charts.bitnami.com/bitnami
