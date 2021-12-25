@@ -1,4 +1,6 @@
-import base64, sys, requests, json
+import base64, sys, requests, json, subprocess
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
 
 from kubernetes import client, config
 
@@ -6,7 +8,8 @@ from kubernetes import client, config
 base_url = "https://authentik.maibaloc.com/api/v3"
 
 # Init kubernetes client
-config.load_kube_config(config_file='../../../metal/kubeconfig.yaml')
+# Local config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
+config.load_incluster_config()
 v1 = client.CoreV1Api()
 
 # Get authentik secret
