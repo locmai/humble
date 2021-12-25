@@ -46,7 +46,7 @@ props_mapping = [
     prop["pk"] for prop in resp_json["results"] if "authentik default OAuth Mapping: OpenID" in prop["name"] 
 ]
 
-payload = {
+provider_payload = {
     'name': "gitea",
     'authorization_flow': target_auth_flow[0]["target"],
     'property_mappings': props_mapping,
@@ -69,9 +69,30 @@ provider_oauth2_api_url = f"{base_url}/providers/oauth2/"
 
 res = requests.post(provider_oauth2_api_url,
     headers={'Authorization': f"Bearer {ak_admin_token}"},
-    json=payload,
+    json=provider_payload,
+    allow_redirects=False)
+resp_json = res.json()
+
+if res.status_code == 201:
+    print("Created provider.")
+
+# Create application and bind to the provider
+application_oauth2_api_url = f"{base_url}/core/applications/"
+
+application_payload = {
+    'name': 'gitea',
+    'slug': 'gitea-slug',
+    'provider': resp_json["pk"],
+    'meta_launch_url': '',
+    'meta_description': '',
+    'meta_publisher': '',
+    'policy_engine_mode': 'any'
+}
+
+res = requests.post(application_oauth2_api_url,
+    headers={'Authorization': f"Bearer {ak_admin_token}"},
+    json=application_payload,
     allow_redirects=False)
 
-# res = requests.get(provider_oauth2_api_url, headers={'Authorization': f"Bearer {ak_admin_token}"})
-
-print(res.status_code)
+if res.status_code == 201:
+    print("Created application.")
