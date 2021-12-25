@@ -50,5 +50,5 @@ spec:
             - name: 'authentik'
               provider: 'openidConnect'
               existingSecret: gitea-oauth2-secrets
-              autoDiscoverUrl: "https://{{ .Values.global.domain }}/application/o/gitea/.well-known/openid-configuration"
+              autoDiscoverUrl: '"https://{{ .Values.global.domain }}/application/o/gitea/.well-known/openid-configuration"'
 {{- end }}
