@@ -3,9 +3,10 @@ import base64, sys, requests, json, subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
 
 from kubernetes import client, config
+from exec_pod import exec_commands
 
-
-base_url = "https://authentik.maibaloc.com/api/v3"
+domain = "authentik.maibaloc.com"
+base_url = f"https://{domain}/api/v3"
 
 # Init kubernetes client
 # Local config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
@@ -17,12 +18,13 @@ def decode(encoded_secret: str) -> str:
     return (base64.b64decode(encoded_secret)).decode()
 
 ak_secrets = v1.read_namespaced_secret("authentik-aka-secret", "platform").data
+gitea_oauth2_secrets = v1.read_namespaced_secret("gitea-oauth2-secrets", "platform").data
 
 ak_admin_token = decode(ak_secrets['ak_admin_token'])
 
-gitea_oauth2_client_id = decode(ak_secrets['ak_gitea_oauth2_client_id'])
+gitea_oauth2_client_id = decode(gitea_oauth2_secrets['key'])
 
-gitea_oauth2_client_secret = decode(ak_secrets['ak_gitea_oauth2_client_secret'])
+gitea_oauth2_client_secret = decode(gitea_oauth2_secrets['secret'])
 
 # Get the default-provider-authorization-explicit-consent flow from /flows/bindings/
 flow_binding_api_url =f"{base_url}/flows/bindings"
@@ -99,3 +101,16 @@ res = requests.post(application_oauth2_api_url,
 
 if res.status_code == 201:
     print("Created application.")
+
+
+v1.read_namepspaced_pod('gitea-0','platform')
+gitea_init_auth_cmd = "gitea auth add-auth --name \"authentik\" --provider \"OpenID Connect\"" \
+                        f"--key {gitea_oauth2_client_id} --secret {gitea_oauth2_client_secret}" \
+                        "--icon-url \"https://raw.githubusercontent.com/goauthentik/authentik/master/web/icons/icon.png\"" \
+                        f"--auto-discovery-url https://{domain}/application/o/gitea/.well-known/openid-configuration"
+
+cmds = [
+    '/bin/sh',
+    '-c',
+    gitea_init_auth_cmd,
+]
