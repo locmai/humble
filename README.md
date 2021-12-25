@@ -25,19 +25,22 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [x] Secret management system
   - [ ] Mail server
   - [ ] Messaging platform
+  - [x] Remove SVC server
 - [ ] IAM system
-  - [ ] Identity platform
+  - [x] Identity platform
   - [ ] SSO login
   - [ ] RBAC managment
 - [x] Continuous Integration and Delivery
   - [x] ArgoCD - GitOps
   - [x] GitHub Action
   - [x] Argo Workflow
+  - [ ] Private Container Registry
+  - [ ] Private Package Registry
 - [ ] Observability
   - [x] Operating dashboards
   - [x] Log streaming
   - [ ] Alert rules and notifications
-  - [ ] Distributed tracing
+  - [x] Distributed tracing
 - [ ] Demo services
   - [ ] [Saleor](https://saleor.io/)
   - [ ] [microservices-demo](https://github.com/locmai/microservices-demo)
