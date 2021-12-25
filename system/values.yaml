@@ -16,7 +16,11 @@ monitoring:
   enabled: true
   namespace: observability
 
-loki:
+tracing:
+  enabled: true
+  namespace: observability
+
+logging:
   enabled: true
   namespace: observability
 
