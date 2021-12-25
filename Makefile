@@ -21,7 +21,7 @@ tools:
 .PHONY: dev
 dev:
 	make -C metal cluster env=dev
-	make -C bootstrap
+	make -C bootstrap env=dev
 
 .PHONY: global
 global:

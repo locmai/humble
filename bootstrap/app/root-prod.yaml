@@ -43,6 +43,8 @@ spec:
     repoURL: https://github.com/locmai/humble.git
     targetRevision: main
     helm:
+      valueFiles:
+      - values-prod.yaml
       values: |
         argocd:
           targetRevision: main

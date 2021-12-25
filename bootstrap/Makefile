@@ -3,6 +3,8 @@
 
 KUBECONFIG = ../metal/kubeconfig.yaml
 
+env ?= "prod"
+
 default: argocd app
 
 .PHONY: argocd
@@ -11,4 +13,4 @@ argocd:
 
 .PHONY: app
 app:
-	kubectl apply -f ./app/root.yaml
+	kubectl apply -f ./app/root-${env}..yaml
