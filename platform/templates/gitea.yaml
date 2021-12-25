@@ -41,6 +41,7 @@ spec:
                 - *host
         image:
           tag: 1.15.8
+          pullPolicy: IfNotPresent
         gitea:
           config:
             server:
@@ -50,5 +51,5 @@ spec:
             - name: 'authentik'
               provider: 'openidConnect'
               existingSecret: gitea-oauth2-secrets
-              autoDiscoverUrl: '"https://{{ .Values.global.domain }}/application/o/gitea/.well-known/openid-configuration"'
+              autoDiscoverUrl: https://authentik.{{ .Values.global.domain }}/application/o/gitea/.well-known/openid-configuration
 {{- end }}
