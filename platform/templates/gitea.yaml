@@ -39,6 +39,8 @@ spec:
             - secretName: gitea-tls-certificate
               hosts:
                 - *host
+        image:
+          tag: 1.15.8
         gitea:
           config:
             server:
