@@ -48,7 +48,7 @@ spec:
           # Either specify inline `key` and `secret` or refer to them via `existingSecret`
           oauth:
             - name: 'authentik'
-              provider: 'OpenID Connect'
+              provider: 'openidConnect'
               existingSecret: gitea-oauth2-secrets
               autoDiscoverUrl: "https://{{ .Values.global.domain }}/application/o/gitea/.well-known/openid-configuration"
 {{- end }}
