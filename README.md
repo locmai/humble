@@ -8,7 +8,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
 
 ### Single-node cluster
 
-- [ ] Single command to spin up a single-node cluster
+- [x] Single command to spin up a single-node cluster
 
 ### Production-grade cluster
 

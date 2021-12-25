@@ -18,6 +18,11 @@ bootstrap:
 tools:
 	make -C tools
 
+.PHONY: dev
+dev:
+	make -C metal cluster env=dev
+	make -C bootstrap
+
 .PHONY: global
 global:
 	make -C global
