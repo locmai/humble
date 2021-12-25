@@ -28,6 +28,12 @@ spec:
           cassandra: false
           elasticsearch: true
           kafka: false
+        elasticsearch:
+          volumeClaimTemplate:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 10Gi
         storage:
           type: elasticsearch
         ingress:
