@@ -33,7 +33,7 @@ spec:
           postgresql:
             password: "ThisIsNotASecurePassword"
         image:
-            tag: "2021.12.3"
+            tag: "2021.12.4"
         envValueFrom:
           AK_ADMIN_PASS:
             secretKeyRef:
