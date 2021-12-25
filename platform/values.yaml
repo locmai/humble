@@ -32,7 +32,7 @@ authentik:
 
 # SCM
 gitea:
-  enabled: true
+  enabled: false
   namespace: platform
   ingress:
     enabled: true
