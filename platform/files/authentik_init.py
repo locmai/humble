@@ -1,16 +1,15 @@
 import base64, sys, requests, json, subprocess
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
+# subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
 
 from kubernetes import client, config
-from exec_pod import exec_commands
 
 domain = "authentik.maibaloc.com"
 base_url = f"https://{domain}/api/v3"
 
 # Init kubernetes client
-# Local config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
-config.load_incluster_config()
+config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
+# config.load_incluster_config()
 v1 = client.CoreV1Api()
 
 # Get authentik secret
@@ -101,16 +100,3 @@ res = requests.post(application_oauth2_api_url,
 
 if res.status_code == 201:
     print("Created application.")
-
-
-v1.read_namepspaced_pod('gitea-0','platform')
-gitea_init_auth_cmd = "gitea auth add-auth --name \"authentik\" --provider \"OpenID Connect\"" \
-                        f"--key {gitea_oauth2_client_id} --secret {gitea_oauth2_client_secret}" \
-                        "--icon-url \"https://raw.githubusercontent.com/goauthentik/authentik/master/web/icons/icon.png\"" \
-                        f"--auto-discovery-url https://{domain}/application/o/gitea/.well-known/openid-configuration"
-
-cmds = [
-    '/bin/sh',
-    '-c',
-    gitea_init_auth_cmd,
-]
