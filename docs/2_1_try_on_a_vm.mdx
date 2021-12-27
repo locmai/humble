@@ -1,0 +1,42 @@
+---
+name: 2.1 Try on a VM
+route: /try-on-vm
+menu: 2. Getting Started
+---
+
+## Prerequisites
+
+Install the following packages required to run this tutorial:
+- [`docker`](https://docs.docker.com/install/).
+- make
+- vagrant
+- virtualbox
+
+Reserve at least:
+- 6 CPUs
+- 128GB of disk space
+- 10GB of memory
+
+## Deploy humble on a VM
+
+First, spin up the VM:
+
+```
+VAGRANT_CWD=./metal vagrant up
+```
+
+Then run the following commands to get everything deployed:
+
+```
+cd ../metal
+make tools
+make dev
+```
+
+## Clean up
+
+When we're done with the VM, we can destroy it:
+
+```
+VAGRANT_CWD=./metal vagrant destroy -f
+```
