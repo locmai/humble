@@ -24,10 +24,5 @@ spec:
     helm:
       releaseName: metallb
       values: |
-        configInline:
-          address-pools:
-          - name: default
-            protocol: layer2
-            addresses:
-            - 192.168.1.150-192.168.1.180
+        existingConfigMap: metallb-config
 {{- end }}
