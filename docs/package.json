@@ -1,4 +1,5 @@
 {
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "docz:dev": "docz dev",
     "docz:build": "docz build",
