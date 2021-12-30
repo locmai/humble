@@ -5,3 +5,5 @@ metadata:
 data:
   server.insecure: |
     true
+  statusbadge.enabled: |
+    true

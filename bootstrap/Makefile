@@ -13,4 +13,4 @@ argocd:
 
 .PHONY: app
 app:
-	kubectl apply -f ./app/root-${env}..yaml
+	kubectl apply -f ./app/root-${env}.yaml
