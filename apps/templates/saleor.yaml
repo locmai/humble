@@ -39,6 +39,8 @@ spec:
 
         saleor-core:
           enabled: true
+          persistence:
+            enabled: false
           allowedHosts:
             hosts:
               - localhost
@@ -47,9 +49,13 @@ spec:
           externalServices:
             googleRecaptcha:
               publicKey: "none"
-
+        saleor-dashboard:
+          persistence:
+            enabled: false
         saleor-storefront:
           enabled: true
+          persistence:
+            enabled: false
           ingress:
             enabled: true
             annotations:
