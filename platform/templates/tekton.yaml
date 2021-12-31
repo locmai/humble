@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: {{ .Values.argocd.project }}-tekton
   namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:

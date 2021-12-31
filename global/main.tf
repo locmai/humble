@@ -19,7 +19,24 @@ resource "cloudflare_record" "tunnel" {
   ttl     = 1 # Auto
 }
 
+
+resource "kubernetes_namespace" "namespaces" {
+  for_each = toset([
+    "cert-manager",
+    "cloudflared",
+    "external-dns",
+  ])
+
+  metadata {
+    name = each.key
+  }
+}
+
 resource "kubernetes_secret" "cloudflared_credentials" {
+  depends_on = [
+    kubernetes_namespace.namespaces
+  ]
+
   metadata {
     name = "cloudflared-credentials"
     namespace = "cloudflared"
@@ -62,6 +79,10 @@ resource "cloudflare_api_token" "external_dns" {
 }
 
 resource "kubernetes_secret" "external_dns_token" {
+  depends_on = [
+    kubernetes_namespace.namespaces
+  ]
+
   metadata {
     name = "cloudflare-api-token"
     namespace = "external-dns"
@@ -99,6 +120,10 @@ resource "cloudflare_api_token" "cert_manager" {
 }
 
 resource "kubernetes_secret" "cert_manager_token" {
+  depends_on = [
+    kubernetes_namespace.namespaces
+  ]
+
   metadata {
     name = "cloudflare-api-token"
     namespace = "cert-manager"

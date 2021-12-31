@@ -8,7 +8,7 @@ global:
 
 # Secret managment
 vault:
-  enabled: false
+  enabled: true
 
 # Workflow engines
 tekton:
@@ -27,7 +27,7 @@ argo_workflow:
 
 # IAM
 authentik:
-  enabled: false
+  enabled: true
   namespace: platform
 
 # SCM
@@ -35,4 +35,4 @@ gitea:
   enabled: false
   namespace: platform
   ingress:
-    enabled: true
+    enabled: false

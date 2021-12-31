@@ -3,7 +3,5 @@ kind: ConfigMap
 metadata:
   name: argocd-cmd-params-cm
 data:
-  server.insecure: |
-    true
-  statusbadge.enabled: |
-    true
+  server.insecure: "true"
+  statusbadge.enabled: "true"

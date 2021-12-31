@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: {{ .Values.argocd.project }}-jaeger
   namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
