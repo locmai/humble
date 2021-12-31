@@ -2,6 +2,10 @@ global:
   enabled: true
   domain: "maibaloc.com"
 
+bootstrap:
+  enabled: true
+  targetRevision: main
+
 system:
   enabled: true
   targetRevision: main
