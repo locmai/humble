@@ -1,5 +1,8 @@
 # Humble Project
 
+![argocd status](https://argocd.maibaloc.com/api/badge?name=root&revision=true)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Overview
 
 Humble is a project that seeks to set up a ready-to-go environment with operating services using modern infrastructure as code with GitOps driven.
@@ -26,7 +29,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [ ] Mail server
   - [ ] Messaging platform
   - [x] Remove SVC server
-  - [x] Service Mesh
+  - [x] Service Mesh with Istio
 - [ ] IAM system
   - [x] Identity platform
   - [ ] SSO login
