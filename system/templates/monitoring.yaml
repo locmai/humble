@@ -32,10 +32,10 @@ spec:
             serviceMonitorNamespaceSelector: {}
         prometheusOperator:
           admissionWebhooks:
-            enabled: false
+            enabled: true
             failurePolicy: Ignore
             patch:
-              enabled: false
+              enabled: true
         grafana:
           enabled: true
           image:
