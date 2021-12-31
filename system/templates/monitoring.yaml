@@ -35,7 +35,7 @@ spec:
             enabled: true
             failurePolicy: Ignore
             patch:
-              enabled: true
+              enabled: false
         grafana:
           enabled: true
           image:
