@@ -24,7 +24,9 @@ spec:
       values: |
         nfs-server-provisioner:
           enabled: false
-        
+        nfs:
+          enabled: false
+
         redis:
           cluster:
             enabled: false
