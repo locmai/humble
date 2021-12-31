@@ -8,3 +8,6 @@ global:
 
 filebrowser:
   enabled: false
+
+saleor:
+  enabled: true
