@@ -27,4 +27,6 @@ spec:
       releaseName: istiod
       values: |
         installCRDs: true
+        global:
+          operatorManageWebhooks: false
 {{- end }}
