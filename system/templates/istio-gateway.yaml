@@ -25,6 +25,4 @@ spec:
     targetRevision: 1.12.1
     helm:
       releaseName: gateway
-      values: |
-        installCRDs: true
 {{- end }}
