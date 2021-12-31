@@ -4,6 +4,7 @@ metadata:
   name: monitoring-grafana
   namespace: {{ .Values.monitoring.namespace }}
   annotations:
+    argocd.argoproj.io/sync-wave: "2"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"

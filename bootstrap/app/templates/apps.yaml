@@ -4,6 +4,8 @@ kind: AppProject
 metadata:
   name: apps
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   description: apps project
   clusterResourceWhitelist:
