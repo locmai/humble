@@ -25,6 +25,7 @@ resource "kubernetes_namespace" "namespaces" {
     "cert-manager",
     "cloudflared",
     "external-dns",
+    "tekton-pipelines"
   ])
 
   metadata {
