@@ -41,7 +41,8 @@ spec:
             hosts:
               - "*"
           externalServices:
-            googleRecaptcha: "none"
+            googleRecaptcha:
+              publicKey: "none"
 
         saleor-storefront:
           enabled: true
