@@ -39,7 +39,9 @@ spec:
           enabled: true
           allowedHosts:
             hosts:
-              - "*"
+              - localhost
+              - 127.0.0.1
+              - saleor.maibaloc.com
           externalServices:
             googleRecaptcha:
               publicKey: "none"
