@@ -13,11 +13,11 @@ longhorn:
 
 # Observability
 monitoring:
-  enabled: false
+  enabled: true
   namespace: observability
 
 tracing:
-  enabled: false
+  enabled: true
   namespace: observability
 
 logging:
