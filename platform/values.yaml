@@ -36,3 +36,7 @@ gitea:
   namespace: platform
   ingress:
     enabled: false
+
+hajimari:
+  enabled: true
+  namespace: platform

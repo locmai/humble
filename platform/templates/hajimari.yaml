@@ -1,0 +1,56 @@
+{{- if .Values.hajimari.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-hajimari
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.hajimari.namespace }}
+  source:
+    chart: hajimari
+    repoURL: https://hajimari.io
+    targetRevision: 0.2.0
+    helm:
+      releaseName: hajimari
+      values: |
+        image:
+          tag: v0.2.0
+        env:
+          TZ: Asia/Ho_Chi_Minh
+        hajimari:
+          defaultEnable: true
+          namespaceSelector:
+            any: true
+          name: "Loc Mai"
+        ingress:
+          main:
+            enabled: true
+            ingressClassName: nginx
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod
+            hosts:
+              - host: &host home.maibaloc.com
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls:
+              - secretName: hajimari-tls-certificate
+                hosts:
+                  - *host
+        persistence:
+          data:
+            enabled: false
+{{- end }}

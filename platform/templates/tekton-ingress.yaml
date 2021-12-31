@@ -5,6 +5,8 @@ metadata:
   name: tekton-dashboard
   namespace: tekton-pipelines
   annotations:
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "Tekton"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
