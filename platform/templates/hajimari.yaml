@@ -22,7 +22,7 @@ spec:
   source:
     chart: hajimari
     repoURL: https://hajimari.io
-    targetRevision: 0.2.0
+    targetRevision: 1.2.0
     helm:
       releaseName: hajimari
       values: |
