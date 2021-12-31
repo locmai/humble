@@ -25,6 +25,24 @@ spec:
         nfs-server-provisioner:
           enabled: false
         
+        redis:
+          cluster:
+            enabled: false
+            slaveCount: 2
+          persistence:
+            enabled: false
+          master:
+            persistence:
+              enabled: false
+
+        saleor-core:
+          enabled: true
+          allowedHosts:
+            hosts:
+              - "*"
+          externalServices:
+            googleRecaptcha: "none"
+
         saleor-storefront:
           enabled: true
           ingress:
@@ -41,4 +59,5 @@ spec:
              - secretName: saleor-tls-certificate
                hosts:
                  - *host
+        
 {{- end }}
