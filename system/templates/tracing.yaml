@@ -31,6 +31,8 @@ spec:
           elasticsearch: true
           kafka: false
         elasticsearch:
+          persistence:
+            enabled: false
           volumeClaimTemplate:
             accessModes: ["ReadWriteOnce"]
             resources:
