@@ -26,6 +26,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [ ] Mail server
   - [ ] Messaging platform
   - [x] Remove SVC server
+  - [x] Service Mesh
 - [ ] IAM system
   - [x] Identity platform
   - [ ] SSO login
