@@ -10,4 +10,4 @@ filebrowser:
   enabled: false
 
 saleor:
-  enabled: false
+  enabled: true
