@@ -26,6 +26,9 @@ spec:
     helm:
       releaseName: vault
       values: |
+        server:
+          dev:
+            enabled: true
         postgresql:
           metrics:
             enabled: true
