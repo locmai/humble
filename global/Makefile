@@ -1,2 +1,2 @@
 default:
-	terraform apply -y
+	terraform apply -auto-approve
