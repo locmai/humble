@@ -13,11 +13,11 @@ longhorn:
 
 # Observability
 monitoring:
-  enabled: true
+  enabled: false
   namespace: observability
 
 tracing:
-  enabled: true
+  enabled: false
   namespace: observability
 
 logging:
@@ -42,5 +42,5 @@ certmanager:
   namespace: cert-manager
 
 istio:
-  enabled: true
+  enabled: false
   namespace: istio-system
