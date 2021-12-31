@@ -18,7 +18,7 @@ spec:
   source:
     chart: saleor-platform
     repoURL: https://locmai.github.io/charts/
-    targetRevision: 0.1.4
+    targetRevision: 0.1.5
     helm:
       releaseName: saleor
       values: |
