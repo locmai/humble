@@ -30,4 +30,5 @@ RUN yes | pacman --sync --refresh \
         python-pip \
         terraform
 
-RUN pip install docker-compose
+RUN pip install docker-compose kubernetes
+
