@@ -28,5 +28,5 @@ spec:
       values: |
         installCRDs: true
         global:
-          operatorManageWebhooks: false
+          operatorManageWebhooks: true
 {{- end }}
