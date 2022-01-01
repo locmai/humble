@@ -25,4 +25,11 @@ spec:
     targetRevision: 2.5.0
     helm:
       releaseName: loki-stack
+      values: |
+        loki:
+          serviceMonitor:
+            enabled: true
+            additionalLabels:
+              release: monitoring
+            annotations: {}
 {{- end }}

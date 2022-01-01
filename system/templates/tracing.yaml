@@ -63,4 +63,22 @@ spec:
             # - secretName: chart-example-tls
             #   hosts:
             #     - chart-example.local
+
+        agent:
+          serviceMonitor:
+            enabled: true
+            additionalLabels:
+              release: monitoring
+
+        collector:
+          serviceMonitor:
+            enabled: true
+            additionalLabels:
+              release: monitoring
+
+        query:
+          serviceMonitor:
+            enabled: true
+            additionalLabels:
+              release: monitoring
 {{- end }}
