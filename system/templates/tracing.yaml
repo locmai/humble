@@ -21,8 +21,8 @@ spec:
     namespace: {{ .Values.tracing.namespace }}
   source:
     chart: jaeger
-    repoURL: https://jaegertracing.github.io/helm-charts
-    targetRevision: 0.51.5
+    repoURL: https://locmai.github.io/charts/
+    targetRevision: 0.51.6
     helm:
       releaseName: jaeger
       values: |
@@ -67,6 +67,7 @@ spec:
         agent:
           serviceMonitor:
             enabled: true
+          enableServiceLinks: false
 
         collector:
           serviceMonitor:
