@@ -29,7 +29,5 @@ spec:
         loki:
           serviceMonitor:
             enabled: true
-            additionalLabels:
-              release: monitoring
             annotations: {}
 {{- end }}

@@ -67,18 +67,12 @@ spec:
         agent:
           serviceMonitor:
             enabled: true
-            additionalLabels:
-              release: monitoring
 
         collector:
           serviceMonitor:
             enabled: true
-            additionalLabels:
-              release: monitoring
 
         query:
           serviceMonitor:
             enabled: true
-            additionalLabels:
-              release: monitoring
 {{- end }}

@@ -31,6 +31,4 @@ spec:
           enabled: true
           servicemonitor:
             enabled: true
-            labels:
-              release: monitoring
 {{- end }}
