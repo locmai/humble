@@ -30,6 +30,10 @@ spec:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
             serviceMonitorNamespaceSelector: {}
+            podMonitorSelectorNilUsesHelmValues: false
+            podMonitorNamespaceSelector: {}
+          server:
+            enableServiceLinks: false
         prometheusOperator:
           admissionWebhooks:
             enabled: true
