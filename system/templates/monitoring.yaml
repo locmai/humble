@@ -32,8 +32,14 @@ spec:
             serviceMonitorNamespaceSelector: {}
             podMonitorSelectorNilUsesHelmValues: false
             podMonitorNamespaceSelector: {}
+            containers:
+            - name: prometheus
+              env:
+              - name: JAEGER_AGENT_PORT
+                value: "5755"
           server:
             enableServiceLinks: false
+
         prometheusOperator:
           admissionWebhooks:
             enabled: true
