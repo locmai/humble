@@ -39,8 +39,6 @@ spec:
             enabled: true
             serviceMonitor:
               enabled: true
-            additionalLabels:
-              release: monitoring
           admissionWebhooks:
             enabled: false
             failurePolicy: Ignore
