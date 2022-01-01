@@ -52,7 +52,7 @@ spec:
               enabled: true
               label: grafana_dashboard
               folder: /tmp/dashboards
-              searchNamespace: monitoring
+              searchNamespace: {{ .Values.monitoring.namespace }}
               provider:
                 foldersFromFilesStructure: true
               annotations:
