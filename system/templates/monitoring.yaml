@@ -38,6 +38,7 @@ spec:
               enabled: false
         grafana:
           enabled: true
+          enableServiceLinks: false
           image:
             tag: 8.3.1
           persistence:
