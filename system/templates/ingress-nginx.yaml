@@ -24,7 +24,7 @@ spec:
     repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision:  4.0.8
     helm:
-      releaseName: ingress-nginx
+      releaseName: {{ .Values.argocd.project }}-ingress-nginx
       values: |
         controller:
           service:
