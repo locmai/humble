@@ -46,4 +46,23 @@ spec:
     path: 'bootstrap/argocd'
     repoURL: https://github.com/locmai/humble.git
     targetRevision: "{{ .Values.bootstrap.targetRevision }}"
+    helm:
+      values: |
+        argocd:
+          targetRevision: {{ .Values.global.targetRevision }}
+        
+        global:
+          domain: {{ .Values.global.domain }}
+            
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+          hosts:
+            - &host argocd.{{ .Values.global.domain }}
+          tls:
+            - secretName: argocd-tls-certificate
+              hosts:
+                - *host
 {{- end }}

@@ -1,16 +1,25 @@
 .POSIX:
 .EXPORT_ALL_VARIABLES:
 
-KUBECONFIG = ../metal/kubeconfig.yaml
+KUBECONFIG = $(shell pwd)/../metal/kubeconfig.yaml
 
 env ?= "prod"
 
-default: argocd app
+default: namespace argocd root
+
+argocd/charts: argocd/Chart.yaml
+	cd argocd \
+		&& helm dependency update
+
+namespace:
+	kubectl create namespace argocd --dry-run=client --output=yaml \
+		| kubectl apply -f -
 
 .PHONY: argocd
-argocd:
-	kustomize build ./argocd | kubectl apply -f -
+argocd: argocd/charts
+	cd argocd && \
+		./apply.sh
 
-.PHONY: app
-app:
-	kubectl apply -f ./app/root-${env}.yaml
+.PHONY: root
+root:
+	kubectl apply -f ./root/root-${env}.yaml
