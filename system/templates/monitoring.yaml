@@ -46,6 +46,8 @@ spec:
             failurePolicy: Ignore
             patch:
               enabled: false
+          tls:
+            enabled: false
           denyNamespaces:
             - 'notreal'
         grafana:
