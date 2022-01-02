@@ -50,4 +50,34 @@ spec:
             - secretName: argocd-tls-certificate
               hosts:
                 - *host
+
+        server:
+          metrics:
+            enabled: true
+            serviceMonitor:
+              enabled: true
+
+        controller:
+          metrics:
+            enabled: true
+            serviceMonitor:
+              enabled: true
+
+        repoServer:
+          metrics:
+            enabled: true
+            serviceMonitor:
+              enabled: true
+        
+        redis:
+          metrics:
+            enabled: true
+            serviceMonitor:
+              enabled: true
+        
+        dex:
+          metrics:
+            enabled: true
+            serviceMonitor:
+              enabled: true
 {{- end }}
