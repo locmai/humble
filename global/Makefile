@@ -9,3 +9,4 @@ cleanup:
 	terraform state rm 'kubernetes_namespace.namespaces["cert-manager"]'
 	terraform state rm 'kubernetes_namespace.namespaces["cloudflared"]'
 	terraform state rm 'kubernetes_namespace.namespaces["external-dns"]'
+	terraform state rm 'kubernetes_namespace.namespaces["tekton-pipelines"]'
