@@ -27,8 +27,4 @@ spec:
       releaseName: cert-manager
       values: |
         installCRDs: true
-        prometheus:
-          enabled: true
-          servicemonitor:
-            enabled: true
 {{- end }}
