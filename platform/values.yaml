@@ -32,10 +32,10 @@ authentik:
 
 # SCM
 gitea:
-  enabled: false
+  enabled: true
   namespace: platform
   ingress:
-    enabled: false
+    enabled: true
 
 hajimari:
   enabled: true
