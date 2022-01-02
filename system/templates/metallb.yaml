@@ -22,12 +22,12 @@ spec:
   source:
     chart: metallb
     repoURL: https://metallb.github.io/metallb
-    targetRevision: 0.11.0
+    targetRevision: 0.11.1
     helm:
       releaseName: metallb
       values: |
         existingConfigMap: metallb-config
         prometheus:
           serviceMonitor:
-            enabled: true
+            enabled: false
 {{- end }}
