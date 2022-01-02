@@ -23,11 +23,11 @@ RUN yes | pacman --sync --refresh \
         kustomize \
         libisoburn \
         make \
-        mdbook \
         p7zip \
         python \
+        python-kubernetes \
         python-netaddr \
         python-pip \
         terraform
 
-RUN pip install docker-compose kubernetes
+RUN pip install docker-compose
