@@ -3,6 +3,8 @@
 
 KUBECONFIG = $(shell pwd)/../metal/kubeconfig.yaml
 
+env ?= "prod"
+
 default: namespace argocd root
 
 argocd/charts: argocd/Chart.yaml
