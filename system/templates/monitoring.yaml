@@ -42,7 +42,7 @@ spec:
 
         prometheusOperator:
           admissionWebhooks:
-            enabled: true
+            enabled: false
             failurePolicy: Ignore
             patch:
               enabled: false
