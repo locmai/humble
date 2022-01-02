@@ -13,3 +13,8 @@ cluster:
 	ansible-playbook \
 		--inventory inventories/${env}.ini \
 		cluster.yml
+
+shutdown:
+	ansible-playbook \
+		--inventory inventories/${env}.ini \
+		shutdown.yml
