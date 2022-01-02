@@ -29,6 +29,7 @@ spec:
     repoURL: https://github.com/locmai/humble.git
     targetRevision: "{{ .Values.bootstrap.targetRevision }}"
     helm:
+      releaseName: bootstrap-argocd
       values: |
         argocd:
           targetRevision: {{ .Values.global.targetRevision }}
