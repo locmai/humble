@@ -39,7 +39,7 @@ spec:
         - /spec/syncPolicy/automated
   destination:
     name: in-cluster
-    namespace: bootstrap
+    namespace: argocd
   source:
     path: 'bootstrap/argocd'
     repoURL: https://github.com/locmai/humble.git
