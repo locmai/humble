@@ -1,0 +1,100 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: root
+  namespace: argocd
+spec:
+  description: root project
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - git@github.com:locmai/**
+  - https://github.com/locmai/**
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: apps
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  description: apps project
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: bootstrap
+  namespace: argocd
+spec:
+  description: bootstrap project
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: global
+  namespace: argocd
+spec:
+  description: global project
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  description: platform project
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: system
+  namespace: argocd
+spec:
+  description: system project
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'

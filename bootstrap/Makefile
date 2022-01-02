@@ -22,4 +22,5 @@ argocd: argocd/charts
 
 .PHONY: root
 root:
+	kubectl apply -f ./root/root-projects.yaml
 	kubectl apply -f ./root/root-${env}.yaml

@@ -1,21 +1,4 @@
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: root
-  namespace: argocd
-spec:
-  description: root project
-  clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
-  destinations:
-  - namespace: '*'
-    server: '*'
-  sourceRepos:
-  - git@github.com:locmai/**
-  - https://github.com/locmai/**
----
-apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root

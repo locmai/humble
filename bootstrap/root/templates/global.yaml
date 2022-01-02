@@ -1,21 +1,5 @@
 {{- if .Values.global.enabled }}
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: global
-  namespace: argocd
-spec:
-  description: global project
-  clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
-  destinations:
-  - namespace: '*'
-    server: '*'
-  sourceRepos:
-  - '*'
----
-apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: global

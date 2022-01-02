@@ -1,21 +1,5 @@
 {{- if .Values.bootstrap.enabled }}
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: bootstrap
-  namespace: argocd
-spec:
-  description: bootstrap project
-  clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
-  destinations:
-  - namespace: '*'
-    server: '*'
-  sourceRepos:
-  - '*'
----
-apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstrap
