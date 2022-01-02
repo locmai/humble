@@ -39,7 +39,7 @@ spec:
     name: in-cluster
     namespace: platform
   source:
-    path: 'bootstrap/app'
+    path: 'bootstrap/root'
     repoURL: https://github.com/locmai/humble.git
     targetRevision: main
     helm:
