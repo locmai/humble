@@ -27,4 +27,11 @@ spec:
       releaseName: cert-manager
       values: |
         installCRDs: true
+
+        prometheus:
+          enabled: true
+          # TODO enable when figuring out how to install Prometheus CRD first
+          servicemonitor:
+            enabled: false
 {{- end }}
+helm template cert-manager jetstack/cert-manager --namespace cert-manager --set prometheus.servicemonitor.enabled=true
