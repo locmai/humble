@@ -36,48 +36,48 @@ spec:
         
         global:
           domain: {{ .Values.global.domain }}
-            
-        ingress:
-          enabled: true
-          ingressClassName: nginx
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-prod
-            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
-            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-          hosts:
-            - &host argocd.{{ .Values.global.domain }}
-          tls:
-            - secretName: argocd-tls-certificate
+
+        argo-cd:
+          server:
+            ingress:
+              enabled: true
+              ingressClassName: nginx
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt-prod
+                external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
+                external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
               hosts:
-                - *host
+                - &host argocd.{{ .Values.global.domain }}
+              tls:
+                - secretName: argocd-tls-certificate
+                  hosts:
+                    - *host
+            metrics:
+              enabled: true
+              serviceMonitor:
+                enabled: true
 
-        server:
-          metrics:
-            enabled: true
-            serviceMonitor:
+          controller:
+            metrics:
               enabled: true
+              serviceMonitor:
+                enabled: true
 
-        controller:
-          metrics:
-            enabled: true
-            serviceMonitor:
+          repoServer:
+            metrics:
               enabled: true
-
-        repoServer:
-          metrics:
-            enabled: true
-            serviceMonitor:
+              serviceMonitor:
+                enabled: true
+          
+          redis:
+            metrics:
               enabled: true
-        
-        redis:
-          metrics:
-            enabled: true
-            serviceMonitor:
+              serviceMonitor:
+                enabled: true
+          
+          dex:
+            metrics:
               enabled: true
-        
-        dex:
-          metrics:
-            enabled: true
-            serviceMonitor:
-              enabled: true
+              serviceMonitor:
+                enabled: true
 {{- end }}
