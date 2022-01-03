@@ -27,7 +27,7 @@ spec:
       releaseName: longhorn
       values: |
         ingress:
-          enabled: false
+          enabled: true
           host: &host longhorn.{{ .Values.global.domain }}
           tlse: true
           tlsSecret: longhorn-tls-certificate

@@ -24,9 +24,8 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
 - [x] Common infrastructures and services
   - [x] Load balancers / Ingress controller
   - [x] Secured internal and external DNS setup
-  - [x] Cloud native distributed block storage(longhorn.io)
+  - [x] Cloud native distributed block storage
   - [x] Secret management system
-  - [ ] Mail server
   - [ ] Messaging platform
   - [x] Remove SVC server
   - [x] Service Mesh with Istio
@@ -40,7 +39,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [x] Argo Workflow
   - [ ] Private Container Registry
   - [ ] Private Package Registry
-- [ ] Observability
+- [x] Observability
   - [x] Operating dashboards
   - [x] Log streaming
   - [ ] Alert rules and notifications
