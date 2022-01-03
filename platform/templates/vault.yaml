@@ -39,8 +39,7 @@ spec:
             hosts:
               - host: &host vault.{{ .Values.global.domain }}
                 paths:
-                  - path: /
-                    pathType: Prefix
+                  - /
             tls:
               - secretName: vault-tls-certificate
                 hosts:
