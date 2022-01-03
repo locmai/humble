@@ -6,6 +6,21 @@ menu: 3. Deployment
 
 # Configurations
 
-## TBD
+## Domain settings
 
-TBD 
+The setting for the main domain that would be used for all ingresses located at `{root}/bootstrap/values-<env>.yaml`. 
+
+```
+global:
+  domain: "maibaloc.com"
+```
+
+Set the `global.domain` value to the domain that you own.
+
+## Terraform providers
+
+### Cloudflare
+
+The `global` layer uses the [Cloudflare provider](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for creating Tunnel resources and secrets.
+
+TBD

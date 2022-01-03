@@ -1,0 +1,5 @@
+namespaces:
+  - cert-manager
+  - cloudflared
+  - external-dns
+  - tekton-pipelines
