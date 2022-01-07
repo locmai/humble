@@ -3,3 +3,9 @@ namespaces:
   - cloudflared
   - external-dns
   - tekton-pipelines
+  - platform
+  - apps
+  - system
+  - argocd
+  - global
+  - bootstrap
