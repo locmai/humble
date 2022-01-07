@@ -38,10 +38,10 @@ spec:
           hosts:
             - host: &host conduit.maibaloc.com
               paths:
-                - /
+                - path: /
+                  pathType: ImplementationSpecific
           tls:
             - secretName: conduit-tls-certificate
               hosts:
                 - *host
-        
 {{- end }}
