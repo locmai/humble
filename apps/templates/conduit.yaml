@@ -1,0 +1,47 @@
+{{- if .Values.conduit.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-conduit
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: conduit
+    repoURL: https://locmai.github.io/charts/
+    targetRevision: 0.1.2
+    helm:
+      releaseName: conduit
+      values: |
+        config_toml:
+          server_name: "conduit.maibaloc.com"
+
+        ingress:
+          enabled: true
+          annotations:
+            hajimari.io/enable: "true"
+            hajimari.io/appName: "Conduit"
+            cert-manager.io/cluster-issuer: "letsencrypt-prod"
+            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+          hosts:
+            - host: &host conduit.maibaloc.com
+              paths:
+                - /
+          tls:
+            - secretName: conduit-tls-certificate
+              hosts:
+                - *host
+        
+{{- end }}

@@ -11,3 +11,6 @@ filebrowser:
 
 saleor:
   enabled: false
+
+conduit:
+  enabled: false
