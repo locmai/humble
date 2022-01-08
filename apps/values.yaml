@@ -13,4 +13,4 @@ saleor:
   enabled: false
 
 conduit:
-  enabled: true
+  enabled: false
