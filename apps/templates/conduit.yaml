@@ -24,7 +24,7 @@ spec:
     helm:
       releaseName: conduit
       values: |
-        config_toml:
+        conduit_toml:
           server_name: "conduit.maibaloc.com"
 
         ingress:

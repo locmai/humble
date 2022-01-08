@@ -26,4 +26,3 @@ dev:
 .PHONY: global
 global:
 	make -C global
-
