@@ -6,7 +6,7 @@ menu: 3. Deployment
 
 # Configurations
 
-## Domain settings
+## Domain setting
 
 The setting for the main domain that would be used for all ingresses located at `{root}/bootstrap/values-<env>.yaml`. 
 
@@ -17,9 +17,27 @@ global:
 
 Set the `global.domain` value to the domain that you own.
 
-## Terraform providers
+> TODO: Update DNS setup
 
-### Cloudflare
+## Inventory
+
+The collection of metal nodes we utilized for the Ansible will need to be defined. Update the './metal/inventories/prod.ini' file with the information you got in the previous step:
+
+```
+[metal:children]
+masters
+workers
+
+[masters]
+metal0 ansible_host=<desired_ip_0> mac='<mac_address_0>'
+metal1 ansible_host=<desired_ip_1> mac='<mac_address_1>'
+metal2 ansible_host=<desired_ip_2> mac='<mac_address_2>'
+
+[workers]
+metal3 ansible_host=<desired_ip_3> mac='<mac_address_3>'
+```
+
+## Cloudflare Terraform
 
 The `global` layer uses the [Cloudflare provider](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for creating Tunnel resources and secrets.
 
@@ -43,3 +61,18 @@ cloudflare_api_key = "<generated_token>"
 cloudflare_email = "<your_cloudflare_email>"
 ```
 
+## Applications
+
+The setups for all applications are straightforward and basic in general; they are all defined in YAML format (in the `values.yaml` files) and are comparable in nature.
+
+Take Istio deployment as an example:
+
+``` yaml
+istio:
+  enabled: true
+  namespace: istio-system
+  gateway:
+    enabled: false
+```
+
+> The above lines indicate that we want Istio to be deployed in the 'istio-system' namespace without the Istio gateway.

@@ -6,4 +6,12 @@ menu: 3. Deployment
 
 # Provisioning Flow
 
+![provisioning flow](https://imagedelivery.net/34xh1sPWPAwO1lv63pW2Eg/f0a5ff75-031f-4fed-1acb-c34b08ae7900/public)
 
+After preparing the required settings and editing the configuration files, you only need to run a single `make` command and the rest will be automated. Including:
+- Create stateless PXE server
+- Boot all metal nodes via Wake-on-LAN
+- Install Rocky Linux OS on all nodes
+- Create a Kubertnetes cluster with K3s
+- Install ArgoCD and deploy root chart
+- ArgoCD will apply and bootstrap all the services
