@@ -98,6 +98,7 @@ spec:
             cert-manager.io/cluster-issuer: letsencrypt-prod
             external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
             external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            nginx.ingress.kubernetes.io/proxy-body-size: 32m
           hosts:
             - host: &host dendrite.{{ .Values.global.domain }}
               paths:
