@@ -36,6 +36,7 @@ spec:
 
         configuration:
           # servername for this dendrite deployment
+          version: 1
           servername: "dendrite.maibaloc.com"
 
           # database connection settings
