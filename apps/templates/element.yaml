@@ -49,5 +49,5 @@ spec:
             base_url: "https://dendrite.{{ .Values.global.domain }}"
             server_name: "maibaloc.com"
 
-            theme: "dark"
+            theme: "light"
 {{- end }}
