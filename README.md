@@ -26,7 +26,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [x] Secured internal and external DNS setup
   - [x] Cloud native distributed block storage
   - [x] Secret management system
-  - [ ] Messaging platform
+  - [x] Messaging platform
   - [x] Remove SVC server
   - [x] Service Mesh with Istio
 - [ ] IAM system
