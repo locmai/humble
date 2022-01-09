@@ -12,5 +12,5 @@ filebrowser:
 saleor:
   enabled: false
 
-conduit:
-  enabled: false
+dendrite:
+  enabled: true
