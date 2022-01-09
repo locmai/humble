@@ -32,7 +32,7 @@ spec:
         image:
           # name: "matrixdotorg/dendrite-polylith:latest"
           name: "locmai/dendrite-monolith:010922"
-          pullPolicy: Always
+          pullPolicy: IfNotPresent
 
         configuration:
           # servername for this dendrite deployment
