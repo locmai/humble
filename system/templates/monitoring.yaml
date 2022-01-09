@@ -91,4 +91,23 @@ spec:
           - grafana-polystat-panel
           - digiapulssi-breadcrumb-panel
           - macropower-analytics-panel
+
+        alertmanager:
+          config:
+            global:
+              resolve_timeout: 5m
+            route:
+              group_by: ['job']
+              group_wait: 30s
+              group_interval: 5m
+              repeat_interval: 2h
+              receiver: 'matrix'
+              routes:
+              - match:
+                  alertname: Watchdog
+                receiver: 'matrix'
+            receivers:
+            - name: 'matrix'
+              webhook_configs:
+              - url: 'http://matrixalertmanager.apps.svc.cluster.local:3000/alerts?secret=verysecret'
 {{- end }}
