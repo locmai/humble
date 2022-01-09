@@ -32,11 +32,11 @@ spec:
         image:
           # name: "matrixdotorg/dendrite-polylith:latest"
           name: "locmai/dendrite-monolith:010922"
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
 
         configuration:
           # servername for this dendrite deployment
-          version: 1
+          version: 2
           servername: "dendrite.maibaloc.com"
 
           # database connection settings
