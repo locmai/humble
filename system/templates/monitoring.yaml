@@ -109,5 +109,5 @@ spec:
             receivers:
             - name: 'matrix'
               webhook_configs:
-              - url: 'http://matrixalertmanager.apps.svc.cluster.local:3000/alerts?secret=verysecret'
+                - url: 'http://neb.apps.svc.cluster.local/services/hooks/YWxlcnRtYW5hZ2VyX3NlcnZpY2U'
 {{- end }}
