@@ -93,6 +93,7 @@ spec:
         ingress:
           enabled: true
           
+          className: nginx
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-prod
             external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
