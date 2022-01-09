@@ -20,7 +20,7 @@ spec:
   source:
     chart: elementweb
     repoURL: https://locmai.github.io/charts/
-    targetRevision: 0.0.1
+    targetRevision: 0.0.2
     helm:
       releaseName: elementweb
       values: |
@@ -31,10 +31,10 @@ spec:
             hajimari.io/enable: "true"
             hajimari.io/appName: "Element"
             cert-manager.io/cluster-issuer: letsencrypt-prod
-            external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
+            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
             external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
           hosts:
-            - host: &host element.maibaloc.com
+            - host: &host chat.{{ .Values.global.domain }}
               paths:
                 - path: /
                   pathType: Prefix
@@ -42,4 +42,11 @@ spec:
             - secretName: element-tls-certificate
               hosts:
                 - *host
+
+          config:
+            default:
+              base_url: "https://dendrite.{{ .Values.global.domain }}"
+              server_name: "https://dendrite.{{ .Values.global.domain }}"
+
+              theme: "dark"
 {{- end }}
