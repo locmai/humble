@@ -17,3 +17,6 @@ dendrite:
 
 element:
   enabled: true
+
+matrixalertmanager:
+  enabled: false
