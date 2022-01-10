@@ -51,13 +51,13 @@ spec:
             serviceMonitor:
               enabled: true
 
-        #   config:
-        #     server:
-        #       LANDING_PAGE: explore
-        #   # Either specify inline `key` and `secret` or refer to them via `existingSecret`
-        #   oauth:
-        #     - name: 'authentik'
-        #       provider: 'openidConnect'
-        #       existingSecret: gitea-oauth2-secrets
-        #       autoDiscoverUrl: https://authentik.{{ .Values.global.domain }}/application/o/gitea/.well-known/openid-configuration
+          config:
+            server:
+              LANDING_PAGE: explore
+          # Either specify inline `key` and `secret` or refer to them via `existingSecret`
+          oauth:
+            - name: 'authentik'
+              provider: 'openiddonnect'
+              existingSecret: gitea-oauth2-secrets
+              autoDiscoverUrl: https://authentik.{{ .Values.global.domain }}/application/o/gitea/.well-known/openid-configuration
 {{- end }}
