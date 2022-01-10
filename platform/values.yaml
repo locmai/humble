@@ -27,15 +27,15 @@ argo_workflow:
 
 # IAM
 authentik:
-  enabled: false
+  enabled: true
   namespace: platform
 
 # SCM
 gitea:
-  enabled: false
+  enabled: true
   namespace: platform
   ingress:
-    enabled: false
+    enabled: true
 
 hajimari:
   enabled: true
