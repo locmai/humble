@@ -53,8 +53,8 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
 If you have further questions, please feel free to join us at:
 
 - **[#homelab](https://matrix.to/#/#homelab:dendrite.maibaloc.com)** - General chat about the Humble project, for users and server admins alike
-- **[#humble-dev](https://matrix.to/#/#humble-dev:dendrite.maibaloc.com)** - The place for developers, where all Dendrite development discussion happens
-- **[#alerts](https://matrix.to/#/#alerts:dendrite.maibaloc.com)** - Release/incident notifications and important info, highly recommended for all Dendrite server admins
+- **[#humble-dev](https://matrix.to/#/#humble-dev:dendrite.maibaloc.com)** - The place for developers, where all Humble development discussion happens
+- **[#alerts](https://matrix.to/#/#alerts:dendrite.maibaloc.com)** - Release/incident notifications and important info, highly recommended for all Humble server admins
 
 Or by creating an account at **[chat.maibaloc.com](https://chat.maibaloc.com)**
 
