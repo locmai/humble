@@ -56,7 +56,7 @@ If you have further questions, please feel free to join us at:
 - **[#humble-dev](https://matrix.to/#/#humble-dev:dendrite.maibaloc.com)** - The place for developers, where all Dendrite development discussion happens
 - **[#alerts](https://matrix.to/#/#alerts:dendrite.maibaloc.com)** - Release/incident notifications and important info, highly recommended for all Dendrite server admins
 
-Or by creating an account at - **[chat.maibaloc.com](https://chat.maibaloc.com)**
+Or by creating an account at **[chat.maibaloc.com](https://chat.maibaloc.com)**
 
 ## Technology Landscape
 
