@@ -48,6 +48,14 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
   - [ ] [Saleor](https://saleor.io/)
   - [ ] [microservices-demo](https://github.com/locmai/microservices-demo)
 
+## Matrix server
+
+If you have further questions, please feel free to join us at:
+
+- **[#homelab](https://matrix.to/#/#homelab:dendrite.maibaloc.com)** - General chat about the Humble project, for users and server admins alike
+- **[#humble-dev](https://matrix.to/#/#humble-dev:dendrite.maibaloc.com)** - The place for developers, where all Dendrite development discussion happens
+- **[#alerts](https://matrix.to/#/#alerts:dendrite.maibaloc.com)** - Release/incident notifications and important info, highly recommended for all Dendrite server admins
+
 ## Technology Landscape
 
 TBD
