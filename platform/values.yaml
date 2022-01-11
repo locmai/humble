@@ -8,7 +8,7 @@ global:
 
 # Secret managment
 vault:
-  enabled: true
+  enabled: false
   namespace: platform
 
 # Workflow engines
