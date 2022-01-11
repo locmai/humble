@@ -30,4 +30,7 @@ spec:
       values: |
         argocd:
           targetRevision: {{ .Values.apps.targetRevision }}
+        
+        global:
+          domain: {{ .Values.global.domain }}
 {{- end }}

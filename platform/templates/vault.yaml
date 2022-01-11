@@ -28,7 +28,7 @@ spec:
       values: |
         server:
           dev:
-            enabled: true
+            enabled: false
           ingress:
             enabled: true
             ingressClassName: nginx
@@ -44,11 +44,13 @@ spec:
               - secretName: vault-tls-certificate
                 hosts:
                   - *host
-        postgresql:
-          metrics:
+          dataStorage:
             enabled: true
-            serviceMonitor:
-              enabled: true
-              additionalLabels:
-                layer: platform
+            # Size of the PVC created
+            size: 10Gi
+            # Location where the PVC will be mounted.
+            mountPath: "/vault/data"
+            # Name of the storage class to use.  If null it will use the
+            # configured default Storage Class.
+            storageClass: "longhorn"
 {{- end }}

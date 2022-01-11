@@ -9,6 +9,7 @@ global:
 # Secret managment
 vault:
   enabled: true
+  namespace: platform
 
 # Workflow engines
 tekton:
