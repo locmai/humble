@@ -103,3 +103,4 @@ res = requests.post(application_oauth2_api_url,
 
 if res.status_code == 201:
     print("Created application.")
+    exit(0)
