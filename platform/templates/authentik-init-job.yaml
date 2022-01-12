@@ -10,6 +10,7 @@ spec:
   backoffLimit: 3
   template:
     spec:
+      serviceAccount: init-tools
       restartPolicy: Never
       containers:
         - name: script
