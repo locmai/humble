@@ -1,0 +1,25 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: init-tools
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+piVersion: rbac.authorization.k8s.io/v1
+---
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: platform
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: init-tools
+  apiGroup: rbac.authorization.k8s.io
