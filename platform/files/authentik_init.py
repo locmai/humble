@@ -30,7 +30,8 @@ flow_binding_api_url =f"{base_url}/flows/bindings"
 res = requests.get(flow_binding_api_url,headers={'Authorization': f"Bearer {ak_admin_token}"})
 if res.status_code != 200:
     print("Invalid token!")
-    exit()
+    exit(1)
+
 resp_json = res.json()
 target_auth_flow = [
     flow for flow in resp_json["results"] if flow["stage_obj"]["name"] == "default-provider-authorization-consent"
