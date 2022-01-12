@@ -5,7 +5,7 @@ metadata:
   name: init-authentik
   namespace: {{ .Release.Namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   backoffLimit: 3
   template:

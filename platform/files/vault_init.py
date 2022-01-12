@@ -3,6 +3,26 @@ subprocess.check_call([sys.executable, "-m", "pip", "install", "hvac"])
 subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
 
 from hvac import Client
+import base64
+from kubernetes import client, config
+import time
+
+# Init kubernetes client
+# config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
+config.load_incluster_config()
+k8s_client = client.CoreV1Api()
+
+vault_pod_is_running = False
+
+while not vault_pod_is_running:
+    try:
+        time.sleep(3)
+        print('Waiting for vault to be running ...')
+        vault_pod = k8s_client.read_namespaced_pod('vault-0', 'platform')
+        if vault_pod.status.container_statuses[0].state.running is not None:
+            vault_pod_is_running = True
+    except Exception:
+        continue
 
 print('Initializing Vault ...')
 
@@ -24,13 +44,7 @@ unseal_response = vault_client.sys.submit_unseal_keys(keys)
 
 print(f"Vault is Unsealed: {not vault_client.sys.is_sealed()}")
 
-import base64
-from kubernetes import client, config
 
-# Init kubernetes client
-# config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
-config.load_incluster_config()
-k8s_client = client.CoreV1Api()
 
 secret_data = {
     'root_token': base64.b64encode(bytes(root_token,'utf-8')).decode("utf-8") 
