@@ -12,14 +12,12 @@ k8s_client = client.CoreV1Api()
 vault_pod_is_running = False
 
 while not vault_pod_is_running:
-    try:
-        time.sleep(3)
-        print('Waiting for vault to be running ...')
-        vault_pod = k8s_client.read_namespaced_pod('vault-0', 'platform')
-        if vault_pod.status.container_statuses[0].state.running is not None:
-            vault_pod_is_running = True
-    except Exception:
-        continue
+    time.sleep(3)
+    print('Waiting for vault to be running ...')
+    vault_pod = k8s_client.read_namespaced_pod('vault-0', 'platform')
+    if vault_pod.status.container_statuses[0].state.running is not None:
+        vault_pod_is_running = True
+
 
 print('Initializing Vault ...')
 
