@@ -1,0 +1,23 @@
+{{- if .Values.authentik.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-authentik
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: script
+          image: python
+          command:
+            - python
+            - -c
+          args:
+            - |
+{{ .Files.Get "files/authentik_init.py" | indent 14 }}
+{{- end }}

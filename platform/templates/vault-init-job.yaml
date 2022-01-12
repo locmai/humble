@@ -1,0 +1,23 @@
+{{- if .Values.vault.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-vault
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: script
+          image: python
+          command:
+            - python
+            - -c
+          args:
+            - |
+{{ .Files.Get "files/vault_init.py" | indent 14 }}
+{{- end }}

@@ -1,17 +1,16 @@
-# WIP
-# import subprocess, sys
-# subprocess.check_call([sys.executable, "-m", "pip", "install", "hvac"])
-# subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
+import subprocess, sys
+subprocess.check_call([sys.executable, "-m", "pip", "install", "hvac"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
 
 from hvac import Client
 
 print('Initializing Vault ...')
 
-vault_client = Client(url='http://localhost:44927/', verify=False)
-# vault_client = Client(url='http://vault.platform.svc.cluster.local:8200/', verify=False)
+# vault_client = Client(url='http://localhost:44927/', verify=False)
+vault_client = Client(url='http://vault.platform.svc.cluster.local:8200/', verify=False)
 
-shares = 3
-threshold = 2
+shares = 5
+threshold = 3
 
 result = vault_client.sys.initialize(shares, threshold)
 root_token = result['root_token']
@@ -29,8 +28,8 @@ import base64
 from kubernetes import client, config
 
 # Init kubernetes client
-config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
-# config.load_incluster_config()
+# config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
+config.load_incluster_config()
 k8s_client = client.CoreV1Api()
 
 secret_data = {

@@ -1,6 +1,6 @@
 # WIP
-# import subprocess
-# subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
+import subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
 
 import base64, sys, requests, json, subprocess
 
@@ -11,8 +11,8 @@ domain = "authentik.maibaloc.com"
 base_url = f"https://{domain}/api/v3"
 
 # Init kubernetes client
-config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
-# config.load_incluster_config()
+# config: config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
+config.load_incluster_config()
 v1 = client.CoreV1Api()
 
 # Get authentik secret

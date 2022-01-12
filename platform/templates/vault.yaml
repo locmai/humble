@@ -5,7 +5,7 @@ metadata:
   name: {{ .Values.argocd.project }}-vault
   namespace: {{ .Values.argocd.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -29,21 +29,6 @@ spec:
         server:
           dev:
             enabled: false
-          ingress:
-            enabled: false
-            ingressClassName: nginx
-            annotations:
-              hajimari.io/enable: "true"
-              hajimari.io/appName: "vault"
-              cert-manager.io/cluster-issuer: letsencrypt-prod
-            hosts:
-              - host: &host vault.{{ .Values.global.domain }}
-                paths:
-                  - /
-            tls:
-              - secretName: vault-tls-certificate
-                hosts:
-                  - *host
           dataStorage:
             enabled: true
             # Size of the PVC created
