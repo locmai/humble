@@ -1,7 +1,3 @@
-import subprocess, sys
-subprocess.check_call([sys.executable, "-m", "pip", "install", "hvac"])
-subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
-
 from hvac import Client
 import base64
 from kubernetes import client, config

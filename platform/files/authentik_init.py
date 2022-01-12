@@ -1,7 +1,4 @@
 # WIP
-import subprocess
-subprocess.check_call([sys.executable, "-m", "pip", "install", "kubernetes"])
-
 import base64, sys, requests, json, subprocess
 
 

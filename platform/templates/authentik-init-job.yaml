@@ -13,7 +13,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: script
-          image: python
+          image: locmai/init-tools:0.0.1
           command:
             - python
             - -c
