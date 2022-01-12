@@ -1,7 +1,10 @@
 # Humble Project
 
-![argocd status](https://argocd.maibaloc.com/api/badge?name=root&revision=true)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+[![chat](https://img.shields.io/matrix/home:dendrite.maibaloc.com?style=flat-square&logo=matrix&logoColor=white&label=chat)](https://matrix.to/#/#home:dendrite.maibaloc.com)
+[![tag](https://img.shields.io/github/v/tag/locmai/humble?style=flat-square&logo=semver&logoColor=white)](https://github.com/khuedoan/homelab/tags)
+[![document](https://img.shields.io/website?label=document&logo=gitbook&logoColor=white&style=flat-square&url=https%3A%2F%2Fhumble.maibaloc.com)](https://humble.maibaloc.com)
+[![license](https://img.shields.io/github/license/locmai/humble?style=flat-square&logo=gnu&logoColor=white)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 ## Overview
 
@@ -52,7 +55,7 @@ Humble is a project that seeks to set up a ready-to-go environment with operatin
 
 If you have further questions, please feel free to join us at:
 
-- **[#homelab](https://matrix.to/#/#homelab:dendrite.maibaloc.com)** - General chat about the Humble project, for users and server admins alike
+- **[#homelab](https://matrix.to/#/#home:dendrite.maibaloc.com)** - General chat about the Humble project, for users and server admins alike
 - **[#humble-dev](https://matrix.to/#/#humble-dev:dendrite.maibaloc.com)** - The place for developers, where all Humble development discussion happens
 - **[#alerts](https://matrix.to/#/#alerts:dendrite.maibaloc.com)** - Release/incident notifications and important info, highly recommended for all Humble server admins
 

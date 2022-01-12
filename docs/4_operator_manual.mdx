@@ -5,4 +5,13 @@ route: /operator-manual
 
 # Operator Manual
 
-TBD
+## Get initial passwords
+
+In the **tools** directory, we have a few script for getting the intial passwords to login to the site.
+
+The most used script is the argocd-password. From root direcotry, run:
+
+```
+export KUBECONFIG=./metal/kubeconfig.yaml
+./tools/argocd-password
+```
