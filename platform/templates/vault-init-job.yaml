@@ -1,11 +1,11 @@
-{{- if .Values.vault.enabled }}
+{{- if .Values.vault.init.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: init-vault
   namespace: {{ .Release.Namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   backoffLimit: 3
   template:
