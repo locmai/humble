@@ -59,5 +59,3 @@ vault_secrets = client.V1Secret(
 k8s_client.create_namespaced_secret('platform', body=vault_secrets )
 
 print(f"Created secret: {secret_name}")
-
-exit(0)
