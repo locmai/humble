@@ -3,6 +3,7 @@ import base64
 from kubernetes import client, config
 import time
 
+print('Start of everything')
 # Init kubernetes client
 # config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
 config.load_incluster_config()
