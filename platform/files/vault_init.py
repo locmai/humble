@@ -1,7 +1,6 @@
-from hvac import Client
-import base64
 from kubernetes import client, config
-import time
+from hvac import Client
+import base64, time, os
 
 print('Start of everything')
 # Init kubernetes client
@@ -10,7 +9,6 @@ config.load_incluster_config()
 k8s_client = client.CoreV1Api()
 
 vault_pod_is_running = False
-
 while not vault_pod_is_running:
     time.sleep(3)
     print('Waiting for vault to be running ...')
@@ -59,3 +57,19 @@ vault_secrets = client.V1Secret(
 k8s_client.create_namespaced_secret('platform', body=vault_secrets )
 
 print(f"Created secret: {secret_name}")
+
+# WIP
+# # Enable Kubernetes auth
+# # Create internal-app service account
+# vault_app_sa = k8s_client.read_namespaced_service_account('vault-app', 'platform')
+# vault_app_sa_secret = v1.read_namespaced_secret(vault_app_sa.secrets[0].name, "platform").data
+# vault_app_sa_token = base64.b64decode(vault_app_sa_secret['token'])).decode()
+
+# # vault write auth/kubernetes/config \
+# #    token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+# #    kubernetes_host=https://${KUBERNETES_PORT_443_TCP_ADDR}:443 \
+# #    kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+# k8s_addr = os.getenv('KUBERNETES_PORT_443_TCP_ADDR')
+# k8s_ca_crt = k8s_client.read_namespaced_config_map('kube-root-ca.crt', 'platform')
+# k8s_vault_sa = k8s_client.read_namespaced_service_account('vault', 'platform')
+# vault_client.auth_kubernetes("kubernetes", vault_app_sa_token)

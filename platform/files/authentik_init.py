@@ -1,4 +1,3 @@
-# WIP
 import base64, sys, requests, json, subprocess
 
 
@@ -12,10 +11,10 @@ base_url = f"https://{domain}/api/v3"
 config.load_incluster_config()
 v1 = client.CoreV1Api()
 
-# Get authentik secret
 def decode(encoded_secret: str) -> str:
     return (base64.b64decode(encoded_secret)).decode()
 
+# Get authentik secret
 ak_secrets = v1.read_namespaced_secret("authentik-aka-secret", "platform").data
 gitea_oauth2_secrets = v1.read_namespaced_secret("gitea-oauth2-secrets", "platform").data
 

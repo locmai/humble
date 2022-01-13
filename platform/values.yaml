@@ -13,6 +13,10 @@ vault:
   init:
     enabled: true
 
+externalSecrets:
+  enabled: false
+  namespace: platform
+
 # Workflow engines
 tekton:
   enabled: true
