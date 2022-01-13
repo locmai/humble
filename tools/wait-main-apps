@@ -1,0 +1,61 @@
+#!/usr/bin/python
+
+import requests, time
+
+from rich.console import Console
+from kubernetes import client, config
+console = Console()
+
+# TODO load from yaml
+ingresses = [
+    {
+        'name': 'bootstrap-argocd-server',
+        'namespace': 'argocd',
+        'purpose': 'manage your applications'
+    },
+    {
+        'name': 'monitoring-grafana',
+        'namespace': 'observability',
+        'purpose': 'manage your git repositories'
+    },
+    {
+        'name': 'authentik',
+        'namespace': 'platform',
+        'purpose': 'identity platform'
+    }
+]
+
+config.load_kube_config(config_file='../metal/kubeconfig.yaml')
+# config.load_kube_config()
+
+# TODO wait for Argo apps
+# until argocd app wait \
+#     argocd \
+#     gitea \
+#     hajimari \
+#     ingress-nginx \
+#     longhorn-system \
+#     metallb-system \
+#     > /dev/null
+# do
+#     sleep 3
+# done
+
+with console.status("[bold green]Waiting on the ingresses...") as status:
+    for ingress in ingresses:
+        i = client.NetworkingV1Api().read_namespaced_ingress(
+            ingress['name'],
+            ingress['namespace']
+        )
+
+        # TODO wait for ingress and retry
+
+        host = i.spec.rules[0].host
+
+        if requests.get(f"https://{host}").status_code == 200:
+            console.log(f"{ingress['name']} is ready for {ingress['purpose']} - https://{host}")
+            
+            # TODO: Remove this later - it's here for visual effect
+            time.sleep(2)
+
+console.log(f"There're more services but the above is enough for you to start exploring!")
