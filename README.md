@@ -2,7 +2,7 @@
 
 
 [![chat](https://img.shields.io/matrix/home:dendrite.maibaloc.com?style=flat-square&logo=matrix&logoColor=white&label=chat)](https://matrix.to/#/#home:dendrite.maibaloc.com)
-[![tag](https://img.shields.io/github/v/tag/locmai/humble?style=flat-square&logo=semver&logoColor=white)](https://github.com/khuedoan/homelab/tags)
+[![tag](https://img.shields.io/github/v/tag/locmai/humble?style=flat-square&logo=semver&logoColor=white)](https://github.com/locmai/humble/tags)
 [![document](https://img.shields.io/website?label=document&logo=gitbook&logoColor=white&style=flat-square&url=https%3A%2F%2Fhumble.maibaloc.com)](https://humble.maibaloc.com)
 [![license](https://img.shields.io/github/license/locmai/humble?style=flat-square&logo=gnu&logoColor=white)](https://www.gnu.org/licenses/gpl-3.0.html)
 
