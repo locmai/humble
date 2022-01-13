@@ -1,4 +1,4 @@
-{{- if .Values.authentik.enabled }}
+{{- if .Values.authentik.init.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:

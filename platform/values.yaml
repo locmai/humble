@@ -11,7 +11,7 @@ vault:
   enabled: true
   namespace: platform
   init:
-    enabled: true
+    enabled: false
 
 externalSecrets:
   enabled: false
@@ -36,6 +36,7 @@ argo_workflow:
 authentik:
   enabled: true
   namespace: platform
+  init: false
 
 # SCM
 gitea:
