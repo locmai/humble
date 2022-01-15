@@ -23,6 +23,11 @@ dev:
 	make -C metal cluster env=dev
 	make -C bootstrap env=dev
 
+.PHONY: stag
+stag:
+	make -C metal cluster env=stag
+	make -C bootstrap env=stag
+
 .PHONY: global
 global:
 	make -C global

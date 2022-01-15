@@ -1,0 +1,8 @@
+# TODO support multiple nodes (doesn't work yet)
+metal:
+  children:
+    masters:
+      hosts:
+        dev0: {ansible_host: 192.168.1.60}
+    workers:
+      hosts: {}
