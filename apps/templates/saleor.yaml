@@ -48,7 +48,7 @@ spec:
         saleor-core:
           enabled: true
           persistence:
-            enabled: false
+            storageClass: "longhorn"
           allowedHosts:
             hosts:
               - localhost
@@ -57,15 +57,9 @@ spec:
           externalServices:
             googleRecaptcha:
               publicKey: "none"
-          persistence:
-            storageClass: "longhorn"
-          externalServices:
-            # Redis is a cache
             redis:
-              # Leave empty in `values.yaml` for security reasons
               password: "saleor"
             postgresql:
-              # Leave empty in `values.yaml` for security reasons
               password: "saleor"
         saleor-dashboard:
           persistence:
