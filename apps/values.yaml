@@ -10,7 +10,7 @@ filebrowser:
   enabled: false
 
 saleor:
-  enabled: true
+  enabled: false
 
 dendrite:
   enabled: true
