@@ -43,9 +43,11 @@ firewall --disabled
 %packages
 @^minimal-environment
 iscsi-initiator-utils
+$nfs-utils
 %end
 
 # Enable iSCSI for Kubernetes storage
 services --enable=iscsid
+services --enable=nfs-utils
 
 reboot
