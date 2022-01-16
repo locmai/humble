@@ -38,7 +38,13 @@ spec:
           master:
             persistence:
               enabled: false
-
+          auth:
+            password: "saleor"
+        postgresql:
+          global:
+            postgresqlDatabase: "saleor"
+            postgresqlUsername: "postgres"
+            postgresqlPassword: "saleor"
         saleor-core:
           enabled: true
           persistence:
@@ -53,7 +59,14 @@ spec:
               publicKey: "none"
           persistence:
             storageClass: "longhorn"
-
+          externalServices:
+            # Redis is a cache
+            redis:
+              # Leave empty in `values.yaml` for security reasons
+              password: "saleor"
+            postgresql:
+              # Leave empty in `values.yaml` for security reasons
+              password: "saleor"
         saleor-dashboard:
           persistence:
             enabled: false
