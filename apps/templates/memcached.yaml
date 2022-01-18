@@ -1,0 +1,29 @@
+{{- if .Values.memcached.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-memcached
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: memcached
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 5.15.12
+    helm:
+      releaseName: memcached
+      values: |
+        ingress:
+          enabled: false
+{{- end }}

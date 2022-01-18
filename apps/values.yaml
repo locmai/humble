@@ -20,3 +20,8 @@ element:
 
 matrixalertmanager:
   enabled: false
+
+# Playground services
+
+memcached:
+  enabled: true
