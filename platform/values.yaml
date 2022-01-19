@@ -8,10 +8,10 @@ global:
 
 # Secret managment
 vault:
-  enabled: false
+  enabled: true
   namespace: platform
   init:
-    enabled: false
+    enabled: true
 
 externalSecrets:
   enabled: true
