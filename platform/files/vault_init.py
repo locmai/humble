@@ -95,12 +95,15 @@ vault_client.create_kubernetes_configuration(
     mount_point="kubernetes"
 )
 
-# Create policies
+# Some prefixes
 project_prefix = "humble"
-read_only_policy = """
-path "secret/*" {
+main_secret_path = 'humble'
+
+# Create policies
+read_only_policy = f"""
+path "{main_secret_path}/*" {{
   capabilities = ["read", "list"]
-}
+}}
 """
 
 read_only_policy_name = f"{project_prefix}-read-only"
@@ -132,10 +135,9 @@ vault_app_sa_secret = k8s_client.read_namespaced_secret(
     vault_app_sa.secrets[0].name, "platform").data
 vault_app_sa_token = base64.b64decode(vault_app_sa_secret['token']).decode()
 
-vault_client.create_kubernetes_role("vault-kubernetes", [vault_app_sa.metadata.name, "external-secrets-kubernetes-external-secrets"], [
+vault_client.create_kubernetes_role("vault-kubernetes", [vault_app_sa.metadata.name, "external-secrets"], [
                                     'platform'], mount_point="kubernetes", policies=[read_only_policy_name])
 
-main_secret_path = 'humble'
 vault_client.sys.enable_secrets_engine(
     backend_type='kv',
     path=main_secret_path,
