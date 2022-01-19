@@ -1,15 +1,12 @@
-{{- if .Values.system.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: system
+  name: root
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: system
+  project: root
   syncPolicy:
     automated:
       selfHeal: true
@@ -23,17 +20,14 @@ spec:
         - /spec/syncPolicy/automated
   destination:
     name: in-cluster
-    namespace: system
+    namespace: platform
   source:
-    path: 'system'
-    repoURL: {{ .Values.global.repoURL }}
-    targetRevision: "{{ .Values.system.targetRevision }}"
+    path: 'bootstrap/root'
+    repoURL: https://github.com/locmai/humble.git
+    targetRevision: main
     helm:
+      valueFiles:
+      - values-stag.yaml
       values: |
         argocd:
-          targetRevision: {{ .Values.system.targetRevision }}
-
-        global:
-          domain: {{ .Values.global.domain }}
-          repoURL: {{ .Values.global.repoURL }}
-{{- end }}
+          targetRevision: main

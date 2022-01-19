@@ -1,6 +1,7 @@
 global:
   enabled: true
   domain: "maibaloc.com"
+  repoURL: https://github.com/locmai/humble.git
 
 system:
   enabled: true
