@@ -11,7 +11,7 @@ vault:
   enabled: true
   namespace: platform
   init:
-    enabled: true
+    enabled: false
 
 externalSecrets:
   enabled: true
