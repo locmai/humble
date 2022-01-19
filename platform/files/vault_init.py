@@ -16,6 +16,7 @@ print('Start initializing')
 # config.load_kube_config(config_file='../../metal/kubeconfig.yaml')
 # vault_client = Client(url='http://localhost:43975', verify=False)
 
+time.sleep(30)
 # Init kubernetes client
 config.load_incluster_config()
 k8s_client = client.CoreV1Api()
