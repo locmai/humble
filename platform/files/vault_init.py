@@ -132,7 +132,7 @@ vault_app_sa_secret = k8s_client.read_namespaced_secret(
     vault_app_sa.secrets[0].name, "platform").data
 vault_app_sa_token = base64.b64decode(vault_app_sa_secret['token']).decode()
 
-vault_client.create_kubernetes_role("vault-kubernetes", [vault_app_sa.metadata.name], [
+vault_client.create_kubernetes_role("vault-kubernetes", [vault_app_sa.metadata.name, "external-secrets-kubernetes-external-secrets"], [
                                     'platform'], mount_point="kubernetes", policies=[read_only_policy_name])
 
 main_secret_path = 'humble'
