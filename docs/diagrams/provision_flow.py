@@ -1,4 +1,4 @@
-from diagrams import Cluster, Diagram, Edge
+from diagrams import Cluster, Diagram
 from diagrams.generic.os import LinuxGeneral
 from diagrams.k8s.ecosystem import Helm
 from diagrams.k8s.infra import Node
