@@ -58,6 +58,6 @@ spec:
           oauth:
             - name: 'authentik'
               provider: 'openidConnect'
-              existingSecret: gitea-oauth2-secrets
+              existingSecret: humble-init-gitea-oauth2-secrets
               autoDiscoverUrl: https://authentik.{{ .Values.global.domain }}/application/o/gitea-slug/.well-known/openid-configuration
 {{- end }}

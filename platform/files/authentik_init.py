@@ -15,8 +15,8 @@ def decode(encoded_secret: str) -> str:
     return (base64.b64decode(encoded_secret)).decode()
 
 # Get authentik secret
-ak_secrets = v1.read_namespaced_secret("authentik-aka-secret", "platform").data
-gitea_oauth2_secrets = v1.read_namespaced_secret("gitea-oauth2-secrets", "platform").data
+ak_secrets = v1.read_namespaced_secret("humble-init-authentik-secrets", "platform").data
+gitea_oauth2_secrets = v1.read_namespaced_secret("humble-init-gitea-oauth2-secrets", "platform").data
 
 ak_admin_token = decode(ak_secrets['ak_admin_token'])
 
