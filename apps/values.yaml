@@ -4,7 +4,7 @@ argocd:
   targetRevision: main
 
 global:
-  domain: "maibaloc.com"
+  domain: "placeholder.com"
 
 filebrowser:
   enabled: false
