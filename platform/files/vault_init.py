@@ -71,8 +71,11 @@ k8s_client.create_namespaced_secret('platform', body=vault_secrets)
 
 print(f"Created secret: {secret_name}")
 
-# Enable Kubernetes auth
+# Re-init client with root_token
+vault_client = Client(
+    url='http://vault.platform.svc.cluster.local:8200/', token=root_token, verify=False)
 
+# Enable Kubernetes auth
 k8s_addr = os.getenv('KUBERNETES_PORT_443_TCP_ADDR')
 k8s_ca_crt = k8s_client.read_namespaced_config_map(
     'kube-root-ca.crt', 'platform').data["ca.crt"]
