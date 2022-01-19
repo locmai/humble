@@ -11,7 +11,7 @@ metadata:
   name: init-tools
 rules:
 - apiGroups: [""] # "" indicates the core API group
-  resources: ["pods", "secrets", "configmaps, serviceaccounts"]
+  resources: ["pods", "secrets", "configmaps", "serviceaccounts"]
   verbs: ["get", "watch", "list", "create"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
