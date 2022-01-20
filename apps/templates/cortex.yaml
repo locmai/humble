@@ -78,4 +78,23 @@ spec:
           # enabled/disabled via the tags.blocks-storage-memcached boolean
           architecture: "high-availability"
           replicaCount: 2
+        
+        config:
+          storage:
+            engine: blocks
+            index_queries_cache_config:
+              memcached:
+                # -- How long keys stay in the memcache
+                expiration: 1h
+              memcached_client:
+                # -- Maximum time to wait before giving up on memcached requests.
+                timeout: 1s
+          blocks_storage:
+            backend: local
+            tsdb:
+              dir: /data/tsdb
+            bucket_store:
+              sync_dir: /data/tsdb-sync
+              bucket_index:
+                enabled: true
 {{- end }}
