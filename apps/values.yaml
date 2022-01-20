@@ -24,7 +24,7 @@ matrixalertmanager:
 # Playground services
 
 memcached:
-  enabled: false
+  enabled: true
 
 cortex:
   enabled: false
