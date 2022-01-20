@@ -27,4 +27,4 @@ memcached:
   enabled: false
 
 cortex:
-  enabled: true
+  enabled: false
