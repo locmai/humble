@@ -90,7 +90,7 @@ spec:
                 # -- Maximum time to wait before giving up on memcached requests.
                 timeout: 1s
           blocks_storage:
-            backend: local
+            backend: filesystem
             tsdb:
               dir: /data/tsdb
             bucket_store:
