@@ -1,0 +1,81 @@
+{{- if .Values.cortex.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-cortex
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: memcached
+    repoURL: https://cortexproject.github.io/cortex-helm-chart
+    targetRevision: 1.2.0
+    helm:
+      releaseName: cortex
+      values: |
+        tags:
+          # -- Set to true to enable block storage memcached caching
+          blocks-storage-memcached: true
+        alertmanager:
+          enabled: false
+        ruler:
+          enabled: false
+        store_gateway:
+          persistentVolume:
+            enabled: false
+        ingester:
+          persistentVolume:
+            enabled: false
+        distributor:
+          persistentVolume:
+            enabled: false
+        querier:
+          store_gateway_addresses: dns+cortex-store-gateway-headless.apps:9095
+
+        memcached:
+          enabled: false
+          architecture: "high-availability"
+          replicaCount: 2
+
+        # -- index read caching for legacy chunk storage engine
+        memcached-index-read:
+          enabled: false
+          architecture: "high-availability"
+          replicaCount: 2
+
+        # -- index write caching for legacy chunk storage engine
+        memcached-index-write:
+          enabled: false
+          architecture: "high-availability"
+          replicaCount: 2
+
+        memcached-frontend:
+          enabled: false
+          architecture: "high-availability"
+          replicaCount: 2
+          resources: {}
+
+        memcached-blocks-index:
+          architecture: "high-availability"
+          replicaCount: 2
+
+        memcached-blocks:
+          architecture: "high-availability"
+          replicaCount: 2
+
+        memcached-blocks-metadata:
+          # enabled/disabled via the tags.blocks-storage-memcached boolean
+          architecture: "high-availability"
+          replicaCount: 2
+{{- end }}
