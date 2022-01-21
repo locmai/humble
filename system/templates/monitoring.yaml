@@ -65,7 +65,7 @@ spec:
           env:
             JAEGER_AGENT_PORT: '5755'
           image:
-            tag: 8.3.1
+            tag: 8.3.3
           persistence:
             enabled: false
           ingress:
