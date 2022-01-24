@@ -6,6 +6,7 @@ metadata:
   namespace: {{ .Values.argocd.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=trueargocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -29,5 +30,5 @@ spec:
         existingConfigMap: metallb-config
         prometheus:
           serviceMonitor:
-            enabled: false
+            enabled: true
 {{- end }}

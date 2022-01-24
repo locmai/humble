@@ -1,0 +1,18 @@
+{{- if .Values.longhorn.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Values.argocd.project }}-longhorn
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  selector:
+    matchLabels:
+      app: longhorn-manager
+  namespaceSelector:
+    matchNames:
+      - {{ .Values.argocd.namespace }}
+  endpoints:
+    - port: manager
+{{- end }}
