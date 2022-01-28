@@ -17,6 +17,11 @@ externalSecrets:
   enabled: true
   namespace: platform
 
+secretGenerator:
+  enabled: true
+  namespace: platform
+  targetRevision: master
+
 # Workflow engines
 tekton:
   enabled: true
