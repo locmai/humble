@@ -1,5 +1,8 @@
 {
     "branchPrefix": "renovate-humble/",
+    "repositories": [
+        "locmai/humble"
+    ],
     "packageRules": [
         {
             "description": "lockFileMaintenance",
