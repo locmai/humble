@@ -1,8 +1,9 @@
 name: Renovate
-on:
+on: workflow_dispatch
   schedule:
     # https://crontab.guru/#*_*_1_*_*
     - cron: '* * 1 * *'
+  workflow_dispatch:
 jobs:
   renovate:
     runs-on: ubuntu-latest
