@@ -1,5 +1,5 @@
 name: Renovate
-on: workflow_dispatch
+on: 
   schedule:
     # https://crontab.guru/#*_*_1_*_*
     - cron: '* * 1 * *'
