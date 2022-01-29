@@ -1,8 +1,8 @@
 name: Renovate
 on: 
-  schedule:
-    # https://crontab.guru/#*_*_1_*_*
-    - cron: '* * 1 * *'
+  # schedule:
+  #   # https://crontab.guru/#*_*_1_*_*
+  #   - cron: '* * 1 * *'
   workflow_dispatch:
 jobs:
   renovate:

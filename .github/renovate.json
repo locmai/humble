@@ -23,7 +23,7 @@
             "automerge": false
         }
     ],
-    "autodiscover": true,
+    "autodiscover": false,
     "argocd": {
         "fileMatch": [
             "^.*\/templates\/.*.yaml$"
