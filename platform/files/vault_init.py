@@ -154,7 +154,8 @@ secrets_list = {
     'ak_admin_token': gen_secret(),
     'ak_admin_password': gen_secret(32),
     'ak_gitea_oauth2_client_id': gen_secret(40),
-    'ak_gitea_oauth2_client_secret': gen_secret(128)
+    'ak_gitea_oauth2_client_secret': gen_secret(128),
+    'RENOVATE_TOKEN': gen_secret(40),
 }
 
 vault_client.secrets.kv.v2.create_or_update_secret(
