@@ -1,5 +1,9 @@
 {
     "branchPrefix": "renovate-humble/",
+    "username": "renovate-release",
+    "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+    "onboarding": false,
+    "platform": "github",
     "repositories": [
         "locmai/humble"
     ],
@@ -19,6 +23,7 @@
             "automerge": false
         }
     ],
+    "autodiscover": true,
     "argocd": {
         "fileMatch": [
             "^.*\/templates\/.*.yaml$"
