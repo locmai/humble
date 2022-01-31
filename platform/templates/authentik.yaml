@@ -40,11 +40,11 @@ spec:
           AK_ADMIN_PASS:
             secretKeyRef:
               key: ak_admin_password
-              name: authentik-aka-secret
+              name: humble-init-authentik-secrets
           AK_ADMIN_TOKEN:
             secretKeyRef:
               key: ak_admin_token
-              name: authentik-aka-secret
+              name: humble-init-authentik-secrets
         ingress:
           enabled: true
           annotations:
