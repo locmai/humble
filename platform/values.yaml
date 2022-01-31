@@ -39,10 +39,10 @@ argo_workflow:
 
 # IAM
 authentik:
-  enabled: false
+  enabled: true
   namespace: platform
   init: 
-    enabled: false
+    enabled: true
 
 # SCM
 gitea:
