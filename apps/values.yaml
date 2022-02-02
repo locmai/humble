@@ -22,9 +22,11 @@ matrixalertmanager:
   enabled: false
 
 # Playground services
-
 memcached:
   enabled: true
 
 cortex:
   enabled: false
+
+microservicesDemo:
+  enabled: true

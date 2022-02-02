@@ -1,0 +1,28 @@
+{{- if .Values.microservicesDemo.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-microservices-demo
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: microservices-demo
+    repoURL: https://locmai.github.io/charts/
+    targetRevision: 0.0.1
+    helm:
+      releaseName: microservices-demo
+      values: |
+        placeholder: fornow
+{{- end }}
