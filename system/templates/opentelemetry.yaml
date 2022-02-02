@@ -35,6 +35,10 @@ spec:
               metric_expiration: 180m
               resource_to_telemetry_conversion:
                 enabled: false
+            jaeger:
+              endpoint: jaeger-collector.observability.svc:14250
+              tls:
+                insecure: true
           extensions:
             health_check: {}
             memory_ballast: {}
@@ -73,14 +77,6 @@ spec:
               - health_check
               - memory_ballast
             pipelines:
-              logs:
-                exporters:
-                  - logging
-                processors:
-                  - memory_limiter
-                  - batch
-                receivers:
-                  - otlp
               metrics:
                 exporters:
                   - prometheus
@@ -92,7 +88,7 @@ spec:
                   - prometheus
               traces:
                 exporters:
-                  - logging
+                  - jaeger
                 processors:
                   - memory_limiter
                   - batch
