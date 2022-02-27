@@ -59,6 +59,7 @@ istio:
 # System maintainers/cleaners
 descheduler:
   enabled: true
+  namespace: descheduler
 
 systemUpgrade:
   enabled: true
