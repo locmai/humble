@@ -1,4 +1,5 @@
 default:
+	terraform init
 	terraform apply -auto-approve
 
 # TODO figure on cleaning this up without Kubernetes stuff
