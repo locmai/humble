@@ -1,0 +1,243 @@
+{{- if .Values.dashyLandscape.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-dashy-landscape
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: dashy
+    repoURL: https://locmai.github.io/charts/
+    targetRevision: 0.0.2
+    helm:
+      releaseName: dashylandscape
+      values: |
+        ingress:
+          enabled: true
+          
+          className: nginx
+          annotations:
+            hajimari.io/enable: "true"
+            hajimari.io/appName: "Element"
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+          hosts:
+            - host: &host landscape.{{ .Values.global.domain }}
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: dashy-landscape-tls-certificate
+              hosts:
+                - *host
+
+        config:
+          appConfig:
+            layout: auto
+            iconSize: medium
+            theme: dashy-docs
+            language: en
+          pageInfo:
+            title: Humble Technology Landscape
+            description: ''
+            navLinks: []
+            footerText: ''
+          sections:
+            - name: Global
+              icon: far fa-globe
+              items:
+                - title: GitHub
+                  description: Humble source code and docs
+                  icon: fab fa-github
+                  url: https://github.com/locmai/humble
+                  id: 0_593_github
+                - title: CloudFlare
+                  description: ''
+                  url: https://avatars.githubusercontent.com/u/314135?s=200&v=4
+                  icon: https://avatars.githubusercontent.com/u/314135?s=200&v=4
+                  id: 1_593_cloudflare
+              displayData:
+                sortBy: default
+                rows: 1
+                cols: 1
+                collapsed: false
+                hideForGuests: false
+            - name: Apps
+              items:
+                - title: Dendrite
+                  icon: https://avatars.githubusercontent.com/u/8418310?s=200&v=4
+                  url: chat.maibaloc.com
+                  id: 0_404_dendrite
+                - title: Element web
+                  icon: https://element.io/images/logo-mark-primary.svg
+                  url: ''
+                  id: 1_404_elementweb
+                - title: Dashy
+                  description: Landscape page
+                  icon: https://dashy.to/img/dashy.png
+                  id: 2_404_dashy
+              displayData:
+                sortBy: default
+                rows: 1
+                cols: 3
+                collapsed: false
+                hideForGuests: false
+              icon: fas fa-code
+            - name: Platform
+              displayData:
+                sortBy: default
+                rows: 4
+                cols: 4
+                collapsed: false
+                hideForGuests: false
+              items:
+                - title: Argo Workflow
+                  icon: >-
+                    https://camo.githubusercontent.com/42ecb0e82021bf95ed3bc09ccab58ab03a4c6b8b8d22f6c628c14c38244e641d/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f6172676f2f69636f6e2f636f6c6f722f6172676f2d69636f6e2d636f6c6f722e737667
+                  id: 0_837_argoworkflow
+                - title: Vault
+                  icon: >-
+                    https://camo.githubusercontent.com/8e1a25105159fcd0f93e3c2a7bd7efba51d7779bf5bf2ee3a3730a2ab252f556/68747470733a2f2f73696d706c6569636f6e732e6f72672f69636f6e732f7661756c742e737667
+                  id: 1_837_vault
+                - title: External secrets
+                  icon: >-
+                    https://github.com/external-secrets/external-secrets/raw/main/assets/round_eso_logo.png
+                  id: 2_837_externalsecrets
+                - title: Secret generator
+                  icon: fad fa-key
+                  id: 3_837_secretgenerator
+                - title: Authentik
+                  description: IAM platform
+                  icon: https://avatars3.githubusercontent.com/goauthentik
+                  id: 4_837_authentik
+                - title: Gitea
+                  icon: >-
+                    https://camo.githubusercontent.com/d601ef8bdc7b734888ba1ae9ca3acb2df0603bbfa6eea7b7617e63568294260c/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f622f62622f47697465615f4c6f676f2e737667
+                  id: 5_837_gitea
+              icon: fas fa-warehouse-alt
+            - name: System
+              displayData:
+                sortBy: default
+                rows: 2
+                cols: 4
+                collapsed: false
+                hideForGuests: false
+              items:
+                - title: Prometheus
+                  icon: >-
+                    https://camo.githubusercontent.com/2771dde193a715f62e963ffa8856207bc470c780859a722f148e7daf532cfc6d/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f70726f6d6574686575732f69636f6e2f636f6c6f722f70726f6d6574686575732d69636f6e2d636f6c6f722e737667
+                  id: 0_645_prometheus
+                - title: Grafana
+                  icon: >-
+                    https://camo.githubusercontent.com/efb8796fba36bad6533fd66a3a0c359a7f482762e7880a9af35f7cb7898783cc/68747470733a2f2f67726166616e612e636f6d2f7374617469632f696d672f6d656e752f67726166616e61322e737667
+                  url: https://grafana.maibaloc.com
+                  target: newtab
+                  statusCheck: true
+                  statusCheckUrl: https://grafana.maibaloc.com/login
+                  id: 1_645_grafana
+                - title: Cert-manager
+                  icon: https://github.com/jetstack/cert-manager/raw/master/logo/logo.png
+                  id: 2_645_certmanager
+                - title: Kured
+                  icon: >-
+                    https://images.contentstack.io/v3/assets/blt300387d93dabf50e/blt0b90e1c71a7ef4fe/59fa5727aaf733de03ea6f7f/2017-10-24-kured-logo.png
+                  id: 3_645_kured
+                - title: Jaeger
+                  icon: https://www.jaegertracing.io/img/jaeger-icon-color.png
+                  id: 4_645_jaeger
+                - title: Docz
+                  icon: far fa-book
+                  url: https://humble.maibaloc.com
+                  statusCheck: true
+                  statusCheckUrl: https://humble.maibaloc.com
+                  id: 5_645_docz
+                - title: ElasticSearch
+                  icon: >-
+                    https://imagedelivery.net/34xh1sPWPAwO1lv63pW2Eg/b51ce41c-7c38-40ee-140b-73e79d70b100/public
+                  id: 6_645_elasticsearch
+                - title: OpenTelemetry
+                  icon: https://avatars.githubusercontent.com/u/49998002?s=280&v=4
+                  id: 7_645_opentelemetry
+                - title: MetalLB
+                  icon: https://avatars.githubusercontent.com/u/60239468?s=200&v=4
+                  id: 8_645_metallb
+                - title: Istio
+                  icon: https://techlab.bol.com/app/files/2020/12/Istio-logo.jpg
+                  id: 9_645_istio
+                - title: Loki
+                  icon: >-
+                    https://github.com/grafana/loki/raw/main/docs/sources/logo.png?raw=true
+                  id: 10_645_loki
+                - title: Nginx Ingress
+                  icon: https://avatars.githubusercontent.com/u/1412239?s=200&v=4
+                  id: 11_645_nginxingress
+                - title: Longhorn
+                  icon: >-
+                    https://camo.githubusercontent.com/8a2cc98366106c502d68d73f68f2250271c6f7d5c9a9b0ae40b379bbf2845a14/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f6c6f6e67686f726e2f69636f6e2f636f6c6f722f6c6f6e67686f726e2d69636f6e2d636f6c6f722e737667
+                  id: 12_645_longhorn
+                - title: Descheduler
+                  icon: fad fa-calendar-times
+                  id: 13_645_descheduler
+                - title: System Upgrade
+                  icon: fas fa-wrench
+                  id: 14_645_systemupgrade
+              icon: fal fa-cogs
+            - name: Metal
+              displayData:
+                sortBy: default
+                rows: 1
+                cols: 2
+                collapsed: false
+                hideForGuests: false
+              items:
+                - title: K3s
+                  icon: >-
+                    https://camo.githubusercontent.com/dfd81baa2acf6b20feecc45738bad525b32148b66ca3a9acb13878805f6a8da4/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f6b33732f69636f6e2f636f6c6f722f6b33732d69636f6e2d636f6c6f722e737667
+                  id: 0_499_ks
+                - title: Rocky Linux
+                  icon: https://avatars.githubusercontent.com/u/75713131?s=200&v=4
+                  id: 1_499_rockylinux
+                - title: Kubernetes
+                  icon: >-
+                    https://camo.githubusercontent.com/fc632bb925824d089d8574ede65315893f9de2cf4b78a5a7aaebe43468c3756f/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f6b756265726e657465732f69636f6e2f636f6c6f722f6b756265726e657465732d69636f6e2d636f6c6f722e737667
+                  id: 2_499_kubernetes
+              icon: fas fa-hdd
+            - name: Provisioning and Configuration Management
+              displayData:
+                sortBy: default
+                rows: 1
+                cols: 2
+                collapsed: false
+                hideForGuests: false
+              items:
+                - title: Ansible
+                  icon: >-
+                    https://camo.githubusercontent.com/45ad78d582371289ca035537451f50f59c3ac6e3dc314785c1e4395c80a95389/68747470733a2f2f73696d706c6569636f6e732e6f72672f69636f6e732f616e7369626c652e737667
+                  id: 0_4079_ansible
+                - title: Terraform
+                  icon: >-
+                    https://pngset.com/images/terraform-hashicorp-purple-diamond-gemstone-jewelry-transparent-png-1255252.png
+                  id: 1_4079_terraform
+                - title: Helm
+                  icon: >-
+                    https://camo.githubusercontent.com/d0ece8e5df934a26546a6f0adb0a75086f31464927f9427ac009c3fde5d33102/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f68656c6d2f69636f6e2f636f6c6f722f68656c6d2d69636f6e2d636f6c6f722e737667
+                  id: 2_4079_helm
+                - title: Kustomization
+                  icon: >-
+                    https://dashboard.snapcraft.io/site_media/appmedia/2020/06/kustomize.png
+                  id: 3_4079_kustomization
+              icon: fas fa-wand-magic
+{{- end }}

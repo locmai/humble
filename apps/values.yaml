@@ -30,3 +30,6 @@ cortex:
 
 microservicesDemo:
   enabled: true
+
+dashyLandscape:
+  enabled: true
