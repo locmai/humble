@@ -1,12 +1,5 @@
 argo-cd:
-  controller:
-    image:
-      tag: v2.3.0-rc5
-
   server:
-    image:
-      tag: v2.3.0-rc5
-
     extraArgs:
       - --insecure
     config:
