@@ -1,0 +1,33 @@
+{{- if .Values.kured.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-kured
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.kured.namespace }}
+  source:
+    chart: kured
+    repoURL: https://weaveworks.github.io/kured
+    targetRevision: 2.11.2
+    helm:
+      releaseName: kured
+      values: |
+        configuration:
+          annotateNodes: true
+          rebootSentinelCommand: sh -c "! needs-restarting --reboothint"
+          timeZone: Asia/Ho_Chi_Minh
+{{- end }}
