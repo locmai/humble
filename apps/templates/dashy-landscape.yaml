@@ -53,8 +53,10 @@ spec:
           pageInfo:
             title: Humble Technology Landscape
             description: ''
-            navLinks: []
-            footerText: ''
+            navLinks:
+              - title: Back to Home
+                path: https://humble.maibaloc.com
+            footerText: © 2022 Loc Mai.
           sections:
             - name: Global
               icon: far fa-globe
