@@ -6,6 +6,5 @@ namespaces:
   - platform
   - apps
   - system
-  - argocd
   - global
   - bootstrap
