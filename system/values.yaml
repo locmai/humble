@@ -51,7 +51,7 @@ certmanager:
   namespace: cert-manager
 
 istio:
-  enabled: true
+  enabled: false
   namespace: istio-system
   gateway:
     enabled: false
