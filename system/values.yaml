@@ -58,11 +58,11 @@ istio:
 
 # System maintainers/cleaners
 descheduler:
-  enabled: true
+  enabled: false
   namespace: descheduler
 
 systemUpgrade:
-  enabled: true
+  enabled: false
 
 kured:
-  enabled: true
+  enabled: false
