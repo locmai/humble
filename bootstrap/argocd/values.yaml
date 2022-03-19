@@ -23,7 +23,30 @@ argo-cd:
       resource.customizations.ignoreDifferences.admissionregistration.k8s.io_ValidatingWebhookConfiguration: |
         jqPathExpressions:
         - '.webhooks[]?.failurePolicy'
-
+      
+      configManagementPlugins: |
+        - name: argocd-vault-plugin
+          init:
+            command:
+              - 'sh'
+              - '-c'
+              - |
+                if test -e Chart.yaml; then 
+                  helm dependency build
+                fi
+          generate:
+            command:
+              - 'sh'
+              - '-c'
+              - |
+                BASENAME=`basename $PWD`
+                if test -e Chart.yaml; then 
+                  helm template --include-crds $BASENAME --namespace $BASENAME . | argocd-vault-plugin generate -
+                elif test -e kustomization.yaml; then 
+                  kustomize build . | argocd-vault-plugin generate -
+                else 
+                  argocd-vault-plugin generate ./
+                fi
     ingress:
       enabled: true
       ingressClassName: nginx
@@ -37,3 +60,31 @@ argo-cd:
         - secretName: argocd-tls-certificate
           hosts:
             - *host
+  repoServer:
+    volumes:
+      - name: custom-tools
+        emptyDir: {}
+    initContainers:
+    - name: download-tools
+      image: alpine:3.8
+      command: [sh, -c]
+
+      # Don't forget to update this to whatever the stable release version is
+      # Note the lack of the `v` prefix unlike the git tag
+      env:
+        - name: AVP_VERSION
+          value: "1.7.0"
+      args:
+        - >-
+          wget -O argocd-vault-plugin
+          https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v${AVP_VERSION}/argocd-vault-plugin_${AVP_VERSION}_linux_amd64 &&
+          chmod +x argocd-vault-plugin &&
+          mv argocd-vault-plugin /custom-tools/
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools  
+    
+    volumeMounts:
+        - name: custom-tools
+          mountPath: /usr/local/bin/argocd-vault-plugin
+          subPath: argocd-vault-plugin
