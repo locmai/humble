@@ -54,3 +54,12 @@ gitea:
 hajimari:
   enabled: true
   namespace: platform
+
+# Yuta Platform
+minio:
+  enabled: true
+  namespace: platform
+
+trow:
+  enabled: true
+  namespace: platform

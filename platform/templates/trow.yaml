@@ -1,0 +1,58 @@
+{{- if .Values.trow.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-trow
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.trow.namespace }}
+  source:
+    chart: trow
+    repoURL: https://trow.io
+    targetRevision: 0.3.4
+    helm:
+      releaseName: trow
+      values: |
+        trow:
+          domain: registry.{{ .Values.global.domain }}
+          # user: user
+          # password: password
+          validation:
+            enabled: false
+            allowDocker: false
+            allowKubernetes: true
+            allowPrefixes: []
+            allowImages: []
+            disallowLocalPrefixes: []
+            disallowLocalImages: []
+            proxyDockerHub: false
+
+        ingress:
+          enabled: false  # TODO https://github.com/ContainerSolutions/trow/issues/282
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            nginx.ingress.kubernetes.io/proxy-body-size: '0'
+          hosts:
+            - host: &host registry.{{ .Values.global.domain }}
+              paths:
+                - /
+          tls:
+            - secretName: trow-tls-certificate
+              hosts:
+                - *host
+        volumeClaim:
+          storageClassName: longhorn
+{{- end }}
