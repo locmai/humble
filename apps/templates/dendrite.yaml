@@ -74,7 +74,11 @@ spec:
           nats:
             jetstream:
               enabled: true
-
+          exporter:
+            enabled: true
+            image: natsio/prometheus-nats-exporter:0.9.1
+            serviceMonitor:
+              enabled: true
         postgresql:
           enabled: true
           global:
@@ -108,4 +112,5 @@ spec:
             - secretName: dendrite-tls-certificate
               hosts:
                 - *host
+      
 {{- end }}
