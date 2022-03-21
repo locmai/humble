@@ -62,6 +62,11 @@ spec:
             - 'notreal'
         grafana:
           enabled: true
+          replicas: 2
+          autoscaling:
+            enabled: true
+            minReplicas: 2
+            maxReplicas: 5
           enableServiceLinks: false
           env:
             JAEGER_AGENT_PORT: '5755'
