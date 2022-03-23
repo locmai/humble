@@ -23,7 +23,7 @@ spec:
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 13.7.2
+    targetRevision: 34.1.1
     helm:
       releaseName: monitoring
       values: |
@@ -67,7 +67,7 @@ spec:
           env:
             JAEGER_AGENT_PORT: '5755'
           image:
-            tag: 8.3.3
+            tag: 8.4.4
           persistence:
             enabled: false
           ingress:

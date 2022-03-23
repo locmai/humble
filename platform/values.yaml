@@ -51,10 +51,6 @@ gitea:
   ingress:
     enabled: false
 
-hajimari:
-  enabled: true
-  namespace: platform
-
 # Yuta Platform
 minio:
   enabled: true

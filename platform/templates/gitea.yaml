@@ -22,7 +22,7 @@ spec:
   source:
     chart: gitea
     repoURL: https://dl.gitea.io/charts/
-    targetRevision: 5.0.1
+    targetRevision: 5.0.3
     helm:
       releaseName: gitea
       values: |
