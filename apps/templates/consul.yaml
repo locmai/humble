@@ -10,10 +10,10 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: {{ .Values.argocd.project }}
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
+  # syncPolicy:
+  #   automated:
+  #     selfHeal: true
+  #     prune: true
   destination:
     name: in-cluster
     namespace: {{ .Values.argocd.project }}
