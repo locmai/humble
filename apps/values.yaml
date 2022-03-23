@@ -33,3 +33,6 @@ microservicesDemo:
 
 dashyLandscape:
   enabled: true
+
+consul:
+  enabled: true
