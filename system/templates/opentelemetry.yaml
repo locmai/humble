@@ -245,7 +245,7 @@ spec:
 
         serviceMonitor:
           enabled: false
-          metricsEndpoints: {}
+          metricsEndpoints: []
           # - port: metrics
           #   interval: 15s
 
