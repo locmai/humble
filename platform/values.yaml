@@ -59,3 +59,7 @@ minio:
 trow:
   enabled: true
   namespace: platform
+
+# Mimir
+mimir:
+  enabled: true

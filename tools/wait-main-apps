@@ -32,7 +32,6 @@ config.load_kube_config(config_file='../metal/kubeconfig.yaml')
 # until argocd app wait \
 #     argocd \
 #     gitea \
-#     hajimari \
 #     ingress-nginx \
 #     longhorn-system \
 #     metallb-system \

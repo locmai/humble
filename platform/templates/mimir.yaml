@@ -1,0 +1,53 @@
+{{- if .Values.mimir.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-mimir
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.mimir.namespace }}
+  source:
+    chart: mimir
+    repoURL: https://grafana.github.io/helm-chartshttps://grafana.github.io/helm-charts
+    targetRevision: 0.1.3
+    helm:
+      releaseName: mimir
+      values: |
+        nginx:
+
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            annotations:
+              cert-manager.io/cluster-issuer: "letsencrypt-prod"
+              external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
+              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            hosts:
+              - host: &host "mimir.{{ .Values.global.domain }}"
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls:
+              - secretName: mimir-nginx-tls
+                hosts:
+                  - *host
+        memcached:
+          enabled: true
+        memcached-metadata:
+          enabled: true
+        memcached-queries:
+          enabled: true
+{{- end }}

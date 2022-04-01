@@ -35,7 +35,5 @@ spec:
           tlse: true
           tlsSecret: longhorn-tls-certificate
           annotations:
-            hajimari.io/enable: "true"
-            hajimari.io/appName: "Longhorn"
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
 {{- end }}
