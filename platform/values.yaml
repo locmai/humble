@@ -62,5 +62,5 @@ trow:
 
 # Mimir
 mimir:
-  enabled: true
+  enabled: false
   namespace: platform
