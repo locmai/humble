@@ -1,0 +1,45 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: dump-dendrite-database
+spec:
+  params:
+    - name: dendrite-s3-secret
+      type: string
+      description: name of the secret holding the S3 Access Key
+      default: dendrite-s3-secret
+  steps:
+    # - name: ping-dendrite-database
+    #   image: locmai/postgresql-client
+    #   command:
+    #     - echo
+    #   args:
+    #     - "Hello World!"
+    # - name: dump-database
+    #   image: locmai/postgresql-client
+    #   command:
+    #     - echo
+    #   args:
+    #     - "Hello World!"
+    - name: upload-to-s3
+      image: amazon/aws-cli
+      env:
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: $(params.s3-secret)
+              key: AWS_SECRET_ACCESS_KEY
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: $(params.s3-secret)
+              key: AWS_ACCESS_KEY_ID
+        - name:  AWS_DEFAUL_REGION
+          value: us-east-1
+      args:
+        [
+          "--endpoint-url",
+          "http://localhost:33049",
+          "s3",
+          "ls",
+        ]
