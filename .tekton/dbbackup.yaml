@@ -13,28 +13,16 @@ spec:
       description: name of the secret holding the S3 Access Key
       default: dendrite-s3-secret
   steps:
-    # - name: print-file
-    #   image: alpine
-    #   command: ["/bin/sh"]
-    #   args: ["-c", "echo Hello World > /tmp/hello"]        
-    #   volumeMounts:
-    #     - mountPath: /tmp
-    #       name: dump-volume
-    # - name: check-files
-    #   image: alpine
-    #   command: ["/bin/sh"]
-    #   args: ["-c", "ls /tmp",]
-    #   volumeMounts:
-    #     - mountPath: /tmp
-    #       name: dump-volume\
     - name: dump-database
-      image: locmai/postgresql-client
+      image: locmai/postgresql-client:0.0.1
       command:
-        - pg_dump
+        - /bin/sh
       args:
-        - "dendrite_appservice"
-        - ">"
-        - "/tmp/dendrite_appservice_dump"
+        - "-c"
+        - |
+          for db in userapi_accounts userapi_devices mediaapi syncapi roomserver keyserver federationapi appservice mscs; do
+              pg_dump -f /tmp/backup_dendrite_$db dendrite_$db
+          done
       volumeMounts:
         - mountPath: /tmp
           name: dump-volume
@@ -75,13 +63,13 @@ spec:
               key: AWS_ACCESS_KEY_ID
         - name:  AWS_DEFAUL_REGION
           value: us-east-1
+      command: ["/bin/sh"]
       args:
-        [
-          "--endpoint-url",
-          "http://minio:9000",
-          "s3",
-          "ls",
-        ]
+        - "-c"
+        - |
+          for db in userapi_accounts userapi_devices mediaapi syncapi roomserver keyserver federationapi appservice mscs; do
+              aws --endpoint-url http://minio:9000 s3 cp /tmp/backup_dendrite_$db s3://dendrite-backup
+          done
       volumeMounts:
         - mountPath: /tmp
           name: dump-volume
