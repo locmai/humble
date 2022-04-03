@@ -4,42 +4,87 @@ metadata:
   name: dump-dendrite-database
 spec:
   params:
+    - name: dendrite-postgresql-secret
+      type: string
+      description: name of the PostgeSQL secrets
+      default: dendrite-postgresql-secret
     - name: dendrite-s3-secret
       type: string
       description: name of the secret holding the S3 Access Key
       default: dendrite-s3-secret
   steps:
-    # - name: ping-dendrite-database
-    #   image: locmai/postgresql-client
-    #   command:
-    #     - echo
-    #   args:
-    #     - "Hello World!"
-    # - name: dump-database
-    #   image: locmai/postgresql-client
-    #   command:
-    #     - echo
-    #   args:
-    #     - "Hello World!"
+    # - name: print-file
+    #   image: alpine
+    #   command: ["/bin/sh"]
+    #   args: ["-c", "echo Hello World > /tmp/hello"]        
+    #   volumeMounts:
+    #     - mountPath: /tmp
+    #       name: dump-volume
+    # - name: check-files
+    #   image: alpine
+    #   command: ["/bin/sh"]
+    #   args: ["-c", "ls /tmp",]
+    #   volumeMounts:
+    #     - mountPath: /tmp
+    #       name: dump-volume\
+    - name: dump-database
+      image: locmai/postgresql-client
+      command:
+        - pg_dump
+      args:
+        - "dendrite_appservice"
+        - ">"
+        - "/tmp/dendrite_appservice_dump"
+      volumeMounts:
+        - mountPath: /tmp
+          name: dump-volume
+      env:
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: dendrite-postgresql-secret
+              key: postgresql-user
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dendrite-postgresql-secret
+              key: postgresql-password
+        - name: PGHOST
+          value: "dendrite-postgresql.apps.svc.cluster.local"
+        - name: PGPORT
+          value: "5432"
+    - name: check-files
+      image: alpine
+      command: ["/bin/sh"]
+      args: ["-c", "ls /tmp",]
+      volumeMounts:
+        - mountPath: /tmp
+          name: dump-volume
     - name: upload-to-s3
       image: amazon/aws-cli
       env:
         - name: AWS_SECRET_ACCESS_KEY
           valueFrom:
             secretKeyRef:
-              name: $(params.s3-secret)
+              name: $(params.dendrite-s3-secret)
               key: AWS_SECRET_ACCESS_KEY
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
             secretKeyRef:
-              name: $(params.s3-secret)
+              name: $(params.dendrite-s3-secret)
               key: AWS_ACCESS_KEY_ID
         - name:  AWS_DEFAUL_REGION
           value: us-east-1
       args:
         [
           "--endpoint-url",
-          "http://localhost:33049",
+          "http://minio:9000",
           "s3",
           "ls",
         ]
+      volumeMounts:
+        - mountPath: /tmp
+          name: dump-volume
+  volumes:
+  - name: dump-volume
+    emptyDir: {}
