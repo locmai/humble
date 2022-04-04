@@ -26,7 +26,7 @@ memcached:
   enabled: true
 
 cortex:
-  enabled: false
+  enabled: true
 
 microservicesDemo:
   enabled: true

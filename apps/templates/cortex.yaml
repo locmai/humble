@@ -24,6 +24,24 @@ spec:
     helm:
       releaseName: cortex
       values: |
+        ingress:
+          enabled: true
+          ingressClass:
+            enabled: true
+            name: "nginx"
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+          hosts:
+            - host: &host cortex.{{ .Values.global.domain }}
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: cortex-tls-certificate
+              hosts:
+                - *host
         tags:
           # -- Set to true to enable block storage memcached caching
           blocks-storage-memcached: true
@@ -31,17 +49,65 @@ spec:
           enabled: false
         ruler:
           enabled: false
-        store_gateway:
-          persistentVolume:
-            enabled: false
+
+        nginx:
+          enabled: true
+          replicas: 2
+
         ingester:
           persistentVolume:
             enabled: false
+
+          serviceMonitor:
+            enabled: true
+
         distributor:
           persistentVolume:
             enabled: false
+
+          serviceMonitor:
+            enabled: true
+        
         querier:
-          store_gateway_addresses: dns+cortex-store-gateway-headless.apps:9095
+          replicas: 2
+
+          serviceMonitor:
+            enabled: true
+
+        query_frontend:
+          replicas: 2
+
+          serviceMonitor:
+            enabled: true
+
+        table_manager:
+          replicas: 1
+
+          serviceMonitor:
+            enabled: true
+
+        compactor:
+          enabled: true
+          replicas: 1
+
+          serviceMonitor:
+            enabled: true
+
+          persistentVolume:
+            enabled: true
+            size: 2Gi
+            storageClass: longhorn
+
+        store_gateway:
+          replicas: 3
+
+          serviceMonitor:
+            enabled: true
+
+          persistentVolume:
+            enabled: true
+            size: 2Gi
+            storageClass: longhorn
 
         memcached:
           enabled: false
@@ -97,4 +163,22 @@ spec:
               sync_dir: /data/tsdb-sync
               bucket_index:
                 enabled: true
+          limits:
+            max_series_per_user: 0
+            max_series_per_metric: 0
+            accept_ha_samples: true
+            ha_cluster_label: "prometheus"
+            ha_replica_label: "prometheus_replica"
+          distributor:
+            ha_tracker:
+              enable_ha_tracker: true
+              kvstore:
+                store: "consul"
+          ingester:
+            lifecycler:
+              ring:
+                kvstore:
+                  store: "consul"
+                  consul:
+                    host: consul-consul-server.apps:8500
 {{- end }}
