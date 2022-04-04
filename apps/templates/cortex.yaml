@@ -36,8 +36,7 @@ spec:
           hosts:
             - host: &host cortex.{{ .Values.global.domain }}
               paths:
-                - path: /
-                  pathType: Prefix
+                - /
           tls:
             - secretName: cortex-tls-certificate
               hosts:
