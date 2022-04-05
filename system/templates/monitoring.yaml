@@ -97,8 +97,7 @@ spec:
                 type: prometheus
                 url: http://cortex-nginx.apps:80/prometheus
                 isDefault: true
-                    - name: Loki
-              - bane: Loki
+              - name: Loki
                 type: loki
                 url: http://loki-stack:3100
           plugins:
