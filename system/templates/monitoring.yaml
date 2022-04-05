@@ -29,6 +29,7 @@ spec:
       values: |
         prometheus:
           prometheusSpec:
+            replicas: 2
             serviceMonitorSelectorNilUsesHelmValues: false
             serviceMonitorNamespaceSelector: {}
             podMonitorSelectorNilUsesHelmValues: false
@@ -46,7 +47,8 @@ spec:
                   resources:
                     requests:
                       storage: 20Gi
-
+            remoteWrite:
+              - url: http://cortex-nginx.apps:80/prometheus
           server:
             enableServiceLinks: false
 
