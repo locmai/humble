@@ -24,6 +24,12 @@ spec:
     helm:
       releaseName: consul
       values: |
+        global:
+          # The default log level to apply to all components which do not otherwise override this setting.
+          # It is recommended to generally not set this below "info" unless actively debugging due to logging verbosity.
+          # One of "debug", "info", "warn", or "error".
+          # @type: string
+          logLevel: "debug"
         server:
           replicas: 3
           affinity: ""
