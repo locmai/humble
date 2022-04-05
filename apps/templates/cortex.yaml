@@ -174,7 +174,7 @@ spec:
               kvstore:
                 store: "consul"
                 consul:
-                    host: consul-consul-server.apps:8500
+                  host: consul-consul-server.apps:8500
           ingester:
             lifecycler:
               ring:
