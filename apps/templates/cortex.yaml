@@ -163,6 +163,7 @@ spec:
               bucket_index:
                 enabled: true
           limits:
+            ingestion_rate: 150000
             max_series_per_user: 0
             max_series_per_metric: 0
             accept_ha_samples: true
