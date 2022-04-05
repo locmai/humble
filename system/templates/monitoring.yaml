@@ -48,7 +48,7 @@ spec:
                     requests:
                       storage: 20Gi
             remoteWrite:
-              - url: http://cortex-nginx.apps:80/prometheus
+              - url: http://cortex-nginx.apps:80/api/v1/push
           server:
             enableServiceLinks: false
 
