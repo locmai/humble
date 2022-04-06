@@ -10,14 +10,6 @@
 
 Humble is a project that seeks to set up a ready-to-go environment with operating services using modern infrastructure as code with GitOps driven.
 
-If you have any questions about the project, please feel free to join us at:
-
-- **[#homelab](https://matrix.to/#/#home:dendrite.maibaloc.com)** - General chat about the Humble project, for users and server admins alike
-- **[#humble-dev](https://matrix.to/#/#humble-dev:dendrite.maibaloc.com)** - The place for developers, where all Humble development discussion happens
-- **[#alerts](https://matrix.to/#/#alerts:dendrite.maibaloc.com)** - Release/incident notifications and important info, highly recommended for all Humble server admins
-
-Or by creating an account at **[chat.maibaloc.com](https://chat.maibaloc.com)**
-
 ## Features
 
 - [x] Fully automated with infrastructure as code
