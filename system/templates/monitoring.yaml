@@ -29,7 +29,7 @@ spec:
       values: |
         prometheus:
           prometheusSpec:
-            replicas: 2
+            replicas: 1
             serviceMonitorSelectorNilUsesHelmValues: false
             serviceMonitorNamespaceSelector: {}
             podMonitorSelectorNilUsesHelmValues: false
@@ -64,7 +64,7 @@ spec:
             - 'notreal'
         grafana:
           enabled: true
-          replicas: 2
+          replicas: 1
           enableServiceLinks: false
           env:
             JAEGER_AGENT_PORT: '5755'
