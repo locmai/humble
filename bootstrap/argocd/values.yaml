@@ -89,7 +89,8 @@ argo-cd:
           mountPath: /usr/local/bin/argocd-vault-plugin
           subPath: argocd-vault-plugin
 
-  # TODO: Temporary fix image pull issue
-  redis:
-    metrics:
-      enabled: false
+  applicationSet:
+    enabled: false
+
+  notifications:
+    enabled: false
