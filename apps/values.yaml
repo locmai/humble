@@ -9,24 +9,19 @@ global:
 filebrowser:
   enabled: false
 
-saleor:
-  enabled: false
-
 dendrite:
   enabled: true
 
 element:
   enabled: true
 
-matrixalertmanager:
-  enabled: false
 
 # Playground services
 memcached:
   enabled: true
 
 cortex:
-  enabled: true
+  enabled: false
 
 microservicesDemo:
   enabled: true
@@ -35,4 +30,4 @@ dashyLandscape:
   enabled: true
 
 consul:
-  enabled: true
+  enabled: false
