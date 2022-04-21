@@ -94,3 +94,6 @@ argo-cd:
 
   notifications:
     enabled: false
+  
+  redis-ha:
+    enabled: true
