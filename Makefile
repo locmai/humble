@@ -18,9 +18,8 @@ bootstrap:
 tools:
 	make -C tools
 
-.PHONY: dev
 dev:
-	make -C metal cluster env=dev
+	make -C metal k3d env=dev
 	make -C bootstrap env=dev
 
 .PHONY: stag

@@ -1,6 +1,6 @@
 ---
-name: 2. Try on a VM
-route: /try-on-a-vm
+name: 2. Try with Docker
+route: /try-with-docker
 ---
 
 ## Prerequisites
@@ -9,7 +9,6 @@ route: /try-on-a-vm
 
 - docker
 - make
-- vagrant
 - virtualbox
 
 ### Reserve compute resources
@@ -19,25 +18,6 @@ route: /try-on-a-vm
 - 128GB of disk space
 - 10GB of memory
 
-## Deploy Humble On A VM
+## Deploy Humble On Docker
 
-First, spin up the VM:
-
-```
-VAGRANT_CWD=./metal vagrant up
-```
-
-Then run the following commands to get everything deployed:
-
-```
-make tools
-make dev
-```
-
-## Clean Up
-
-When we're done with the VM, we can destroy it:
-
-```
-VAGRANT_CWD=./metal vagrant destroy -f
-```
+TBD
