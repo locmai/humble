@@ -31,3 +31,6 @@ dashyLandscape:
 
 consul:
   enabled: false
+
+nfs:
+  enabled: true

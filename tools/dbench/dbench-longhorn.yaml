@@ -1,0 +1,37 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dbench-pv-claim-longhorn
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dbench-longhorn
+spec:
+  template:
+    spec:
+      containers:
+      - name: dbench
+        image: zayashv/dbench:latest
+        imagePullPolicy: Always
+        env:
+          - name: DBENCH_MOUNTPOINT
+            value: /data
+          - name: DBENCH_QUICK
+            value: "yes"
+        volumeMounts:
+        - name: dbench-pv-longhorn
+          mountPath: /data
+      restartPolicy: Never
+      volumes:
+      - name: dbench-pv-longhorn
+        persistentVolumeClaim:
+          claimName: dbench-pv-claim-longhorn
+  backoffLimit: 4

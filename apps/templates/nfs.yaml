@@ -1,0 +1,29 @@
+{{- if .Values.nfs.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-consul
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  # syncPolicy:
+  #   automated:
+  #     selfHeal: true
+  #     prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argocd.project }}
+  source:
+    chart: nfs-ganesha-server-and-external-provisioner
+    repoURL: https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner/
+    targetRevision: 1.4.0
+    helm:
+      releaseName: nfs-ganesha-server-and-external-provisioner
+      values: |
+        ingress:
+          enabled: false
+{{- end }}
