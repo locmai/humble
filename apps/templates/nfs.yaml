@@ -18,7 +18,7 @@ spec:
     name: in-cluster
     namespace: {{ .Values.argocd.project }}
   source:
-    chart: nfs-ganesha-server-and-external-provisioner
+    chart: nfs-server-provisioner
     repoURL: https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner/
     targetRevision: 1.4.0
     helm:
