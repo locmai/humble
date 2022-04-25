@@ -22,7 +22,7 @@ spec:
     repoURL: https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner/
     targetRevision: 1.4.0
     helm:
-      releaseName: nfs-ganesha-server-and-external-provisioner
+      releaseName: nfs-server-provisioner
       values: |
         ingress:
           enabled: false

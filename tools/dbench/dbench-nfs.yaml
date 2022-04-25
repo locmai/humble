@@ -1,9 +1,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: dbench-pv-claim-rook
+  name: dbench-pv-claim-nfs
 spec:
-  storageClassName: rook
+  storageClassName: nfs
   accessModes:
     - ReadWriteOnce
   resources:
@@ -13,7 +13,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: dbench-rook
+  name: dbench-nfs
 spec:
   template:
     spec:
@@ -27,11 +27,11 @@ spec:
           # - name: DBENCH_QUICK
           #   value: "yes"
         volumeMounts:
-        - name: dbench-pv-rook
+        - name: dbench-pv-nfs
           mountPath: /data
       restartPolicy: Never
       volumes:
-      - name: dbench-pv-rook
+      - name: dbench-pv-nfs
         persistentVolumeClaim:
-          claimName: dbench-pv-claim-rook
+          claimName: dbench-pv-claim-nfs
   backoffLimit: 4
