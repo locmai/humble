@@ -18,7 +18,7 @@ spec:
     name: in-cluster
     namespace: {{ .Values.argocd.project }}
   source:
-    chart: yutaops
+    chart: yuta
     repoURL: https://locmai.github.io/charts/
     targetRevision: 0.0.1
     helm:
