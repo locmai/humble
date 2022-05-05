@@ -18,13 +18,13 @@ element:
 
 # Playground services
 memcached:
-  enabled: true
+  enabled: false
 
 cortex:
   enabled: false
 
 microservicesDemo:
-  enabled: true
+  enabled: false
 
 dashyLandscape:
   enabled: true
@@ -33,4 +33,4 @@ consul:
   enabled: false
 
 nfs:
-  enabled: true
+  enabled: false
