@@ -131,6 +131,6 @@ spec:
               webhook_configs:
                 - url: 'http://neb.apps.svc.cluster.local:4050/services/hooks/YWxlcnRtYW5hZ2VyX3NlcnZpY2U'
             - name: 'yutaops-webhook'
-              webhook_configs::
+              webhook_configs:
                 - url: 'http://yutaops-webhook.svc.cluster.local:8501'
 {{- end }}
