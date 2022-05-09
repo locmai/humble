@@ -110,6 +110,7 @@ spec:
           - macropower-analytics-panel
 
         alertmanager:
+          enabled: false
           config:
             global:
               resolve_timeout: 5m
