@@ -13,7 +13,7 @@ longhorn:
 
 # Observability
 monitoring:
-  enabled: false
+  enabled: true
   namespace: observability
 
 tracing:
