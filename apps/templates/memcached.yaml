@@ -20,7 +20,7 @@ spec:
   source:
     chart: memcached
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 5.15.12
+    targetRevision: 6.0.17
     helm:
       releaseName: memcached
       values: |
