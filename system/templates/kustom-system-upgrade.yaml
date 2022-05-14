@@ -20,7 +20,7 @@ spec:
     name: in-cluster
     namespace: {{ .Values.systemUpgrade.namespace }}
   source:
-    repoURL: https://github.com/locmai/humble.git
+    repoURL: {{ .Values.global.repoURL }}
     path: 'system/kustomization/system-upgrade'
     targetRevision: {{ .Values.systemUpgrade.targetRevision }}
 {{- end }}

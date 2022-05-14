@@ -27,7 +27,7 @@ spec:
     namespace: global
   source:
     path: 'global'
-    repoURL: https://github.com/locmai/humble.git
+    repoURL: {{ .Values.global.repoURL }}
     targetRevision: "{{ .Values.global.targetRevision }}"
     helm:
       values: |
@@ -36,5 +36,5 @@ spec:
         
         global:
           domain: {{ .Values.global.domain }}
-          repoURL: https://github.com/locmai/humble.git
+          repoURL: {{ .Values.global.repoURL }}
 {{- end }}
