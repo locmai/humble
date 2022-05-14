@@ -35,6 +35,6 @@ spec:
           targetRevision: {{ .Values.system.targetRevision }}
 
         global:
-          domain: {{ .Values.global.domain }}
+          domain:repoURL {{ .Values.global.domain }}
           repoURL: {{ .Values.global.repoURL }}
 {{- end }}

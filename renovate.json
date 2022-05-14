@@ -30,10 +30,15 @@
   "regexManagers": [
     {
       "fileMatch": [
-        "^.*\/templates\/.*.yaml$"
+        "^apps\/templates\/(?!kustom).*.yaml$",
+        "^platform\/templates\/(?!kustom).*.yaml$",
+        "^system\/templates\/(?!kustom).*.yaml$",
+        "^global\/templates\/(?!kustom).*.yaml$"
       ],
       "matchStrings": [
-        "^.*chart: (?<depName>.*?)\\n.*repoURL: (?<registryUrl>.*?)\\n.*targetRevision: (?<currentValue>.*?)\\n$"
+        ".*chart: (?<depName>.*?)\\n",
+        ".*repoURL: (?<registryUrl>.*?)\\n",
+        ".*targetRevision: (?<currentValue>.*?)\\n"
       ],
       "datasourceTemplate": "helm"
     }
