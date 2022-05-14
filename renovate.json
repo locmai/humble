@@ -32,7 +32,7 @@
       "fileMatch": [
         "^apps\/templates\/.*.yaml$",
         "^global\/templates\/.*.yaml$",
-        "^bootstrap\/templates\/.*.yaml$"
+        "^platform\/templates\/.*.yaml$"
       ],
       "matchStrings": [
         ".*chart: (?<depName>.*?)\\n",
