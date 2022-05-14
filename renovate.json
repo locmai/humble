@@ -30,9 +30,7 @@
   "regexManagers": [
     {
       "fileMatch": [
-        "^apps\/templates\/.*.yaml$",
-        "^global\/templates\/.*.yaml$",
-        "^platform\/templates\/.*.yaml$"
+        "^.*\/templates\/.*.yaml$"
       ],
       "matchStringsStrategy": "combination",
       "matchStrings": [
