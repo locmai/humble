@@ -34,6 +34,7 @@
         "^global\/templates\/.*.yaml$",
         "^platform\/templates\/.*.yaml$"
       ],
+      "matchStringsStrategy": "combination",
       "matchStrings": [
         ".*chart: (?<depName>.*?)\\n",
         ".*repoURL: (?<registryUrl>.*?)\\n",
