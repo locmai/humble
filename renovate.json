@@ -33,9 +33,7 @@
         "^.*\/templates\/.*.yaml$"
       ],
       "matchStrings": [
-        ".*chart: (?<depName>.*?)\\n",
-        ".*repoURL: (?<registryUrl>.*?)\\n",
-        ".*targetRevision: (?<currentValue>.*?)\\n"
+        "^.*chart: (?<depName>.*?)\\n.*repoURL: (?<registryUrl>.*?)\\n.*targetRevision: (?<currentValue>.*?)\\n$"
       ],
       "datasourceTemplate": "helm"
     }
