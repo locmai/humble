@@ -22,7 +22,7 @@ spec:
   source:
     chart: authentik
     repoURL: https://charts.goauthentik.io
-    targetRevision: 4.0.3
+    targetRevision: 2022.4.3
     helm:
       releaseName: authentik
       values: |
