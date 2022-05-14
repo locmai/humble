@@ -20,7 +20,7 @@ spec:
     name: in-cluster
     namespace: {{ .Values.tekton.namespace }}
   source:
-    repoURL: {{ .Values.global.repoURL }}
+    repoURL: https://github.com/locmai/humble.git
     path: 'platform/kustomization/tekton'
     targetRevision: {{ .Values.tekton.targetRevision }}
 {{- end }}

@@ -27,7 +27,7 @@ spec:
     namespace: argocd
   source:
     path: 'bootstrap/argocd'
-    repoURL: {{ .Values.global.repoURL }}
+    repoURL: https://github.com/locmai/humble.git
     targetRevision: "{{ .Values.bootstrap.targetRevision }}"
     helm:
       releaseName: bootstrap-argocd
@@ -37,7 +37,7 @@ spec:
         
         global:
           domain: {{ .Values.global.domain }}
-          repoURL: {{ .Values.global.repoURL }}
+          repoURL: https://github.com/locmai/humble.git
 
         argo-cd:
           server:
