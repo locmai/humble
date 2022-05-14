@@ -36,7 +36,8 @@
         ".*chart: (?<depName>.*?)\\n",
         ".*repoURL: (?<registryUrl>.*?)\\n",
         ".*targetRevision: (?<currentValue>.*?)\\n"
-      ]
+      ],
+      "datasourceTemplate": "helm"
     }
   ]
 }
