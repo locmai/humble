@@ -20,7 +20,7 @@ spec:
   source:
     chart: cortex
     repoURL: https://cortexproject.github.io/cortex-helm-chart
-    targetRevision: 1.2.0
+    targetRevision: 1.4.0
     helm:
       releaseName: cortex
       values: |
