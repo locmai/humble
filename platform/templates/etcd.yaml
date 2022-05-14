@@ -22,7 +22,7 @@ spec:
   source:
     chart: etcd
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 6.10.4
+    targetRevision: 8.1.1
     helm:
       releaseName: etcd
 {{- end }}
