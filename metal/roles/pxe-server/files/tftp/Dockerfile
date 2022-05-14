@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM alpine:20220328
 
 RUN apk add tftp-hpa
 
