@@ -30,7 +30,7 @@
   "regexManagers": [
     {
       "fileMatch": [
-        "^.*(global|apps|platform|system)\/templates\/(?!kustom).*.yaml$"
+        "^.*(global|apps|platform|system)\/templates\/*.yaml$"
       ],
       "matchStrings": [
         ".*chart: (?<depName>.*?)\\n",
