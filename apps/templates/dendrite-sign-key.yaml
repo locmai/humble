@@ -1,4 +1,4 @@
-{{- if .Values.dendrite.autosign }}
+{{- if and .Values.dendrite.enabled .Values.dendrite.autosign }}
 {{ $name := "dendrite-signing-key" }}
 {{ $secretName := "dendrite-signing-key" }}
 ---
