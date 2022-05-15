@@ -63,7 +63,6 @@ spec:
             size: 10Gi
 
         ingress:
-          enabled: true
           main:
             enabled: true
             ingressClassName: nginx
