@@ -76,7 +76,7 @@ spec:
           name: signing-key
           readOnly: true
       - name: generate-key
-        {{- include "image.name" $.Values.image | nindent 8 }}
+        image: "matrixdotorg/dendrite-polylith:latest"
         command:
         - sh 
         - -c
