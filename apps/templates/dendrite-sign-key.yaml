@@ -42,6 +42,15 @@ subjects:
     name: {{ $name }}
     namespace: {{ .Release.Namespace }}
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    helm.sh/resource-policy: keep
+  name: dendrite-signing-key
+  namespace: {{ .Release.Namespace }}
+type: Opaque
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
