@@ -40,7 +40,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ $name }}
-    namespace: {{ .Release.Namespace }}
+    namespace: apps
 ---
 apiVersion: v1
 kind: Secret
@@ -48,7 +48,7 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
   name: dendrite-signing-key
-  namespace: {{ .Release.Namespace }}
+  namespace: apps
 type: Opaque
 ---
 apiVersion: batch/v1
