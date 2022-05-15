@@ -1,0 +1,39 @@
+argocd:
+  namespace: argocd
+  project: apps
+  targetRevision: main
+
+global:
+  domain: "placeholder.com"
+
+filebrowser:
+  enabled: false
+
+dendrite:
+  enabled: true
+
+element:
+  enabled: true
+
+
+# Playground services
+memcached:
+  enabled: false
+
+cortex:
+  enabled: false
+
+microservicesDemo:
+  enabled: false
+
+dashyLandscape:
+  enabled: true
+
+consul:
+  enabled: false
+
+nfs:
+  enabled: false
+
+yutaops:
+  enabled: true

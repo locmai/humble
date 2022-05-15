@@ -7,6 +7,6 @@
 - name: Create some basic config
   hosts: localhost
   environment:
-    KUBECONFIG: ./kubeconfig.yaml
+    KUBECONFIG: ./kubeconfig.prod.yaml
   roles:
     - metallb_config

@@ -19,9 +19,5 @@ dev:
 	make -C metal k3d env=dev
 	make -C bootstrap env=dev
 
-stag:
-	make -C metal cluster env=stag
-	make -C bootstrap env=stag
-
 global:
 	make -C global

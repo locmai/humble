@@ -3,14 +3,11 @@ kind: Simple
 metadata:
   name: humble-dev
 image: docker.io/rancher/k3s:v1.23.4-k3s1
-servers: 3
+servers: 1
 agents: 0
 options:
   k3s:
     extraArgs:
-      - arg: --disable=local-storage
-        nodeFilters:
-          - server:*
       - arg: --disable=traefik
         nodeFilters:
           - server:*

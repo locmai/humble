@@ -75,7 +75,7 @@
 - name: Write Kubernetes config file with the correct cluster address
   copy:
     content: "{{ kubeconfig_base64.content | b64decode | replace('127.0.0.1', hostvars[groups['masters'][0]].ansible_host) }}"
-    dest: "{{ playbook_dir }}/kubeconfig.yaml"
+    dest: "{{ playbook_dir }}/kubeconfig.{{ env }}.yaml"
     mode: 0644
   delegate_to: localhost
   run_once: true

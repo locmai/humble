@@ -30,6 +30,8 @@ spec:
     repoURL: {{ .Values.global.repoURL }}
     targetRevision: "{{ .Values.system.targetRevision }}"
     helm:
+      valueFiles:
+      - values-{{ .Values.env }}.yaml
       values: |
         argocd:
           targetRevision: {{ .Values.system.targetRevision }}

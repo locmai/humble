@@ -1,7 +1,10 @@
+env: "prod"
+
 global:
   enabled: true
   domain: "maibaloc.com"
   repoUrl: https://github.com/locmai/humble.git
+
 bootstrap:
   enabled: true
   targetRevision: main
@@ -15,9 +18,5 @@ platform:
   targetRevision: main
 
 apps:
-  enabled: true
-  targetRevision: main
-
-external_apps:
   enabled: true
   targetRevision: main
