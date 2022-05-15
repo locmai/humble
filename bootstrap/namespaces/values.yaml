@@ -8,3 +8,4 @@ namespaces:
   - system
   - global
   - bootstrap
+  - observability
