@@ -1,9 +1,9 @@
 .POSIX:
 .EXPORT_ALL_VARIABLES:
 
-KUBECONFIG = $(shell pwd)/../metal/kubeconfig.yaml
-
 env ?= "prod"
+
+KUBECONFIG = $(shell pwd)/../metal/kubeconfig.${env}.yaml
 
 default: namespace argocd root
 
@@ -19,7 +19,7 @@ namespace:
 .PHONY: argocd
 argocd: argocd/charts
 	cd argocd && \
-		./apply.sh
+		./apply.sh ${env}
 
 .PHONY: root
 root:

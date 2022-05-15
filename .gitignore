@@ -37,9 +37,8 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+metal/kubeconfig.*.yaml
 metal/kubeconfig.yaml
-metal/kubeconfig.backup.yaml
-metal/kubeconfig.dev.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -78,3 +77,5 @@ venv/
 node_modules/
 .cache
 .docz
+
+*.tgz

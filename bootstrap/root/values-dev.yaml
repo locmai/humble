@@ -1,7 +1,13 @@
+env: "dev"
+
 global:
   enabled: true
   domain: "172-28-0-3.nip.io"
   repoURL: https://github.com/locmai/humble.git
+
+bootstrap:
+  enabled: true
+  targetRevision: main
 
 system:
   enabled: true
@@ -12,9 +18,5 @@ platform:
   targetRevision: main
 
 apps:
-  enabled: true
-  targetRevision: main
-
-external_apps:
   enabled: true
   targetRevision: main

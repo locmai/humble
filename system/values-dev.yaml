@@ -1,0 +1,64 @@
+# Default
+argocd:
+ project: system
+ namespace: argocd
+
+global:
+  domain: "placeholder.com"
+
+# Storage
+longhorn:
+  enabled: false
+  namespace: longhorn-system
+
+# Observability
+monitoring:
+  enabled: false
+  namespace: observability
+
+tracing:
+  enabled: false
+  namespace: observability
+
+logging:
+  enabled: false
+  namespace: observability
+
+dashboard:
+  enabled: false
+  namespace: observability
+  targetRevision: main
+
+opentelemetry:
+  enabled: false
+  namespace: observability
+  logLevel: info
+
+# Ingress / Load balancer
+metallb:
+  enabled: false
+  namespace: metallb-system
+
+ingress_nginx:
+  enabled: true
+
+certmanager:
+  enabled: false
+  namespace: cert-manager
+
+istio:
+  enabled: false
+  namespace: istio-system
+  gateway:
+    enabled: false
+
+# System maintainers/cleaners
+descheduler:
+  enabled: false
+  namespace: descheduler
+
+systemUpgrade:
+  enabled: false
+
+kured:
+  enabled: false

@@ -1,0 +1,66 @@
+argocd:
+  namespace: argocd
+  project: platform
+  targetRevision: main
+
+global:
+  domain: "placeholder.com"
+
+# Secret managment
+vault:
+  enabled: true
+  namespace: platform
+  init:
+    enabled: true
+
+externalSecrets:
+  enabled: true
+  namespace: platform
+
+secretGenerator:
+  enabled: true
+  namespace: platform
+  targetRevision: master
+
+# Workflow engines
+tekton:
+  enabled: true
+  namespace: platform
+  ingress:
+    enabled: true
+
+etcd:
+  enabled: false
+  namespace: platform
+
+argo_workflow:
+  enabled: false
+  namespace: kube-system
+
+# IAM
+authentik:
+  enabled: false
+  namespace: platform
+  init: 
+    enabled: false
+
+# SCM
+gitea:
+  enabled: false
+  namespace: platform
+  ingress:
+    enabled: false
+
+# Yuta Platform
+minio:
+  enabled: false
+  namespace: platform
+
+trow:
+  enabled: false
+  namespace: platform
+
+# Mimir
+mimir:
+  enabled: false
+  namespace: platform

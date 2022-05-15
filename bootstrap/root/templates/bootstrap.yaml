@@ -31,6 +31,8 @@ spec:
     targetRevision: "{{ .Values.bootstrap.targetRevision }}"
     helm:
       releaseName: bootstrap-argocd
+      valueFiles:
+      - values-{{ .Values.env }}.yaml
       values: |
         argocd:
           targetRevision: {{ .Values.global.targetRevision }}
