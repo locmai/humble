@@ -113,8 +113,7 @@ spec:
                     https://camo.githubusercontent.com/8e1a25105159fcd0f93e3c2a7bd7efba51d7779bf5bf2ee3a3730a2ab252f556/68747470733a2f2f73696d706c6569636f6e732e6f72672f69636f6e732f7661756c742e737667
                   id: 1_837_vault
                 - title: External secrets
-                  icon: >-
-                    https://github.com/external-secrets/external-secrets/raw/main/assets/round_eso_logo.png
+                  icon: fad fa-key
                   id: 2_837_externalsecrets
                 - title: Secret generator
                   icon: fad fa-key
@@ -194,6 +193,10 @@ spec:
                 - title: System Upgrade
                   icon: fas fa-wrench
                   id: 14_645_systemupgrade
+                - title: Renovate Bot
+                  icon: >-
+                    https://avatars.githubusercontent.com/u/25180681?v=4
+                  id: 15_645_renovatebot
               icon: fal fa-cogs
             - name: Metal
               displayData:

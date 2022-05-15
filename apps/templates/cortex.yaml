@@ -54,6 +54,10 @@ spec:
           replicas: 2
 
         ingester:
+          autoscaling:
+            enabled: true
+            minReplicas: 2
+            maxReplicas: 3
           persistentVolume:
             enabled: false
 
@@ -61,6 +65,10 @@ spec:
             enabled: true
 
         distributor:
+          autoscaling:
+            enabled: true
+            minReplicas: 2
+            maxReplicas: 3
           persistentVolume:
             enabled: false
 
