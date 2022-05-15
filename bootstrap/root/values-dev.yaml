@@ -1,7 +1,7 @@
 env: "dev"
 
 global:
-  enabled: true
+  enabled: false
   domain: "172-28-0-3.nip.io"
   repoURL: https://github.com/locmai/humble.git
 
