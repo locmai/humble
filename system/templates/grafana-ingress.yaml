@@ -1,3 +1,4 @@
+{{- if .Values.monitoring.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -29,3 +30,4 @@ spec:
     - secretName: grafana-tls-certificate
       hosts:
         - *host
+{{- end }}
