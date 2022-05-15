@@ -11,6 +11,7 @@ filebrowser:
 
 dendrite:
   enabled: false
+  storageClass: "local-path"
 
 element:
   enabled: false

@@ -11,6 +11,10 @@ filebrowser:
 
 dendrite:
   enabled: false
+  storageClass: "longhorn"
+
+dendriteTest:
+  enabled: true
 
 element:
   enabled: true
