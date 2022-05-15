@@ -12,6 +12,7 @@ vault:
   namespace: platform
   init:
     enabled: true
+  storageClass:  "local-path"
 
 externalSecrets:
   enabled: true

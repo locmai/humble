@@ -12,6 +12,7 @@ vault:
   namespace: platform
   init:
     enabled: true
+  storageClass:  "longhorn"
 
 externalSecrets:
   enabled: true

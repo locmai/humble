@@ -37,5 +37,5 @@ spec:
             mountPath: "/vault/data"
             # Name of the storage class to use.  If null it will use the
             # configured default Storage Class.
-            storageClass: "longhorn"
+            storageClass: {{ .Values.vault.storageClass }}
 {{- end }}
