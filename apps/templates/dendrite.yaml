@@ -19,54 +19,29 @@ spec:
     namespace: {{ .Values.argocd.project }}
   source:
     chart: dendrite
-    repoURL: https://locmai.github.io/charts/
-    targetRevision: 0.0.3
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 4.2.2
     helm:
       releaseName: dendrite
       values: |
-        # Use a polylith setup, which creates a deployment for every component.
-        # If false, a monolithic deployment will be created, with a single deployment.
-        polylith: false
-
-        # Docker image to use
         image:
-          # name: "matrixdotorg/dendrite-polylith:latest"
-          name: "locmai/dendrite-monolith:010922"
-          pullPolicy: IfNotPresent
-
-        configuration:
-          # servername for this dendrite deployment
-          version: 2
-          servername: "dendrite.{{ .Values.global.domain }}"
-
-          # database connection settings
+          repository: matrixdotorg/dendrite-monolith
+        global:
+          server_name: "dendrite.{{ .Values.global.domain }}"
+          server_notices:
+            enabled: true
+        dendrite:
+          matrix_key_secret:
+            # -- Create matrix_key secret using the keyBody below.
+            create: false
+            # -- New Key Body
+            keyBody: ""
+            # -- Use an existing secret
+            existingSecret: "dendrite-key"
           database:
-            host:  "dendrite-postgresql.apps.svc.cluster.local:5432"
-            user:  "dendrite"
-            password: "dendrite"
             max_open_conns: 100
             max_idle_conns: 2
             conn_max_lifetime: -1
-
-          # prometheus metrics
-          metrics:
-            # Whether or not Prometheus metrics are enabled.
-            enabled: true
-
-          # NATS connection settings
-          jetstream:
-            in_memory: false
-            addresses:
-              - nats://dendrite-nats:4222
-
-        persistence:
-          storageClass: "{{ .Values.dendrite.storageClass }}"
-          logs:
-            existingClaim: ""
-            capacity: "10Gi"
-          media:
-            existingClaim: ""
-            capacity: "10Gi"
 
         nats:
           enabled: true
@@ -95,22 +70,22 @@ spec:
             size: 10Gi
 
         ingress:
-          enabled: true
-          
-          className: nginx
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-prod
-            external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
-            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-            nginx.ingress.kubernetes.io/proxy-body-size: 32m
-          hosts:
-            - host: &host dendrite.{{ .Values.global.domain }}
-              paths:
-                - path: /
-                  pathType: Prefix
-          tls:
-            - secretName: dendrite-tls-certificate
-              hosts:
-                - *host
+          main:
+            enabled: true
+            ingressClassName: nginx
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod
+              external-dns.alpha.kubernetes.io/target: "humble-tunnel.{{ .Values.global.domain }}"
+              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+              nginx.ingress.kubernetes.io/proxy-body-size: 32m
+            hosts:
+              - host: &host dendrite.{{ .Values.global.domain }}
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls:
+              - secretName: dendrite-tls-certificate
+                hosts:
+                  - *host
       
 {{- end }}

@@ -12,6 +12,7 @@ filebrowser:
 dendrite:
   enabled: false
   storageClass: "local-path"
+  autosign: true
 
 element:
   enabled: false

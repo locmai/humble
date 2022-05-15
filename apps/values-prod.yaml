@@ -12,9 +12,7 @@ filebrowser:
 dendrite:
   enabled: false
   storageClass: "longhorn"
-
-dendriteTest:
-  enabled: true
+  autosign: true
 
 element:
   enabled: true
