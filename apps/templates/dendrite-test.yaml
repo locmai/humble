@@ -63,7 +63,7 @@ spec:
             size: 10Gi
 
         ingress:
-          enabled: true
+          enabled: false
           
           className: nginx
           annotations:
