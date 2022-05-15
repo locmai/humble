@@ -22,6 +22,9 @@ memcached:
 
 cortex:
   enabled: false
+  basicAuth:
+    insecure: true
+    secretName: "cortex-humble-tenant"
 
 microservicesDemo:
   enabled: false

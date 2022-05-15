@@ -45,13 +45,21 @@ spec:
           # -- Set to true to enable block storage memcached caching
           blocks-storage-memcached: true
         alertmanager:
-          enabled: false
+          enabled: true
         ruler:
-          enabled: false
+          enabled: true
 
         nginx:
           enabled: true
           replicas: 2
+          auth_orgs: ["humble"]
+          config:
+            setHeaders:
+              X-Scope-OrgID: $remote_user
+            # -- (optional) List of [auth tenants](https://cortexmetrics.io/docs/guides/auth/) to set in the nginx config
+            auth_orgs:
+              - remote-write-auth
+          basicAuthSecretName: "{{ .Values.cortex.basicAuth.secretName }}"
 
         ingester:
           autoscaling:
@@ -153,6 +161,7 @@ spec:
           replicaCount: 2
         
         config:
+          auth_enabled: true
           storage:
             engine: blocks
             index_queries_cache_config:

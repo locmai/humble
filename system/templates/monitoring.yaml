@@ -49,6 +49,15 @@ spec:
                       storage: 20Gi
             remoteWrite:
               - url: http://cortex-nginx.apps:80/api/v1/push
+                headers:
+                  X-Scope-OrgID: humble
+                basicAuth:
+                  username:
+                    name: cortex-humble-tenant
+                    key: username
+                  password:
+                    name: cortex-humble-tenant
+                    key: password
           server:
             enableServiceLinks: false
 
