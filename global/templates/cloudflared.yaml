@@ -24,9 +24,15 @@ spec:
       releaseName: cloudflared
       values: |
         tunnel: humble-tunnel
+        credentials:
+          existingSecret: cloudflared-credentials
         ingress:
         - hostname: "*.{{ .Values.global.domain }}"
           service: https://system-ingress-nginx-controller.ingress-nginx
           originRequest:
             noTLSVerify: true
         - service: http_status:404
+        podMonitor:
+          enabled: true
+          metricsEndpoints:
+            - port: http
