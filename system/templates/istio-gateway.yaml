@@ -22,7 +22,7 @@ spec:
   source:
     chart: gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.12.1
+    targetRevision: 1.13.3
     helm:
       releaseName: gateway
 {{- end }}
