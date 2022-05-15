@@ -1,6 +1,6 @@
 {{- if .Values.dendrite.autosign }}
 {{ $name := "dendrite-signing-key" }}
-{{ $secretName := "dendrite-key" }}
+{{ $secretName := "dendrite-signing-key" }}
 ---
 apiVersion: v1
 kind: ServiceAccount
