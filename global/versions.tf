@@ -13,7 +13,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 3.14.0"
+      version = "~> 3.15.0"
     }
 
     kubernetes = {
