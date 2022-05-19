@@ -22,7 +22,7 @@ spec:
   source:
     chart: minio
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 11.3.5
+    targetRevision: 11.5.1
     helm:
       releaseName: minio
       values: |
