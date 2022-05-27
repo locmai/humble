@@ -96,19 +96,6 @@ spec:
                 foldersFromFilesStructure: true
               annotations:
                 k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
-          datasources:
-            datasources.yaml:
-              apiVersion: 1
-              datasources:
-              - name: Prometheus Base
-                type: prometheus
-                url: http://monitoring-kube-prometheus-prometheus:9090
-              - name: Cortex
-                type: prometheus
-                url: http://cortex-nginx.apps:80/prometheus
-              - name: Loki
-                type: loki
-                url: http://loki-stack:3100
           plugins:
           - yesoreyeram-boomtheme-panel
           - flant-statusmap-panel
