@@ -96,6 +96,8 @@ spec:
                 foldersFromFilesStructure: true
               annotations:
                 k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
+            datasources:
+              enabled: false
           plugins:
           - yesoreyeram-boomtheme-panel
           - flant-statusmap-panel
