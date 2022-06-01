@@ -28,4 +28,6 @@ spec:
       values: |
         server:
           extraArgs: [--auth-mode=server]
+        controller:
+          workflowNamespaces: ["default", "kube-system"]	
 {{- end }}
