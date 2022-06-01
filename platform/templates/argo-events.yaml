@@ -26,5 +26,6 @@ spec:
     helm:
       releaseName: argo-events
       values: |
-        placeholder: fornow
+        eventbusController:
+          tag: v1.6.0
 {{- end }}

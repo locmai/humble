@@ -4,22 +4,16 @@ metadata:
   name: default
   namespace: kube-system
 spec:
-  nats:
-    native:
-      # Optional, defaults to 3. If it is < 3, set it to 3, that is the minimal requirement.
-      replicas: 3
-      # Optional, authen strategy, "none" or "token", defaults to "none"
-      auth: token
-#      containerTemplate:
-#        resources:
-#          requests:
-#            cpu: "10m"
-#      metricsContainerTemplate:
-#        resources:
-#          requests:
-#            cpu: "10m"
-#      antiAffinity: false
-#      persistence:
-#        storageClassName: standard
-#        accessMode: ReadWriteOnce
-#        volumeSize: 10Gi
+  jetstream:
+    version: 2.8.1
+    replicas: 5
+    persistence: # optional
+        storageClassName: standard
+        accessMode: ReadWriteOnce
+        volumeSize: 10Gi
+    streamConfig: |             # see default values in argo-events-controller-config
+      maxAge: 24h
+    settings: |
+      max_file_store: 1GB       # see default values in argo-events-controller-config
+    startArgs: 
+      - "-D"                    # debug-level logs
