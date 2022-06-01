@@ -31,7 +31,10 @@ curl -d '{"alerts": [{"labels":{"message": "hello"}}]}' -H "Content-Type: applic
 amtool test:
 
 ```
-TBD
+amtool alert add "Test Alert" ops=argo-events \
+        --annotation=runbook='http://runbook.biz' \
+        --annotation=summary='summary of the alert' \
+        --annotation=description='description of the alert'
 ```
 
 The Alertmanager will send HTTP POST requests in the following JSON format to the configured endpoint:
