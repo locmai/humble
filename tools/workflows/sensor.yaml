@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
   name: webhook-demo
-  namespace: kube-system
+  namespace: argoworkflow
 spec:
   template:
     serviceAccountName: operate-workflow-sa
@@ -21,7 +21,7 @@ spec:
               kind: Workflow
               metadata:
                 generateName: webhook-
-                namespace: kube-system
+                namespace: argoworkflow
               spec:
                 entrypoint: whalesay
                 arguments:

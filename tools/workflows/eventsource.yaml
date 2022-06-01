@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: EventSource
 metadata:
   name: webhook-demo
-  namespace: kube-system
+  namespace: argoworkflow
 spec:
   service:
     ports:

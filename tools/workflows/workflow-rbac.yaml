@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: workflow-role
-  namespace: kube-system
+  namespace: argoworkflow
 rules:
   # pod get/watch is used to identify the container IDs of the current pod
   # pod patch is used to annotate the step's outputs back to controller (e.g. artifact location)
@@ -27,7 +27,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: workflow-role-binding
-  namespace: kube-system
+  namespace: argoworkflow
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role

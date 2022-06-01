@@ -36,11 +36,11 @@ etcd:
 
 argo_workflow:
   enabled: true
-  namespace: kube-system
+  namespace: argoworkflow
 
 argo_events:
   enabled: true
-  namespace: kube-system
+  namespace: argoworkflow
 
 # IAM
 authentik:
