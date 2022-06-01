@@ -26,7 +26,7 @@ spec:
                 entrypoint: whalesay
                 arguments:
                   parameters:
-                  - name: alert
+                  - name: message
                     # the value will get overridden by event payload from test-dep
                     value: hello world
                 templates:
