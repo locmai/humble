@@ -8,8 +8,8 @@ spec:
     serviceAccountName: operate-workflow-sa
   dependencies:
     - name: test-dep
-      eventSourceName: webhook
-      eventName: example
+      eventSourceName: webhook-demo
+      eventName: demo
   triggers:
     - template:
         name: webhook-workflow-trigger
@@ -26,7 +26,7 @@ spec:
                 entrypoint: whalesay
                 arguments:
                   parameters:
-                  - name: message
+                  - name: alert
                     # the value will get overridden by event payload from test-dep
                     value: hello world
                 templates:
@@ -37,6 +37,7 @@ spec:
                   container:
                     image: docker/whalesay:latest
                     command: [cowsay]
+                    
                     args: ["{{inputs.parameters.message}}"]
           parameters:
             - src:

@@ -4,16 +4,5 @@ metadata:
   name: default
   namespace: argoworkflow
 spec:
-  jetstream:
-    version: 2.8.1
-    replicas: 5
-    persistence: # optional
-        storageClassName: standard
-        accessMode: ReadWriteOnce
-        volumeSize: 10Gi
-    streamConfig: |             # see default values in argo-events-controller-config
-      maxAge: 24h
-    settings: |
-      max_file_store: 1GB       # see default values in argo-events-controller-config
-    startArgs: 
-      - "-D"                    # debug-level logs
+  nats:
+    native: {}

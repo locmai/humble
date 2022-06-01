@@ -117,7 +117,7 @@ spec:
               group_wait: 30s
               group_interval: 5m
               repeat_interval: 2h
-              receiver: "yutaops-webhook"
+              receiver: "argo-eventsource"
               routes:
               - match:
                   alertname: Watchdog
@@ -125,6 +125,9 @@ spec:
               - match:
                   ops: yuta
                 receiver: 'yutaops-webhook'
+              - match:
+                  ops: argo-events
+                receiver: 'argo-eventsource'
             receivers:
             - name: 'matrix'
               webhook_configs:
@@ -132,4 +135,7 @@ spec:
             - name: 'yutaops-webhook'
               webhook_configs:
                 - url: 'http://yutaops-webhook.apps.svc.cluster.local:8501/webhook'
+            - name: 'argo-eventsource'
+              webhook_configs:
+                - url: 'http://webhook-demo-eventsource-svc.argoworkflow.svc.cluster.local:12000/demo'
 {{- end }}
