@@ -37,6 +37,10 @@ argo_workflow:
   enabled: false
   namespace: kube-system
 
+argo_events:
+  enabled: false
+  namespace: kube-system
+
 # IAM
 authentik:
   enabled: false

@@ -35,7 +35,11 @@ etcd:
   namespace: platform
 
 argo_workflow:
-  enabled: false
+  enabled: true
+  namespace: kube-system
+
+argo_events:
+  enabled: true
   namespace: kube-system
 
 # IAM
