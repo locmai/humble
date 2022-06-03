@@ -20,7 +20,7 @@ spec:
   source:
     chart: dendrite
     repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 4.2.2
+    targetRevision: 5.0.0
     helm:
       releaseName: dendrite
       values: |
