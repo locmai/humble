@@ -31,7 +31,7 @@ curl -d '{"alerts": [{"labels":{"message": "hello"}}]}' -H "Content-Type: applic
 amtool test:
 
 ```
-amtool alert add "Test Alert" ops=argo-events \
+amtool alert add "Test Alert" ops=argo-events workflow=test-workflow \
         --annotation=runbook='http://runbook.biz' \
         --annotation=summary='summary of the alert' \
         --annotation=description='description of the alert'
@@ -41,27 +41,42 @@ The Alertmanager will send HTTP POST requests in the following JSON format to th
 
 ```json
 {
-  "version": "4",
-  "groupKey": <string>,              // key identifying the group of alerts (e.g. to deduplicate)
-  "truncatedAlerts": <int>,          // how many alerts have been truncated due to "max_alerts"
-  "status": "<resolved|firing>",
-  "receiver": <string>,
-  "groupLabels": <object>,
-  "commonLabels": <object>,
-  "commonAnnotations": <object>,
-  "externalURL": <string>,           // backlink to the Alertmanager.
+  "receiver": "argo-eventsource",
+  "status": "firing",
   "alerts": [
     {
-      "status": "<resolved|firing>",
-      "labels": <object>,
-      "annotations": <object>,
-      "startsAt": "<rfc3339>",
-      "endsAt": "<rfc3339>",
-      "generatorURL": <string>,      // identifies the entity that caused the alert
-      "fingerprint": <string>        // fingerprint to identify the alert
-    },
-    ...
-  ]
+      "status": "firing",
+      "labels": {
+        "alertname": "Test Alert",
+        "ops": "argo-events"
+      },
+      "annotations": {
+        "description": "description of the alert",
+        "runbook": "http://runbook.biz",
+        "summary": "summary of the alert"
+      },
+      "startsAt": "2022-06-04T08:25:09.349094001Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "",
+      "fingerprint": "966bc69b4b56f1c3"
+    }
+  ],
+  "groupLabels": {
+    "ops": "argo-events"
+  },
+  "commonLabels": {
+    "alertname": "Test Alert",
+    "ops": "argo-events"
+  },
+  "commonAnnotations": {
+    "description": "description of the alert",
+    "runbook": "http://runbook.biz",
+    "summary": "summary of the alert"
+  },
+  "externalURL": "http://monitoring-kube-prometheus-alertmanager.observability:9093",
+  "version": "4",
+  "groupKey": "{}/{ops=\"argo-events\"}:{ops=\"argo-events\"}",
+  "truncatedAlerts": 0
 }
 ```
 

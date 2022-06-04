@@ -47,6 +47,7 @@ spec:
                   resources:
                     requests:
                       storage: 20Gi
+            {{- if .Values.monitoring.remoteWrite.enabled }}
             remoteWrite:
               - url: http://cortex-nginx.apps:80/api/v1/push
                 headers:
@@ -58,6 +59,7 @@ spec:
                   password:
                     name: cortex-humble-tenant
                     key: password
+            {{- end }}
           server:
             enableServiceLinks: false
 
@@ -113,11 +115,11 @@ spec:
             global:
               resolve_timeout: 5m
             route:
-              group_by: ['job', 'ops']
+              group_by: ['alertname', 'job', 'ops']
               group_wait: 30s
               group_interval: 5m
               repeat_interval: 2h
-              receiver: "argo-eventsource"
+              receiver: "yutaops-webhook"
               routes:
               - match:
                   ops: yuta
