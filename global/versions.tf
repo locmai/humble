@@ -1,13 +1,9 @@
 terraform {
   required_version = "~> 1.2.0"
 
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "lmlabs"
-
-    workspaces {
-      name = "humble-global"
-    }
+  backend "kubernetes" {
+    secret_suffix    = "tfstate"
+    config_path      = "${path.root}/../metal/kubeconfig.${var.env}.yaml"
   }
 
   required_providers {

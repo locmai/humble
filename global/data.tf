@@ -1,4 +1,3 @@
-
 data "cloudflare_zone" "maibaloc_com" {
   name = "maibaloc.com"
 }

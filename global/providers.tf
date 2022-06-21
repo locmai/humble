@@ -4,5 +4,5 @@ provider "cloudflare" {
 }
 
 provider "kubernetes" {
-  config_path = "${path.root}/../metal/kubeconfig.yaml"
+  config_path = "${path.root}/../metal/kubeconfig.${var.env}.yaml"
 }
