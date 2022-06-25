@@ -8,8 +8,9 @@ terraform.tfstate
 terraform.tfstate**
 secrets.tf
 
-# Local .terraform directories
+# Local .terraform/terragrunt directories
 **/.terraform/*
+**/.terragrunt/*
 
 # .tfstate files
 *.tfstate
