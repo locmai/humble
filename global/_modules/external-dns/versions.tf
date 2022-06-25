@@ -1,11 +1,6 @@
 terraform {
   required_version = "~> 1.2.0"
 
-  backend "kubernetes" {
-    secret_suffix    = "tfstate"
-    config_path      = "${path.root}/../metal/kubeconfig.${var.env}.yaml"
-  }
-
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"

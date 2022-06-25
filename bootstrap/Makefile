@@ -1,7 +1,7 @@
 .POSIX:
 .EXPORT_ALL_VARIABLES:
 
-env ?= "prod"
+env ?= prod
 
 KUBECONFIG = $(shell pwd)/../metal/kubeconfig.${env}.yaml
 

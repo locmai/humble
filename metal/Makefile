@@ -1,6 +1,6 @@
 .POSIX:
 
-env ?= "prod"
+env ?= prod
 
 default: boot cluster
 
