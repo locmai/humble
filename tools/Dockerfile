@@ -30,6 +30,7 @@ RUN yes | pacman --sync --refresh \
         python-netaddr \
         python-pip \
         terraform \
+        terragrunt \
         wget
 
 RUN wget -O /usr/local/bin/k3d https://github.com/k3d-io/k3d/releases/download/v5.4.1/k3d-linux-amd64 

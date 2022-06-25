@@ -8,13 +8,14 @@ terraform.tfstate
 terraform.tfstate**
 secrets.tf
 
-# Local .terraform directories
+# Local .terraform/terragrunt directories
 **/.terraform/*
+**/.terragrunt/*
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
-terraform.tfvars
+*.tfvars
 
 # Crash log files
 crash.log
