@@ -11,7 +11,7 @@ resource "cloudflare_argo_tunnel" "humble_tunnel" {
 
 # Not proxied, not accessible. Just a record for auto-created CNAMEs by external-dns.
 resource "cloudflare_record" "tunnel" {
-  zone_id = data.cloudflare_zone.maibaloc_com.id
+  zone_id = data.cloudflare_zone.main_domain_name.id
   type    = "CNAME"
   name    = "humble-tunnel"
   value   = "${cloudflare_argo_tunnel.humble_tunnel.id}.cfargotunnel.com"

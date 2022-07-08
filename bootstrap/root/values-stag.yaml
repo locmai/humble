@@ -1,0 +1,22 @@
+env: "stag"
+
+global:
+  enabled: true
+  domain: "locmai.dev"
+  repoURL: https://github.com/locmai/humble.git
+
+bootstrap:
+  enabled: true
+  targetRevision: main
+
+system:
+  enabled: true
+  targetRevision: main
+
+platform:
+  enabled: true
+  targetRevision: main
+
+apps:
+  enabled: true
+  targetRevision: main

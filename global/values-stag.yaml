@@ -1,0 +1,15 @@
+argocd:
+  namespace: argocd
+  project: global
+  targetRevision: main
+
+cloudflared_tunnel:
+  namespace: cloudflared
+
+external_dns:
+  namespace: external-dns
+
+certmanager:
+  issuer:
+    enabled: true
+    email: locmai0201@gmail.com

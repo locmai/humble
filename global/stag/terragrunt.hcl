@@ -7,5 +7,5 @@ terraform {
 }
 
 inputs {
-    main_domain_name = "maibaloc.com"
+    main_domain_name = "locmai.dev"
 }
