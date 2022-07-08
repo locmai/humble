@@ -1,0 +1,44 @@
+argocd:
+  namespace: argocd
+  project: apps
+  targetRevision: main
+
+global:
+  domain: "placeholder.com"
+
+filebrowser:
+  enabled: false
+
+dendrite:
+  enabled: true
+  storageClass: "longhorn"
+  autosign: true
+
+element:
+  enabled: true
+
+
+# Playground services
+memcached:
+  enabled: false
+
+cortex:
+  enabled: false
+  basicAuth:
+    insecure: true
+    secretName: "cortex-humble-tenant"
+
+microservicesDemo:
+  enabled: false
+
+dashyLandscape:
+  enabled: true
+
+consul:
+  enabled: false
+
+nfs:
+  enabled: false
+
+yutaops:
+  enabled: true

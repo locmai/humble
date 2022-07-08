@@ -9,3 +9,7 @@ variable "cloudflare_api_key" {
 variable "cloudflare_email" {
   type = string
 }
+
+variable "main_domain_name" {
+  type = string
+}

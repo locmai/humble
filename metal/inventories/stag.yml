@@ -1,0 +1,12 @@
+metal:
+  children:
+    masters:
+      hosts:
+        stag00: {ansible_host: 192.168.1.110, mac: '18:60:24:e4:28:c7', disk: nvme0n1, network_interface: enp1s0}
+        stag01: {ansible_host: 192.168.1.111, mac: '18:60:24:e5:3a:0c', disk: nvme0n1, network_interface: enp1s0}
+        stag02: {ansible_host: 192.168.1.112, mac: '18:60:24:e6:3c:91', disk: nvme0n1, network_interface: enp1s0}
+    workers:
+      hosts:
+        {}
+  vars:
+    env: stag
