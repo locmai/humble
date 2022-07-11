@@ -4,6 +4,7 @@ global:
   enabled: true
   domain: "locmai.dev"
   repoURL: https://github.com/locmai/humble.git
+  env: "stag"
 
 bootstrap:
   enabled: true

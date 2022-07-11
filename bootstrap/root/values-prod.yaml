@@ -4,6 +4,7 @@ global:
   enabled: true
   domain: "maibaloc.com"
   repoURL: https://github.com/locmai/humble.git
+  env: "prod"
 
 bootstrap:
   enabled: true
