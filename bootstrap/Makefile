@@ -14,7 +14,7 @@ argocd/charts: argocd/Chart.yaml
 namespace:
 	kubectl create namespace argocd --dry-run=client --output=yaml \
 		| kubectl apply -f -
-	cd namespaces && helm template namespaces . | kubectl create -f -
+	cd namespaces && helm template namespaces . | kubectl apply -f -
 
 .PHONY: argocd
 argocd: argocd/charts

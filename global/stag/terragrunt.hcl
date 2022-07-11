@@ -6,6 +6,6 @@ terraform {
     source = "..//_modules/external-dns"
 }
 
-inputs {
+inputs = {
     main_domain_name = "locmai.dev"
 }

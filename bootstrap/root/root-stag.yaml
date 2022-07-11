@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: root
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /spec/syncPolicy/automated
+  destination:
+    name: in-cluster
+    namespace: platform
+  source:
+    path: 'bootstrap/root'
+    repoURL: https://github.com/locmai/humble.git
+    targetRevision: main
+    helm:
+      valueFiles:
+      - values-stag.yaml
+      values: |
+        argocd:
+          targetRevision: main
