@@ -28,7 +28,7 @@ spec:
     targetRevision: "{{ .Values.apps.targetRevision }}"
     helm:
       valueFiles:
-      - values-{{ .Values.env }}.yaml
+      - values-{{ .Values.global.env }}.yaml
       values: |
         argocd:
           targetRevision: {{ .Values.apps.targetRevision }}
@@ -36,4 +36,5 @@ spec:
         global:
           domain: {{ .Values.global.domain }}
           repoURL: {{ .Values.global.repoURL }}
+          env: {{ .Values.global.env }}
 {{- end }}

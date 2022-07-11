@@ -1,5 +1,3 @@
-env: "dev"
-
 global:
   enabled: false
   domain: "172-28-0-3.nip.io"

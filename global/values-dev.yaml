@@ -1,3 +1,4 @@
+
 argocd:
   namespace: argocd
   project: global
