@@ -26,7 +26,7 @@ spec:
         credentials:
           existingSecret: cloudflared-credentials
         config:
-          tunnel: humble-tunnel
+          tunnel: {{ .Values.global.env }-humble-tunnel
           ingress:
           - hostname: "*.{{ .Values.global.domain }}"
             service: https://system-ingress-nginx-controller.ingress-nginx

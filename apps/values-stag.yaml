@@ -5,6 +5,7 @@ argocd:
 
 global:
   domain: "placeholder.com"
+  env: "stag"
 
 filebrowser:
   enabled: false
