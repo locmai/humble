@@ -1,5 +1,5 @@
 locals {
-    environment = "prod"
+    environment = split("/",path_relative_to_include())[0]
 }
 
 remote_state {

@@ -3,3 +3,5 @@ cloudflare_account_id = ""
 cloudflare_api_key = ""
 
 cloudflare_email = "locmai0201@gmail.com"
+
+environment = "prod"

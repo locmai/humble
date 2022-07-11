@@ -13,3 +13,7 @@ variable "cloudflare_email" {
 variable "main_domain_name" {
   type = string
 }
+
+variable "environment" {
+  type = string
+}

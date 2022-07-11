@@ -5,7 +5,7 @@ resource "random_password" "tunnel_secret" {
 
 resource "cloudflare_argo_tunnel" "humble_tunnel" {
   account_id = var.cloudflare_account_id
-  name       = "humble-tunnel"
+  name       = "${var.environment}-humble-tunnel"
   secret     = base64encode(random_password.tunnel_secret.result)
 }
 
@@ -13,7 +13,7 @@ resource "cloudflare_argo_tunnel" "humble_tunnel" {
 resource "cloudflare_record" "tunnel" {
   zone_id = data.cloudflare_zone.main_domain_name.id
   type    = "CNAME"
-  name    = "humble-tunnel"
+  name    = "${var.environment}-humble-tunnel"
   value   = "${cloudflare_argo_tunnel.humble_tunnel.id}.cfargotunnel.com"
   proxied = false
   ttl     = 1 # Auto
@@ -36,7 +36,7 @@ resource "kubernetes_secret" "cloudflared_credentials" {
 }
 
 resource "cloudflare_api_token" "external_dns" {
-  name = "homelab_external_dns"
+  name = "${var.environment}_homelab_external_dns"
 
   policy {
     permission_groups = [
