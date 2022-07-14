@@ -1,0 +1,75 @@
+site_name: Humble Project
+copyright: Copyright &copy; 2020 - 2022 Loc Mai
+repo_url: https://github.com/locmai/humble
+theme:
+  name: material
+  features:
+      - navigation.indexes
+      - navigation.expand
+      - search.highlight
+      - search.share
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: white
+    toggle:
+      icon: material/brightness-7
+      name: Switch to iam-a-geek theme
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: black
+    toggle:
+      icon: material/brightness-4
+      name: Switch to flashbang theme
+
+
+
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.snippets:
+      check_paths: true
+  - def_list
+  - pymdownx.tasklist:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Getting started:
+    - getting-started/index.md
+    - getting-started/development.md
+    - Production:
+      - getting-started/production/index.md
+      - getting-started/production/prerequisites.md
+      - getting-started/production/configuration.md
+      - getting-started/production/deployment.md
+  - Concepts:
+    - concepts/layered-components.md
+    - concepts/data-driven-deployment.md
+    - concepts/provisioning-flow.md
+  - Reference:
+    - Technology landscape: reference/tech-landscape.md
+    - reference/license.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin 
+      link: https://linkedin.com/in/locmai0201
+    - icon: fontawesome/brands/github
+      link: https://github.com/locmai
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/locmai0201
+    - icon: fontawesome/brands/google
+      link: mailto:locmai0201@gmail.com
+
+plugins:
+  - search:
+      lang: en

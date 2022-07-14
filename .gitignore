@@ -81,3 +81,5 @@ node_modules/
 .docz
 
 *.tgz
+site/
+mermaid*.js
