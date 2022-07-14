@@ -29,7 +29,7 @@ For getting started:
 
 ## Acknowledgements
 
-- I hacked a lot of great works from my [khuedoan/homelab](https://github.com/khuedoan/homelab).
+- I hacked a lot of great works from [khuedoan/homelab](https://github.com/khuedoan/homelab).
 - Awesome services from CloudFlare: DNS, Pages and Tunnel. The document of this project is hosted on CloudFlare as well.
 - All open-source projects used in this project.
 - Quillbot.com because my English sukcs.
