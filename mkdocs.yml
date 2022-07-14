@@ -52,12 +52,13 @@ nav:
       - getting-started/production/configuration.md
       - getting-started/production/deployment.md
   - Concepts:
-    - concepts/layered-components.md
+    - concepts/layered-architecture.md
     - concepts/data-driven-deployment.md
     - concepts/provisioning-flow.md
   - Reference:
     - Technology landscape: reference/tech-landscape.md
     - reference/license.md
+
 
 extra:
   social:

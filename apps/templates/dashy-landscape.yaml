@@ -64,7 +64,7 @@ spec:
                   icon: fab fa-github
                   url: https://github.com/locmai/humble
                   id: 0_593_github
-                - title: CloudFlare
+                - title: Cloudflare
                   description: ''
                   url: https://avatars.githubusercontent.com/u/314135?s=200&v=4
                   icon: https://avatars.githubusercontent.com/u/314135?s=200&v=4
