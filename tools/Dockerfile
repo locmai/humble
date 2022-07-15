@@ -37,4 +37,4 @@ RUN wget -O /usr/local/bin/k3d https://github.com/k3d-io/k3d/releases/download/v
 
 RUN chmod +x /usr/local/bin/k3d
 
-RUN pip install docker-composerevisionRevision
+RUN pip install docker-compose
