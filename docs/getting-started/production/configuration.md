@@ -1,7 +1,6 @@
-Please refer to the data-driven deployment for multiple production deployments and more advanced setup.
+Please refer to the [configuration per deployment](/concepts/configuration-per-deployment/) guide for multiple production deployments and more advanced setup.
 
 For a single production deployment, the following settings are required for getting started.
-
 
 ## Domain
 

@@ -1,10 +1,12 @@
 ---
-title: Data-driven deployment strategy
+title: Configuration per deployment
 ---
 
-## Configuration hierarchy
+## Configuration levels
 
 Each deployment is configured using its own YAML files and shared ones. As a result, you can configure each deployment uniquely or have the same configuration across all deployments.
+
+We could update the settings in the proper configuration files based on the needs to configure either the specific layer, a deployment, or from the top level.
 
 The directory structure with the configuration files:
 
@@ -35,8 +37,6 @@ metal/inventories:   # top-level configuration for metal layer
   - prod.yml
   - stag.yml
 ```
-
-We could update the settings in the proper configuration files based on the needs to configure either the specific layer, a deployment, or from the top level.
 
 ## Configure with branches
 

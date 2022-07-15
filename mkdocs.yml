@@ -53,7 +53,7 @@ nav:
       - getting-started/production/deployment.md
   - Concepts:
     - concepts/layered-architecture.md
-    - concepts/data-driven-deployment.md
+    - concepts/configuration-per-deployment.md
     - concepts/provisioning-flow.md
   - Reference:
     - reference/faq.md
