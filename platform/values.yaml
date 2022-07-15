@@ -68,3 +68,8 @@ trow:
 mimir:
   enabled: false
   namespace: platform
+
+vaultOperator:
+  enabled: false
+  installOperator: true
+  namespace: platform
