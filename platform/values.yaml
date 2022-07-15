@@ -70,6 +70,6 @@ mimir:
   namespace: platform
 
 vaultOperator:
-  enabled: false
+  enabled: true
   installOperator: true
   namespace: platform
