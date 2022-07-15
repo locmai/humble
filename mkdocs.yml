@@ -56,6 +56,7 @@ nav:
     - concepts/data-driven-deployment.md
     - concepts/provisioning-flow.md
   - Reference:
+    - reference/faq.md
     - Technology landscape: reference/tech-landscape.md
     - reference/license.md
 

@@ -20,3 +20,6 @@ stag:
 	make -C metal env=stag
 	make -C bootstrap env=stag
 	make -C global env=stag
+
+docs:
+	mkdocs serve

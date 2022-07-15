@@ -12,6 +12,11 @@ it's the source of truth for _my_ homelab, so you'll need to fork it to make it 
 
 The initial controller is the machine used to bootstrap the cluster, we only need it once, you can use your laptop or desktop.
 
+Required tools on the box:
+
+- [Docker](https://www.docker.com/)
+- [make](https://www.gnu.org/software/make/manual/make.html)
+
 ### Servers
 
 The servers are the main master/worker nodes of the deployment. Any modern x86_64 computer(s) should work, you can use old PCs, laptops or servers.
@@ -35,24 +40,22 @@ This is something you'll have to perform for all of your servers.
 
 For your convenience, I've included a setting-as-yaml of my BIOS settings. You'll need to adjust it to your hardware because your motherboard may have a different name for the options.
 
-!!! info
-
-    ```yaml
-    Devices:
-      NetworkSetup:
-        PXEIPv4: true
-        PXEIPv6: false
-    Advanced:
-    CPUSetup:
-        VT-d: true
-    Power:
-    AutomaticPowerOn:
-        WoL: Automatic  # Use network boot if Wake-on-LAN
-    Security:
-    SecureBoot: false
-    Startup:
-    CSM: false
-    ```
+```yaml
+Devices:
+    NetworkSetup:
+    PXEIPv4: true
+    PXEIPv6: false
+Advanced:
+CPUSetup:
+    VT-d: true
+Power:
+AutomaticPowerOn:
+    WoL: Automatic  # Use network boot if Wake-on-LAN
+Security:
+SecureBoot: false
+Startup:
+CSM: false
+```
 
 ### Gather information
 You may need to gather the following information beforehand for the next step:
