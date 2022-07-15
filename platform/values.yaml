@@ -6,6 +6,13 @@ argocd:
 global:
   domain: "placeholder.com"
 
+# Secret managment
+vault:
+  enabled: true
+  namespace: platform
+  init:
+    enabled: true
+
 externalSecrets:
   enabled: true
   namespace: platform
@@ -62,7 +69,7 @@ mimir:
   enabled: false
   namespace: platform
 
-vault:
+vaultOperator:
   enabled: true
   installOperator: true
   namespace: platform
