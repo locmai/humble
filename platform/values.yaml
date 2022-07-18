@@ -11,8 +11,7 @@ vault:
   enabled: true
   installOperator: true
   namespace: platform
-  initSecrets:
-    enabled: false
+  initSecrets: false
   storageClass: "longhorn"
 
 externalSecrets:
