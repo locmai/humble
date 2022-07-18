@@ -9,10 +9,12 @@ global:
 # Secret managment
 vault:
   enabled: true
+  installOperator: true
+  size: 1
   namespace: platform
-  init:
+  initSecrets:
     enabled: true
-  storageClass:  "longhorn"
+  storageClass: "longhorn"
 
 externalSecrets:
   enabled: true

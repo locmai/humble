@@ -9,9 +9,11 @@ global:
 # Secret managment
 vault:
   enabled: true
+  installOperator: true
   namespace: platform
-  init:
+  initSecrets:
     enabled: true
+  storageClass: "longhorn"
 
 externalSecrets:
   enabled: true
@@ -69,7 +71,3 @@ mimir:
   enabled: false
   namespace: platform
 
-vaultOperator:
-  enabled: false
-  installOperator: true
-  namespace: platform
