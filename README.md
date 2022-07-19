@@ -1,11 +1,5 @@
 # Humble Project
 
-
-[![chat](https://img.shields.io/matrix/home:dendrite.maibaloc.com?style=flat-square&logo=matrix&logoColor=white&label=chat)](https://matrix.to/#/#home:dendrite.maibaloc.com)
-![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg?style=flat-square)
-[![doc](https://img.shields.io/website?label=doc&logo=gitbook&logoColor=white&style=flat-square&url=https%3A%2F%2Fhumble.maibaloc.com)](https://humble.maibaloc.com)
-[![license](https://img.shields.io/github/license/locmai/humble?style=flat-square&logo=gnu&logoColor=white)](https://www.gnu.org/licenses/gpl-3.0.html)
-
 ## Overview
 
 Humble is a project that seeks to set up a ready-to-go environment with operating services using modern infrastructure as code with GitOps driven.
