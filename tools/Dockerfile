@@ -1,4 +1,4 @@
-FROM archlinux
+FROM archlinux:base-devel-20220717.0.68836
 
 # Sort mirrors by speed
 RUN pacman --sync --refresh --noconfirm \
@@ -33,7 +33,7 @@ RUN yes | pacman --sync --refresh \
         terragrunt \
         wget
 
-RUN wget -O /usr/local/bin/k3d https://github.com/k3d-io/k3d/releases/download/v5.4.1/k3d-linux-amd64 
+RUN wget -O /usr/local/bin/k3d https://github.com/k3d-io/k3d/releases/download/v5.4.4/k3d-linux-amd64 
 
 RUN chmod +x /usr/local/bin/k3d
 
