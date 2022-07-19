@@ -1,0 +1,34 @@
+name: Lint Charts
+
+on:
+  pull_request:
+    paths:
+    - 'global/**'
+    - 'apps/**'
+    - 'platform/**'
+    - 'system/**'
+
+jobs:
+  lint:
+    name: Helm lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.8.1
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@v2.2.1
+      
+      - name: Lint Helm charts
+        run: ct lint --target-branch ${{ github.event.repository.default_branch }}
