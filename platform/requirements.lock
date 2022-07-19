@@ -1,9 +1,0 @@
-dependencies:
-- name: common
-  repository: https://charts.bitnami.com/bitnami
-  version: 1.16.0
-- name: vault-operator
-  repository: https://kubernetes-charts.banzaicloud.com
-  version: 1.15.6
-digest: sha256:9b3fe8a55283aa4281a0dda7ca9bae06ef7f55d8ac597fae6b165a78e8e324fd
-generated: "2022-07-19T11:45:30.543754268+07:00"
