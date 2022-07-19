@@ -58,6 +58,7 @@ nav:
   - Reference:
     - reference/faq.md
     - Technology landscape: reference/tech-landscape.md
+    - reference/changelog.md
     - reference/license.md
 
 
