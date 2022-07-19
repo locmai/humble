@@ -42,4 +42,17 @@ spec:
           admissionWebhooks:
             enabled: false
             failurePolicy: Ignore
+          config:
+            custom-http-errors: >-
+              401,403,404,500,501,502,503
+          defaultBackend:
+            enabled: true
+            image:
+              repository: ghcr.io/tarampampam/error-pages
+              tag: 2.16.0
+            extraEnvs:
+            - name: TEMPLATE_NAME
+              value: cats
+            - name: SHOW_DETAILS # Optional: enables the output of additional information on error pages
+              value: 'true'
 {{- end }}
