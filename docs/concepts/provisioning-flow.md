@@ -23,7 +23,7 @@ From now on, ArgoCD will do the rest:
 %%{init: { "flowchart": { "htmlLabels": true, "curve": "linear" } } }%%
 flowchart TD
   subgraph metal[./metal]
-    pxe[PXE Server] --> linux[Rocky Linux] --> k3s
+    pxe[PXE Server] --> linux[Fedora Server] --> k3s
   end
 
   subgraph bootstrap[./bootstrap]
