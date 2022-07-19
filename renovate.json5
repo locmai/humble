@@ -9,6 +9,11 @@
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "rebaseLabel": "renovate-rebase",
+  "repositories": [
+    "locmai/humble",
+    "locmai/yuta",
+    "locmai/charts",
+  ],
   "packageRules": [
     {
       "matchPackagePatterns": [
