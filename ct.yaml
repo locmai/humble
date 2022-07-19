@@ -1,0 +1,8 @@
+chart-dirs:
+  - global
+  - apps
+  - platform
+  - system
+validate-yaml: true
+validate-maintainers: true
+helm-extra-args: --timeout 300

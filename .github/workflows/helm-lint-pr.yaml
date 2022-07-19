@@ -1,0 +1,26 @@
+name: Lint Charts
+
+on:
+  pull_request:
+    paths:
+    - 'global/**'
+    - 'apps/**'
+    - 'platform/**'
+    - 'system/**'
+
+jobs:
+  lint:
+    name: Helm lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fetch history
+        run: git fetch --prune --unshallow
+    
+      - name: Lint Helm charts
+        uses: helm/chart-testing-action@v1.0.0
+        with:
+          command: lint
+          config: ct.yaml
