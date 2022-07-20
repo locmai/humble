@@ -40,7 +40,7 @@ vault write identity/oidc/key/redpanda-key \
     rotation_period="1h" \
     algorithm="RS256"
 
-vault write auth/oidc/client/boundary \
+vault write identity/oidc/client/boundary \
     redirect_uris="http://127.0.0.1:9200/v1/auth-methods/oidc:authenticate:callback" \
     assignments="redpanda-assignment" \
     key="redpanda-key" \
