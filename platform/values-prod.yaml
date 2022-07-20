@@ -10,7 +10,7 @@ global:
 vault:
   enabled: true
   installOperator: true
-  size: 3
+  size: 1
   namespace: platform
   storageClass: "longhorn"
 
