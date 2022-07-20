@@ -137,32 +137,45 @@ spec:
   externalConfig:
     policies:
       - name: allow_secrets
-        rules: path "secret/*" {
-          capabilities = ["create", "read", "update", "delete", "list"]
+        rules: |
+          path "secret/*" {
+            capabilities = ["create", "read", "update", "delete", "list"]
           }
       - name: allow_pki
-        rules: path "pki/*" {
-          capabilities = ["create", "read", "update", "delete", "list"]
+        rules: |
+          path "pki/*" {
+            capabilities = ["create", "read", "update", "delete", "list"]
+          }
+      - name: identity_userpass
+        rules: |
+          path "identity/*" {
+            capabilities = [ "create", "read", "update", "delete", "list" ]
+          }
+
+          # To enable userpass auth method
+          path "sys/auth/userpass" {
+            capabilities = [ "create", "read", "update", "delete" ]
+          }
+
+          # To create a new user, "end-user" for userpass
+          path "auth/userpass/users/*" {
+            capabilities = [ "create", "read", "update", "delete", "list" ]
           }
 
     groups:
-      - name: admin1
+      - name: superadmin
         policies:
           - allow_secrets
-        metadata:
-          privileged: true
-        type: external
-      - name: admin2
-        policies:
-          - allow_secrets
+          - identity_userpass
         metadata:
           privileged: true
         type: external
 
+
     group-aliases:
-      - name: admin1
+      - name: superadmin
         mountpath: token
-        group: admin1
+        group: superadmin
 
 
     auth:
@@ -173,33 +186,6 @@ spec:
             bound_service_account_namespaces: ["default", "system", "platform", "apps"]
             policies: ["allow_secrets", "allow_pki"]
             ttl: 1h
-
-    secrets:
-      - path: secret
-        type: kv
-        description: General secrets.
-        options:
-          version: 2
-
-      - type: pki
-        description: Vault PKI Backend
-        config:
-          default_lease_ttl: 168h
-          max_lease_ttl: 720h
-        configuration:
-          config:
-          - name: urls
-            issuing_certificates: https://vault.default:8200/v1/pki/ca
-            crl_distribution_points: https://vault.default:8200/v1/pki/crl
-          root/generate:
-          - name: internal
-            common_name: vault.default
-          roles:
-          - name: default
-            allowed_domains: localhost,pod,svc,default
-            allow_subdomains: true
-            generate_lease: true
-            ttl: 1m
 
   vaultEnvsConfig:
     - name: VAULT_LOG_LEVEL
