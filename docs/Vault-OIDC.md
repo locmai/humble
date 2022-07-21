@@ -82,3 +82,14 @@ vault write identity/oidc/provider/redpanda-provider \
 curl -s $VAULT_ADDR/v1/identity/oidc/provider/redpanda-provider/.well-known/openid-configuration | jq
 curl -s $VAULT_ADDR/v1/identity/oidc/provider/redpanda-provider/.well-known/keys | jq
 ```
+
+boundary auth-methods create oidc \
+    -issuer "http://127.0.0.1:8200/v1/identity/oidc/provider/redpanda-provider" \
+    -client-id "${CLIENT_ID}" \
+    -client-secret "${CLIENT_SECRET}" \
+    -signing-algorithm RS256 \
+    -api-url-prefix "http://127.0.0.1:9200" \
+    -claims-scopes "groups" \
+    -claims-scopes "user" \
+    -max-age 20 \
+    -name "Vault OIDC Provider"
