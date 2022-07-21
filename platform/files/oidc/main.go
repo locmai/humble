@@ -12,10 +12,11 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
-	// "k8s.io/client-go/rest"
+	// "k8s.io/client-go/tools/clientcmd"
 )
 
 func main() {
+	// k8sconfig, err := clientcmd.BuildConfigFromFlags("", "/home/locmai/Workspace/humble/metal/kubeconfig.prod.yaml")
 	k8sconfig, err := rest.InClusterConfig()
 	if err != nil {
 		panic(err.Error())
@@ -27,7 +28,7 @@ func main() {
 
 	// Initialize Vault config and client
 	config := vault.DefaultConfig()
-	config.Address = "http://vault:8200"
+	config.Address = "http://localhost:8200"
 	config.ConfigureTLS(&vault.TLSConfig{
 		Insecure: true,
 	})
@@ -79,7 +80,7 @@ func main() {
 			&v1.Secret{
 				ObjectMeta: metav1.ObjectMeta{Name: "vault-admin-password"},
 				Data: map[string][]byte{
-					"password": []byte(b64.StdEncoding.EncodeToString([]byte(admin_password))),
+					"password": []byte(admin_password),
 				},
 			},
 			metav1.CreateOptions{},
@@ -170,7 +171,8 @@ func main() {
 	if _, err := client.Logical().Write(
 		client_boundary_path,
 		map[string]interface{}{
-			"redirect_uris":    "http://127.0.0.1:9200/v1/auth-methods/oidc:authenticate:callback",
+			// "redirect_uris":    "http://127.0.0.1:3000/v1/auth-methods/oidc:authenticate:callback",
+			"redirect_uris":    "http://localhost:3000/login/generic_oauth",
 			"assignments":      "admin-assignment",
 			"key":              "admin-key",
 			"id_token_ttl":     "30m",
@@ -181,7 +183,7 @@ func main() {
 	log.Print("vault write identity/oidc/client/boundary")
 
 	//	vault read -field=client_id identity/oidc/client/boundary
-	boundary_client_id, err := client.Logical().Read(client_boundary_path)
+	boundary_client, err := client.Logical().Read(client_boundary_path)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -221,17 +223,32 @@ func main() {
 	}
 	log.Print("vault write identity/oidc/scope/groups")
 
+	email_scope_template := `{
+		"email": {{identity.entity.metadata.email}}
+	}`
+
+	// vault write identity/oidc/scope/user
+	email_scope_path := "identity/oidc/scope/email"
+	if _, err := client.Logical().Write(
+		email_scope_path,
+		map[string]interface{}{
+			"description": "The user scope provides claims using Vault identity entity metadata",
+			"template":    b64.StdEncoding.EncodeToString([]byte(email_scope_template)),
+		}); err != nil {
+		log.Fatal(err)
+	}
+	log.Print("vault write identity/oidc/scope/email")
+
 	// vault write identity/oidc/provider/vault-provider
 	oidc_provider_path := "identity/oidc/provider/vault-provider"
 	if _, err := client.Logical().Write(
 		oidc_provider_path,
 		map[string]interface{}{
-			"allowed_client_ids": boundary_client_id.RequestID,
-			"scopes_supported":   "groups,user",
+			"allowed_client_ids": boundary_client.Data["client_id"],
+			"scopes_supported":   "groups,user,email",
 			"issuer":             config.Address,
 		}); err != nil {
 		log.Fatal(err)
 	}
 	log.Print("vault write identity/oidc/provider/vault-provider")
-
 }
