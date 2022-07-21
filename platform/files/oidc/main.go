@@ -12,6 +12,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
+	// "k8s.io/client-go/rest"
 )
 
 func main() {
@@ -19,7 +20,6 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
-
 	k8sclient, err := kubernetes.NewForConfig(k8sconfig)
 	if err != nil {
 		panic(err.Error())
@@ -228,6 +228,7 @@ func main() {
 		map[string]interface{}{
 			"allowed_client_ids": boundary_client_id.RequestID,
 			"scopes_supported":   "groups,user",
+			"issuer":             config.Address,
 		}); err != nil {
 		log.Fatal(err)
 	}
