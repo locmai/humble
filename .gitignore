@@ -83,3 +83,5 @@ node_modules/
 *.tgz
 site/
 mermaid*.js
+
+wip/

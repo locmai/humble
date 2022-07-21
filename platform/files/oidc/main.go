@@ -11,13 +11,13 @@ import (
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/clientcmd"
 	// "k8s.io/client-go/tools/clientcmd"
 )
 
 func main() {
-	// k8sconfig, err := clientcmd.BuildConfigFromFlags("", "/home/locmai/Workspace/humble/metal/kubeconfig.prod.yaml")
-	k8sconfig, err := rest.InClusterConfig()
+	k8sconfig, err := clientcmd.BuildConfigFromFlags("", "/home/locmai/Workspace/humble/metal/kubeconfig.prod.yaml")
+	// k8sconfig, err := rest.InClusterConfig()
 	if err != nil {
 		panic(err.Error())
 	}
@@ -172,7 +172,7 @@ func main() {
 		client_boundary_path,
 		map[string]interface{}{
 			// "redirect_uris":    "http://127.0.0.1:3000/v1/auth-methods/oidc:authenticate:callback",
-			"redirect_uris":    "http://localhost:3000/login/generic_oauth",
+			"redirect_uris":    "https://authenticate.localhost.pomerium.io/oauth2/callback",
 			"assignments":      "admin-assignment",
 			"key":              "admin-key",
 			"id_token_ttl":     "30m",
@@ -246,7 +246,7 @@ func main() {
 		map[string]interface{}{
 			"allowed_client_ids": boundary_client.Data["client_id"],
 			"scopes_supported":   "groups,user,email",
-			"issuer":             config.Address,
+			"issuer":             "http://vault.platform.svc.cluster.local:8200",
 		}); err != nil {
 		log.Fatal(err)
 	}
