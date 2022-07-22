@@ -20,6 +20,13 @@ spec:
   destination:
     name: in-cluster
     namespace: {{ .Values.monitoring.namespace }}
+  ignoreDifferences:
+    - group: ""
+      kind: ConfigMap
+      name: monitoring-grafana
+      jsonPointers:
+       - /data
+       - /stringData
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
@@ -85,6 +92,23 @@ spec:
             enabled: false
           ingress:
             enabled: false
+          annotations:
+            vault.security.banzaicloud.io/vault-addr: "https://vault:8200"
+            vault.security.banzaicloud.io/vault-role: "default"
+            vault.security.banzaicloud.io/vault-tls-secret: vault-tls
+            vault.security.banzaicloud.io/vault-path: "kubernetes"
+            vault.maibaloc.com/oidc-reference.version: v0.1 # change this when the OIDC reference gets changed
+          grafana.ini:
+            auth.generic_oauth:
+            name = Vault
+            enabled = true
+            allow_sign_up = false
+            client_id = "vault:humble/data/boundary-oidc-client/client_id"
+            client_secret = "vault:humble/data/boundary-oidc-client/client_secret"
+            scopes = openid groups user email
+            auth_url = "https://vault.maibaloc.com/ui/vault/identity/oidc/provider/vault-provider/authorize"
+            token_url = "https://vault.maibaloc.com/v1/identity/oidc/provider/vault-provider/token"
+            api_url = "https://vault.maibaloc.com/v1/identity/oidc/provider/vault-provider/userinfo"
           sidecar:
             image:
               repository: omegavveapon/kopf-k8s-sidecar
