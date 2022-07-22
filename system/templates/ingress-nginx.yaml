@@ -35,6 +35,8 @@ spec:
             enabled: true
             default: true
             controllerValue: "k8s.io/ingress-nginx"
+          extraArgs:
+            enable-ssl-passthrough:
           metrics:
             enabled: true
             serviceMonitor:
