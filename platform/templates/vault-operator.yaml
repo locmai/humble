@@ -88,7 +88,7 @@ spec:
   config:
     storage:
       file:
-        path: "${ .Env.VAULT_STORAGE_FILE }" # An example how Vault config environment interpolation can be used
+        path: "${ .Env.VAULT_STORAGE_FILE }" # Required. Should have RTFM
     listener:
       tcp:
         address: "0.0.0.0:8200"
@@ -143,16 +143,56 @@ spec:
         description: Humble secrets.
         options:
           version: 2
+   groups:
+      - name: admin
+        policies:
+          - allow_secrets
+          - allow_humble_secrets
+          - identity_userpass
+        metadata:
+          privileged: true
+        type: external
+
+
+    group-aliases:
+      - name: admin
+        mountpath: token
+        group: admin
 
     auth:
       - type: kubernetes
         roles:
           - name: default
-            bound_service_account_names: ["default", "vault-secrets-webhook","vault", "monitoring-grafana"]
-            bound_service_account_namespaces: ["default", "system", "platform", "apps", "observability"]
-            policies: ["allow_secrets", "allow_pki", "allow_humble_secrets"]
+            bound_service_account_names: 
+            - "default"
+            - "vault-secrets-webhook" 
+            - "vault" 
+            - "monitoring-grafana"
+            bound_service_account_namespaces: ["*"]
+            policies: 
+            - "allow_secrets"
+            - "allow_humble_secrets"
+            - "allow_pki"
             ttl: 1h
-
+      - type: pki
+        description: Vault PKI Backend
+        config:
+          default_lease_ttl: 168h
+          max_lease_ttl: 720h
+        configuration:
+          config:
+          - name: urls
+            issuing_certificates: https://vault.{{ .Release.Namespace }}:8200/v1/pki/ca
+            crl_distribution_points: https://vault.{{ .Release.Namespace }}:8200/v1/pki/crl
+          root/generate:
+          - name: internal
+            common_name: vault.{{ .Release.Namespace }}
+          roles:
+          - name: default
+            allowed_domains: localhost,pod,svc,vault
+            allow_subdomains: true
+            generate_lease: true
+            ttl: 1m
   vaultEnvsConfig:
     - name: VAULT_LOG_LEVEL
       value: info
