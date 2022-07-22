@@ -108,6 +108,11 @@ spec:
           path "secret/*" {
             capabilities = ["create", "read", "update", "delete", "list"]
           }
+      - name: allow_humble_secrets
+        rules: |
+          path "humble/*" {
+            capabilities = ["create", "read", "update", "delete", "list"]
+          }
       - name: allow_pki
         rules: |
           path "pki/*" {
@@ -128,6 +133,13 @@ spec:
           path "auth/userpass/users/*" {
             capabilities = [ "create", "read", "update", "delete", "list" ]
           }
+
+    secrets:
+      - path: humble
+        type: kv
+        description: General secrets.
+        options:
+          version: 2
 
     groups:
       - name: superadmin

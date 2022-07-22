@@ -182,7 +182,7 @@ func main() {
 	}
 	log.Print("vault write identity/oidc/client/boundary")
 
-	//	vault read -field=client_id identity/oidc/client/boundary
+	//	vault read identity/oidc/client/boundary
 	boundary_client, err := client.Logical().Read(client_boundary_path)
 	if err != nil {
 		log.Fatal(err)
@@ -250,5 +250,23 @@ func main() {
 		}); err != nil {
 		log.Fatal(err)
 	}
+
 	log.Print("vault write identity/oidc/provider/vault-provider")
+
+	log.Print("vault write identity/oidc/provider/vault-provider")
+
+	// vault write -field=client_secret identity/oidc/client/boundary
+
+	// vault read -field=client_id identity/oidc/client/boundary
+
+	// Write boundary_client_secret
+	boundary_client_secret := map[string]interface{}{
+		"client_id":     boundary_client.Data["client_id"],
+		"client_secret": boundary_client.Data["client_secret"],
+	}
+	_, err = client.KVv2("humble").Put(context.Background(), "boundary-oidc-client", boundary_client_secret)
+	if err != nil {
+		log.Fatalf("unable to write secret: %v", err)
+	}
+	log.Print("boundary_client_secret written successfully.")
 }
