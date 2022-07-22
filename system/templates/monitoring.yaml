@@ -93,9 +93,8 @@ spec:
           ingress:
             enabled: false
           annotations:
-            vault.security.banzaicloud.io/vault-addr: "https://vault:8200"
+            vault.security.banzaicloud.io/vault-addr: "https://vault.platform:8200"
             vault.security.banzaicloud.io/vault-role: "default"
-            vault.security.banzaicloud.io/vault-tls-secret: vault-tls
             vault.security.banzaicloud.io/vault-path: "kubernetes"
             vault.maibaloc.com/oidc-reference.version: v0.1 # change this when the OIDC reference gets changed
           grafana.ini:
