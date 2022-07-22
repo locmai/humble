@@ -87,7 +87,7 @@ spec:
             enabled: false
           ingress:
             enabled: false
-          annotations:
+          podAnnotations:
             vault.security.banzaicloud.io/vault-addr: "https://vault.platform:8200"
             vault.security.banzaicloud.io/vault-role: "default"
             vault.security.banzaicloud.io/vault-path: "kubernetes"
