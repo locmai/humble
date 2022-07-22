@@ -105,10 +105,12 @@ spec:
               type: prometheus
               editable: false
               url: http://monitoring-kube-prometheus-prometheus:9090
+              isDefault: false
             - name: loki
               type: loki
               editable: false
               url: http://loki-stack:3100
+              isDefault: false
           plugins:
           - yesoreyeram-boomtheme-panel
           - flant-statusmap-panel
