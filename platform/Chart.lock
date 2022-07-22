@@ -1,0 +1,12 @@
+dependencies:
+- name: common
+  repository: https://charts.bitnami.com/bitnami
+  version: 1.16.0
+- name: vault-operator
+  repository: https://kubernetes-charts.banzaicloud.com
+  version: 1.15.6
+- name: vault-secrets-webhook
+  repository: https://kubernetes-charts.banzaicloud.com
+  version: 1.15.11
+digest: sha256:f32a8de440654b6c18c8bc1eafcd8456135e3fc3751a800a77077c219f9580a0
+generated: "2022-07-22T21:19:31.373894625+07:00"

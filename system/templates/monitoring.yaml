@@ -21,12 +21,12 @@ spec:
     name: in-cluster
     namespace: {{ .Values.monitoring.namespace }}
   ignoreDifferences:
-    - group: ""
-      kind: ConfigMap
-      name: monitoring-grafana
-      jsonPointers:
-       - /data
-       - /stringData
+  - group: "*"
+    kind: ConfigMap
+    name: monitoring-grafana
+    jsonPointers:
+      - /data
+      - /stringData
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
