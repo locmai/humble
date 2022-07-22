@@ -81,7 +81,7 @@ spec:
       # This is true by default
       storeRootToken: true
     kubernetes:
-      secretNamespace: {{ .Release.Namespace }}
+      secretNamespace: platform
 
   # A YAML representation of a final vault config file.
   # See https://www.vaultproject.io/docs/configuration/ for more information.
@@ -182,11 +182,11 @@ spec:
         configuration:
           config:
           - name: urls
-            issuing_certificates: https://vault.{{ .Release.Namespace }}:8200/v1/pki/ca
-            crl_distribution_points: https://vault.{{ .Release.Namespace }}:8200/v1/pki/crl
+            issuing_certificates: https://vault.platform:8200/v1/pki/ca
+            crl_distribution_points: https://vault.platform:8200/v1/pki/crl
           root/generate:
           - name: internal
-            common_name: vault.{{ .Release.Namespace }}
+            common_name: vault.platform
           roles:
           - name: default
             allowed_domains: localhost,pod,svc,vault
