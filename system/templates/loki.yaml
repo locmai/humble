@@ -30,4 +30,10 @@ spec:
           serviceMonitor:
             enabled: true
             annotations: {}
+        grafana:
+          enabled: false
+          sidecar:
+            datasources:
+              enabled: false
+              maxLines: 1000
 {{- end }}
