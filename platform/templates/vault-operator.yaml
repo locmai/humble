@@ -162,7 +162,7 @@ spec:
         roles:
           - name: default
             bound_service_account_names: ["default", "vault-secrets-webhook", "vault"]
-            bound_service_account_namespaces: ["default", "system", "platform", "apps"]
+            bound_service_account_namespaces: ["default", "system", "platform", "apps", "observability"]
             policies: ["allow_secrets", "allow_pki"]
             ttl: 1h
 
