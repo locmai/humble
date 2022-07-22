@@ -8,8 +8,8 @@ global:
 
 # Secret managment
 vault:
-  enabled: false
-  installOperator: false
+  enabled: true
+  installOperator: true
   size: 1
   namespace: platform
   storageClass: "longhorn"
