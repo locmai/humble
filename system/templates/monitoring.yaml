@@ -99,7 +99,7 @@ spec:
               annotations:
                 k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
             datasources:
-              enabled: false
+              enabled: true
           additionalDataSources:
             - name: prometheus
               type: prometheus
