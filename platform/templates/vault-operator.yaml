@@ -70,6 +70,7 @@ spec:
   # Define a list of namespaces or use ["*"] for all namespaces.
   caNamespaces:
     - "*"
+  existingTlsSecretName: vault-tls-certificate
 
   # Describe where you would like to store the Vault unseal keys and root token.
   unsealConfig:
