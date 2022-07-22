@@ -29,12 +29,7 @@ spec:
   vaultConfigurerLabels:
     example.com/log-format: "string"
 
-  # Specify the ServiceAccount where the Vault Pod and the Bank-Vaults configurer/unsealer is running
   serviceAccount: vault
-
-  # Specify the Service's type where the Vault Service is exposed
-  # Please note that some Ingress controllers like https://github.com/kubernetes/ingress-gce
-  # forces you to expose your Service on a NodePort
   serviceType: ClusterIP
 
   ingress:
@@ -88,9 +83,6 @@ spec:
   # A YAML representation of a final vault config file.
   # See https://www.vaultproject.io/docs/configuration/ for more information.
   config:
-    storage:
-      file:
-        path: "${ .Env.VAULT_STORAGE_FILE }" # An example how Vault config environment interpolation can be used
     listener:
       tcp:
         address: "0.0.0.0:8200"
@@ -135,16 +127,40 @@ spec:
           }
 
     secrets:
-      - path: humble
+      - path: secret
         type: kv
         description: General secrets.
         options:
           version: 2
-
+      - path: humble
+        type: kv
+        description: Humble secrets.
+        options:
+          version: 2
+      - type: pki
+        description: Vault PKI Backend
+        config:
+          default_lease_ttl: 168h
+          max_lease_ttl: 720h
+        configuration:
+          config:
+          - name: urls
+            issuing_certificates: https://vault.{{ .Release.Namespace }}:8200/v1/pki/ca
+            crl_distribution_points: https://vault.{{ .Release.Namespace }}:8200/v1/pki/crl
+          root/generate:
+          - name: internal
+            common_name: vault.{{ .Release.Namespace }}
+          roles:
+          - name: default
+            allowed_domains: localhost,pod,svc,vault
+            allow_subdomains: true
+            generate_lease: true
+            ttl: 1m
     groups:
-      - name: superadmin
+      - name: admin
         policies:
           - allow_secrets
+          - allow_humble_secrets
           - identity_userpass
         metadata:
           privileged: true
@@ -152,18 +168,24 @@ spec:
 
 
     group-aliases:
-      - name: superadmin
+      - name: admin
         mountpath: token
-        group: superadmin
-
+        group: admin
 
     auth:
       - type: kubernetes
         roles:
           - name: default
-            bound_service_account_names: ["default", "vault-secrets-webhook", "vault", "monitoring-grafana", "vault-app"]
-            bound_service_account_namespaces: ["default", "system", "platform", "apps", "observability"]
-            policies: ["allow_secrets", "allow_pki", "allow_humble_secrets"]
+            bound_service_account_names:
+            - "default"
+            - "vault-secrets-webhook"
+            - "vault" 
+            - "monitoring-grafana"
+            bound_service_account_namespaces: ["*"] # TO-DO: Define a list of namespaces allowed
+            policies: 
+            - "allow_secrets"
+            - "allow_pki"
+            - "allow_humble_secrets"
             ttl: 1h
 
   vaultEnvsConfig:
@@ -198,13 +220,12 @@ metadata:
   name: vault
 rules:
   - apiGroups: [""]
-    resources: ["secrets"]
+    resources: ["secrets", "configmaps"]
     verbs: ["*"]
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["get", "update", "patch"]
 ---
-
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:

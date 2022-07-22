@@ -79,8 +79,8 @@ spec:
           enableServiceLinks: false
           env:
             JAEGER_AGENT_PORT: '5755'
-            OIDC_CLIENT_ID: 'vault:secret/data/humble/boundary-oidc-client#client_id'
-            OIDC_CLIENT_SECRET: 'vault:secret/data/humble/boundary-oidc-client#client_secret'
+            OIDC_CLIENT_ID: 'vault:humble/data/humble/boundary-oidc-client#client_id'
+            OIDC_CLIENT_SECRET: 'vault:humble/data/boundary-oidc-client#client_secret'
           image:
             tag: 8.4.4
           persistence:
@@ -98,8 +98,8 @@ spec:
               name: Vault
               enabled: true
               allow_sign_up: false
-              client_id: "vault:secret/data/humble/boundary-oidc-client#client_id"
-              client_secret: "vault:secret/data/humble/boundary-oidc-client#client_secret"
+              client_id: "\"${OIDC_CLIENT_ID}\""
+              client_secret: "\"${OIDC_CLIENT_SECRET}\""
               scopes: openid groups user email
               auth_url: "https://vault.maibaloc.com/ui/vault/identity/oidc/provider/vault-provider/authorize"
               token_url: "https://vault.maibaloc.com/v1/identity/oidc/provider/vault-provider/token"

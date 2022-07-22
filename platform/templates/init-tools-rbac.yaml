@@ -27,8 +27,3 @@ roleRef:
   kind: Role
   name: init-tools
   apiGroup: rbac.authorization.k8s.io
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: vault-app

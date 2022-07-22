@@ -253,12 +253,6 @@ func main() {
 
 	log.Print("vault write identity/oidc/provider/vault-provider")
 
-	log.Print("vault write identity/oidc/provider/vault-provider")
-
-	// vault write -field=client_secret identity/oidc/client/boundary
-
-	// vault read -field=client_id identity/oidc/client/boundary
-
 	// Write boundary_client_secret
 	boundary_client_secret := map[string]interface{}{
 		"client_id":     boundary_client.Data["client_id"],
