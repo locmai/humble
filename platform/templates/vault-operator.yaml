@@ -146,7 +146,7 @@ spec:
         roles:
           - name: default
             bound_service_account_names: ["default", "vault-secrets-webhook","vault", "monitoring-grafana"]
-            bound_service_account_namespaces: ["*"]
+            bound_service_account_namespaces: ["default", "system", "platform", "apps", "observability"]
             policies: ["allow_secrets", "allow_pki", "allow_humble_secrets"]
             ttl: 1h
 
