@@ -98,15 +98,7 @@ spec:
                 foldersFromFilesStructure: true
               annotations:
                 k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
-            datasources:
-              enabled: true
-              defaultDatasourceEnabled: false
           additionalDataSources:
-            - name: prometheus
-              type: prometheus
-              editable: false
-              url: http://monitoring-kube-prometheus-prometheus:9090
-              isDefault: false
             - name: loki
               type: loki
               editable: false
