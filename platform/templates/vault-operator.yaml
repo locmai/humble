@@ -143,6 +143,25 @@ spec:
         description: Humble secrets.
         options:
           version: 2
+      - type: pki
+        description: Vault PKI Backend
+        config:
+          default_lease_ttl: 168h
+          max_lease_ttl: 720h
+        configuration:
+          config:
+          - name: urls
+            issuing_certificates: https://vault.platform:8200/v1/pki/ca
+            crl_distribution_points: https://vault.platform:8200/v1/pki/crl
+          root/generate:
+          - name: internal
+            common_name: vault.platform
+          roles:
+          - name: default
+            allowed_domains: localhost,pod,svc,vault
+            allow_subdomains: true
+            generate_lease: true
+            ttl: 1m
    groups:
       - name: admin
         policies:
@@ -174,25 +193,7 @@ spec:
             - "allow_humble_secrets"
             - "allow_pki"
             ttl: 1h
-      - type: pki
-        description: Vault PKI Backend
-        config:
-          default_lease_ttl: 168h
-          max_lease_ttl: 720h
-        configuration:
-          config:
-          - name: urls
-            issuing_certificates: https://vault.platform:8200/v1/pki/ca
-            crl_distribution_points: https://vault.platform:8200/v1/pki/crl
-          root/generate:
-          - name: internal
-            common_name: vault.platform
-          roles:
-          - name: default
-            allowed_domains: localhost,pod,svc,vault
-            allow_subdomains: true
-            generate_lease: true
-            ttl: 1m
+      
   vaultEnvsConfig:
     - name: VAULT_LOG_LEVEL
       value: info
