@@ -20,13 +20,6 @@ spec:
   destination:
     name: in-cluster
     namespace: {{ .Values.monitoring.namespace }}
-  ignoreDifferences:
-  - group: "*"
-    kind: ConfigMap
-    name: monitoring-grafana
-    jsonPointers:
-      - /data
-      - /stringData
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
@@ -86,6 +79,8 @@ spec:
           enableServiceLinks: false
           env:
             JAEGER_AGENT_PORT: '5755'
+            OIDC_CLIENT_ID: 'vault:secret/data/humble/boundary-oidc-client#client_id'
+            OIDC_CLIENT_SECRET: 'vault:secret/data/humble/boundary-oidc-client#client_secret'
           image:
             tag: 8.4.4
           persistence:
