@@ -12,3 +12,7 @@ dependencies:
     version: 1.15.6
     repository: https://kubernetes-charts.banzaicloud.com
     condition: vault.installOperator
+  - name: vault-secrets-webhook
+    version: 1.15.11
+    repository: https://kubernetes-charts.banzaicloud.com
+    condition: vault.installOperator
