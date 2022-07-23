@@ -160,9 +160,10 @@ spec:
           - name: default
             bound_service_account_names: 
             - "default"
-            - "vault-secrets-webhook" 
+            - "{{ .Release.Namespace }}-vault-secrets-webhook"
             - "vault" 
             - "monitoring-grafana"
+            - "argocd-server"
             bound_service_account_namespaces: ["*"]
             policies: 
             - "allow_secrets"
