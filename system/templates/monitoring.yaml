@@ -100,9 +100,9 @@ spec:
               client_id: "\"${OIDC_CLIENT_ID}\""
               client_secret: "\"${OIDC_CLIENT_SECRET}\""
               scopes: openid groups user email
-              auth_url: "https://vault.maibaloc.com/ui/vault/identity/oidc/provider/vault-provider/authorize"
-              token_url: "https://vault.maibaloc.com/v1/identity/oidc/provider/vault-provider/token"
-              api_url: "https://vault.maibaloc.com/v1/identity/oidc/provider/vault-provider/userinfo"
+              auth_url: "https://auth.maibaloc.com/ui/vault/identity/oidc/provider/vault-provider/authorize"
+              token_url: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider/token"
+              api_url: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider/userinfo"
           sidecar:
             image:
               repository: omegavveapon/kopf-k8s-sidecar
