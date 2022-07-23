@@ -264,4 +264,13 @@ func main() {
 		log.Fatalf("unable to write secret: %v", err)
 	}
 	log.Print("boundary_client_secret written successfully.")
+
+	// vault write sys/auth/ldap/tune listing_visibility="unauth"
+	if _, err := client.Logical().Write(
+		"sys/auth/userpass/tune",
+		map[string]interface{}{
+			"listing_visibility": "unauth",
+		}); err != nil {
+		log.Fatal(err)
+	}
 }
