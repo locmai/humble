@@ -42,7 +42,7 @@ spec:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
       external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 32m
     spec:
       ingressClassName: nginx
@@ -54,7 +54,7 @@ spec:
                   service:
                     name: vault
                     port:
-                      number: 8300
+                      number: 8200
                 path: /
                 pathType: Prefix
       tls:
@@ -102,8 +102,9 @@ spec:
     listener:
       - tcp:
           address: "0.0.0.0:8200"
-          tls_cert_file: /vault/tls/server.crt
-          tls_key_file: /vault/tls/server.key
+          tls_disable: true
+          # tls_cert_file: /vault/tls/server.crt
+          # tls_key_file: /vault/tls/server.key
       - tcp:
           address: "0.0.0.0:8300"
           tls_disable: true
