@@ -2,6 +2,7 @@
   "masterIssue": true,
   "branchPrefix": "renovate-",
   "separateMajorMinor": false,
+  commitMessageSuffix: "chore: "
   "assignees": [
     "@locmai"
   ],
