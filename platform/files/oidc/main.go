@@ -53,11 +53,8 @@ func main() {
 
 	admin_password, err := password.Generate(32, 3, 3, false, true)
 	if secret_err == nil {
-		decoded_password, _ := b64.StdEncoding.DecodeString(string(secret.Data["password"]))
-		admin_password = string(decoded_password)
+		admin_password = string(secret.Data["password"])
 		log.Print("re-use admin password")
-		log.Print(admin_password)
-		// TO-DO: Fix an error with re-using admin password
 	}
 
 	if err != nil {
