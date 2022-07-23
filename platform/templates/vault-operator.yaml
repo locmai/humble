@@ -42,7 +42,6 @@ spec:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
       external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-      # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 32m
     spec:
       ingressClassName: nginx
@@ -112,6 +111,7 @@ spec:
           # tls_key_file: /etc/ingress-tls/tls.key
     # telemetry:
     #   statsd_address: localhost:9125
+    api_addr: http://0.0.0.0:8200
     ui: true
 
   # See: https://banzaicloud.com/docs/bank-vaults/cli-tool/#example-external-vault-configuration
