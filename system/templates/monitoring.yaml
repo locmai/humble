@@ -90,6 +90,7 @@ spec:
           grafana.ini:
             server:
               domain: "grafana.{{ .Values.global.domain }}"
+              root_url: "https://%(domain)s/"
             auth.generic_oauth:
               name: Vault
               enabled: true
