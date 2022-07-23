@@ -32,7 +32,7 @@ dashboard:
   targetRevision: main
 
 opentelemetry:
-  enabled: false
+  enabled: true
   namespace: observability
   logLevel: info
   # TODO Add config.yaml here for templating

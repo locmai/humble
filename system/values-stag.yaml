@@ -29,11 +29,6 @@ dashboard:
   namespace: observability
   targetRevision: main
 
-opentelemetry:
-  enabled: false
-  namespace: observability
-  logLevel: info
-
 # Ingress / Load balancer
 metallb:
   enabled: true
