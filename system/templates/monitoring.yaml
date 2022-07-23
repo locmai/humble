@@ -88,6 +88,8 @@ spec:
           ingress:
             enabled: false
           grafana.ini:
+            server:
+              root_url: "grafana.{{ .Values.global.domain }}"
             auth.generic_oauth:
               name: Vault
               enabled: true

@@ -34,6 +34,7 @@ func main() {
 	client, err := vault.NewClient(config)
 
 	unseal_secrets, err := k8sclient.CoreV1().Secrets("platform").Get(context.TODO(), "vault-unseal-keys", metav1.GetOptions{})
+
 	client.SetToken(string(unseal_secrets.Data["vault-root"]))
 
 	if err != nil {
@@ -55,6 +56,8 @@ func main() {
 		decoded_password, _ := b64.StdEncoding.DecodeString(string(secret.Data["password"]))
 		admin_password = string(decoded_password)
 		log.Print("re-use admin password")
+		log.Print(admin_password)
+		// TO-DO: Fix an error with re-using admin password
 	}
 
 	if err != nil {
@@ -170,8 +173,7 @@ func main() {
 	if _, err := client.Logical().Write(
 		client_boundary_path,
 		map[string]interface{}{
-			// "redirect_uris":    "http://127.0.0.1:3000/v1/auth-methods/oidc:authenticate:callback",
-			"redirect_uris":    "https://authenticate.localhost.pomerium.io/oauth2/callback",
+			"redirect_uris":    "https://grafana.maibaloc.com/login/generic_oauth",
 			"assignments":      "admin-assignment",
 			"key":              "admin-key",
 			"id_token_ttl":     "30m",
