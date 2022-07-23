@@ -1,0 +1,47 @@
+{{- if .Values.trow.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-trow
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.trow.namespace }}
+  source:
+    chart: vault
+    repoURL:  https://helm.releases.hashicorp.com
+    targetRevision: 0.20.1
+    helm:
+      releaseName: vault-dev
+      values: |
+        dev:
+          enabled: true
+        ingress:
+          ingressClassName: nginx
+          enabled: true
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            nginx.ingress.kubernetes.io/proxy-body-size: '0'
+          hosts:
+            - host: &host vault-dev.{{ .Values.global.domain }}
+              paths:
+                - /
+          tls:
+            - secretName: vault-dev-tls-certificate
+              hosts:
+                - *host
+{{- end }}
