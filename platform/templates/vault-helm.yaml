@@ -27,19 +27,20 @@ spec:
       values: |
         dev:
           enabled: true
-        ingress:
-          ingressClassName: nginx
-          enabled: true
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-prod
-            external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
-            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-            nginx.ingress.kubernetes.io/proxy-body-size: '0'
-          hosts:
-            - host: &host vault-dev.{{ .Values.global.domain }}
-              paths:
-                - /
-          tls:
-            - secretName: vault-dev-tls-certificate
-              hosts:
-                - *host
+        server:
+          ingress:
+            ingressClassName: nginx
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod
+              external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
+              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+              nginx.ingress.kubernetes.io/proxy-body-size: '0'
+            hosts:
+              - host: &host vault-dev.{{ .Values.global.domain }}
+                paths:
+                  - /
+            tls:
+              - secretName: vault-dev-tls-certificate
+                hosts:
+                  - *host
