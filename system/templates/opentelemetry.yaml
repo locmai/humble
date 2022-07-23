@@ -26,6 +26,7 @@ spec:
     helm:
       releaseName: opentelemetry-collector
       values: |
+        mode: "daemonset"
         resources:
           limits:
             cpu: 100m
