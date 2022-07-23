@@ -28,8 +28,8 @@ spec:
       values: |
         resources:
           limits:
-            cpu: 0.2
-            memory: 0.1Gi
+            cpu: 100m
+            memory: 100Mi
         config:
           receivers:
             statsd:
