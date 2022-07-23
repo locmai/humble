@@ -301,6 +301,9 @@ spec:
       vault_cr: vault
   endpoints:
   - port: api-port
+    path: "/v1/sys/metrics"
+    params:
+      format: ['prometheus']
     bearerTokenSecret:
       name: vault-root
       key: vault-unseal-keys
