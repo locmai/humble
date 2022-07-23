@@ -79,20 +79,16 @@ spec:
           enableServiceLinks: false
           env:
             JAEGER_AGENT_PORT: '5755'
-            OIDC_CLIENT_ID: 'vault:humble/data/humble/boundary-oidc-client#client_id'
-            OIDC_CLIENT_SECRET: 'vault:humble/data/boundary-oidc-client#client_secret'
+          
+          envFromSecrets:
+            - name: humble-oidc-secrets
+              optional: false
           image:
             tag: 8.4.4
           persistence:
             enabled: false
           ingress:
             enabled: false
-          podAnnotations:
-            vault.security.banzaicloud.io/vault-addr: "http://vault.platform:8200"
-            vault.security.banzaicloud.io/vault-role: "default"
-            vault.security.banzaicloud.io/vault-path: "kubernetes"
-            vault.security.banzaicloud.io/vault-skip-verify: "true"
-            vault.maibaloc.com/oidc-reference.version: v0.1 # change this when the OIDC reference gets changed
           grafana.ini:
             auth.generic_oauth:
               name: Vault
