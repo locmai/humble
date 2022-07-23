@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: vought
+  name: vault
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
@@ -12,8 +12,35 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - &host vought.{{ .Values.global.domain }}
-      secretName: vought-tls-certificate
+        - &host vault.{{ .Values.global.domain }}
+      secretName: vault-tls-certificate
+  rules:
+    - host: *host
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vault
+                port:
+                  number: 8200
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-vault
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+    external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
+    nginx.ingress.kubernetes.io/proxy-body-size: 32m
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - &host auth.{{ .Values.global.domain }}
+      secretName: auth-vault-tls-certificate
   rules:
     - host: *host
       http:
