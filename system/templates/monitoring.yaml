@@ -91,6 +91,8 @@ spec:
             server:
               domain: "grafana.{{ .Values.global.domain }}"
               root_url: "https://%(domain)s/"
+            auth:
+              disable_login_form: true
             auth.generic_oauth:
               name: Vault
               enabled: true
