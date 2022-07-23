@@ -28,10 +28,9 @@ func main() {
 
 	// Initialize Vault config and client
 	config := vault.DefaultConfig()
-	config.Address = "http://localhost:8200"
-	config.ConfigureTLS(&vault.TLSConfig{
-		Insecure: true,
-	})
+
+	// TO-DO: Change the domain based on the environment
+	config.Address = "https://vault.maibaloc.com"
 	client, err := vault.NewClient(config)
 
 	unseal_secrets, err := k8sclient.CoreV1().Secrets("platform").Get(context.TODO(), "vault-unseal-keys", metav1.GetOptions{})
