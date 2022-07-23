@@ -235,4 +235,73 @@ subjects:
   - kind: ServiceAccount
     name: vault
     namespace: vault
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vault
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+    external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
+    nginx.ingress.kubernetes.io/proxy-body-size: 32m
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - &host vault.{{ .Values.global.domain }}
+      secretName: vault-tls-certificate
+  rules:
+    - host: *host
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vault
+                port:
+                  number: 8200
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-vault
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+    external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
+    nginx.ingress.kubernetes.io/proxy-body-size: 32m
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - &host auth.{{ .Values.global.domain }}
+      secretName: auth-vault-tls-certificate
+  rules:
+    - host: *host
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vault
+                port:
+                  number: 8200
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: vault-metrics
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vault
+      vault_cr: vault
+  endpoints:
+  - port: api-port
+    bearerTokenSecret:
+      name: vault-root
+      key: vault-unseal-keys
 {{- end }}
