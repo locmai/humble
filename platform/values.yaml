@@ -11,7 +11,7 @@ vault:
   enabled: true
   installOperator: true
   ingress:
-    enabled: false
+    enabled: true
   namespace: platform
   initSecrets: false
   storageClass: "longhorn"

@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: vault
+  name: vought
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
@@ -12,8 +12,8 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - &host vault.{{ .Values.global.domain }}
-      secretName: vault-tls-certificate
+        - &host vought.{{ .Values.global.domain }}
+      secretName: vought-tls-certificate
   rules:
     - host: *host
       http:
