@@ -27,7 +27,38 @@ spec:
       releaseName: argo-workflows
       values: |
         server:
-          extraArgs: [--auth-mode=server]
+          extraArgs: [--auth-mode=sso]
+          sso:
+            issuer: "http://vault.platform.svc.cluster.local:8200"
+            clientId:
+              name: humble-oidc-secrets
+              key: OIDC_CLIENT_ID
+            clientSecret:
+              name: humble-oidc-secrets
+              key: OIDC_CLIENT_SECRET
+            redirectUrl: https://workflows.{{ .Values.global.domain }}/oauth2/callback
+            rbac:
+              enabled: true
+              secretWhitelist: []
+            scopes:
+            - groups
+            - openid
+            - user
+            - email
+            userInfoPath: /oauth2/v1/userinfo
+          ingress:
+            enabled: true
+            annotations:
+            ingressClassName: "nginx"
+            hosts:
+              - &host "workflows.{{ .Values.global.domain }}"
+            paths:
+              - /
+            pathType: Prefix
+            tls:
+              - secretName: workflows-tls-certificate
+                hosts:
+                  - *host
         controller:
           workflowNamespaces: ["default", "kube-system"]	
 {{- end }}

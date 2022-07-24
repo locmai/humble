@@ -2,7 +2,10 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"os"
+	"strings"
 
 	b64 "encoding/base64"
 
@@ -11,13 +14,18 @@ import (
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/rest"
 	// "k8s.io/client-go/tools/clientcmd"
 )
 
 func main() {
-	k8sconfig, err := clientcmd.BuildConfigFromFlags("", "/home/locmai/Workspace/humble/metal/kubeconfig.prod.yaml")
-	// k8sconfig, err := rest.InClusterConfig()
+	domain_key := "HUMBLE_DOMAIN"
+	if _, ok := os.LookupEnv(domain_key); !ok {
+		log.Fatal("HUMBLE_DOMAIN env var not found")
+	}
+	domain := os.Getenv(domain_key)
+
+	k8sconfig, err := rest.InClusterConfig()
 	if err != nil {
 		panic(err.Error())
 	}
@@ -29,8 +37,7 @@ func main() {
 	// Initialize Vault config and client
 	config := vault.DefaultConfig()
 
-	// TO-DO: Change the domain based on the environment
-	config.Address = "https://vault.maibaloc.com"
+	config.Address = "https://vault." + domain
 	client, err := vault.NewClient(config)
 
 	unseal_secrets, err := k8sclient.CoreV1().Secrets("platform").Get(context.TODO(), "vault-unseal-keys", metav1.GetOptions{})
@@ -164,13 +171,20 @@ func main() {
 		log.Fatal(err)
 	}
 
+	redirect_uris_list := []string{
+		fmt.Sprintf("https://grafana.%s/login/generic_oauth", domain),
+		fmt.Sprintf("https://workflow.%s/oauth2/callback", domain),
+	}
+
+	redirect_uris := strings.Join(redirect_uris_list[:], ",")
+
 	// Boundary section
 	// vault write identity/oidc/client/boundary
 	client_boundary_path := "identity/oidc/client/boundary"
 	if _, err := client.Logical().Write(
 		client_boundary_path,
 		map[string]interface{}{
-			"redirect_uris":    "https://grafana.maibaloc.com/login/generic_oauth",
+			"redirect_uris":    redirect_uris,
 			"assignments":      "admin-assignment",
 			"key":              "admin-key",
 			"id_token_ttl":     "30m",
