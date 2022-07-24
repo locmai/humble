@@ -28,10 +28,9 @@ spec:
       values: |
         server:
           extraArgs:
-          - --auth-mode=server
-          # - --auth-mode=sso
+          - --auth-mode=sso
           - --loglevel=debug
-          sso:
+          sso: |
             issuer: "http://vault.platform.svc.cluster.local:8200"
             clientId:
               name: humble-oidc-secrets
