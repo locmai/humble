@@ -46,7 +46,7 @@ spec:
               - openid
               - user
               - email
-            userInfoPath: /v1/identity/oidc/provider/vault-provider/userinfo
+            userInfoPath: /userinfo
           ingress:
             enabled: true
             annotations:
