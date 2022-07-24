@@ -41,7 +41,7 @@ flowchart TD
 
   subgraph platform
     gitea[Gitea]
-    tekton[Tekton]
+    workflows[Workflows]
     vault[Vault]
   end
 

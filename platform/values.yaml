@@ -25,13 +25,6 @@ secretGenerator:
   namespace: platform
   targetRevision: master
 
-# Workflow engines
-tekton:
-  enabled: true
-  namespace: platform
-  ingress:
-    enabled: true
-
 etcd:
   enabled: false
   namespace: platform

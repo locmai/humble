@@ -1,2 +1,0 @@
-#!/bin/sh
-kubectl -n platform get secret humble-init-authentik-secrets -o jsonpath="{.data.ak_admin_token}" | base64 -d
