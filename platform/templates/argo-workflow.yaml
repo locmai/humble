@@ -29,7 +29,7 @@ spec:
         server:
           extraArgs:
             - --auth-mode=sso
-            - --auth-mode=server
+            - --auth-mode=client
           sso:
             issuer: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider"
             sessionExpiry: 240h
