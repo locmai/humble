@@ -28,6 +28,7 @@ spec:
       values: |
         server:
           extraArgs:
+          - --auth-mode=server
           - --auth-mode=sso
           - --loglevel=debug
           sso:
