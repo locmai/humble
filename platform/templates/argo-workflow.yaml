@@ -27,7 +27,9 @@ spec:
       releaseName: argo-workflows
       values: |
         server:
-          extraArgs: [--auth-mode=sso]
+          extraArgs:
+          - --auth-mode=sso
+          - --loglvel=debug
           sso:
             issuer: "http://vault.platform.svc.cluster.local:8200"
             clientId:
