@@ -32,6 +32,7 @@ spec:
           - --loglevel=debug
           sso: |
             issuer: "http://vault.platform.svc.cluster.local:8200"
+            sessionExpiry: 240h
             clientId:
               name: humble-oidc-secrets
               key: OIDC_CLIENT_ID
@@ -42,10 +43,10 @@ spec:
             rbac:
               enabled: true
             scopes:
-            - groups
-            - openid
-            - user
-            - email
+              - groups
+              - openid
+              - user
+            insecureSkipVerify: false
           ingress:
             enabled: false
             annotations:
