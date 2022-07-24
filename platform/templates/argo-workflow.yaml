@@ -29,9 +29,6 @@ spec:
         server:
           extraArgs:
             - --auth-mode=sso
-          extraEnv:
-            - name: SSO_DELEGATE_RBAC_TO_NAMESPACE
-              value: "true"
           sso:
             issuer: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider"
             sessionExpiry: 240h
@@ -42,13 +39,6 @@ spec:
               name: humble-oidc-secrets
               key: OIDC_CLIENT_SECRET
             redirectUrl: https://workflows.{{ .Values.global.domain }}/oauth2/callback
-            rbac:
-              enabled: true
-            scopes:
-              - groups
-              - openid
-              - user
-              - email
             userInfoPath: /userinfo
           ingress:
             enabled: true
