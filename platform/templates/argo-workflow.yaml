@@ -29,7 +29,7 @@ spec:
         server:
           extraArgs: [--auth-mode=sso]
           sso:
-            issuer: "http://vault.platform.svc.cluster.local:8200"
+            issuer: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider"
             sessionExpiry: 240h
             clientId:
               name: humble-oidc-secrets
@@ -44,7 +44,7 @@ spec:
               - groups
             userInfoPath: /v1/identity/oidc/provider/vault-provider/userinfo
           ingress:
-            enabled: false
+            enabled: true
             annotations:
             ingressClassName: "nginx"
             hosts:
