@@ -29,6 +29,9 @@ spec:
         server:
           extraArgs:
             - --auth-mode=sso
+          extraEnv:
+            - name: SSO_DELEGATE_RBAC_TO_NAMESPACE
+              value: "true"
           sso:
             issuer: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider"
             sessionExpiry: 240h
