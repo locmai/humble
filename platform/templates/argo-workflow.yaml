@@ -27,7 +27,9 @@ spec:
       releaseName: argo-workflows
       values: |
         server:
-          extraArgs: [--auth-mode=sso]
+          extraArgs:
+          --auth-mode=sso
+          --auth-mode=server
           sso:
             issuer: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider"
             sessionExpiry: 240h
