@@ -39,13 +39,11 @@ spec:
             redirectUrl: https://workflows.{{ .Values.global.domain }}/oauth2/callback
             rbac:
               enabled: true
-              secretWhitelist: []
             scopes:
             - groups
             - openid
             - user
             - email
-            userInfoPath: /oauth2/v1/userinfo
           ingress:
             enabled: true
             annotations:

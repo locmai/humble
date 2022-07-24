@@ -173,7 +173,7 @@ func main() {
 
 	redirect_uris_list := []string{
 		fmt.Sprintf("https://grafana.%s/login/generic_oauth", domain),
-		fmt.Sprintf("https://workflow.%s/oauth2/callback", domain),
+		fmt.Sprintf("https://workflows.%s/oauth2/callback", domain),
 	}
 
 	redirect_uris := strings.Join(redirect_uris_list[:], ",")
