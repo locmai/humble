@@ -22,16 +22,14 @@ spec:
   source:
     chart: argo-workflows
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 0.15.0
+    targetRevision: 0.16.7
     helm:
       releaseName: argo-workflows
       values: |
         server:
-          extraArgs:
-          - --auth-mode=sso
-          - --loglevel=debug
+          extraArgs: [--auth-mode="sso"]
           sso:
-            issuer: "http://auth.maibaloc.com"
+            issuer: "http://vault.platform.svc.cluster.local:8200"
             sessionExpiry: 240h
             clientId:
               name: humble-oidc-secrets
