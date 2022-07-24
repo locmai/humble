@@ -30,7 +30,7 @@ spec:
           extraArgs:
           - --auth-mode=sso
           - --loglevel=debug
-          sso: |
+          sso:
             issuer: "http://vault.platform.svc.cluster.local:8200"
             sessionExpiry: 240h
             clientId:
