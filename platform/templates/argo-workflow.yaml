@@ -27,7 +27,7 @@ spec:
       releaseName: argo-workflows
       values: |
         server:
-          extraArgs: [--auth-mode="sso"]
+          extraArgs: [--auth-mode=sso]
           sso:
             issuer: "http://vault.platform.svc.cluster.local:8200"
             sessionExpiry: 240h
