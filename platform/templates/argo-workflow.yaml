@@ -41,7 +41,7 @@ spec:
               key: OIDC_CLIENT_SECRET
             redirectUrl: https://workflows.{{ .Values.global.domain }}/oauth2/callback
             rbac:
-              enabled: true
+              enabled: false
             scopes:
               - groups
               - openid
