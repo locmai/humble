@@ -39,6 +39,8 @@ spec:
               name: humble-oidc-secrets
               key: OIDC_CLIENT_SECRET
             redirectUrl: https://workflows.{{ .Values.global.domain }}/oauth2/callback
+            rbac:
+              enabled: true
             userInfoPath: /userinfo
           ingress:
             enabled: true
