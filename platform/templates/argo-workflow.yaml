@@ -45,7 +45,7 @@ spec:
             - user
             - email
           ingress:
-            enabled: true
+            enabled: false
             annotations:
             ingressClassName: "nginx"
             hosts:
