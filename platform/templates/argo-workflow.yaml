@@ -42,11 +42,7 @@ spec:
             redirectUrl: https://workflows.{{ .Values.global.domain }}/oauth2/callback
             rbac:
               enabled: false
-            scopes:
-              - groups
-              - openid
-              - user
-              - email
+            scopes: []
             userInfoPath: /v1/identity/oidc/provider/vault-provider/userinfo
           ingress:
             enabled: true
