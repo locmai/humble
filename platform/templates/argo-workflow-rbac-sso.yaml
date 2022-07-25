@@ -35,7 +35,7 @@ rules:
   - apiGroups:
       - argoproj.io
     resources:
-- workflows
+      - workflows
       - cronworkflows
       - workflowtemplates
       - clusterworkflowtemplates
