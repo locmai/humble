@@ -41,6 +41,8 @@ spec:
             redirectUrl: https://workflows.{{ .Values.global.domain }}/oauth2/callback
             rbac:
               enabled: true
+            scopes:
+              - groups
             userInfoPath: /userinfo
           ingress:
             enabled: true
