@@ -60,4 +60,8 @@ spec:
                   - *host
         controller:
           workflowNamespaces: ["default", "kube-system"]	
+          metricsConfig:
+            enabled: true
+          serviceMonitor:
+            enabled: true
 {{- end }}
