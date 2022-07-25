@@ -30,7 +30,7 @@ spec:
           extraArgs:
             - --auth-mode=sso
           sso:
-            issuer: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider"
+            issuer: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider"
             sessionExpiry: 240h
             clientId:
               name: humble-oidc-secrets

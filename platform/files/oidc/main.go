@@ -37,7 +37,7 @@ func main() {
 	// Initialize Vault config and client
 	config := vault.DefaultConfig()
 
-	config.Address = "https://vault." + domain
+	config.Address = "https://auth." + domain
 	client, err := vault.NewClient(config)
 
 	unseal_secrets, err := k8sclient.CoreV1().Secrets("platform").Get(context.TODO(), "vault-unseal-keys", metav1.GetOptions{})
@@ -258,7 +258,7 @@ func main() {
 		map[string]interface{}{
 			"allowed_client_ids": boundary_client.Data["client_id"],
 			"scopes_supported":   "groups,user,email",
-			"issuer":             "http://vault.platform.svc.cluster.local:8200",
+			"issuer":             "https://auth." + domain,
 		}); err != nil {
 		log.Fatal(err)
 	}

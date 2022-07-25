@@ -13,7 +13,7 @@ spec:
     templates:
     - name: configure-vault
       container:
-        image: locmai/humble-vault-config-tool:0.0.1
+        image: locmai/humble-vault-config-tool:0.0.2
         command: [/vault-init-tool]
         env:
         - name: HUMBLE_DOMAIN
