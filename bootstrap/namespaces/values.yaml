@@ -1,10 +1,20 @@
 namespaces:
-  - cert-manager
-  - cloudflared
-  - external-dns
-  - platform
-  - apps
-  - system
-  - global
-  - bootstrap
-  - observability
+  - name: cert-manager
+    externalSecret: false
+  - name: cloudflared
+    externalSecret: false
+  - name: external-dns
+    externalSecret: false
+  - name: platform
+    externalSecret: true
+  - name: apps
+    externalSecret: true
+  - name: system
+    externalSecret: true
+  - name: global
+    externalSecret: true
+  - name: observability
+    externalSecret: true
+  - name: argoworkflow
+    externalSecret: true
+

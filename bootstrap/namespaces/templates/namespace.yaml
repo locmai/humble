@@ -4,6 +4,9 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    kubernetes.io/metadata.name: {{ $namespace }}
-  name: {{ $namespace }}
+    kubernetes.io/metadata.name: {{ $namespace.name }}
+    {{- if $namespace.externalSecret }}
+    external-secret: "true"
+    {{- end }}
+  name: {{ $namespace.name }}
 {{- end }}

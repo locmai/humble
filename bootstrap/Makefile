@@ -13,12 +13,6 @@ argocd/charts: argocd/Chart.yaml
 
 # TO-DO Make these namespaces into ArgoCD instead
 namespace:
-	kubectl create ns observability
-	kubectl create ns platform
-	kubectl create ns argoworkflow
-	kubectl label ns observability external-secret=true
-	kubectl label ns platform external-secret=true
-	kubectl label ns argoworkflow external-secret=true
 	kubectl create namespace argocd --dry-run=client --output=yaml \
 		| kubectl apply -f -
 	cd namespaces && helm template namespaces . | kubectl apply -f -
