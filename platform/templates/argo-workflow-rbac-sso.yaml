@@ -35,11 +35,16 @@ rules:
   - apiGroups:
       - argoproj.io
     resources:
-      - workflowtaskresults
-      - workflows
+- workflows
       - cronworkflows
       - workflowtemplates
       - clusterworkflowtemplates
+      - workflowtasksets
+      - workflowtaskresults
+      - workfloweventbindings
+      - eventbus
+      - eventsources
+      - sensors
     verbs:
       - "*"
 ---
