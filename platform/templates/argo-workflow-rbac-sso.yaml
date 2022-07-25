@@ -54,6 +54,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: admin-user
+    namespace: {{ .Values.argo_workflow.namespace }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -66,4 +67,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: engineer-user
+    namespace: {{ .Values.argo_workflow.namespace }}
 {{- end }}
