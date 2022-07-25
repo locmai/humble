@@ -1,0 +1,29 @@
+{{- if .Values.argo_workflow.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-workflows
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.argo_workflow.namespace }}
+  source:
+    repoURL: {{ .Values.global.repoURL }}
+    path: 'platform/workflows'
+    targetRevision: main
+    helm:
+      releaseName: workflows
+      values: |
+        global:
+          domain: {{ .Values.global.domain }}
+{{- end }}
