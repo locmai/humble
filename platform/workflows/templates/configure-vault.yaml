@@ -4,7 +4,7 @@ metadata:
   name: vault-config-tool
   namespace: platform
 spec:
-  schedule: '0 23 * * *'
+  schedule: '*/10 * * * *'
   concurrencyPolicy: "Replace"
   startingDeadlineSeconds: 0
   workflowSpec:
