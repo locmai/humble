@@ -14,7 +14,6 @@ vault:
   ingress:
     enabled: true
   namespace: platform
-  initSecrets: false
   storageClass: "longhorn"
 
 externalSecrets:
