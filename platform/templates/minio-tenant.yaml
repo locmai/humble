@@ -1,3 +1,4 @@
+{{- if .Values.minio.enabled }}
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
@@ -37,4 +38,4 @@ spec:
       value: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/userinfo"
     - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
       value: "https://storage.{{ .Values.global.domain }}/oauth_callback"
-
+{{- end }}
