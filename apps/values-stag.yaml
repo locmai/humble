@@ -1,11 +1,3 @@
-argocd:
-  namespace: argocd
-  project: apps
-  targetRevision: main
-
-global:
-  domain: "placeholder.com"
-
 filebrowser:
   enabled: false
 
@@ -24,9 +16,6 @@ memcached:
 
 cortex:
   enabled: false
-  basicAuth:
-    insecure: true
-    secretName: "cortex-humble-tenant"
 
 microservicesDemo:
   enabled: false

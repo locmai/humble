@@ -6,7 +6,7 @@ argocd:
 global:
   domain: "placeholder.com"
 
-# Secret managment
+# Secret management
 vault:
   enabled: true
   installOperator: true
@@ -40,32 +40,3 @@ argo_events:
 minio:
   enabled: false
   installOperator: true
-
-# IAM
-authentik:
-  enabled: false
-  namespace: platform
-  init: 
-    enabled: false
-
-# SCM
-gitea:
-  enabled: false
-  namespace: platform
-  ingress:
-    enabled: false
-
-# Yuta Platform
-minio:
-  enabled: true
-  namespace: platform
-
-trow:
-  enabled: true
-  namespace: platform
-
-# Mimir
-mimir:
-  enabled: false
-  namespace: platform
-
