@@ -37,6 +37,10 @@ argo_events:
   enabled: false
   namespace: argoworkflow
 
+minio:
+  enabled: false
+  installOperator: true
+
 # IAM
 authentik:
   enabled: false
