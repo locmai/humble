@@ -39,4 +39,4 @@ argo_events:
 
 minio:
   enabled: false
-  installOperator: true
+  installOperator: false

@@ -17,4 +17,5 @@ argo_events:
   enabled: true
 
 minio:
-  enabled: false
+  enabled: true
+  installOperator: true
