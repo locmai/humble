@@ -47,19 +47,6 @@ argo-cd:
                 else 
                   argocd-vault-plugin generate ./
                 fi
-      
-    oidc.config: |
-      name: Vault
-      issuer: https://login.microsoftonline.com/TENANT_ID/v2.0
-      clientID: CLIENT_ID
-      clientSecret: $oidc.azuread.clientSecret
-      requestedIDTokenClaims:
-        groups:
-          essential: true
-      requestedScopes:
-        - openid
-        - profile
-        - email
 
     ingress:
       enabled: true

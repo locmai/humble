@@ -1,0 +1,40 @@
+apiVersion: minio.min.io/v2
+kind: Tenant
+metadata:
+  name: minio-tenant
+spec:
+  pools:
+    - servers: 1
+      name: pool-0
+      volumesPerServer: 2
+      volumeClaimTemplate:
+        metadata:
+          name: data
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 2Gi
+  env:
+    - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+      value: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/.well-known/openid-configuration"
+    - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+      value: "OPENID CLIENT ID"
+    - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: humble-oidc-secrets
+          value: OIDC_CLIENT_ID
+    - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: humble-oidc-secrets
+          value: OIDC_CLIENT_SECRET
+    - name: MINIO_IDENTITY_OPENID_SCOPES
+      value: "openid,groups,user,email"
+    - name: MINIO_IDENTITY_OPENID_CLAIM_NAME
+      value: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/userinfo"
+    - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
+      value: "https://storage.{{ .Values.global.domain }}/oauth_callback"
+
