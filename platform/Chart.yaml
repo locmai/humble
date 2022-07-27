@@ -12,7 +12,7 @@ dependencies:
     version: 1.15.6
     repository: https://kubernetes-charts.banzaicloud.com
     condition: vault.installOperator
-  - name: minio
-    version: minio-operator
+  - name: operator
+    version: 4.4.27
     repository: https://operator.min.io/
     condition: minio.installOperator
