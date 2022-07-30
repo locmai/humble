@@ -81,8 +81,6 @@ spec:
             JAEGER_AGENT_PORT: '5755'
           
           envFromSecret: "humble-oidc-secrets"
-          image:
-            tag: 8.4.4
           persistence:
             enabled: false
           ingress:
