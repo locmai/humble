@@ -2,12 +2,12 @@ filebrowser:
   enabled: false
 
 dendrite:
-  enabled: false
+  enabled: true
   storageClass: "longhorn"
-  autosign: false
+  autosign: true
 
 element:
-  enabled: false
+  enabled: true
 
 
 # Playground services
