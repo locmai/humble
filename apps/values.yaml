@@ -11,10 +11,10 @@ filebrowser:
   enabled: false
 
 dendrite:
-  enabled: true
+  enabled: false
 
 element:
-  enabled: true
+  enabled: false
 
 # Playground services
 memcached:

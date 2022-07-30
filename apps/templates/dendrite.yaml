@@ -19,42 +19,52 @@ spec:
     namespace: {{ .Values.argocd.project }}
   source:
     chart: dendrite
-    repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 6.0.0
+    repoURL: https://locmai.github.io/charts/
+    targetRevision: 0.0.3
     helm:
       releaseName: dendrite
       values: |
+        # Use a polylith setup, which creates a deployment for every component.
+        # If false, a monolithic deployment will be created, with a single deployment.
+        polylith: false
+        # Docker image to use
         image:
-          repository: matrixdotorg/dendrite-monolith
-
-        dendrite:
-          matrix_key_secret:
-            # -- Create matrix_key secret using the keyBody below.
-            create: false
-            # -- New Key Body
-            keyBody: ""
-            # -- Use an existing secret
-            existingSecret: "dendrite-signing-key"
-            secretPath: signing.key
+          # name: "matrixdotorg/dendrite-polylith:latest"
+          name: "locmai/dendrite-monolith:010922"
+          pullPolicy: IfNotPresent
+        configuration:
+          # servername for this dendrite deployment
+          version: 2
+          servername: "dendrite.{{ .Values.global.domain }}"
+          # database connection settings
           database:
+            host:  "dendrite-postgresql.apps.svc.cluster.local:5432"
+            user:  "dendrite"
+            password: "dendrite"
             max_open_conns: 100
             max_idle_conns: 2
             conn_max_lifetime: -1
-          global:
-            server_name: "dendrite.{{ .Values.global.domain }}"
-            server_notices:
-              enabled: true
-
+          # prometheus metrics
+          metrics:
+            # Whether or not Prometheus metrics are enabled.
+            enabled: true
+          # NATS connection settings
+          jetstream:
+            in_memory: false
+            addresses:
+              - nats://dendrite-nats:4222
+        persistence:
+          storageClass: "longhorn"
+          logs:
+            existingClaim: ""
+            capacity: "10Gi"
+          media:
+            existingClaim: ""
+            capacity: "10Gi"
         nats:
           enabled: true
-
           nats:
             jetstream:
-              enabled: true
-          exporter:
-            enabled: true
-            image: natsio/prometheus-nats-exporter:0.9.1
-            serviceMonitor:
               enabled: true
         postgresql:
           enabled: true
@@ -63,31 +73,28 @@ spec:
               postgresqlDatabase: "dendrite"
               postgresqlUsername: "dendrite"
               postgresqlPassword: "dendrite"
-
           persistence:
             enabled: true
-            storageClass: "{{ .Values.dendrite.storageClass }}"
+            storageClass: "longhorn"
             accessModes:
               - ReadWriteOnce
             size: 10Gi
-
         ingress:
-          main:
-            enabled: true
-            ingressClassName: nginx
-            annotations:
-              cert-manager.io/cluster-issuer: letsencrypt-prod
-              external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
-              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-              nginx.ingress.kubernetes.io/proxy-body-size: 32m
-            hosts:
-              - host: &host dendrite.{{ .Values.global.domain }}
-                paths:
-                  - path: /
-                    pathType: Prefix
-            tls:
-              - secretName: dendrite-tls-certificate
-                hosts:
-                  - *host
-      
+          enabled: true
+          
+          className: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            nginx.ingress.kubernetes.io/proxy-body-size: 32m
+          hosts:
+            - host: &host dendrite.{{ .Values.global.domain }}
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: dendrite-tls-certificate
+              hosts:
+                - *host
 {{- end }}
