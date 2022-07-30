@@ -1,0 +1,2 @@
+#!/bin/sh
+kubectl -n platform get secret vault-admin-password -o jsonpath="{.data.password}" | base64 -d
