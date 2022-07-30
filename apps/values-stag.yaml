@@ -4,7 +4,6 @@ filebrowser:
 dendrite:
   enabled: false
   storageClass: "longhorn"
-  autosign: false
 
 element:
   enabled: false
