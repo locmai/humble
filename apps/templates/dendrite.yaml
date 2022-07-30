@@ -64,6 +64,9 @@ spec:
           nats:
             jetstream:
               enabled: true
+          reloader:
+            enabled: false
+            image: natsio/nats-server-config-reloader:0.7.0
         postgresql:
           enabled: true
           global:
