@@ -2,7 +2,7 @@ filebrowser:
   enabled: false
 
 dendrite:
-  enabled: true
+  enabled: false
   storageClass: "longhorn"
 
 element:
