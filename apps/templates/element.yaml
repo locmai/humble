@@ -37,6 +37,8 @@ spec:
             cert-manager.io/cluster-issuer: letsencrypt-prod
             external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
             external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            nginx.ingress.kubernetes.io/enable-cors: "true"
+            nginx.ingress.kubernetes.io/cors-allow-origin: "*"
           hosts:
             - host: &host chat.{{ .Values.global.domain }}
               paths:

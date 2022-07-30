@@ -92,6 +92,8 @@ spec:
             external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
             external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
             nginx.ingress.kubernetes.io/proxy-body-size: 32m
+            nginx.ingress.kubernetes.io/enable-cors: "true"
+            nginx.ingress.kubernetes.io/cors-allow-origin: "*"
           hosts:
             - host: &host dendrite.{{ .Values.global.domain }}
               paths:
