@@ -50,7 +50,7 @@ spec:
           jetstream:
             in_memory: false
             addresses:
-              - nats://dendrite-nats:4222
+              - nats://dendrite-nats.apps.svc.cluster.local:4222
         persistence:
           storageClass: "longhorn"
           logs:
