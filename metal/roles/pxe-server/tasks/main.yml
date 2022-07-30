@@ -1,12 +1,13 @@
-- name: Download ISO
-  get_url:
+- name: Download boot image
+  ansible.builtin.get_url:
     url: "{{ iso_url }}"
     dest: "{{ role_path }}/files/data/iso/{{ iso_url | basename }}"
     checksum: "{{ iso_checksum }}"
+    mode: 0644
   register: iso
 
-- name: Extract the ISO
-  command:
+- name: Extract boot image
+  ansible.builtin.command:
     cmd: "xorriso -osirrox on -indev {{ iso.dest }} -extract / {{ role_path }}/files/data/os"
     creates: "{{ role_path }}/files/data/os/.treeinfo"
 
@@ -17,19 +18,21 @@
     mode: 0644
 
 - name: Generate GRUB config
-  template:
+  ansible.builtin.template:
     src: grub.cfg.j2
     dest: "{{ role_path }}/files/data/pxe-config/grub.cfg"
+    mode: 0644
 
-- name: Render machine specific init config
-  template:
-    src: kickstart.inst.ks.j2
-    dest: "{{ role_path }}/files/data/init-config/{{ hostvars[item]['mac'] }}.inst.ks"
+- name: Generate init config for each machine
+  ansible.builtin.template:
+    src: kickstart.ks.j2
+    dest: "{{ role_path }}/files/data/init-config/{{ hostvars[item]['mac'] }}.ks"
+    mode: 0644
   loop: "{{ groups['metal'] }}"
 
-- name: Start ephemeral PXE server
-  docker_compose:
+- name: Start the ephemeral PXE server
+  community.docker.docker_compose:
     project_src: "{{ role_path }}/files"
     state: present
-    restarted: yes
-    build: yes
+    restarted: true
+    build: true

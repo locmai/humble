@@ -12,7 +12,6 @@ lang en_US.UTF-8
 clearpart --all --drives={{ hostvars[item]['disk'] }}
 # Partitioning
 ignoredisk --only-use={{ hostvars[item]['disk'] }}
-
 partition /boot/efi --fstype=vfat --size=512
 partition / --fstype=ext4 --grow
 
@@ -31,13 +30,13 @@ services --enabled="chronyd"
 # System timezone
 timezone {{ timezone }} --utc
 
+# Disable root password login
+rootpw --lock
+
 # Create user (locked by default)
 user --groups=wheel --name=admin
 # Add SSH key
 sshkey --username=root "{{ ssh_public_key }}"
-
-# Disable root password login
-rootpw --lock
 
 # Disable SELinux
 selinux --disabled
