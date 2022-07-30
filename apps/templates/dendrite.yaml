@@ -29,6 +29,7 @@ spec:
         polylith: false
         # Docker image to use
         image:
+          name: "matrixdotorg/dendrite-monolith:latest"
           pullPolicy: IfNotPresent
         configuration:
           # servername for this dendrite deployment
