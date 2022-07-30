@@ -2,11 +2,11 @@ filebrowser:
   enabled: false
 
 dendrite:
-  enabled: false
+  enabled: true
   storageClass: "longhorn"
 
 element:
-  enabled: false
+  enabled: true
 
 
 # Playground services
