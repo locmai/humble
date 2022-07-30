@@ -18,9 +18,9 @@ spec:
     name: in-cluster
     namespace: {{ .Values.argocd.project }}
   source:
-    chart: dendrite
-    repoURL: https://locmai.github.io/charts/
-    targetRevision: 0.0.3
+    path: charts/dendrite
+    repoURL: https://github.com/locmai/charts
+    targetRevision: main
     helm:
       releaseName: dendrite
       values: |
@@ -31,6 +31,8 @@ spec:
         image:
           name: "matrixdotorg/dendrite-monolith:latest"
           pullPolicy: IfNotPresent
+        extraArgs:
+        - --really-enable-open-registration 
         configuration:
           # servername for this dendrite deployment
           version: 2
