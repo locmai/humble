@@ -30,9 +30,6 @@ spec:
           name: action-runner-secret
         githubWebhookServer:
           enabled: true
-          secret:
-            enabled: true
-            create: true
           ingress:
             enabled: true
             annotations:
