@@ -16,7 +16,7 @@ argo_workflow:
 argo_events:
   enabled: true
 
-runnerAction:
+runnerController:
   enabled: true
 
 minio:

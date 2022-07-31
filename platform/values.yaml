@@ -37,7 +37,7 @@ argo_events:
   enabled: false
   namespace: argoworkflow
 
-runnerAction:
+runnerController:
   # This application requires to add the GITHUB_TOKEN manually
   enabled: false
 
