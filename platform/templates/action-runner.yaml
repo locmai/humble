@@ -26,8 +26,21 @@ spec:
     helm:
       releaseName: actions-runner-controller
       values: |
-        dummy:
-          tag: v1.6.0
         authSecret:
           name: action-runner-secret
+        githubWebhookServer:
+          enabled: true
+          ingress:
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: "letsencrypt-prod"
+              external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
+              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            ingressClassName: "nginx"
+            hosts:
+              - &host "webhook.{{ .Values.global.domain }}"
+            tls:
+              - secretName: github-webhook-tls-certificate
+                hosts:
+                  - *host
 {{- end }}

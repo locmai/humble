@@ -2,7 +2,7 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: alvisio-runners
+  name: humble-runners
 spec:
   template:
     spec:
