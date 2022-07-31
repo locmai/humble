@@ -28,4 +28,6 @@ spec:
       values: |
         dummy:
           tag: v1.6.0
+        authSecret:
+          name: action-runner-secret
 {{- end }}
