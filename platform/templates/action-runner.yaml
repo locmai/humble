@@ -43,8 +43,8 @@ spec:
             hosts:
               - host: &host "webhook.{{ .Values.global.domain }}"
                 paths:
-                  - path: /github-webhook
-                    pathType: Prefix
+                  - path: /
+                    pathType: Exact
                     backend:
                       service:
                         name: actions-runner-controller-github-webhook
