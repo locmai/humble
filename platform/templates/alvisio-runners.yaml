@@ -1,0 +1,10 @@
+{{- if .Values.runnerController.enabled }}
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: alvisio-runners
+spec:
+  template:
+    spec:
+      repository: locmai/alvisio
+{{- end }}
