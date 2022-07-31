@@ -16,5 +16,8 @@ argo_workflow:
 argo_events:
   enabled: true
 
+runnerAction:
+  enabled: false
+
 minio:
   enabled: false
