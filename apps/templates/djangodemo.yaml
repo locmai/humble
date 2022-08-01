@@ -1,5 +1,6 @@
 {{- if .Values.djangodemo.enabled }}
 {{ range $deployment, $value := .Values.djangodemo.deployments }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
