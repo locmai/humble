@@ -50,3 +50,4 @@ spec:
               hosts:
                 - *host
 {{- end }}
+{{- end }}
