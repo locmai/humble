@@ -1,0 +1,29 @@
+{{- if .Values.runnerController.enabled }}
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: djangodemo-runners
+spec:
+  template:
+    spec:
+      repository: locmai/djangodemo
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: djangodemo-runner-deployment-autoscaler
+spec:
+  # Runners in the targeted RunnerDeployment won't be scaled down
+  # for 5 minutes instead of the default 10 minutes now
+  scaleDownDelaySecondsAfterScaleOut: 300
+  scaleTargetRef:
+    name: djangodemo-runners
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: PercentageRunnersBusy
+    scaleUpThreshold: '0.75'
+    scaleDownThreshold: '0.25'
+    scaleUpFactor: '2'
+    scaleDownFactor: '0.5'
+{{- end }}
