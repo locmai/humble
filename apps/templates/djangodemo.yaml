@@ -11,9 +11,10 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: apps
-  automated:
-    selfHeal: true
-    prune: true
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
   destination:
     name: in-cluster
     namespace: apps
