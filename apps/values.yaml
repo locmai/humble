@@ -28,15 +28,21 @@ nfs:
   enabled: false
 yutaops:
   enabled: true
+
+# GitOps
 djangodemo:
   enabled: true
   deployments:
     main:
-      subdomain: djangodemo-test
-      tag: 0.0.1
+      subdomain: alvisio-test # testing
+      tag: 0.0.3
     release:
-      subdomain: djangodemo-release
+      subdomain: alvisio-release
       tag: 0.0.1
-    vidu:
-      subdomain: djangodemo-vidu
-      tag: "bd1b5e0"
+
+# document
+
+# dev: code - tao PR (test site alvisio-AB103) - merge main (alvisio-test)
+
+# qa: 
+# - alvisio-test: test ban build moi nhat
