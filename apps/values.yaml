@@ -42,7 +42,7 @@ yutaops:
   enabled: true
 
 djangodemo:
-  enabled: prod
+  enabled: true
   deployments:
     main:
       subdomain: djangodemo-test
