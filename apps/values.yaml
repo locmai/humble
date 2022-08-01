@@ -34,15 +34,8 @@ djangodemo:
   enabled: true
   deployments:
     main:
-      subdomain: alvisio-test # testing
-      tag: 0.0.3
+      subdomain: alvisio-test
+      tag: 0.0.1
     release:
       subdomain: alvisio-release
       tag: 0.0.1
-
-# document
-
-# dev: code - tao PR (test site alvisio-AB103) - merge main (alvisio-test)
-
-# qa: 
-# - alvisio-test: test ban build moi nhat
