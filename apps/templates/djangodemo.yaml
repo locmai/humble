@@ -20,7 +20,7 @@ spec:
     name: in-cluster
     namespace: apps
   source:
-    path: apps/charts/djangodemo
+    path: apps/custom-charts/djangodemo
     repoURL: https://github.com/locmai/humble
     targetRevision: main
     helm:
