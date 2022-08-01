@@ -26,6 +26,7 @@ spec:
     helm:
       releaseName: djangodemo-{{ $deployment }}
       values: |
+        nameOverride: djangodemo-{{ $deployment }}
         image:
           tag: {{ $value.tag }}
         ingress:
