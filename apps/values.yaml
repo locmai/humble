@@ -2,45 +2,32 @@ argocd:
   namespace: argocd
   project: apps
   targetRevision: main
-
 global:
-  domain: "placeholder.com"
-  env: "prod"
-
+  domain: placeholder.com
+  env: prod
 filebrowser:
   enabled: false
-
 dendrite:
   enabled: false
-
 element:
   enabled: false
-
-# Playground services
 memcached:
   enabled: false
-
 cortex:
   enabled: false
   basicAuth:
     insecure: true
-    secretName: "cortex-humble-tenant"
-
+    secretName: cortex-humble-tenant
 microservicesDemo:
   enabled: false
-
 dashyLandscape:
   enabled: true
-
 consul:
   enabled: false
-
 nfs:
   enabled: false
-
 yutaops:
   enabled: true
-
 djangodemo:
   enabled: true
   deployments:
@@ -50,3 +37,6 @@ djangodemo:
     release:
       subdomain: djangodemo-release
       tag: 0.0.1
+    vidu:
+      subdomain: djangodemo-vidu
+      tag: 31121971
