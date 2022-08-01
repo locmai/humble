@@ -1,0 +1,52 @@
+{{- if .Values.djangodemo.enabled }}
+{{ range $deployment, $value := .Values.djangodemo.deployments }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps-djangodemo-{{ $deployment }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: apps
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: apps
+  source:
+    path: apps/charts/djangodemo
+    repoURL: https://github.com/locmai/humble
+    targetRevision: main
+    helm:
+      releaseName: djangodemo-{{ $deployment }}
+      values: |
+        image:
+          tag: {{ $value.tag }}
+        ingress:
+          enabled: false
+          # Optionally set the ingressClassName.
+          ingressClassName: ""
+        ingress:
+          enabled: true
+          
+          className: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            external-dns.alpha.kubernetes.io/target: "prod-humble-tunnel.maibaloc.com"
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+            nginx.ingress.kubernetes.io/enable-cors: "true"
+            nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+          hosts:
+            - host: &host {{ $value.subdomain }}.maibaloc.com
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: djangodemo-{{ $deployment }}-tls-certificate
+              hosts:
+                - *host
+{{- end }}

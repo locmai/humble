@@ -40,3 +40,13 @@ nfs:
 
 yutaops:
   enabled: true
+
+djangodemo:
+  enabled: false
+  deployments:
+    main:
+      subdomain: djangodemo-test
+      tag: 0.0.1
+    release:
+      subdomain: djangodemo-release
+      tag: 0.0.1
