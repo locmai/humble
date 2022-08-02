@@ -23,7 +23,7 @@ spec:
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 38.0.0
+    targetRevision: 39.4.0
     helm:
       releaseName: monitoring
       values: |
