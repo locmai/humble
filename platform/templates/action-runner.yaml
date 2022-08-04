@@ -28,4 +28,5 @@ spec:
       values: |
         authSecret:
           name: action-runner-secret
+        syncPeriod: 5m
 {{- end }}
