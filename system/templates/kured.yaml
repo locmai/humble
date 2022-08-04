@@ -22,7 +22,7 @@ spec:
   source:
     chart: kured
     repoURL: https://weaveworks.github.io/kured
-    targetRevision: 2.14.1
+    targetRevision: 3.0.0
     helm:
       releaseName: kured
       values: |
