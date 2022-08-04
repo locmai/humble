@@ -30,10 +30,4 @@ For getting started:
 
 ## Contacts
 
-If you have any questions about the project, please feel free to join us at:
-
-- **[#homelab](https://matrix.to/#/#home:dendrite.maibaloc.com)** - General chat about the Humble project, for users and server admins alike
-- **[#humble-dev](https://matrix.to/#/#humble-dev:dendrite.maibaloc.com)** - The place for developers, where all Humble development discussion happens
-- **[#alerts](https://matrix.to/#/#alerts:dendrite.maibaloc.com)** - Release/incident notifications and important info, highly recommended for all Humble server admins
-
-Or email me at [locmai0201@gmail.com](mailto:locmai0201@gmail.com).
+Email me at [locmai0201@gmail.com](mailto:locmai0201@gmail.com) or create an issue on this GitHub repository.

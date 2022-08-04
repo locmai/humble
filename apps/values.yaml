@@ -28,14 +28,3 @@ nfs:
   enabled: false
 yutaops:
   enabled: true
-
-# GitOps
-djangodemo:
-  enabled: true
-  deployments:
-    main:
-      subdomain: alvisio-test
-      tag: 0.0.1
-    release:
-      subdomain: alvisio-release
-      tag: 0.0.1
