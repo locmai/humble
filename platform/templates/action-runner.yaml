@@ -28,27 +28,5 @@ spec:
       values: |
         authSecret:
           name: action-runner-secret
-        githubWebhookServer:
-          enabled: true
-          ingress:
-            enabled: true
-            annotations:
-              cert-manager.io/cluster-issuer: "letsencrypt-prod"
-              external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
-              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-            ingressClassName: "nginx"
-            hosts:
-              - host: &host "webhook.{{ .Values.global.domain }}"
-                paths:
-                  - path: /
-                    pathType: Exact
-                    backend:
-                      service:
-                        name: actions-runner-controller-github-webhook
-                        port:
-                          number: 80
-            tls:
-              - secretName: github-webhook-tls-certificate
-                hosts:
-                  - *host
+        syncPeriod: 5m
 {{- end }}
