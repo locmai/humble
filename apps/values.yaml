@@ -39,3 +39,6 @@ nfs:
 
 yutaops:
   enabled: true
+
+alvisio:
+  enabled: false
