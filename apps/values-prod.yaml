@@ -32,4 +32,4 @@ yutaops:
   enabled: true
 
 alvisio:
-  enabled: false
+  enabled: true
