@@ -80,7 +80,7 @@ spec:
           env:
             JAEGER_AGENT_PORT: '5755'
           image:
-            tag: 9.1.0-beta1
+            tag: 8.2.6
           envFromSecret: "humble-oidc-secrets"
           persistence:
             enabled: false
