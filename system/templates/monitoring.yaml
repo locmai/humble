@@ -95,7 +95,7 @@ spec:
             auth.generic_oauth:
               name: Vault
               enabled: true
-              allow_sign_up: false
+              allow_sign_up: true
               client_id: "\"${OIDC_CLIENT_ID}\""
               client_secret: "\"${OIDC_CLIENT_SECRET}\""
               scopes: openid groups user email
