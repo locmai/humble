@@ -23,7 +23,7 @@ Simply clone the repository
 git clone https://github.com/locmai/humble
 ```
 
-Then run the follwing `make` commands:
+Then run the following `make` commands:
 
 ```shell
 make tools
@@ -31,12 +31,29 @@ make dev
 ```
 ## Explore
 
-> TBD
+By default, the domain for development would leverage [nip.io](https://nip.io) for local DNS resolution. So we could start with accessing the [argocd.172-28-0-3.nip.io](https://argocd.172-28-0-3.nip.io).
+
+Get the ArgoCD admin password with the script:
+
+```sh
+./tools/argocd-password
+```
+
+From there, you could have an overview of things those got deployed.
+
+Grafana integrated with OIDC authentication is provided as well. Access Grafana at [grafana.172-28-0-3.nip.io](https://grafana.172-28-0-3.nip.io) and sign in with Vault.
+
+Get the Vault admin password with the script:
+
+```sh
+./tools/admin-password
+```
 
 ## Clean up
 
-Delete the cluster:
+Simply delete the cluster and remove the generated kubeconfig:
 
 ```
 k3d cluster delete humble-dev
+rm ./metal/kubeconfig.prod.yaml
 ```

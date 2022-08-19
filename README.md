@@ -4,6 +4,7 @@
 
 Humble is a project that seeks to set up a ready-to-go environment with operating services using modern infrastructure as code with GitOps driven.
 
+Let's say you have a couple of physical servers at home, and you would love to deploy your applications or services on them with Kubernetes platform. This project intends to automate all necessary components and boot them up from scratch by just a single command from your laptop or workstation.
 
 ## Core Features
 

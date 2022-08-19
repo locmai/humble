@@ -5,6 +5,7 @@ it's the source of truth for _my_ homelab, so you'll need to fork it to make it 
 
 [:fontawesome-solid-code-fork: Fork locmai/humble](https://github.com/locmai/humble){ .md-button--primary}
 
+
 ## Hardware requirements
 
 
@@ -75,3 +76,9 @@ So let's sign up for a free [Cloudflare](https://cloudflare.com) account.
 ### Domain
 
 Buying a domain is required for public access. Follow the [Cloudflare DNS zone setup guide](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) to use Cloudflare as your primary DNS provider.
+
+After forking the repository, update your DNS in the following files:
+
+- global/prod/terragrunt.hcl
+- bootstrap/root/values-prod.yaml
+- bootstrap/argocd/values-prod.yaml

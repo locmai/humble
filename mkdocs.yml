@@ -52,7 +52,7 @@ nav:
       - getting-started/production/configuration.md
       - getting-started/production/deployment.md
   - Concepts:
-    - concepts/layered-architecture.md
+    - concepts/architecture.md
     - concepts/configuration-per-deployment.md
     - concepts/provisioning-flow.md
   - Reference:
