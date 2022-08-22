@@ -1,40 +1,8 @@
-FROM archlinux:base-devel-20220717.0.68836
+FROM nixos/nix
 
-# Sort mirrors by speed
-RUN pacman --sync --refresh --noconfirm \
-        reflector \
-    && reflector \
-        --save /etc/pacman.d/mirrorlist \
-        --protocol https \
-        --latest 5 \
-        --sort rate
+# TODO optimize Nix build speed (mount .nix at run time?)
+COPY default.nix /default.nix
 
-RUN yes | pacman --sync --refresh \
-        ansible \
-        ansible-lint \
-        argocd \
-        diffutils \
-        docker \
-        docker-compose \
-        git \
-        glibc \
-        graphviz \
-        helm \
-        kubectl \
-        kustomize \
-        libisoburn \
-        make \
-        p7zip \
-        python \
-        python-kubernetes \
-        python-netaddr \
-        python-pip \
-        terraform \
-        terragrunt \
-        wget
+RUN nix-env --install --file /default.nix
 
-RUN wget -O /usr/local/bin/k3d https://github.com/k3d-io/k3d/releases/download/v5.4.4/k3d-linux-amd64 
-
-RUN chmod +x /usr/local/bin/k3d
-
-RUN pip install docker-compose
+CMD [ "nix-shell", "/default.nix" ]
