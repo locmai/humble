@@ -6,7 +6,7 @@
 
 ### Install the required tools
 
-- [Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/) for runnning with tools container OR [Nix](https://nixos.org/manual/nix/stable/installation/installing-binary.html)
 - [make](https://www.gnu.org/software/make/manual/make.html)
 
 ### Recommended hardware specification
@@ -23,12 +23,26 @@ Simply clone the repository
 git clone https://github.com/locmai/humble
 ```
 
-Then run the following `make` commands:
+### Build with tools container
+
+For getting started with the tools container run the following `make` commands:
 
 ```shell
 make tools
+```
+
+Or with just the nix-shell:
+
+```
+nix-shell
+```
+
+Then spin up the development environment:
+
+```
 make dev
 ```
+
 ## Explore
 
 By default, the domain for development would leverage [nip.io](https://nip.io) for local DNS resolution. So we could start with accessing the [argocd.172-28-0-3.nip.io](https://argocd.172-28-0-3.nip.io).
