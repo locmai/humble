@@ -6,7 +6,7 @@
 
 ### Install the required tools
 
-- [Docker](https://www.docker.com/) for runnning with tools container OR [Nix](https://nixos.org/manual/nix/stable/installation/installing-binary.html)
+- [Docker](https://www.docker.com/) for runnning with tools container **OR** [Nix](https://nixos.org/manual/nix/stable/installation/installing-binary.html) for running with nix-shell
 - [make](https://www.gnu.org/software/make/manual/make.html)
 
 ### Recommended hardware specification
@@ -31,7 +31,7 @@ For getting started with the tools container run the following `make` commands:
 make tools
 ```
 
-Or with just the nix-shell:
+**OR** with just the nix-shell:
 
 ```
 nix-shell
