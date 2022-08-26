@@ -4,10 +4,10 @@ We have built and included all the necessary tools in the `tools` container. To 
 make tools
 ```
 
-OR if you installed nix-shell, then simply:
+**OR** if you installed nix-shell, then simply:
 
 ```
-
+nix-shell
 ```
 
 Once all things is configured, a single command will deploy everything from the ground up.
