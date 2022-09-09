@@ -6,13 +6,10 @@ version: 0.2.0
 
 dependencies:
   - name: common
-    version: 2.0.0
+    version: 2.0.2
     repository: https://charts.bitnami.com/bitnami
   - name: vault-operator
-    version: 1.15.6
+    version: 1.16.0
     repository: https://kubernetes-charts.banzaicloud.com
     condition: vault.installOperator
-  - name: operator
-    version: 4.4.27
-    repository: https://operator.min.io/
-    condition: minio.installOperator
+

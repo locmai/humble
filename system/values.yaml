@@ -52,19 +52,3 @@ certmanager:
   enabled: true
   namespace: cert-manager
 
-istio:
-  enabled: false
-  namespace: istio-system
-  gateway:
-    enabled: false
-
-# System maintainers/cleaners
-descheduler:
-  enabled: false
-  namespace: descheduler
-
-systemUpgrade:
-  enabled: false
-
-kured:
-  enabled: false

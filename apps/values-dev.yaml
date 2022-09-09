@@ -1,17 +1,7 @@
-filebrowser:
-  enabled: false
-
 dendrite:
   enabled: false
 
 element:
-  enabled: false
-
-# Playground services
-memcached:
-  enabled: false
-
-cortex:
   enabled: false
 
 microservicesDemo:
@@ -19,12 +9,6 @@ microservicesDemo:
 
 dashyLandscape:
   enabled: true
-
-consul:
-  enabled: false
-
-nfs:
-  enabled: false
 
 yutaops:
   enabled: false

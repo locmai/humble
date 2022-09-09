@@ -20,5 +20,3 @@ argo_events:
 runnerController:
   enabled: false
 
-minio:
-  enabled: false

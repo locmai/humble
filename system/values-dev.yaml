@@ -28,15 +28,3 @@ ingress_nginx:
 certmanager:
   enabled: false
 
-istio:
-  enabled: false
-
-# System maintainers/cleaners
-descheduler:
-  enabled: false
-
-systemUpgrade:
-  enabled: false
-
-kured:
-  enabled: false
