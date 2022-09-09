@@ -36,8 +36,6 @@
     {
       "fileMatch": [
         "^.*\/templates\/.*.yaml$",
-        "!/bootstrap\/root\/templates\/.*.yaml/",
-        "!/platform\/templates\/argo-workflow-workflows.yaml/",
       ],
       "matchStringsStrategy": "combination",
       "matchStrings": [
