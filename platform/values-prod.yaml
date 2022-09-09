@@ -7,9 +7,6 @@ externalSecrets:
 secretGenerator:
   enabled: true
 
-etcd:
-  enabled: false
-
 argo_workflow:
   enabled: true
 

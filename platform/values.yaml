@@ -25,10 +25,6 @@ secretGenerator:
   namespace: platform
   targetRevision: master
 
-etcd:
-  enabled: false
-  namespace: platform
-
 argo_workflow:
   enabled: false
   namespace: argoworkflow
@@ -42,6 +38,3 @@ runnerController:
   enabled: false
   namespace: platform
 
-minio:
-  enabled: false
-  installOperator: false
