@@ -1,19 +1,8 @@
-filebrowser:
-  enabled: false
-
 dendrite:
   enabled: false
   storageClass: "longhorn"
 
 element:
-  enabled: false
-
-
-# Playground services
-memcached:
-  enabled: false
-
-cortex:
   enabled: false
 
 microservicesDemo:
@@ -25,11 +14,6 @@ dashyLandscape:
 consul:
   enabled: false
 
-nfs:
-  enabled: false
-
 yutaops:
   enabled: true
 
-alvisio:
-  enabled: true

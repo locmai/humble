@@ -1,1 +1,0 @@
-export KUBECONFIG=./metal/kubeconfig.$1.yaml

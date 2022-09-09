@@ -19,6 +19,3 @@ argo_events:
 runnerController:
   enabled: true
 
-minio:
-  enabled: false
-  installOperator: true

@@ -7,23 +7,11 @@ global:
   domain: placeholder.com
   env: prod
 
-filebrowser:
-  enabled: false
-
 dendrite:
   enabled: false
 
 element:
   enabled: false
-
-memcached:
-  enabled: false
-
-cortex:
-  enabled: false
-  basicAuth:
-    insecure: true
-    secretName: cortex-humble-tenant
 
 microservicesDemo:
   enabled: false
@@ -31,14 +19,6 @@ microservicesDemo:
 dashyLandscape:
   enabled: true
 
-consul:
-  enabled: false
-
-nfs:
-  enabled: false
-
 yutaops:
   enabled: true
 
-alvisio:
-  enabled: false
