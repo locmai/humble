@@ -1,4 +1,4 @@
 env ?= prod
 
 default:
-	cd ${env} && terragrunt apply -auto-approve
+	cd ${env} && terragrunt init -upgrade && terragrunt apply -auto-approve
