@@ -35,13 +35,15 @@
   "regexManagers": [
     {
       "fileMatch": [
-        "^.*\/templates\/.*.yaml$"
+        "^.*\/templates\/.*.yaml$",
+        "!/bootstrap\/root\/templates\/.*.yaml/",
+        "!/platform\/templates\/argo-workflow-workflows.yaml/",
       ],
       "matchStringsStrategy": "combination",
       "matchStrings": [
         ".*chart: (?<depName>.*?)\\n",
         ".*repoURL: (?<registryUrl>.*?)\\n",
-        ".*targetRevision: (?<currentValue>.*?)\\n"
+        ".*targetRevision: (?<currentValue>.*?)\\n",
       ],
       "datasourceTemplate": "helm"
     }
