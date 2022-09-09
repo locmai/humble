@@ -11,7 +11,6 @@
   "rebaseLabel": "renovate-rebase",
   "repositories": [
     "locmai/humble",
-    "locmai/yuta",
     "locmai/charts",
   ],
   "packageRules": [
