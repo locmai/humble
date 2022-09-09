@@ -19,7 +19,7 @@ spec:
   source:
     chart: cloudflared
     repoURL: https://khuedoan.github.io/charts
-    targetRevision: 0.3.3
+    targetRevision: 0.4.3
     helm:
       releaseName: cloudflared
       values: |

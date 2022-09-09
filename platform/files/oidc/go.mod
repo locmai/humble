@@ -1,6 +1,6 @@
 module github.com/locmai/humble/platform/files/oidc
 
-go 1.18
+go 1.19
 
 require (
 	github.com/hashicorp/vault/api v1.7.2
