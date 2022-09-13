@@ -1,0 +1,36 @@
+{{- if .Values.grafana.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-grafana
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.grafana.namespace }}
+  source:
+    chart: grafana
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 6.38.0
+    helm:
+      releaseName: grafana-test
+      values: |
+        dummy: true
+        replicas: 2
+        annotations:
+          reloader.stakater.com/auto: "true"
+        podDisruptionBudget:
+          minAvailable: 1
+        envFromSecret: grafana-test-secret
+{{- end }}

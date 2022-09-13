@@ -41,3 +41,8 @@ runnerController:
 reloader:
   enabled: true
   namespace: platform
+
+## Grafana test
+grafana:
+  enabled: true
+  namespace: platform
