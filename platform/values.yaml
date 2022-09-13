@@ -38,3 +38,6 @@ runnerController:
   enabled: false
   namespace: platform
 
+reloader:
+  enabled: true
+  namespace: platform
