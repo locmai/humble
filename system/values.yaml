@@ -12,6 +12,10 @@ longhorn:
   namespace: longhorn-system
 
 # Observability
+mimir:
+  enabled: false
+  namespace: observability
+
 monitoring:
   enabled: true
   namespace: observability
@@ -51,4 +55,3 @@ ingress_nginx:
 certmanager:
   enabled: true
   namespace: cert-manager
-
