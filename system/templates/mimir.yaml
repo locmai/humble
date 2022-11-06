@@ -123,4 +123,19 @@ spec:
         nginx:
           enabled: true
           replicas: 1
+
+        mimir:
+          config: |
+            ingester_client:
+              grpc_client_config:
+                max_recv_msg_size: 104857600
+                max_send_msg_size: 104857600
+            limits:
+              compactor_blocks_retention_period: "604800s"
+              max_global_series_per_user: 0
+              max_global_series_per_metric: 0
+              ingestion_rate: 10000000
+              ingestion_burst_size: 20000000
+              max_label_names_per_series: 300
+              max_label_value_length: 8192
 {{- end }}
