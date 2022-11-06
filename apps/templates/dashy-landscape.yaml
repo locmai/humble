@@ -118,14 +118,6 @@ spec:
                 - title: Secret generator
                   icon: fad fa-key
                   id: 3_837_secretgenerator
-                - title: Authentik
-                  description: IAM platform
-                  icon: https://avatars3.githubusercontent.com/goauthentik
-                  id: 4_837_authentik
-                - title: Gitea
-                  icon: >-
-                    https://camo.githubusercontent.com/d601ef8bdc7b734888ba1ae9ca3acb2df0603bbfa6eea7b7617e63568294260c/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f622f62622f47697465615f4c6f676f2e737667
-                  id: 5_837_gitea
               icon: fas fa-warehouse-alt
             - name: System
               displayData:
