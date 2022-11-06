@@ -37,8 +37,9 @@ spec:
             serviceMonitorNamespaceSelector: {}
             podMonitorNamespaceSelector: {}
 
-            enableFeatures:
-            - agent
+            # https://github.com/prometheus-community/helm-charts/issues/2506#issuecomment-1304632868
+            # enableFeatures:
+            # - agent
             containers:
             - name: prometheus
               env:
@@ -51,7 +52,7 @@ spec:
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
-                      storage: 5Gi
+                      storage: 2Gi
             remoteWrite:
               - url: http://mimir-nginx/api/v1/push
                 headers:
