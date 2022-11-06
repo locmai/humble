@@ -3,6 +3,9 @@ longhorn:
   enabled: true
 
 # Observability
+mimir:
+  enabled: true
+
 monitoring:
   enabled: true
 
@@ -24,4 +27,3 @@ ingress_nginx:
 
 certmanager:
   enabled: true
-
