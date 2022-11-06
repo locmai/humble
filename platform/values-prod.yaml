@@ -14,5 +14,5 @@ argo_events:
   enabled: true
 
 runnerController:
-  enabled: true
+  enabled: false
 
