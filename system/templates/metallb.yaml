@@ -28,7 +28,4 @@ spec:
       releaseName: metallb
       values: |
         existingConfigMap: metallb-config
-        prometheus:
-          serviceMonitor:
-            enabled: true
 {{- end }}
