@@ -130,8 +130,7 @@ spec:
             - name: System
               displayData:
                 sortBy: default
-                rows: 2
-                cols: 4
+                rows:                 cols: 4
                 collapsed: false
                 hideForGuests: false
               items:
@@ -147,22 +146,12 @@ spec:
                   statusCheck: true
                   statusCheckUrl: https://grafana.maibaloc.com/login
                   id: 1_645_grafana
-                - title: Cert-manager
+                - title: cert-manager
                   icon: https://github.com/jetstack/cert-manager/raw/master/logo/logo.png
                   id: 2_645_certmanager
-                - title: Kured
-                  icon: >-
-                    https://images.contentstack.io/v3/assets/blt300387d93dabf50e/blt0b90e1c71a7ef4fe/59fa5727aaf733de03ea6f7f/2017-10-24-kured-logo.png
-                  id: 3_645_kured
                 - title: Jaeger
                   icon: https://www.jaegertracing.io/img/jaeger-icon-color.png
                   id: 4_645_jaeger
-                - title: Docz
-                  icon: far fa-book
-                  url: https://humble.maibaloc.com
-                  statusCheck: true
-                  statusCheckUrl: https://humble.maibaloc.com
-                  id: 5_645_docz
                 - title: ElasticSearch
                   icon: >-
                     https://imagedelivery.net/34xh1sPWPAwO1lv63pW2Eg/b51ce41c-7c38-40ee-140b-73e79d70b100/public
@@ -173,9 +162,6 @@ spec:
                 - title: MetalLB
                   icon: https://avatars.githubusercontent.com/u/60239468?s=200&v=4
                   id: 8_645_metallb
-                - title: Istio
-                  icon: https://techlab.bol.com/app/files/2020/12/Istio-logo.jpg
-                  id: 9_645_istio
                 - title: Loki
                   icon: >-
                     https://github.com/grafana/loki/raw/main/docs/sources/logo.png?raw=true
@@ -187,9 +173,6 @@ spec:
                   icon: >-
                     https://camo.githubusercontent.com/8a2cc98366106c502d68d73f68f2250271c6f7d5c9a9b0ae40b379bbf2845a14/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f6c6f6e67686f726e2f69636f6e2f636f6c6f722f6c6f6e67686f726e2d69636f6e2d636f6c6f722e737667
                   id: 12_645_longhorn
-                - title: Descheduler
-                  icon: fad fa-calendar-times
-                  id: 13_645_descheduler
                 - title: System Upgrade
                   icon: fas fa-wrench
                   id: 14_645_systemupgrade
