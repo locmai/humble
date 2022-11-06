@@ -59,8 +59,8 @@ spec:
               cpu: 1
               memory: 1Gi
           extraArgs:
-          - distributor.ingestion-rate-limit: 10000000
-          - distributor.ingestion-burst-size: 20000000
+          - 'distributor.ingestion-rate-limit': "10000000"
+          - 'distributor.ingestion-burst-size': "20000000"
 
         ingester:
           persistentVolume:
