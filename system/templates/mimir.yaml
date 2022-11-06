@@ -70,6 +70,8 @@ spec:
             requests:
               cpu: 10m
               memory: 512Mi
+          extraArgs:
+            'ingester.max-global-series-per-user': "20000000"
 
         chunks-cache:
           enabled: true
