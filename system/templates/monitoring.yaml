@@ -30,10 +30,15 @@ spec:
         prometheus:
           prometheusSpec:
             replicas: 1
+            ruleSelectorNilUsesHelmValues: false
             serviceMonitorSelectorNilUsesHelmValues: false
-            serviceMonitorNamespaceSelector: {}
+            probeSelectorNilUsesHelmValues: false
             podMonitorSelectorNilUsesHelmValues: false
+            serviceMonitorNamespaceSelector: {}
             podMonitorNamespaceSelector: {}
+
+            enableFeatures:
+            - agent
             containers:
             - name: prometheus
               env:
@@ -46,20 +51,11 @@ spec:
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
-                      storage: 20Gi
-            {{- if .Values.monitoring.remoteWrite.enabled }}
+                      storage: 5Gi
             remoteWrite:
-              - url: http://cortex-nginx.apps:80/api/v1/push
+              - url: http://mimir-nginx/api/v1/push
                 headers:
                   X-Scope-OrgID: humble
-                basicAuth:
-                  username:
-                    name: cortex-humble-tenant
-                    key: username
-                  password:
-                    name: cortex-humble-tenant
-                    key: password
-            {{- end }}
           server:
             enableServiceLinks: false
 
@@ -103,6 +99,7 @@ spec:
               token_url: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider/token"
               api_url: "https://auth.maibaloc.com/v1/identity/oidc/provider/vault-provider/userinfo"
           sidecar:
+            enableUniqueFilenames: false
             image:
               repository: omegavveapon/kopf-k8s-sidecar
               tag: 1.3.4
@@ -112,15 +109,27 @@ spec:
               folder: /tmp/dashboards
               searchNamespace: {{ .Values.monitoring.namespace }}
               provider:
+                allowUiUpdates: false
                 foldersFromFilesStructure: true
               annotations:
                 k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
+            datasources:
+              defaultDatasourceEnabled: false
           additionalDataSources:
             - name: loki
               type: loki
               editable: false
               url: http://loki-stack:3100
               isDefault: false
+            - name: Mimir
+              isDefault: true
+              type: prometheus
+              url: http://mimir-nginx/prometheus
+              basicAuth: false
+              jsonData:
+                httpHeaderName1: X-Scope-OrgID
+              secureJsonData:
+                httpHeaderValue1: humble
           plugins:
           - yesoreyeram-boomtheme-panel
           - flant-statusmap-panel
@@ -131,7 +140,7 @@ spec:
           - macropower-analytics-panel
 
         alertmanager:
-          enabled: true
+          enabled: false
           config:
             global:
               resolve_timeout: 5m

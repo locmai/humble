@@ -15,5 +15,5 @@ consul:
   enabled: false
 
 yutaops:
-  enabled: true
+  enabled: false
 
