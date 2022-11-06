@@ -126,6 +126,8 @@ spec:
 
         mimir:
           config: |
+            activity_tracker:
+              filepath: /data/metrics-activity.log
             ingester_client:
               grpc_client_config:
                 max_recv_msg_size: 104857600
