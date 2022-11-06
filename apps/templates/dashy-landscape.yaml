@@ -126,7 +126,8 @@ spec:
             - name: System
               displayData:
                 sortBy: default
-                rows:                 cols: 4
+                rows: 2
+                cols: 4
                 collapsed: false
                 hideForGuests: false
               items:
