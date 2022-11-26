@@ -6,7 +6,7 @@ version: 0.2.0
 
 dependencies:
   - name: common
-    version: 2.2.0
+    version: 2.2.1
     repository: https://charts.bitnami.com/bitnami
   - name: vault-operator
     version: 1.16.1
