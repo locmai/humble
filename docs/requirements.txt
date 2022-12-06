@@ -16,5 +16,5 @@ python-dateutil==2.8.2
 PyYAML==6.0
 pyyaml_env_tag==0.1
 six==1.16.0
-watchdog==2.1.9
+watchdog==2.2.0
 zipp==3.11.0
