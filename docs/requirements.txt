@@ -8,7 +8,7 @@ mergedeep==1.3.4
 mkdocs==1.4.2
 mkdocs-material==8.5.11
 mkdocs-material-extensions==1.1.1
-packaging==21.3
+packaging==22.0
 Pygments==2.13.0
 pymdown-extensions==9.9
 pyparsing==3.0.9
