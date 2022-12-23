@@ -13,4 +13,3 @@
   hosts: localhost
   roles:
     - metallb_config
-
