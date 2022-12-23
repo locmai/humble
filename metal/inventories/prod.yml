@@ -7,8 +7,8 @@ metal:
         prod02: {ansible_host: 192.168.1.52, mac: '00:23:24:d1:f4:0c', disk: sda, network_interface: eno1}
     workers:
       hosts:
-        prod03: {ansible_host: 192.168.1.53, mac: '18:60:24:e4:28:c7', disk: nvme0n1, network_interface: enp1s0}
-        prod04: {ansible_host: 192.168.1.54, mac: '18:60:24:e5:3a:0c', disk: nvme0n1, network_interface: enp1s0}
-        prod05: {ansible_host: 192.168.1.55, mac: '18:60:24:e6:3c:91', disk: nvme0n1, network_interface: enp1s0}
+        # prod03: {ansible_host: 192.168.1.53, mac: '18:60:24:e4:28:c7', disk: nvme0n1, network_interface: enp1s0}
+        prod03: {ansible_host: 192.168.1.54, mac: '18:60:24:e5:3a:0c', disk: nvme0n1, network_interface: enp1s0}
+        prod04: {ansible_host: 192.168.1.55, mac: '18:60:24:e6:3c:91', disk: nvme0n1, network_interface: enp1s0}
   vars:
     env: prod
