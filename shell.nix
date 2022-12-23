@@ -14,26 +14,30 @@ let
     url = "https://github.com/DavHau/mach-nix/";
     # place version number with the latest one from the github releases page
     ref = "refs/tags/3.5.0";
-  }) {};
+  }) {
+    python = "python38";
+    pypiDataRev = "d88506bb5efd223737f1fe642fb7806365565c80";
+    pypiDataSha256 = "1p1b0k53iclfj9ci92k9bf733k4hllzidcspy637fh8zjcaw62xw";
+  };
   mkdocs-packages = mach-nix.mkPython {
     requirements = builtins.readFile ./docs/requirements.txt;
   };
-  # cillium = pkgs.mkDerivation {
-  #   pname = "cillium";
-  #   version = "0.0.1";
-  #   buildInputs = with pkgs; [ curl ];
-  #   phases = [ "installPhase" ];
-  #   installPhase = ''
-  #     CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/master/stable.txt)
-  #     CLI_ARCH=amd64
-
-  #     if [ "$(uname -m)" = "aarch64" ]; then CLI_ARCH=arm64; fi
-  #     curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
-  #     sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
-  #     sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
-  #     rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
-  #   '';
-  # };
+  CILIUM_CLI_VERSION="v0.12.11";
+  CLI_ARCH="amd64";
+  cillium = pkgs.stdenv.mkDerivation {
+    pname = "cillium";
+    version = "0.0.1";
+    buildInputs = with pkgs; [ curl ];
+    phases = [ "installPhase" ];
+    installPhase = ''
+      mkdir -p $out/bin
+      unset SSL_CERT_FILE
+      curl -k -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+      sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
+      tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz $out/bin
+      rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+    '';
+  };
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
@@ -60,6 +64,8 @@ pkgs.mkShell {
     shellcheck
     terraform
     yamllint
+
+    cillium
 
     python-packages
     mkdocs-packages

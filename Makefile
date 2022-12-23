@@ -10,6 +10,7 @@ init:
 	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -P ""
 
 tools:
+	@echo making tools shell, going to take a while...
 	@docker run \
 		--rm \
 		--interactive \
