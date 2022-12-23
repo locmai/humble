@@ -36,5 +36,11 @@ stag:
 	make -C global env=stag
 
 docs:
-	mkdocs serve
+	docker run \
+		--rm \
+		--interactive \
+		--tty \
+		--publish 8000:8000 \
+		--volume $(shell pwd):/docs \
+		squidfunk/mkdocs-material
 
