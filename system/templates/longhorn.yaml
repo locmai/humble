@@ -21,10 +21,9 @@ spec:
     name: in-cluster
     namespace: {{ .Values.longhorn.namespace }}
   source:
-    chart: longhorn
     repoURL: 'https://github.com/longhorn/charts.git'
     path: "charts/longhorn"
-    targetRevision: HEAD
+    targetRevision: master
     helm:
       releaseName: longhorn
       values: |
