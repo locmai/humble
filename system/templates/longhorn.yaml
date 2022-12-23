@@ -23,8 +23,8 @@ spec:
   source:
     chart: longhorn
     repoURL: 'https://github.com/longhorn/charts.git'
-    path: "./charts/longhorn"
-    targetRevision: master
+    path: "charts/longhorn"
+    targetRevision: HEAD
     helm:
       releaseName: longhorn
       values: |
