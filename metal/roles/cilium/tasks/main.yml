@@ -1,8 +1,14 @@
-- name: Install Cilium
-  ansible.builtin.command: cilium install
+- name: Install/Upgrade Cilium
+  block:
+  - name: Install Cillium
+    ansible.builtin.command: cilium install
+  rescue:
+  - name: Upgrade Cillium
+    ansible.builtin.command: cilium upgrade
 
 - name: Enable Hubble
   ansible.builtin.command: cilium hubble enable --ui
+  ignore_errors: true
 
 - name: Wait for Cilium installation
   ansible.builtin.command: cilium status --wait
