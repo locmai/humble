@@ -15,8 +15,9 @@ The initial controller is the machine used to bootstrap the cluster, we only nee
 
 Required tools on the box:
 
-- [Docker](https://www.docker.com/)
-- [make](https://www.gnu.org/software/make/manual/make.html)
+--8<--
+./docs/templates/required-tools.md
+--8<--
 
 ### Servers
 

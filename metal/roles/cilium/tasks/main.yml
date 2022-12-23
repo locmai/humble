@@ -1,0 +1,5 @@
+- name: Install Cilium
+  ansible.builtin.command: cilium install
+
+- name: Wait for Cilium installation
+  ansible.builtin.command: cilium status --wait

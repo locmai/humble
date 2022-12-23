@@ -10,6 +10,7 @@ init:
 	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -P ""
 
 tools:
+	@echo making tools shell, going to take a while...
 	@docker run \
 		--rm \
 		--interactive \
@@ -35,5 +36,11 @@ stag:
 	make -C global env=stag
 
 docs:
-	mkdocs serve
+	docker run \
+		--rm \
+		--interactive \
+		--tty \
+		--publish 8000:8000 \
+		--volume $(shell pwd):/docs \
+		squidfunk/mkdocs-material
 

@@ -91,7 +91,26 @@ spec:
 
         minio:
           enabled: true
-
+          mode: standalone
+          rootUser: grafana-mimir
+          buckets:
+            - name: mimir-tsdb
+              policy: none
+              purge: false
+            - name: mimir-ruler
+              policy: none
+              purge: false
+            - name: enterprise-metrics-tsdb
+              policy: none
+              purge: false
+            - name: enterprise-metrics-admin
+              policy: none
+              purge: false
+            - name: enterprise-metrics-ruler
+              policy: none
+              purge: false
+          persistence:
+            size: 30Gi
         querier:
           replicas: 1
           resources:

@@ -6,8 +6,9 @@
 
 ### Install the required tools
 
-- [Docker](https://www.docker.com/) for runnning with tools container **OR** [Nix](https://nixos.org/manual/nix/stable/installation/installing-binary.html) for running with nix-shell
-- [make](https://www.gnu.org/software/make/manual/make.html)
+--8<--
+./docs/templates/required-tools.md
+--8<--
 
 ### Recommended hardware specification
 
