@@ -4,7 +4,13 @@
     - k3s
     - automatic_upgrade
 
+- name: Install Cilium
+  hosts: localhost
+  roles:
+    - cilium
+
 - name: Create some basic config
   hosts: localhost
   roles:
     - metallb_config
+
