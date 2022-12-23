@@ -22,18 +22,12 @@ spec:
     namespace: {{ .Values.longhorn.namespace }}
   source:
     chart: longhorn
-    repoURL: https://charts.longhorn.io
-    targetRevision: 1.3.2
+    repoURL: 'https://github.com/longhorn/charts.git'
+    path: "./charts/longhorn"
+    targetRevision: master
     helm:
       releaseName: longhorn
       values: |
         persistence:
           defaultClassReplicaCount: 2
-        ingress:
-          enabled: false
-          host: &host longhorn.{{ .Values.global.domain }}
-          tlse: true
-          tlsSecret: longhorn-tls-certificate
-          annotations:
-            cert-manager.io/cluster-issuer: "letsencrypt-prod"
 {{- end }}
