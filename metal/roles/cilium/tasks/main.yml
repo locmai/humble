@@ -1,5 +1,8 @@
 - name: Install Cilium
   ansible.builtin.command: cilium install
 
+- name: Enable Hubble
+  ansible.builtin.command: cilium hubble enable --ui
+
 - name: Wait for Cilium installation
   ansible.builtin.command: cilium status --wait
