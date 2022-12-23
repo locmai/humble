@@ -12,8 +12,7 @@ spec:
   - namespace: '*'
     server: '*'
   sourceRepos:
-  - git@github.com:locmai/**
-  - https://github.com/locmai/**
+  - '*'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
