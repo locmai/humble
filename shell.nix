@@ -1,5 +1,6 @@
 # https://status.nixos.org
 { pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/22.11.tar.gz") {} }:
+# { mach-nix ? import (fetchTarball "https://github.com/DavHau/mach-nix/tarball/3.5.0") {} }:
 
 let
   python-packages = pkgs.python3.withPackages (p: with p; [
@@ -7,7 +8,16 @@ let
     kubernetes
     netaddr
     rich
+    mkdocs
   ]);
+  mach-nix = import (builtins.fetchGit {
+    url = "https://github.com/DavHau/mach-nix/";
+    # place version number with the latest one from the github releases page
+    ref = "refs/tags/3.5.0";
+  }) {};
+  mkdocs-packages = mach-nix.mkPython {
+    requirements = builtins.readFile ./docs/requirements.txt;
+  };
   # cillium = pkgs.mkDerivation {
   #   pname = "cillium";
   #   version = "0.0.1";
@@ -52,5 +62,6 @@ pkgs.mkShell {
     yamllint
 
     python-packages
+    mkdocs-packages
   ];
 }
