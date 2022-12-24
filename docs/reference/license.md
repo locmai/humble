@@ -1,4 +1,4 @@
-Copyright &copy; 2020 - 2022 Loc Mai
+Copyright &copy; 2020 - 2023 Loc Mai
 
 --8<--
 LICENSE.md

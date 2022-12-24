@@ -54,7 +54,7 @@ spec:
             navLinks:
               - title: Back to Home
                 path: https://humble.maibaloc.com
-            footerText: © 2022 Loc Mai.
+            footerText: © 2023 Loc Mai.
           sections:
             - name: Global
               icon: far fa-globe
