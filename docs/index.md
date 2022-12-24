@@ -6,5 +6,5 @@ README.md:1:20
 - [Deploy on real hardware](/getting-started/production/) for production workload.
 
 --8<--
-README.md::25
+README.md:25:
 --8<--
