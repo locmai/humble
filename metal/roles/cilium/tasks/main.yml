@@ -1,14 +1,10 @@
 - name: Install/Upgrade Cilium
   block:
   - name: Install Cillium
-    ansible.builtin.command: cilium install
+    ansible.builtin.command: cilium install --helm-set prometheus.enabled=true --helm-set operator.prometheus.enabled=true --helm-set hubble.enabled=true --helm-set hubble.metrics.enabled="{dns,drop,tcp,flow,port-distribution,icmp,http}"
   rescue:
   - name: Upgrade Cillium
     ansible.builtin.command: cilium upgrade
-
-- name: Enable Hubble
-  ansible.builtin.command: cilium hubble enable --ui
-  ignore_errors: true
 
 - name: Wait for Cilium installation
   ansible.builtin.command: cilium status --wait
