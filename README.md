@@ -20,7 +20,7 @@ See the [docs](https://humble.maibaloc.com) for detailed information on the arch
 For getting started:
 
 - [Try it out locally](https://humble.maibaloc.com/getting-started/development/) without any hardware.
-- [Deploy on real hardware](https://humble.maibaloc.com/getting-started/production/overview) for production workload.
+- [Deploy on real hardware](https://humble.maibaloc.com/getting-started/production/) for production workload.
 
 ## Acknowledgements
 
