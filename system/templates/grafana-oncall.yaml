@@ -26,6 +26,7 @@ spec:
     helm:
       releaseName: {{ .Values.argocd.project }}-oncall
       values: |
+        base_url: "http://localhost"
         ingress:
           enabled: false
         # Whether to install ingress controller
