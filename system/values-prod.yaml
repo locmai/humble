@@ -19,7 +19,7 @@ dashboard:
   enabled: true
 
 oncall:
-  enabled: true
+  enabled: false
 
 # Ingress / Load balancer
 metallb:
