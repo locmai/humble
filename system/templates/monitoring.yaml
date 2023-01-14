@@ -80,7 +80,6 @@ spec:
           grafana.ini:
             security:
               disable_initial_admin_creation: true
-              admin_user: grafana-admin
             server:
               domain: "grafana.{{ .Values.global.domain }}"
               root_url: "https://%(domain)s/"
@@ -90,7 +89,6 @@ spec:
               name: Vault
               enabled: true
               allow_sign_up: true
-              role_attribute_path = "contains(info.roles[*], 'admin') && 'Admin'"
               client_id: "\"${OIDC_CLIENT_ID}\""
               client_secret: "\"${OIDC_CLIENT_SECRET}\""
               scopes: openid groups user email
