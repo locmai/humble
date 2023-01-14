@@ -18,7 +18,7 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: ingress-nginx
+    namespace: {{ .Values.oncall.namespace }}
   source:
     chart: oncall
     repoURL: https://grafana.github.io/helm-charts
