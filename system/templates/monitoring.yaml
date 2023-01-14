@@ -90,7 +90,7 @@ spec:
               name: Vault
               enabled: true
               allow_sign_up: true
-              role_attribute_path = contains(info.roles[*], 'admin') && 'Admin'
+              role_attribute_path = "contains(info.roles[*], 'admin') && 'Admin'"
               client_id: "\"${OIDC_CLIENT_ID}\""
               client_secret: "\"${OIDC_CLIENT_SECRET}\""
               scopes: openid groups user email
