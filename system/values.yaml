@@ -37,6 +37,7 @@ dashboard:
 
 oncall:
   enabled: false
+  namespace: observability
 
 opentelemetry:
   enabled: true
