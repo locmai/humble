@@ -1,0 +1,88 @@
+{{- if .Values.oncall.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-oncall
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: ingress-nginx
+  source:
+    chart: oncall
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 1.1.2
+    helm:
+      releaseName: {{ .Values.argocd.project }}-oncall
+      values: |
+        ingress:
+          enabled: false
+        # Whether to install ingress controller
+        ingress-nginx:
+          enabled: false
+        # Install cert-manager as a part of the release
+        cert-manager:
+          enabled: false
+          installCRDs: false
+        database:
+          # can be either mysql or postgresql
+          type: mysql
+
+        # MySQL is included into this release for the convenience.
+        # It is recommended to host it separately from this release
+        # Set mariadb.enabled = false and configure externalMysql
+        mariadb:
+          enabled: true
+          auth:
+            database: oncall
+          primary:
+            persistence:
+              enabled: false
+            extraEnvVars:
+              - name: MARIADB_COLLATE
+                value: utf8mb4_unicode_ci
+              - name: MARIADB_CHARACTER_SET
+                value: utf8mb4
+          secondary:
+            persistence: 
+              enabled: false
+            extraEnvVars:
+              - name: MARIADB_COLLATE
+                value: utf8mb4_unicode_ci
+              - name: MARIADB_CHARACTER_SET
+                value: utf8mb4
+        
+        redis:
+          enabled: true
+          master:
+            persistence:
+              enabled: false
+          replica:
+            persistence:
+              enabled: false
+          sentinel:
+            persistence:
+              enabled: false
+
+        rabbitmq:
+          enabled: true
+          persistence:
+            enabled: false
+
+        broker:
+          type: rabbitmq
+
+        grafana:
+          enabled: false
+{{- end }}
