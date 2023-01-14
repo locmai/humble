@@ -116,6 +116,11 @@ spec:
               editable: false
               url: http://loki-stack:3100
               isDefault: false
+            - name: default
+              type: prometheus
+              editable: false
+              url: http://monitoring-kube-prometheus-prometheus.observability:9090/
+              isDefault: false
         alertmanager:
           enabled: false
 {{- end }}
