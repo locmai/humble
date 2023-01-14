@@ -16,7 +16,7 @@ spec:
       prune: true
   destination:
     name: in-cluster
-    namespace: {{ .Values.argocd.project }}
+    namespace: kube-system
   source:
     chart: cilium-monitor
     repoURL: https://locmai.github.io/charts/
