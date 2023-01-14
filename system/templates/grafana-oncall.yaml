@@ -85,4 +85,6 @@ spec:
 
         grafana:
           enabled: false
+        externalGrafana:
+          url: "grafana.{{ .Values.global.domain }}"
 {{- end }}
