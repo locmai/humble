@@ -30,4 +30,3 @@ spec:
           operator: true
 
           hubble: true
-{{- end }}
