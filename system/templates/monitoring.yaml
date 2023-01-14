@@ -78,6 +78,7 @@ spec:
           ingress:
             enabled: false
           grafana.ini:
+            disable_initial_admin_creation: true
             server:
               domain: "grafana.{{ .Values.global.domain }}"
               root_url: "https://%(domain)s/"
