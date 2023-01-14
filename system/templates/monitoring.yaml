@@ -72,8 +72,6 @@ spec:
           enableServiceLinks: false
           env:
             JAEGER_AGENT_PORT: '5755'
-          image:
-            tag: 8.2.6
           envFromSecret: "humble-oidc-secrets"
           persistence:
             enabled: false
