@@ -95,6 +95,7 @@ spec:
               auth_url: "https://auth.{{ .Values.global.domain }}/ui/vault/identity/oidc/provider/vault-provider/authorize"
               token_url: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/token"
               api_url: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/userinfo"
+              role_attribute_path: "contains(info.roles[*], 'admin') && 'Admin'"
           sidecar:
             enableUniqueFilenames: false
             image:
