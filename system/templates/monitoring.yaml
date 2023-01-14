@@ -87,7 +87,7 @@ spec:
             auth.generic_oauth:
               name: Vault
               enabled: true
-              allow_sign_up: false
+              allow_sign_up: true
               allowed_domains: "{{ .Values.global.domain }}"
               client_id: "\"${OIDC_CLIENT_ID}\""
               client_secret: "\"${OIDC_CLIENT_SECRET}\""
