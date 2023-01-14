@@ -77,6 +77,8 @@ spec:
             enabled: false
           ingress:
             enabled: false
+          plugins:
+          - grafana-oncall-app
           grafana.ini:
             users:
               auto_assign_org_role: 'Admin'

@@ -35,6 +35,9 @@ dashboard:
   namespace: observability
   targetRevision: main
 
+oncall:
+  enabled: false
+
 opentelemetry:
   enabled: true
   namespace: observability
