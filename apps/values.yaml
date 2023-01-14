@@ -22,3 +22,5 @@ dashyLandscape:
 yutaops:
   enabled: false
 
+excalidraw:
+  enabled: false

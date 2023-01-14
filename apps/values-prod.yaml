@@ -17,3 +17,5 @@ consul:
 yutaops:
   enabled: false
 
+excalidraw:
+  enabled: true
