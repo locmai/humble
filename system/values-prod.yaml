@@ -4,7 +4,7 @@ longhorn:
 
 # Observability
 mimir:
-  enabled: true
+  enabled: false
 
 monitoring:
   enabled: true
