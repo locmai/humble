@@ -205,9 +205,9 @@ spec:
                     https://camo.githubusercontent.com/fc632bb925824d089d8574ede65315893f9de2cf4b78a5a7aaebe43468c3756f/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f6b756265726e657465732f69636f6e2f636f6c6f722f6b756265726e657465732d69636f6e2d636f6c6f722e737667
                   id: 2_499_kubernetes
                   title: Kubernetes
-                - title: Cillium & Hubble
+                - title: Cilium & Hubble
                   icon: https://avatars.githubusercontent.com/u/21054566?s=200&v=4
-                  id: 3_499_cilliumhubble
+                  id: 3_499_ciliumhubble
               name: Metal
             - displayData:
                 collapsed: false

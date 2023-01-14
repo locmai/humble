@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocd.project }}-cillium-monitor
+  name: {{ .Values.argocd.project }}-cilium-monitor
   namespace: {{ .Values.argocd.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "3"
@@ -18,11 +18,11 @@ spec:
     name: in-cluster
     namespace: {{ .Values.argocd.project }}
   source:
-    chart: cillium-monitor
+    chart: cilium-monitor
     repoURL: https://locmai.github.io/charts/
-    targetRevision: 0.0.2
+    targetRevision: 0.0.3
     helm:
-      releaseName: cillium-monitor
+      releaseName: cilium-monitor
       values: |
         enablePodMonitor:
           agent: true

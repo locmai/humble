@@ -24,8 +24,8 @@ let
   };
   CILIUM_CLI_VERSION="v0.12.11";
   CLI_ARCH="amd64";
-  cillium = pkgs.stdenv.mkDerivation {
-    pname = "cillium";
+  cilium = pkgs.stdenv.mkDerivation {
+    pname = "cilium";
     version = "0.0.1";
     buildInputs = with pkgs; [ curl ];
     phases = [ "installPhase" ];
@@ -65,7 +65,7 @@ pkgs.mkShell {
     terraform
     yamllint
 
-    cillium
+    cilium
 
     python-packages
     mkdocs-packages

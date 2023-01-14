@@ -1,6 +1,6 @@
 - name: Install/Upgrade Cilium
   block:
-  - name: Install Cillium
+  - name: Install Cilium
     ansible.builtin.command: >
       cilium install --helm-set prometheus.enabled=true 
       --helm-set operator.prometheus.enabled=true 
@@ -9,7 +9,7 @@
       --helm-set hubble.ui.enabled=true 
       --helm-set hubble.relay.enabled=true
   rescue:
-  - name: Upgrade Cillium
+  - name: Upgrade Cilium
     ansible.builtin.command: cilium upgrade
 - name: Enable Hubble
   ansible.builtin.command: cilium hubble enable --ui
