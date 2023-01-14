@@ -20,7 +20,7 @@ spec:
   source:
     chart: dashy
     repoURL: https://locmai.github.io/charts/
-    targetRevision: 0.0.2
+    targetRevision: 0.0.4
     helm:
       releaseName: dashylandscape
       values: |
