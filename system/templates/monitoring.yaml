@@ -78,6 +78,8 @@ spec:
           ingress:
             enabled: false
           grafana.ini:
+            users:
+              auto_assign_org_role: 'Admin'
             security:
               disable_initial_admin_creation: true
             server:
@@ -95,7 +97,6 @@ spec:
               auth_url: "https://auth.{{ .Values.global.domain }}/ui/vault/identity/oidc/provider/vault-provider/authorize"
               token_url: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/token"
               api_url: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/userinfo"
-              role_attribute_path: "contains(info.roles[*], 'admin') && 'Admin' || 'Admin'"
           sidecar:
             enableUniqueFilenames: false
             image:
