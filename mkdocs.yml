@@ -55,6 +55,9 @@ nav:
     - concepts/architecture.md
     - concepts/configuration-per-deployment.md
     - concepts/provisioning-flow.md
+  - User Guide:
+    - user-guide/index.md
+    - user-guide/operational-services.md
   - Reference:
     - reference/faq.md
     - Technology landscape: reference/tech-landscape.md
