@@ -25,7 +25,8 @@ spec:
       releaseName: discourse
       values: |
         persistence:
-          enabled: false
+          enabled: true
+          size: 5Gi
         ingress:
           enabled: true
           hostname: "discourse.{{ .Values.global.domain }}"
