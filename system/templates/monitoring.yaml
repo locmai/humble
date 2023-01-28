@@ -36,7 +36,9 @@ spec:
             podMonitorSelectorNilUsesHelmValues: false
             serviceMonitorNamespaceSelector: {}
             podMonitorNamespaceSelector: {}
-
+            
+            retention: 7d
+            
             # https://github.com/prometheus-community/helm-charts/issues/2506#issuecomment-1304632868
             # enableFeatures:
             # - agent
@@ -52,7 +54,7 @@ spec:
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
-                      storage: 10Gi
+                      storage: 20Gi
           server:
             enableServiceLinks: false
 
