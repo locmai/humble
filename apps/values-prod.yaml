@@ -21,4 +21,5 @@ excalidraw:
   enabled: true
 
 discourse:
-  enabled: false
+  enabled: true
+
