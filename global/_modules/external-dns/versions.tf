@@ -9,7 +9,7 @@ terraform {
 
     kubernetes = {
       source = "hashicorp/kubernetes"
-      version = "~> 2.17.0"
+      version = "~> 2.18.0"
     }
 
     http = {
