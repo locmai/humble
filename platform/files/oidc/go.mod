@@ -7,7 +7,7 @@ require (
 	github.com/sethvargo/go-password v0.2.0
 	k8s.io/api v0.26.1
 	k8s.io/apimachinery v0.26.1
-	k8s.io/client-go v0.25.0
+	k8s.io/client-go/v6 v6.0.0
 )
 
 require (
