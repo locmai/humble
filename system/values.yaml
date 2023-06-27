@@ -12,15 +12,9 @@ longhorn:
   namespace: longhorn-system
 
 # Observability
-mimir:
-  enabled: false
-  namespace: observability
-
 monitoring:
   enabled: true
   namespace: observability
-  remoteWrite:
-    enabled: false
 
 tracing:
   enabled: false
@@ -35,18 +29,6 @@ dashboard:
   namespace: observability
   targetRevision: main
 
-oncall:
-  enabled: false
-  namespace: observability
-
-opentelemetry:
-  enabled: true
-  namespace: observability
-  logLevel: info
-  # TODO Add config.yaml here for templating
-  # config:
-  # ...
-  # TODO Add Jaeger configuration
 
 # Ingress / Load balancer
 metallb:

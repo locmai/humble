@@ -5,7 +5,7 @@ metadata:
   name: "vault"
 spec:
   size: {{ .Values.vault.size }}
-  image: vault:1.11.0
+  image: vault:1.14.0
   # specify a custom bank-vaults image with bankVaultsImage:
   # bankVaultsImage: ghcr.io/banzaicloud/bank-vaults:latest
 

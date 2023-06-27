@@ -15,9 +15,6 @@ logging:
 dashboard:
   enabled: false
 
-opentelemetry:
-  enabled: false
-
 # Ingress / Load balancer
 metallb:
   enabled: false
