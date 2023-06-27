@@ -22,7 +22,7 @@ spec:
   source:
     chart: oncall
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 1.1.29
+    targetRevision: 1.2.34
     helm:
       releaseName: {{ .Values.argocd.project }}-oncall
       values: |

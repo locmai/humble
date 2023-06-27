@@ -67,7 +67,7 @@ argo-cd:
         emptyDir: {}
     initContainers:
     - name: download-tools
-      image: alpine:3.17
+      image: alpine:3.18
       command: [sh, -c]
 
       # Don't forget to update this to whatever the stable release version is
