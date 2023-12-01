@@ -22,7 +22,7 @@ spec:
   source:
     chart: ingress-nginx
     repoURL: https://kubernetes.github.io/ingress-nginx
-    targetRevision: 4.7.0
+    targetRevision: 4.8.3
     helm:
       releaseName: {{ .Values.argocd.project }}-ingress-nginx
       values: |
