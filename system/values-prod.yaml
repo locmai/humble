@@ -10,7 +10,7 @@ monitoring:
   enabled: true
 
 tracing:
-  enabled: true
+  enabled: false
 
 logging:
   enabled: true
