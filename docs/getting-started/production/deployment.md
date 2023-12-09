@@ -10,6 +10,12 @@ make tools
 nix-shell
 ```
 
+Generate a new SSH key if you didn't have one yet and keep it safe:
+
+```
+make init
+```
+
 Once all things is configured, a single command will deploy everything from the ground up.
 
 ```
