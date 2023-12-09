@@ -3,7 +3,7 @@ resource "random_password" "tunnel_secret" {
   special = false
 }
 
-resource "cloudflare_argo_tunnel" "humble_tunnel" {
+resource "cloudflare_tunnel" "humble_tunnel" {
   account_id = var.cloudflare_account_id
   name       = "${var.environment}-humble-tunnel"
   secret     = base64encode(random_password.tunnel_secret.result)
