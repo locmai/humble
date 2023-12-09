@@ -3,15 +3,15 @@
 Because this project applies GitOps practices,
 it's the source of truth for _my_ homelab, so you'll need to fork it to make it yours: 
 
-[:fontawesome-solid-code-fork: Fork locmai/humble](https://github.com/locmai/humble){ .md-button--primary}
+[Fork locmai/humble](https://github.com/locmai/humble)
 
 
 ## Hardware requirements
 
 
-### Initial controller
+### Initial controller plane
 
-The initial controller is the machine used to bootstrap the cluster, we only need it once, you can use your laptop or desktop.
+The initial controller plane is the Linux machine used to bootstrap the cluster, we only need it once, you can use your laptop or desktop.
 
 Required tools on the box:
 

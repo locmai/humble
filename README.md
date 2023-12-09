@@ -2,7 +2,7 @@
 
 ## Overview
 
-Humble is a project that seeks to set up a ready-to-go environment with operating services using modern infrastructure as code with GitOps driven.
+Humble is an open-source project that seeks to set up a ready-to-go environment with operating services using modern infrastructure as code with GitOps driven.
 
 Let's say you have a couple of physical servers at home, and you would love to deploy your applications or services on them with Kubernetes platform. This project intends to automate all necessary components and boot them up from scratch by just a single command from your laptop or workstation.
 
@@ -27,7 +27,6 @@ For getting started:
 - I hacked a lot of great works from [khuedoan/homelab](https://github.com/khuedoan/homelab).
 - Awesome services from Cloudflare: DNS, Pages and Tunnel. The document of this project is hosted on Cloudflare as well.
 - All open-source projects used in this project.
-- Quillbot.com because my English sukcs.
 
 ## Contacts
 
