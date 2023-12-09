@@ -12,7 +12,6 @@
 
 ## 0.5.4 (2022-08-06)
 
-
 ### Bug Fixes
 
 * templating for the git auth ([82f194d](https://github.com/locmai/humble/commit/82f194d6b05a1337917a026a6c3e9c7b2c1c5fdf))
