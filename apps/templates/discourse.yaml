@@ -20,7 +20,7 @@ spec:
   source:
     chart: discourse
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 10.3.2
+    targetRevision: 12.0.7
     helm:
       releaseName: discourse
       values: |
