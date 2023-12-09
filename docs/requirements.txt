@@ -16,7 +16,7 @@ Pygments
 pymdown-extensions
 pyparsing
 python-dateutil==2.8.2
-PyYAML==6.0.1
+PyYAML==6.0
 pyyaml_env_tag==0.1
 requests
 six==1.16.0
