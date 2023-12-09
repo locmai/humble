@@ -14,3 +14,4 @@ jobs:
           release-type: simple
           bump-minor-pre-major: true
           token: ${{ secrets.CI_TOKEN }}
+          bootstrap-sha: c9c135a663bb7c6e4b835ba2f315b71f396d4117
