@@ -63,6 +63,7 @@ pkgs.mkShell {
     pre-commit
     shellcheck
     terraform
+    terragrunt
     yamllint
 
     cilium
