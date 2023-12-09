@@ -14,7 +14,7 @@ resource "cloudflare_record" "tunnel" {
   zone_id = data.cloudflare_zone.main_domain_name.id
   type    = "CNAME"
   name    = "${var.environment}-humble-tunnel"
-  value   = "${cloudflare_argo_tunnel.humble_tunnel.id}.cfargotunnel.com"
+  value   = "${cloudflare_tunnel.humble_tunnel.id}.cfargotunnel.com"
   proxied = false
   ttl     = 1 # Auto
 }
@@ -28,8 +28,8 @@ resource "kubernetes_secret" "cloudflared_credentials" {
   data = {
     "credentials.json" = jsonencode({
       AccountTag   = var.cloudflare_account_id
-      TunnelName   = cloudflare_argo_tunnel.humble_tunnel.name
-      TunnelID     = cloudflare_argo_tunnel.humble_tunnel.id
+      TunnelName   = cloudflare_tunnel.humble_tunnel.name
+      TunnelID     = cloudflare_tunnel.humble_tunnel.id
       TunnelSecret = base64encode(random_password.tunnel_secret.result)
     })
   }
