@@ -1,5 +1,5 @@
 # https://status.nixos.org
-{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11.tar.gz") {} }:
+{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.05.tar.gz") {} }:
 # { mach-nix ? import (fetchTarball "https://github.com/DavHau/mach-nix/tarball/3.5.0") {} }:
 
 let
