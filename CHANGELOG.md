@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.0](2023-12-09)
+
+### Features
+
+* Now Steam Deck can be used as control plane
+
+### Bug Fixes
+
+* Various bug fixes for the Helm charts and new version configuration
+
 ## [0.5.4](https://github.com/locmai/humble/compare/v0.5.3...v0.5.4) (2022-08-06)
 
 
