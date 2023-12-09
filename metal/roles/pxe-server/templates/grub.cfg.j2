@@ -1,8 +1,10 @@
 set timeout=1
 
 menuentry '{{ iso_url | basename | splitext | first }} (PXE)' {
-    linux vmlinuz \
+    insmod http
+    set root=http,{{ ansible_default_ipv4.address }}
+    linux /os/images/pxeboot/vmlinuz \
         ip=dhcp \
         inst.ks=http://{{ ansible_default_ipv4.address }}/init-config/${net_default_mac}.ks
-    initrd initrd.img
+    initrd /os/images/pxeboot/initrd.img
 }

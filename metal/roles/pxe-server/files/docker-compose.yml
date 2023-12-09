@@ -7,8 +7,6 @@ services:
       - ./data/pxe-config/dnsmasq.conf:/etc/dnsmasq.conf
       - ./data/pxe-config/grub.cfg:/tftp/grub.cfg
       - ./data/os/EFI/BOOT/grubx64.efi:/tftp/grubx64.efi
-      - ./data/os/images/pxeboot/initrd.img:/tftp/initrd.img
-      - ./data/os/images/pxeboot/vmlinuz:/tftp/vmlinuz
     network_mode: host
     cap_add:
       - NET_ADMIN
