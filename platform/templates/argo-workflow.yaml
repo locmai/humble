@@ -27,9 +27,10 @@ spec:
       releaseName: argo-workflows
       values: |
         server:
-          extraArgs:
-            - --auth-mode=sso
+          authModes:
+          - sso
           sso:
+            enabled: true
             issuer: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider"
             sessionExpiry: 240h
             clientId:
