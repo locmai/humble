@@ -22,22 +22,6 @@ let
   mkdocs-packages = mach-nix.mkPython {
     requirements = builtins.readFile ./docs/requirements.txt;
   };
-  CILIUM_CLI_VERSION="v0.12.11";
-  CLI_ARCH="amd64";
-  cilium = pkgs.stdenv.mkDerivation {
-    pname = "cilium";
-    version = "0.0.1";
-    buildInputs = with pkgs; [ curl ];
-    phases = [ "installPhase" ];
-    installPhase = ''
-      mkdir -p $out/bin
-      unset SSL_CERT_FILE
-      curl -k -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
-      sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
-      tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz $out/bin
-      rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
-    '';
-  };
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
@@ -64,8 +48,6 @@ pkgs.mkShell {
     shellcheck
     terraform
     yamllint
-
-    cilium
 
     python-packages
     mkdocs-packages
