@@ -24,7 +24,7 @@ tools:
 		--volume homelab-tools-cache:/root/.cache \
 		--volume homelab-tools-nix:/nix \
 		--workdir $(shell pwd) \
-		nixos/nix nix-shell
+		docker.io/nixos/nix nix-shell
 
 dev:
 	make -C metal k3d env=dev
