@@ -23,11 +23,6 @@ argo-cd:
               end
             end
             return hs
-        networking.k8s.io/Ingress:
-          health.lua: |
-            hs = {}
-            hs.status = "Healthy"
-            return hs 
       resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration: |
         jqPathExpressions:
         - '.webhooks[]?.clientConfig.caBundle'
