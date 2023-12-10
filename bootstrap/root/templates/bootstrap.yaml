@@ -77,7 +77,7 @@ spec:
                 networking.k8s.io/Ingress: 
                   health.lua: |
                     hs = {}
-                    hs.status "Healthy"
+                    hs.status = "Healthy"
                     return hs
           controller:
             metrics:
