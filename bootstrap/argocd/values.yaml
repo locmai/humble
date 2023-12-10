@@ -1,3 +1,5 @@
+global:
+  env: []
 argo-cd:
   server:
     extraArgs:
