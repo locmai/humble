@@ -4,6 +4,12 @@ argo-cd:
       - --insecure
     config:
       statusbadge.enabled: 'true'
+      resource.customizations: |
+        extensions/Ingress:
+          health.lua: |
+            hs = {}
+            hs.status = "Healthy"
+            return hs
       resource.customizations.health.argoproj.io_Application: |
         hs = {}
         hs.status = "Progressing"
