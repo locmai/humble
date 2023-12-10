@@ -1,5 +1,5 @@
 # https://status.nixos.org
-{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11.tar.gz") {} }:
+{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11.tar.gz") { config.allowUnfree = true; } }:
 
 let
   python-packages = pkgs.python3.withPackages (p: with p; [
@@ -53,5 +53,10 @@ pkgs.mkShell {
 
     python-packages
     mkdocs-packages
-  ];
+  ]; 
+  
+  shellHook = ''
+    export KUBECONFIG=$PWD/metal/kubeconfig.prod.yaml
+    export LC_ALL="C.UTF-8"
+  '';
 }

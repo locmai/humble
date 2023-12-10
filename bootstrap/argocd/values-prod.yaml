@@ -1,6 +1,8 @@
 global:
   env: []
 argo-cd:
+  global:
+    env: []
   server:
     extraArgs:
       - --insecure

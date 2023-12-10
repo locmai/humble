@@ -34,13 +34,10 @@ spec:
       valueFiles:
       - values-{{ .Values.global.env }}.yaml
       values: |
-        argocd:
-          targetRevision: {{ .Values.global.targetRevision }}
-        
         global:
           domain: {{ .Values.global.domain }}
           repoURL: {{ .Values.global.repoURL }}
-          env: {{ .Values.global.env }}
+          env: [] 
 
         argo-cd:
           server:
