@@ -79,11 +79,11 @@ spec:
                     hs = {}
                     hs.status = "Healthy"
                     return hs
-		v1/Service:
-		  health.lua: |
-		    hs = {}
+                v1/Service:
+		          health.lua: |
+		            hs = {}
                     hs.status = "Healthy"
-		    return hs
+		            return hs
           controller:
             metrics:
               enabled: true
