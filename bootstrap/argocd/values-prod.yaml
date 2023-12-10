@@ -23,7 +23,7 @@ argo-cd:
               end
             end
             return hs
-        extensions/Ingress:
+        networking.k8s.io/Ingress:
           health.lua: |
             hs = {}
             hs.status = "Healthy"
