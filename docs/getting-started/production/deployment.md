@@ -7,7 +7,7 @@ make tools
 **OR** if you installed nix-shell, then simply:
 
 ```
-nix-shell
+nix develop
 ```
 
 Generate a new SSH key if you didn't have one yet and keep it safe:
