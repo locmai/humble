@@ -19,7 +19,7 @@ spec:
   source:
     chart: external-dns
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 6.28.5
+    targetRevision: 6.28.6
     helm:
       releaseName: external-dns
       values: |
