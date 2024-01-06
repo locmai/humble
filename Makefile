@@ -1,5 +1,9 @@
 .POSIX:
 .PHONY: *
+.EXPORT_ALL_VARIABLES:
+
+KUBECONFIG = $(shell pwd)/metal/kubeconfig.prod.yaml
+KUBE_CONFIG_PATH = $(KUBECONFIG)
 
 default:
 	make -C metal env=prod
