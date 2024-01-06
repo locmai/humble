@@ -74,16 +74,6 @@ spec:
                       end
                     end
                     return hs
-                networking.k8s.io/Ingress: 
-                  health.lua: |
-                    hs = {}
-                    hs.status = "Healthy"
-                    return hs
-		v1/Service:
-		  health.lua: |
-		    hs = {}
-                    hs.status = "Healthy"
-		    return hs
           controller:
             metrics:
               enabled: true

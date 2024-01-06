@@ -8,8 +8,3 @@
   hosts: localhost
   roles:
     - cilium
-
-- name: Create some basic config
-  hosts: localhost
-  roles:
-    - metallb_config
