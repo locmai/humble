@@ -1,0 +1,11 @@
+cilium_repo_url: https://helm.cilium.io
+cilium_version: 1.15.0-pre.3 # TODO switch to stable release
+cilium_namespace: kube-system
+cilium_values:
+  operator:
+    replicas: 1
+  kubeProxyReplacement: true
+  l2announcements:
+    enabled: true
+  k8sServiceHost: 127.0.0.1
+  k8sServicePort: 6444

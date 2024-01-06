@@ -4,6 +4,7 @@
 
 KUBECONFIG = $(shell pwd)/metal/kubeconfig.prod.yaml
 KUBE_CONFIG_PATH = $(KUBECONFIG)
+TERRAGRUNT_TFPATH = "terraform"
 
 default:
 	make -C metal env=prod
@@ -20,6 +21,7 @@ tools:
 		--tty \
 		--network host \
 		--env "KUBECONFIG=${KUBECONFIG}" \
+		--env "TERRAGRUNT_TFPATH=${TERRAGRUNT_TFPATH}" \
 		--volume "/var/run/docker.sock:/var/run/docker.sock" \
 		--volume $(shell pwd):$(shell pwd) \
 		--volume ${HOME}/.ssh:/root/.ssh \
