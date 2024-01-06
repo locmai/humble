@@ -35,7 +35,7 @@ make tools
 **OR** with just the nix-shell:
 
 ```
-nix-shell
+nix develop
 ```
 
 Then spin up the development environment:

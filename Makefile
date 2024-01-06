@@ -10,7 +10,6 @@ init:
 	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -P ""
 
 tools:
-	@echo making tools shell, going to take a while...
 	@docker run \
 		--rm \
 		--interactive \
@@ -24,7 +23,7 @@ tools:
 		--volume homelab-tools-cache:/root/.cache \
 		--volume homelab-tools-nix:/nix \
 		--workdir $(shell pwd) \
-		docker.io/nixos/nix nix-shell
+		docker.io/nixos/nix nix --experimental-features 'nix-command flakes' develop
 
 dev:
 	make -C metal k3d env=dev
