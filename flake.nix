@@ -2,7 +2,7 @@
   description = "Humble";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/3bf71cb5a36130f566bb6ae7574533db52403f00";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -43,7 +43,8 @@
             p7zip
             pre-commit
             shellcheck
-            terraform # TODO replace with OpenTofu, Terraform is no longer FOSS
+            terragrunt
+	    terraform # TODO replace with OpenTofu, Terraform is no longer FOSS
             yamllint
 
             (python3.withPackages (p: with p; [
