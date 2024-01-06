@@ -17,6 +17,7 @@ spec:
       prune: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
   destination:
     name: in-cluster
     namespace: {{ .Values.monitoring.namespace }}
