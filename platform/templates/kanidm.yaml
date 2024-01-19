@@ -74,7 +74,7 @@ spec:
               cert-manager.io/cluster-issuer: letsencrypt-prod
               nginx.ingress.kubernetes.io/backend-protocol: HTTPS
             hosts:
-              - host: &host https://authv2.maibaloc.com
+              - host: &host authv2.maibaloc.com
                 paths:
                   - path: /
                     pathType: Prefix
