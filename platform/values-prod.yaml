@@ -3,6 +3,7 @@ vault:
 
 kanidm:
   enabled: true
+  namespace: kanidm
 
 externalSecrets:
   enabled: true
