@@ -1,6 +1,9 @@
 vault:
   enabled: true
 
+kanidm:
+  enabled: true
+
 externalSecrets:
   enabled: true
 

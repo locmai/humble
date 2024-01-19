@@ -6,6 +6,9 @@ argocd:
 global:
   domain: "placeholder.com"
 
+kanidm:
+  enabled: false
+
 # Secret management
 vault:
   enabled: true
