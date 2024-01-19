@@ -1,0 +1,72 @@
+#!/usr/bin/env python
+
+import base64
+import json
+import json
+import pexpect
+import requests
+import subprocess
+import sys
+import urllib
+
+from rich.console import Console
+from kubernetes import client, config
+from kubernetes.stream import stream
+
+config.load_config()
+
+kanidm_host = client.NetworkingV1Api().read_namespaced_ingress('kanidm', 'kanidm').spec.rules[0].host
+
+def create_secret(name: str, namespace: str, data: dict) -> None:
+    try:
+        client.CoreV1Api().read_namespaced_secret(name, namespace)
+    except client.exceptions.ApiException:
+        # Secret doesn't exist, create a new one
+        new_secret = client.V1Secret(
+            metadata=client.V1ObjectMeta(name=name),
+            data=data,
+        )
+        client.CoreV1Api().create_namespaced_secret(namespace, new_secret)
+
+def setup_kanidm_group(name: str) -> None:
+    subprocess.run(
+        ["kanidm", "group", "create", "--url", f"https://{kanidm_host}", "--name", "idm_admin", name],
+        capture_output=True,
+    )
+
+def reset_kanidm_account_password(account: str) -> str:
+    resp = stream(
+        client.CoreV1Api().connect_get_namespaced_pod_exec,
+        'kanidm-0',
+        'kanidm',
+        command=["kanidmd", "recover-account", "--output", "json", account],
+        stderr=True, stdin=False,
+        stdout=False, tty=False
+    ).replace("\'", "\"")
+
+    return json.loads(resp)['password']
+
+def kanidm_login(accounts: list[str]) -> None:
+    for account in accounts:
+        password = reset_kanidm_account_password(account)
+
+        # There's no way to input password using the standard library, so we have to use pexpect
+        # https://stackoverflow.com/questions/2387731/use-subprocess-to-send-a-password
+        cli_login = pexpect.spawn(f"kanidm login --url https://{kanidm_host} --name {account}")
+        cli_login.sendline(password)
+        cli_login.read()
+
+def main():
+    with Console().status("Completing the remaining sorcery"):
+        kanidm_groups = [
+            # TODO better group management
+            {'name': 'editor'},
+        ]
+
+        kanidm_login(["admin", "idm_admin"])
+
+        for group in kanidm_groups:
+            setup_kanidm_group(group['name'])
+  
+if __name__ == '__main__':
+    main()
