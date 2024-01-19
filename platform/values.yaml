@@ -8,6 +8,7 @@ global:
 
 kanidm:
   enabled: false
+  namespace: kanidm
 
 # Secret management
 vault:
