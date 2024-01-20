@@ -62,4 +62,25 @@ spec:
               - hosts:
                   - *host
                 secretName: speedtest-tls-certificate
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "speedtest-oauth2-proxy"
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+  namespace: dex
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: speedtest.maibaloc.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: oauth2-proxy
+                port:
+                  name: http
+            path: /oauth2
+            pathType: Prefix
 {{- end }}
