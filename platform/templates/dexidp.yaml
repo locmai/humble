@@ -18,7 +18,7 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-namespace: dex
+    namespace: dex
   source:
     repoURL: https://charts.dexidp.io 
     chart: dex
