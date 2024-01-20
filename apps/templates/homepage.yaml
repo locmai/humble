@@ -26,9 +26,6 @@ spec:
     helm:
       releaseName: homepage
       values: |
-        serviceAccount:
-          create: true
-          name: "homepage"
         controllers:
           main:
             replicas: 2
@@ -91,14 +88,6 @@ spec:
                 - search:
                     provider: google
                     target: _blank
-                - kubernetes:
-                    cluster:
-                      show: false
-                    nodes:
-                      show: true
-                      cpu: true
-                      memory: true
-                      showLabel: true
               services.yaml: |
                 - Entertainment (in-progress):
                   - Matrix:
