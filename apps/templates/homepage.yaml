@@ -51,7 +51,7 @@ spec:
                 - *host
         config:
           kubernetes:
-            mode: cluster
+            mode: default
           settings:
             background: https://imagedelivery.net/34xh1sPWPAwO1lv63pW2Eg/992fd3c9-33f9-461e-6894-7210ef7a1500/public
             cardBlur: md
@@ -62,26 +62,11 @@ spec:
             - search:
                 provider: google
                 target: _blank
-            - kubernetes:
-                cluster:
-                  # Shows cluster-wide statistics
-                  show: true
-                  # Shows the aggregate CPU stats
-                  cpu: true
-                  # Shows the aggregate memory stats
-                  memory: true
-                  # Shows a custom label
-                  showLabel: true
-                  label: "cluster"
-                nodes:
-                  # Shows node-specific statistics
-                  show: true
-                  # Shows the CPU for each node
-                  cpu: true
-                  # Shows the memory for each node
-                  memory: true
-                  # Shows the label, which is always the node name
-                  showLabel: true
+            - resources:
+                backend: 'kubernetes'
+                expanded: true
+                cpu: true
+                memory: true
           services:
             - Entertainment (in-progress):
               - Matrix:
