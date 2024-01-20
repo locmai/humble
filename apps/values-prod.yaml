@@ -3,3 +3,6 @@ excalidraw:
 
 homepage:
   enabled: true
+
+speedtest:
+  enabled: true
