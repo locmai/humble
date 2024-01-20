@@ -45,3 +45,6 @@ reloader:
 grafana:
   enabled: true
   namespace: platform
+
+globalSecrets:
+  enabled: true
