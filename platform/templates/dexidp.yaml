@@ -76,7 +76,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: dex-secrets
-  namespace: {{ .Release.Namespace }}
+  namespace: dex
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
