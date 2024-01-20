@@ -73,6 +73,11 @@ spec:
               redirectURIs:
                 - 'https://grafana.{{ .Values.global.domain }}/login/generic_oauth'
               secretEnv: GRAFANA_SSO_CLIENT_SECRET
+            - id: oauth2-proxy-sso
+              name: 'OAuth2 Proxy'
+              redirectURIs:
+                - 'https://oauth2.{{ .Values.global.domain }}/oauth2/callback'
+              secretEnv: OAUTH2_PROXY_SSO_CLIENT_SECRET
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -99,5 +104,9 @@ spec:
     - secretKey: GRAFANA_SSO_CLIENT_SECRET
       remoteRef:
         key: dex.grafana
+        property: client_secret
+    - secretKey: OAUTH2_PROXY_SSO_CLIENT_SECRET
+      remoteRef:
+        key: dex.oauth2proxy
         property: client_secret
 {{- end }}
