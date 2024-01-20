@@ -1,0 +1,74 @@
+{{- if .Values.dex.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-dex
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: {{ .Values.kanidm.namespace }}
+  source:
+    repoURL: https://charts.dexidp.io 
+    chart: dex
+    targetRevision: 0.15.3
+    helm:
+      releaseName: dex
+      values: |
+        envFrom:
+          - secretRef:
+              name: dex-secrets
+        ingress:
+          enabled: true
+          className: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+          hosts:
+            - host: &host dex.{{ .Values.global.domain }}
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
+          tls:
+            - secretName: dex-tls-certificate
+              hosts:
+                - *host
+        config:
+          issuer: https://dex.{{ .Values.global.domain }}
+          storage:
+            type: kubernetes
+            config:
+              inCluster: true
+          oauth2:
+            skipApprovalScreen: true
+          connectors:
+            - type: oidc
+              id: kanidm
+              name: Kanidm
+              config:
+                clientID: $KANIDM_CLIENT_ID
+                clientSecret: $KANIDM_CLIENT_SECRET
+                redirectURI: https://dex.{{ .Values.global.domain }}/callback
+                issuer: https://auth.{{ .Values.global.domain }}/oauth2/openid/dex
+                scopes:
+                  - openid
+                  - profile
+                  - email
+                  - groups
+          staticClients:
+            - id: grafana-sso
+              name: Grafana
+              redirectURIs:
+                - 'https://grafana.{{ .Values.global.domain }}/login/generic_oauth'
+              secretEnv: GRAFANA_SSO_CLIENT_SECRET
+{{- end }}
