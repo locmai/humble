@@ -1,18 +1,1 @@
-vault:
-  enabled: true
-
-externalSecrets:
-  enabled: true
-
-secretGenerator:
-  enabled: true
-
-etcd:
-  enabled: false
-
-argo_workflow:
-  enabled: true
-
-argo_events:
-  enabled: true
-
+# Override value for development

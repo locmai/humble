@@ -13,32 +13,12 @@ kanidm:
 dex:
   enabled: false
 
-# Secret management
-vault:
-  enabled: true
-  installOperator: true
-  size: 1
-  ingress:
-    enabled: true
-  namespace: platform
-  storageClass: "longhorn"
-
 externalSecrets:
   enabled: true
   namespace: platform
 
-secretGenerator:
+globalSecrets:
   enabled: true
-  namespace: platform
-  targetRevision: master
-
-argo_workflow:
-  enabled: false
-  namespace: argoworkflow
-
-argo_events:
-  enabled: false
-  namespace: argoworkflow
 
 reloader:
   enabled: true
@@ -46,8 +26,6 @@ reloader:
 
 ## Grafana test
 grafana:
-  enabled: true
+  enabled: false
   namespace: platform
 
-globalSecrets:
-  enabled: true

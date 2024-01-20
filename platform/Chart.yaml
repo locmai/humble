@@ -8,8 +8,3 @@ dependencies:
   - name: common
     version: 2.14.1
     repository: https://charts.bitnami.com/bitnami
-  - name: vault-operator
-    version: 1.19.0
-    repository: https://kubernetes-charts.banzaicloud.com
-    condition: vault.installOperator
-

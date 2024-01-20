@@ -1,6 +1,4 @@
-vault:
-  enabled: true
-
+# Override value for production
 kanidm:
   enabled: true
   namespace: kanidm
@@ -13,10 +11,3 @@ externalSecrets:
 
 secretGenerator:
   enabled: true
-
-argo_workflow:
-  enabled: true
-
-argo_events:
-  enabled: true
-
