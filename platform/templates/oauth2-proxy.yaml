@@ -72,7 +72,7 @@ spec:
   tls:
   - hosts:
       - oauth2.{{ .Values.global.domain }}
-    secretName: testsecret-tls
+    secretName: oauth2-proxy-tls
   rules:
   - host: "oauth2.{{ .Values.global.domain }}"
     http:
