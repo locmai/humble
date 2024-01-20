@@ -48,8 +48,8 @@ spec:
               external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
               external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
               nginx.ingress.kubernetes.io/proxy-body-size: 50m
-              nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-              nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+              nginx.ingress.kubernetes.io/auth-url: "https://speedtest.{{ .Values.global.domain }}/oauth2/auth"
+              nginx.ingress.kubernetes.io/auth-signin: "https://speedtest.{{ .Values.global.domain }}/oauth2/start?rd=$escaped_request_uri"
             hosts:
               - host: &host speedtest.{{ .Values.global.domain }}
                 paths:
