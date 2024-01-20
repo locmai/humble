@@ -88,7 +88,7 @@ spec:
                     provider: google
                     target: _blank
               services.yaml: |
-                - Popular:
+                - Entertainment (in-progress):
                   - Matrix:
                       href: https://chat.{{ .Values.global.domain }}
                       description: Chat client
@@ -102,22 +102,6 @@ spec:
                       description: Request media
                       icon: jellyseerr.svg
                 - Management:
-                  - Transmission:
-                      href: https://transmission.{{ .Values.global.domain }}
-                      description: Bittorrent client
-                      icon: transmission.svg
-                  - Prowlarr:
-                      href: https://prowlarr.{{ .Values.global.domain }}
-                      description: Indexer manager
-                      icon: prowlarr.svg
-                  - Radarr:
-                      href: https://radarr.{{ .Values.global.domain }}
-                      description: Movie manager
-                      icon: radarr.svg
-                  - Sonarr:
-                      href: https://sonarr.{{ .Values.global.domain }}
-                      description: TV show manager
-                      icon: sonarr.svg
                   - Kanidm:
                       href: https://authv2.{{ .Values.global.domain }}
                       description: Identity management
