@@ -70,7 +70,6 @@ spec:
             enabled: true
             className: nginx
             annotations:
-              cert-manager.io/cluster-issuer: letsencrypt-prod
               nginx.ingress.kubernetes.io/backend-protocol: HTTPS
               cert-manager.io/cluster-issuer: letsencrypt-prod
               external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'

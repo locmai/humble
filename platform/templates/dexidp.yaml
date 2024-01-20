@@ -33,7 +33,10 @@ spec:
           enabled: true
           className: nginx
           annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTPS
             cert-manager.io/cluster-issuer: letsencrypt-prod
+            external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+            external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
           hosts:
             - host: &host dex.{{ .Values.global.domain }}
               paths:
