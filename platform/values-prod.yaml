@@ -17,6 +17,3 @@ argo_workflow:
 argo_events:
   enabled: true
 
-runnerController:
-  enabled: false
-

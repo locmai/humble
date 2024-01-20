@@ -7,23 +7,6 @@ global:
   domain: placeholder.com
   env: prod
 
-dendrite:
-  enabled: false
-
-element:
-  enabled: false
-
-microservicesDemo:
-  enabled: false
-
-dashyLandscape:
-  enabled: true
-
-yutaops:
-  enabled: false
-
 excalidraw:
   enabled: false
 
-discourse:
-  enabled: false

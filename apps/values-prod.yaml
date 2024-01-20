@@ -2,24 +2,6 @@ dendrite:
   enabled: false
   storageClass: "longhorn"
 
-element:
-  enabled: false
-
-microservicesDemo:
-  enabled: false
-
-dashyLandscape:
-  enabled: true
-
-consul:
-  enabled: false
-
-yutaops:
-  enabled: false
-
 excalidraw:
   enabled: true
-
-discourse:
-  enabled: false
 
