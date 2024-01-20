@@ -18,9 +18,11 @@ spec:
       containers:
       - args:
         - --provider=oidc
+        - --provider-display-name "Kanidm"
         - --email-domain=*
-        - --upstream=file:///dev/null
         - --http-address=0.0.0.0:4180
+        - --redirect-url https://oauth2.{{ .Values.global.domain }}/oauth2/callback
+        - --oidc-issuer-url https://dex.{{ .Values.global.domain }}
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
           value: oauth2-proxy-sso 
