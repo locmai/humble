@@ -21,7 +21,6 @@ spec:
         - --provider-display-name="Kanidm"
         - --email-domain=*
         - --http-address=0.0.0.0:4180
-        - --redirect-url=https://speedtest.{{ .Values.global.domain }}/oauth2/callback
         - --oidc-issuer-url=https://dex.{{ .Values.global.domain }}
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
