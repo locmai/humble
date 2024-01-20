@@ -18,13 +18,13 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: {{ .Values.kanidm.namespace }}
+    namespace: apps
   source:
     repoURL: https://bjw-s.github.io/helm-charts 
     chart: app-template
     targetRevision: 2.2.0
     helm:
-      releaseName: kanidm
+      releaseName: homepage
       values: |
         controllers:
           main:
