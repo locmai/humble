@@ -82,3 +82,5 @@ spec:
         backend:
           service:
             name: http
+            port:
+              number: 4180
