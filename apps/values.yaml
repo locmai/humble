@@ -12,3 +12,7 @@ excalidraw:
 
 homepage:
   enabled: false
+
+speedtest:
+  enabled: false
+
