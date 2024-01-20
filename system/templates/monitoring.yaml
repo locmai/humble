@@ -114,7 +114,7 @@ spec:
               allow_sign_up: true
               client_id: "grafana-sso"
               client_secret: $__env{GRAFANA_SSO_CLIENT_SECRET}
-              scopes: openid groups user email
+              scopes: openid profile email groupst 
               auth_url: "https://dex.{{ .Values.global.domain }}/auth"
               token_url: "https://dex.{{ .Values.global.domain }}/token"
               api_url: "https://dex.{{ .Values.global.domain }}/userinfo"
