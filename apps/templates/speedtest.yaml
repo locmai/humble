@@ -62,18 +62,4 @@ spec:
               - hosts:
                   - *host
                 secretName: speedtest-tls-certificate
-          oauth2proxy:
-            enabled: true
-            className: nginx
-            annotations:
-              nginx.ingress.kubernetes.io/proxy-body-size: 50m
-            hosts:
-              - host: speedtest.{{ .Values.global.domain }}
-                paths:
-                  - path: /
-                    pathType: Prefix
-                    service:
-                      name: oauth2-proxy-svc-bridge
-                      port:
-                        number: 4180
 {{- end }}

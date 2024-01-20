@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: oauth2-proxy-svc-bridge
-  namespace: dex
+  namespace: apps
 spec:
   type: ExternalName
   externalName: oauth2-proxy.dex
