@@ -51,7 +51,7 @@ spec:
                 - *host
         config:
           kubernetes:
-            mode: default
+            mode: cluster
           settings:
             background: https://imagedelivery.net/34xh1sPWPAwO1lv63pW2Eg/992fd3c9-33f9-461e-6894-7210ef7a1500/public
             cardBlur: md
@@ -62,11 +62,14 @@ spec:
             - search:
                 provider: google
                 target: _blank
-            - resources:
-                backend: 'kubernetes'
-                expanded: true
-                cpu: true
-                memory: true
+            - kubernetes:
+                cluster:
+                  show: false
+                nodes:
+                  show: true
+                  memory: true
+                  cpu: true
+                  showLabel: true
           services:
             - Entertainment (in-progress):
               - Matrix:
