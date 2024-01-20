@@ -18,7 +18,7 @@ spec:
       containers:
       - args:
         - --provider=oidc
-        - --provider-display-name "Kanidm"
+        - --provider-display-name="Kanidm"
         - --email-domain=*
         - --http-address=0.0.0.0:4180
         - --redirect-url https://oauth2.{{ .Values.global.domain }}/oauth2/callback
