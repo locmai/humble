@@ -5,4 +5,4 @@ homepage:
   enabled: true
 
 speedtest:
-  enabled: false
+  enabled: true
