@@ -5,6 +5,9 @@ kanidm:
   enabled: true
   namespace: kanidm
 
+dex:
+  enabled: true
+
 externalSecrets:
   enabled: true
 

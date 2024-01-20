@@ -10,6 +10,9 @@ kanidm:
   enabled: false
   namespace: kanidm
 
+dex:
+  enabled: false
+
 # Secret management
 vault:
   enabled: true
