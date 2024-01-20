@@ -1,4 +1,21 @@
 {{- if .Values.monitoring.enabled }}
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: grafana-secrets
+  namespace: {{ .Values.monitoring.namespace }}
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: global-secrets
+  target:
+    name: grafana-secrets
+  data:
+    - secretKey: GRAFANA_SSO_CLIENT_SECRET
+      remoteRef:
+        key: dex.grafana
+        property: client_secret
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -74,7 +91,7 @@ spec:
           enableServiceLinks: false
           env:
             JAEGER_AGENT_PORT: '5755'
-          envFromSecret: "humble-oidc-secrets"
+          envFromSecret: "grafana-secrets"
           persistence:
             enabled: false
           ingress:
@@ -92,15 +109,15 @@ spec:
             auth:
               disable_login_form: false
             auth.generic_oauth:
-              name: Vault
+              name: Dex
               enabled: true
               allow_sign_up: true
-              client_id: "\"${OIDC_CLIENT_ID}\""
-              client_secret: "\"${OIDC_CLIENT_SECRET}\""
+              client_id: "grafana-sso"
+              client_secret: $__env{GRAFANA_SSO_CLIENT_SECRET}
               scopes: openid groups user email
-              auth_url: "https://auth.{{ .Values.global.domain }}/ui/vault/identity/oidc/provider/vault-provider/authorize"
-              token_url: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/token"
-              api_url: "https://auth.{{ .Values.global.domain }}/v1/identity/oidc/provider/vault-provider/userinfo"
+              auth_url: "https://dex.{{ .Values.global.domain }}/auth"
+              token_url: "https://dex.{{ .Values.global.domain }}/token"
+              api_url: "https://dex.{{ .Values.global.domain }}/userinfo"
           sidecar:
             enableUniqueFilenames: false
             dashboards:
