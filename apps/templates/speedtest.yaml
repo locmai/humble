@@ -46,6 +46,8 @@ spec:
             annotations:
               nginx.ingress.kubernetes.io/proxy-body-size: 50m
               cert-manager.io/cluster-issuer: letsencrypt-prod
+              external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
+              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
             hosts:
               - host: &host speedtest.{{ .Values.global.domain }}
                 paths:
