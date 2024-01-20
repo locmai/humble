@@ -28,6 +28,7 @@ spec:
       values: |
         controllers:
           main:
+            replicas: 2
             containers:
               main:
                 image:
@@ -87,6 +88,14 @@ spec:
                 - search:
                     provider: google
                     target: _blank
+                - kubernetes:
+                    cluster:
+                      show: false
+                    nodes:
+                      show: true
+                      cpu: true
+                      memory: true
+                      showLabel: true
               services.yaml: |
                 - Entertainment (in-progress):
                   - Matrix:
