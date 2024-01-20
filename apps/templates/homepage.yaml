@@ -83,7 +83,10 @@ spec:
           config:
             enabled: true
             data:
+              kubernetes.yaml: |
+                mode: cluster 
               settings.yaml: |
+                title: Index
                 background: https://imagedelivery.net/34xh1sPWPAwO1lv63pW2Eg/992fd3c9-33f9-461e-6894-7210ef7a1500/public
                 cardBlur: md
                 theme: dark
