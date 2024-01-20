@@ -82,6 +82,6 @@ spec:
         pathType: ImplementationSpecific 
         backend:
           service:
-            name: http
+            name: oauth2-proxy
             port:
               number: 4180
