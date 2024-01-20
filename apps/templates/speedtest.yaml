@@ -74,5 +74,6 @@ spec:
                     pathType: Prefix
                     service:
                       name: oauth2-proxy-svc-bridge
-                      port: http
+                      port: 
+                        name: http
 {{- end }}
