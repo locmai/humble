@@ -109,4 +109,8 @@ spec:
       remoteRef:
         key: dex.oauth2proxy
         property: client_secret
+    - secretKey: OAUTH2_PROXY_SSO_COOKIE_SECRET
+      remoteRef:
+        key: dex.oauth2proxy
+        property: cookie_secret
 {{- end }}
