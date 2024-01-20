@@ -143,9 +143,9 @@ spec:
               bookmarks.yaml: |
                 - Homelab:
                   - Documentation:
-                    - href: https://homelab.{{ .Values.global.domain }}
+                    - href: https://humble.{{ .Values.global.domain }}
                       icon: google-docs.svg
-                  - Public homelab repository:
+                  - Public repository:
                     - href: https://github.com/locmai/humble
                       icon: github.svg
                 - Managed services:
