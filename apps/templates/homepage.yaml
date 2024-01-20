@@ -26,6 +26,9 @@ spec:
     helm:
       releaseName: homepage
       values: |
+        serviceAccount:
+          create: true
+          name: "homepage"
         controllers:
           main:
             replicas: 1
@@ -74,6 +77,8 @@ spec:
                 subPath: services.yaml
               - path: /app/config/bookmarks.yaml
                 subPath: bookmarks.yaml
+              - path: /app/config/kubernetes.yaml
+                subPath: kubernetes.yaml
         configMaps:
           config:
             enabled: true
@@ -88,6 +93,14 @@ spec:
                 - search:
                     provider: google
                     target: _blank
+                - kubernetes:
+                    cluster:
+                      show: false
+                    nodes:
+                      show: true
+                      cpu: true
+                      memory: true
+                      showLabel: true
               services.yaml: |
                 - Entertainment (in-progress):
                   - Matrix:
