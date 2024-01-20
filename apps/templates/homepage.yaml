@@ -21,7 +21,7 @@ spec:
     namespace: apps
   source:
     repoURL: http://jameswynn.github.io/helm-charts 
-    chart: home
+    chart: homepage
     targetRevision: 1.2.3
     helm:
       releaseName: homepage
