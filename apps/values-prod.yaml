@@ -1,7 +1,5 @@
-dendrite:
-  enabled: false
-  storageClass: "longhorn"
-
 excalidraw:
   enabled: true
 
+homepage:
+  enabled: true

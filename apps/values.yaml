@@ -10,3 +10,5 @@ global:
 excalidraw:
   enabled: false
 
+homepage:
+  enabled: false
