@@ -73,6 +73,6 @@ spec:
                   - path: /
                     pathType: Prefix
                     service:
-                      name: oauth2-proxy.dex.svc.cluster.local
+                      name: oauth2-proxy-svc-bridge
                       port: http
 {{- end }}
