@@ -33,8 +33,6 @@ spec:
           tlsSecret: longhorn-tls-certificate
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
-            external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
-            external-dns.alpha.kubernetes.io/target: "192.168.1.225"
         persistence:
           defaultClassReplicaCount: 2
 {{- end }}
