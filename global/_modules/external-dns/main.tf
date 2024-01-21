@@ -66,7 +66,7 @@ resource "kubernetes_secret" "external_dns_token" {
   }
 }
 
-resource "kubernetes_secret" "" {
+resource "kubernetes_secret" "tailscale" {
   metadata {
     name = "tailscale"
     namespace = "tailscale"
