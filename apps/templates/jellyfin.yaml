@@ -136,6 +136,9 @@ spec:
                   - *sonarrHost
                   - *jellyseerrHost
         persistence:
+          config:
+            enabled: true
+            storageClass: "longhorn"
           data:
             accessMode: ReadWriteOnce
             size: 50Gi
