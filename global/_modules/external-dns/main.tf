@@ -66,6 +66,17 @@ resource "kubernetes_secret" "external_dns_token" {
   }
 }
 
+resource "kubernetes_secret" "" {
+  metadata {
+    name = "tailscale"
+    namespace = "tailscale"
+  }
+
+  data = {
+    "tailscale_authkey" = var.tailscale_authkey
+  }
+}
+
 resource "cloudflare_api_token" "cert_manager" {
   name = "homelab_cert_manager"
 
