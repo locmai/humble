@@ -17,3 +17,7 @@ variable "main_domain_name" {
 variable "environment" {
   type = string
 }
+
+variable "tailscale_authkey" {
+  type = string
+}

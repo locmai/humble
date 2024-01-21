@@ -4,4 +4,6 @@ cloudflare_api_key = ""
 
 cloudflare_email = "locmai0201@gmail.com"
 
+tailscale_auth_key =""
+
 environment = "prod"
