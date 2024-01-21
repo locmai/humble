@@ -29,7 +29,7 @@ spec:
         ingress:
           enabled: true
           host: &host longhorn.{{ .Values.global.domain }}
-          tlse: true
+          tls: true
           tlsSecret: longhorn-tls-certificate
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
