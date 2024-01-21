@@ -69,15 +69,15 @@ spec:
             type: configMap
             name: homepage-config
             globalMounts:
-              - path: /app/config/settings.yaml
+              - path: /app/src/skeleton/settings.yaml
                 subPath: settings.yaml
-              - path: /app/config/widgets.yaml
+              - path: /app/src/skeleton/widgets.yaml
                 subPath: widgets.yaml
-              - path: /app/config/services.yaml
+              - path: /app/src/skeleton/services.yaml
                 subPath: services.yaml
-              - path: /app/config/bookmarks.yaml
+              - path: /app/src/skeleton/bookmarks.yaml
                 subPath: bookmarks.yaml
-              - path: /app/config/kubernetes.yaml
+              - path: /app/src/skeleton/kubernetes.yaml
                 subPath: kubernetes.yaml
         configMaps:
           config:
