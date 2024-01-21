@@ -1,4 +1,4 @@
-{{- if .Values.speedtest.enabled }}
+{{- if .Values.jellyfin.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
