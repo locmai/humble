@@ -61,7 +61,7 @@ spec:
                 clientID: $KANIDM_CLIENT_ID
                 clientSecret: $KANIDM_CLIENT_SECRET
                 redirectURI: https://dex.{{ .Values.global.domain }}/callback
-                issuer: https://authv2.{{ .Values.global.domain }}/oauth2/openid/dex
+                issuer: https://auth.{{ .Values.global.domain }}/oauth2/openid/dex
                 scopes:
                   - openid
                   - profile

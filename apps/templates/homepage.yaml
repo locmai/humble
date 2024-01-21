@@ -120,9 +120,9 @@ spec:
                       icon: jellyseerr.svg
                 - Management:
                   - Kanidm:
-                      href: https://authv2.{{ .Values.global.domain }}
+                      href: https://auth.{{ .Values.global.domain }}
                       description: Identity management
-                      icon: https://authv2.{{ .Values.global.domain }}/pkg/img/logo-square.svg
+                      icon: https://auth.{{ .Values.global.domain }}/pkg/img/logo-square.svg
                 - Development:
                   - ArgoCD:
                       href: https://argocd.{{ .Values.global.domain }}
