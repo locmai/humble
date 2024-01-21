@@ -79,6 +79,16 @@ spec:
                 subPath: bookmarks.yaml
               - path: /app/src/skeleton/kubernetes.yaml
                 subPath: kubernetes.yaml
+              - path: /app/config/settings.yaml
+                subPath: settings.yaml
+              - path: /app/config/widgets.yaml
+                subPath: widgets.yaml
+              - path: /app/config/services.yaml
+                subPath: services.yaml
+              - path: /app/config/bookmarks.yaml
+                subPath: bookmarks.yaml
+              - path: /app/config/kubernetes.yaml
+                subPath: kubernetes.yaml
         configMaps:
           config:
             enabled: true
