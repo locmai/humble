@@ -20,6 +20,11 @@ kanidm_host = client.NetworkingV1Api().read_namespaced_ingress('kanidm', 'kanidm
 def create_secret(name: str, namespace: str, data: dict) -> None:
     try:
         client.CoreV1Api().read_namespaced_secret(name, namespace)
+        patch_body = client.V1Secret(
+            metadata=client.V1ObjectMeta(name=name),
+            data=data,
+        )
+        client.CoreV1Api().replace_namespaced_secret(name,namespace,patch_body)
     except client.exceptions.ApiException:
         # Secret doesn't exist, create a new one
         new_secret = client.V1Secret(
