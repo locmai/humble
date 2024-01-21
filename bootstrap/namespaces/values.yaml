@@ -15,4 +15,5 @@ namespaces:
     externalSecret: true
   - name: observability
     externalSecret: true
-
+  - name: tailscale
+    externalSecret: true
