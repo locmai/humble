@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: subnet-router
+  namespace: tailscale
   labels:
     app: tailscale
 spec:
