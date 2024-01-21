@@ -55,9 +55,10 @@ nav:
     - concepts/architecture.md
     - concepts/configuration-per-deployment.md
     - concepts/provisioning-flow.md
-  - User Guide:
+  - User/How-to Guide:
     - user-guide/index.md
     - user-guide/operational-services.md
+    - user-guide/expose-services.md
   - Reference:
     - reference/faq.md
     - reference/changelog.md
