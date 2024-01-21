@@ -17,14 +17,14 @@ config.load_config()
 
 kanidm_host = client.NetworkingV1Api().read_namespaced_ingress('kanidm', 'kanidm').spec.rules[0].host
 
-def create_secret(name: str, namespace: str, data: dict) -> None:
+def apply_secret(name: str, namespace: str, data: dict) -> None:
     try:
         client.CoreV1Api().read_namespaced_secret(name, namespace)
         patch_body = client.V1Secret(
             metadata=client.V1ObjectMeta(name=name),
             data=data,
         )
-        client.CoreV1Api().replace_namespaced_secret(name,namespace,patch_body)
+        client.CoreV1Api().replace_namespaced_secret(name, namespace, patch_body)
     except client.exceptions.ApiException:
         # Secret doesn't exist, create a new one
         new_secret = client.V1Secret(
@@ -70,7 +70,7 @@ def setup_kanidm_oauth_app(name: str, redirect_uri: str) -> None:
         check=True,
     ).stdout.decode("utf-8"))['secret']
 
-    create_secret(
+    apply_secret(
         f"kanidm.{name}",
         "global-secrets",
         {
