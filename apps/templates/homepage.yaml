@@ -36,7 +36,7 @@ spec:
               main:
                 image:
                   repository: ghcr.io/gethomepage/homepage
-                  tag: v0.8.6
+                  tag: v0.8.4
         service:
           main:
             ports:
@@ -69,16 +69,6 @@ spec:
             type: configMap
             name: homepage-config
             globalMounts:
-              - path: /app/src/skeleton/settings.yaml
-                subPath: settings.yaml
-              - path: /app/src/skeleton/widgets.yaml
-                subPath: widgets.yaml
-              - path: /app/src/skeleton/services.yaml
-                subPath: services.yaml
-              - path: /app/src/skeleton/bookmarks.yaml
-                subPath: bookmarks.yaml
-              - path: /app/src/skeleton/kubernetes.yaml
-                subPath: kubernetes.yaml
               - path: /app/config/settings.yaml
                 subPath: settings.yaml
               - path: /app/config/widgets.yaml
@@ -115,7 +105,7 @@ spec:
                       memory: true
                       showLabel: true
               services.yaml: |
-                - Entertainment:
+                - Entertainment (in-progress):
                   - Matrix:
                       href: https://chat.{{ .Values.global.domain }}
                       description: Chat client
@@ -128,7 +118,7 @@ spec:
                       href: https://jellyseerr.{{ .Values.global.domain }}
                       description: Request media
                       icon: jellyseerr.svg
-                - Media management:
+                - Management:
                   - Transmission:
                       href: https://transmission.{{ .Values.global.domain }}
                       description: Bittorrent client
@@ -145,6 +135,10 @@ spec:
                       href: https://sonarr.{{ .Values.global.domain }}
                       description: TV show manager
                       icon: sonarr.svg
+                  - Kanidm:
+                      href: https://auth.{{ .Values.global.domain }}
+                      description: Identity management
+                      icon: https://auth.{{ .Values.global.domain }}/pkg/img/logo-square.svg
                 - Development:
                   - ArgoCD:
                       href: https://argocd.{{ .Values.global.domain }}
@@ -154,14 +148,6 @@ spec:
                       href: https://grafana.{{ .Values.global.domain }}
                       description: Observability dashboards
                       icon: grafana.svg
-                  - Kanidm:
-                      href: https://auth.{{ .Values.global.domain }}
-                      description: Identity management
-                      icon: https://auth.{{ .Values.global.domain }}/pkg/img/logo-square.svg
-                  - Longhorn:
-                      href: https://longhorn.maibaloc.com
-                      description: Block storage management
-                      icon: longhorn.svg
                 - Utilities:
                   - Excalidraw:
                       href: https://draw.{{ .Values.global.domain }}
