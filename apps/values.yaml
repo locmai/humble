@@ -16,3 +16,5 @@ homepage:
 speedtest:
   enabled: false
 
+jellyfin:
+  enabled: false
