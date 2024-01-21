@@ -1,10 +1,10 @@
 # Override value for production
 kanidm:
-  enabled: true
+  enabled: false
   namespace: kanidm
 
 dex:
-  enabled: true
+  enabled: false
 
 externalSecrets:
   enabled: true
