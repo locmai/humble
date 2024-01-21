@@ -18,12 +18,23 @@ spec:
     namespace: {{ .Values.external_dns.namespace }}
   source:
     chart: external-dns
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 6.28.6
+    repoURL: https://kubernetes-sigs.github.io/external-dns
+    targetRevision: 1.12.2 
     helm:
       releaseName: external-dns
       values: |
         provider: cloudflare
-        cloudflare:
-          secretName: cloudflare-api-token
-          email: "locmai0201@gmail.com"
+        env:
+          - name: CF_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: cloudflare-api-token
+                value: api-token
+        extraArgs:
+          - --annotation-filter=external-dns.alpha.kubernetes.io/exclude notin (true)
+        interval: 5m
+        triggerLoopOnEvent: true
+        metrics:
+          enabled: true
+          serviceMonitor:
+            enabled: true

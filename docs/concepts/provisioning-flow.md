@@ -1,6 +1,6 @@
 !!! note "Acknowledgement"
 
-    Cloned from provisioning flow in [khuedoan/homelab/reference/architecture](https://homelab.khuedoan.com/reference/architecture/)
+    Cloned from provisioning flow in [khuedoan/homelab/reference/architecture/overview](https://homelab.khuedoan.com/reference/architecture/overview)
 
 Everything is automated, after you edit the configuration files, you just need to run a single `make` command and it will:
 

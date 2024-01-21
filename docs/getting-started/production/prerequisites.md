@@ -73,7 +73,6 @@ We also use Cloudflare which is a full-featured DNS and web experience optimizat
 
 So let's sign up for a free [Cloudflare](https://cloudflare.com) account.
 
-
 ### Domain
 
 Buying a domain is required for public access. Follow the [Cloudflare DNS zone setup guide](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) to use Cloudflare as your primary DNS provider.
@@ -83,3 +82,7 @@ After forking the repository, update your DNS in the following files:
 - global/prod/terragrunt.hcl
 - bootstrap/root/values-prod.yaml
 - bootstrap/argocd/values-prod.yaml
+
+### Tailscale (required for internal access in secure network)
+
+TBD
