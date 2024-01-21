@@ -105,7 +105,7 @@ spec:
                       memory: true
                       showLabel: true
               services.yaml: |
-                - Entertainment (in-progress):
+                - Entertainment: 
                   - Matrix:
                       href: https://chat.{{ .Values.global.domain }}
                       description: Chat client
@@ -148,6 +148,10 @@ spec:
                       href: https://grafana.{{ .Values.global.domain }}
                       description: Observability dashboards
                       icon: grafana.svg
+                  - Longhorn:
+                      href: https://longhorn.{{ .Values.global.domain }}
+                      description: Distributed block storage
+                      icon: longhorn.svg
                 - Utilities:
                   - Excalidraw:
                       href: https://draw.{{ .Values.global.domain }}
