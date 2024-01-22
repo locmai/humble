@@ -34,5 +34,5 @@ spec:
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
         persistence:
-          defaultClassReplicaCount: 2
+          defaultClassReplicaCount: 1
 {{- end }}
