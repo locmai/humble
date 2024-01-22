@@ -140,7 +140,7 @@ spec:
             enabled: true
             storageClass: "longhorn"
             accessMode: ReadWriteOnce
-            size: 50Gi
+            size: 100Gi
             advancedMounts:
               main:
                 main:
