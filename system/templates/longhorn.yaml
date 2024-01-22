@@ -26,6 +26,8 @@ spec:
     helm:
       releaseName: longhorn
       values: |
+        defaultSettings:
+          storageReservedPercentageForDefaultDisk: 20
         ingress:
           enabled: true
           host: &host longhorn.{{ .Values.global.domain }}
