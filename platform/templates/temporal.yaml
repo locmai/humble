@@ -20,10 +20,32 @@ spec:
     name: in-cluster
     namespace: platform 
   source:
-    chart: temporal-operator
-    repoURL: https://alexandrevilain.github.io/temporal-operator 
-    targetRevision: 0.1.0
+    chart: temporal
+    repoURL: https://locmai.github.io/charts/ 
+    targetRevision: 0.32.0
     helm:
-      releaseName: temporal-operator 
----
+      releaseName: temporal 
+      values: |
+        server:
+          replicaCount: 1
+        web:
+          ingress:
+            enabled: true
+            annotations:
+              cert-manager.io/cluster-issuer: "letsencrypt-prod"
+            hosts:
+              - &host "temporal.{{ .Values.global.domain }}"
+            tls:
+              - secretName: temporal-tls
+                hosts:
+                  - *host
+        cassandra:
+          config:
+            cluster_size: 1
+        prometheus:
+          enabled: false
+        grafana:
+          enabled: false
+        elasticsearch:
+          enabled: false
 {{- end }}
