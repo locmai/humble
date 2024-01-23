@@ -13,4 +13,4 @@ secretGenerator:
   enabled: true
 
 temporal:
-  enabled: true
+  enabled: false
