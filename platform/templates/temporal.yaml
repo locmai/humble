@@ -28,6 +28,15 @@ spec:
       values: |
         server:
           replicaCount: 1
+        web:
+          ingress:
+            enabled: true
+            hosts:
+              - &host "temporal.{{ .Values.global.domain }}"
+            tls:
+              - secretName: temporal-tls
+                hosts:
+                  - *host
         cassandra:
           config:
             cluster_size: 1
