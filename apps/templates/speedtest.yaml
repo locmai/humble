@@ -45,8 +45,6 @@ spec:
             className: nginx
             annotations:
               cert-manager.io/cluster-issuer: letsencrypt-prod
-              external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
-              external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
               nginx.ingress.kubernetes.io/proxy-body-size: 50m
               nginx.ingress.kubernetes.io/auth-url: "https://speedtest.{{ .Values.global.domain }}/oauth2/auth"
               nginx.ingress.kubernetes.io/auth-signin: "https://speedtest.{{ .Values.global.domain }}/oauth2/start?rd=$escaped_request_uri"

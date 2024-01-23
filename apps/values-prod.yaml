@@ -6,3 +6,6 @@ homepage:
 
 speedtest:
   enabled: true
+
+jellyfin:
+  enabled: true

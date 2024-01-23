@@ -23,7 +23,7 @@ spec:
           name: tailscale
           key: tailscale_authkey
     - name: TS_ROUTES
-      value: "192.168.1.0/24"
+      value: "192.168.1.225/32"
     securityContext:
       runAsUser: 1000
       runAsGroup: 1000

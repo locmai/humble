@@ -105,7 +105,7 @@ spec:
                       memory: true
                       showLabel: true
               services.yaml: |
-                - Entertainment (in-progress):
+                - Entertainment: 
                   - Matrix:
                       href: https://chat.{{ .Values.global.domain }}
                       description: Chat client
@@ -119,6 +119,22 @@ spec:
                       description: Request media
                       icon: jellyseerr.svg
                 - Management:
+                  - Transmission:
+                      href: https://transmission.{{ .Values.global.domain }}
+                      description: Bittorrent client
+                      icon: transmission.svg
+                  - Prowlarr:
+                      href: https://prowlarr.{{ .Values.global.domain }}
+                      description: Indexer manager
+                      icon: prowlarr.svg
+                  - Radarr:
+                      href: https://radarr.{{ .Values.global.domain }}
+                      description: Movie manager
+                      icon: radarr.svg
+                  - Sonarr:
+                      href: https://sonarr.{{ .Values.global.domain }}
+                      description: TV show manager
+                      icon: sonarr.svg
                   - Kanidm:
                       href: https://auth.{{ .Values.global.domain }}
                       description: Identity management
@@ -132,6 +148,10 @@ spec:
                       href: https://grafana.{{ .Values.global.domain }}
                       description: Observability dashboards
                       icon: grafana.svg
+                  - Longhorn:
+                      href: https://longhorn.{{ .Values.global.domain }}
+                      description: Distributed block storage
+                      icon: longhorn.svg
                 - Utilities:
                   - Excalidraw:
                       href: https://draw.{{ .Values.global.domain }}

@@ -25,9 +25,9 @@ For getting started:
 ## Acknowledgements
 
 - I hacked a lot of great works from [khuedoan/homelab](https://github.com/khuedoan/homelab).
-- Awesome services from Cloudflare: DNS, Pages and Tunnel. The document of this project is hosted on Cloudflare as well.
+- Awesome managed services from Cloudflare, GitHub, and Tailscale: DNS, Pages and Tunnel.
 - All open-source projects used in this project.
 
 ## Contacts
 
-Email me at [locmai0201@gmail.com](mailto:locmai0201@gmail.com) or create an issue on this GitHub repository.
+Email me at [locmai0201@gmail.com](mailto:locmai0201@gmail.com) or create an issue on the GitHub repository.

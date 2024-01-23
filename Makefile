@@ -6,13 +6,19 @@ KUBECONFIG = $(shell pwd)/metal/kubeconfig.prod.yaml
 KUBE_CONFIG_PATH = $(KUBECONFIG)
 TERRAGRUNT_TFPATH = "terraform"
 
-default:
-	make -C metal env=prod
-	make -C bootstrap env=prod
-	make -C global env=prod
+default: metal bootstrap global post-install clean
 
 init:
 	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -P ""
+
+metal:
+	make -C metal env=prod
+
+bootstrap:
+	make -C bootstrap env=prod
+	
+global:
+	make -C global env=prod
 
 tools:
 	@docker run \
@@ -49,3 +55,8 @@ docs:
 		--volume $(shell pwd):/docs \
 		squidfunk/mkdocs-material
 
+post-install:
+	@./scripts/hacks
+
+clean:
+	docker compose --project-directory ./metal/roles/pxe-server/files down
