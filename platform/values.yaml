@@ -24,6 +24,10 @@ reloader:
   enabled: true
   namespace: platform
 
+temporal:
+  enabled: false
+  namespace: platform
+
 ## Grafana test
 grafana:
   enabled: false
