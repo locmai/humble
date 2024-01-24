@@ -28,6 +28,22 @@ spec:
       values: |
         server:
           replicaCount: 1
+          config:
+            persistence:
+              default:
+                driver: "cassandra"
+                cassandra:
+                  hosts: ["cassandra"] 
+                  keyspace: temporal
+                  user: "cassandra"
+                  existingSecret: "temporal-cassandra"
+              visibility:
+                driver: "cassandra"
+                cassandra:
+                  hosts: ["cassandra"]
+                  keyspace: temporal_visibility
+                  user: "cassandra"
+                  existingSecret: "temporal-cassandra"
         web:
           ingress:
             enabled: true
@@ -39,9 +55,15 @@ spec:
               - secretName: temporal-tls
                 hosts:
                   - *host
+        schema:
+          setup:
+            enabled: true
+            backoffLimit: 100
+          update:
+            enabled: true
+            backoffLimit: 100
         cassandra:
-          config:
-            cluster_size: 1
+          enabled: false
         prometheus:
           enabled: false
         grafana:
