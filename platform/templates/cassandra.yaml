@@ -1,0 +1,51 @@
+{{ if .Values.cassandra.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-cassandra
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: platform 
+  source:
+    repoURL: oci://registry-1.docker.io/bitnamicharts/cassandra 
+    targetRevision: 10.8.0
+    helm:
+      releaseName: cassandra 
+      values: |
+        dbUser:
+          user: cassandra
+          existingSecret: "temporal-cassandra"
+        replicaCount: 1
+        persistence:
+          enabled: false
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: temporal-cassandra
+  namespace: platform
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: global-secrets
+  target:
+    name: temporal-cassandra 
+    # Connectors
+    - secretKey: cassandra-password 
+      remoteRef:
+        key: temporal.cassandra
+        property: cassandra-password
+{{- end }}
