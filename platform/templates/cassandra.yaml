@@ -21,7 +21,7 @@ spec:
     namespace: platform 
   source:
     chart: cassandra
-    repoURL: oci://registry-1.docker.io/bitnamicharts/cassandra 
+    repoURL: https://charts.bitnami.com/bitnami 
     targetRevision: 10.8.0
     helm:
       releaseName: cassandra 
