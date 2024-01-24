@@ -152,6 +152,10 @@ spec:
                       href: https://longhorn.{{ .Values.global.domain }}
                       description: Distributed block storage
                       icon: longhorn.svg
+                  - Temporal:
+                      href: https://temporal.{{ .Values.global.domain }}
+                      description: Workflow engine
+                      icon: https://temporal.{{ .Values.global.domain }}/_app/immutable/assets/apple-touch-icon.8685d9e4.png
                 - Utilities:
                   - Excalidraw:
                       href: https://draw.{{ .Values.global.domain }}
