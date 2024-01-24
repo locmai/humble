@@ -33,3 +33,5 @@ grafana:
   enabled: false
   namespace: platform
 
+cassandra:
+  enabled: false
