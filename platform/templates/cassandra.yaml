@@ -43,7 +43,7 @@ spec:
     name: global-secrets
   target:
     name: temporal-cassandra 
-    # Connectors
+  data:
     - secretKey: cassandra-password 
       remoteRef:
         key: temporal.cassandra
