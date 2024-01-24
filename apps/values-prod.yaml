@@ -8,4 +8,4 @@ speedtest:
   enabled: true
 
 jellyfin:
-  enabled: false
+  enabled: true
