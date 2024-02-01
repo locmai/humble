@@ -40,7 +40,7 @@ spec:
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 55.5.1
+    targetRevision: 56.4.0
     helm:
       releaseName: monitoring
       values: |
