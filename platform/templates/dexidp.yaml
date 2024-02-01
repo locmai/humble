@@ -22,7 +22,7 @@ spec:
   source:
     repoURL: https://charts.dexidp.io 
     chart: dex
-    targetRevision: 0.8.2
+    targetRevision: 0.16.0
     helm:
       releaseName: dex
       values: |
