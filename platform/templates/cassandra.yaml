@@ -18,13 +18,13 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: platform 
+    namespace: platform
   source:
     chart: cassandra
-    repoURL: https://charts.bitnami.com/bitnami 
+    repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 10.8.2
     helm:
-      releaseName: cassandra 
+      releaseName: cassandra
       values: |
         dbUser:
           user: cassandra
@@ -43,9 +43,9 @@ spec:
     kind: ClusterSecretStore
     name: global-secrets
   target:
-    name: temporal-cassandra 
+    name: temporal-cassandra
   data:
-    - secretKey: password 
+    - secretKey: cassandra-password
       remoteRef:
         key: temporal.cassandra
         property: cassandra-password
