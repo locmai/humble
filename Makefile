@@ -56,7 +56,7 @@ docs:
 		squidfunk/mkdocs-material
 
 post-install:
-	@./scripts/hacks
+	@./tools/hacks
 
 clean:
 	docker compose --project-directory ./metal/roles/pxe-server/files down
