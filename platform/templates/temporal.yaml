@@ -38,6 +38,7 @@ spec:
                   keyspace: temporal
                   user: "cassandra"
                   existingSecret: "temporal-cassandra"
+                  secretName: "temporal-cassandra"
                   secretKey: "temporal-cassandra"
               visibility:
                 driver: "cassandra"
@@ -47,6 +48,7 @@ spec:
                   keyspace: temporal_visibility
                   user: "cassandra"
                   existingSecret: "temporal-cassandra"
+                  secretName: "temporal-cassandra"
                   secretKey: "temporal-cassandra"
         web:
           ingress:
