@@ -18,13 +18,13 @@ spec:
       - CreateNamespace=true
   destination:
     name: in-cluster
-    namespace: platform 
+    namespace: platform
   source:
     chart: temporal
-    repoURL: https://locmai.github.io/charts/ 
+    repoURL: https://locmai.github.io/charts/
     targetRevision: 0.32.0
     helm:
-      releaseName: temporal 
+      releaseName: temporal
       values: |
         server:
           replicaCount: 1
@@ -33,11 +33,13 @@ spec:
               default:
                 driver: "cassandra"
                 cassandra:
-                  hosts: ["cassandra"] 
+                  hosts: ["cassandra"]
                   port: 9042
                   keyspace: temporal
                   user: "cassandra"
                   existingSecret: "temporal-cassandra"
+                  secretName: "temporal-cassandra"
+                  secretKey: "temporal-cassandra"
               visibility:
                 driver: "cassandra"
                 cassandra:
@@ -46,6 +48,8 @@ spec:
                   keyspace: temporal_visibility
                   user: "cassandra"
                   existingSecret: "temporal-cassandra"
+                  secretName: "temporal-cassandra"
+                  secretKey: "temporal-cassandra"
         web:
           ingress:
             enabled: true
