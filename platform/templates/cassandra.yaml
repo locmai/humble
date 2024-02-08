@@ -49,4 +49,8 @@ spec:
       remoteRef:
         key: temporal.cassandra
         property: cassandra-password
+    - secretKey: password
+      remoteRef:
+        key: temporal.cassandra
+        property: cassandra-password
 {{- end }}
