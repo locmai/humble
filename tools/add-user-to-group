@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# ./tools/add-user-to-group locmai administrators
+username="${1}"
+group="${2}"
+
+host="$(kubectl get ingress --namespace kanidm kanidm --output jsonpath='{.spec.rules[0].host}')"
+
+kanidm group add-members "${group}" "${username}" --url "https://${host}" --name idm_admin

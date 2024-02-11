@@ -3,10 +3,11 @@
 # TODO update this into tools container/flake.nix
 # TODO make it CLI tool with chalk lib and dry-run and shit
 # export CLOUDFLARE_EMAIL="locmai0201@gmail.com"
-# export CLOUDFLARE_API_TOKEN="verysecretbro"
+# export CLOUDFLARE_API_TOKEN="somethingsomething"
 import CloudFlare
 
 def main():
+    # TODO still have to clean up tunnel here
     cf = CloudFlare.CloudFlare()
     zones = cf.zones.get()
 
