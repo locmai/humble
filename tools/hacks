@@ -107,7 +107,7 @@ def main():
             'administrators',
             'operators',
             'developers',
-            'users', #
+            'users',
         ]
 
         kanidm_oauth_apps = [
