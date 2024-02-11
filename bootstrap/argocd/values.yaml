@@ -30,6 +30,7 @@ argo-cd:
 
   configs:
     cm:
+      url: "https://argocd.maibaloc.com"
       oidc.config: |
         name: Dex
         issuer: "https://dex.{{ .Values.global.domain }}"
