@@ -20,7 +20,7 @@ spec:
     name: in-cluster
     namespace: {{ .Values.kanidm.namespace }}
   source:
-    repoURL: https://bjw-s.github.io/helm-charts 
+    repoURL: https://bjw-s.github.io/helm-charts
     chart: app-template
     targetRevision: 2.5.0
     helm:
@@ -33,7 +33,7 @@ spec:
               main:
                 image:
                   repository: docker.io/kanidm/server
-                  tag: 1.1.0-rc.15
+                  tag: 1.1.0-rc.16
             statefulset:
               volumeClaimTemplates:
                 - name: data
@@ -122,7 +122,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: kanidm-selfsigned
-  namespace: {{ .Values.kanidm.namespace }} 
+  namespace: {{ .Values.kanidm.namespace }}
 spec:
   selfSigned: {}
 {{- end }}
