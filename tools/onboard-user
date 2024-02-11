@@ -9,5 +9,5 @@ host="$(kubectl get ingress --namespace kanidm kanidm --output jsonpath='{.spec.
 kanidm person create "${username}" "${fullname}" --url "https://${host}" --name idm_admin
 kanidm person update "${username}" --url "https://${host}" --name idm_admin --mail "${mail}"
 # TODO better group management
-kanidm group add-members "editor" "${username}" --url "https://${host}" --name idm_admin
+kanidm group add-members "users" "${username}" --url "https://${host}" --name idm_admin
 kanidm person credential create-reset-token "${username}" --url "https://${host}" --name idm_admin

@@ -1,0 +1,28 @@
+# ref https://kanidm.github.io/kanidm/stable/access_control/intro.html?#default-permission-groups
+# default top-level groups, service accounts, and users.
+groups:
+  - administrators
+  - operators
+  - developers
+  - users
+service_accounts: {}
+users:
+  - username: locmai
+    groups: [administrators]
+  - username: lmai
+    groups: [operators]
+account_policies: {}
+
+# either role-scoped/environment-scoped/purpose-scoped
+# examples for specific groups and roles
+scoped_groups:
+  - name: grafana_administrators
+    groups: []
+  - name: grafana_editors
+    groups: []
+  - name: girlfriend_users # 404 girlfriend not found
+    groups: [jellyfin_users, netflix_users]
+  - name: jellyfin_users
+    groups: [jellyseer_users, sonar_users] #...
+  - name: netflix_users
+    groups: [netflix_users]

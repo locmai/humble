@@ -53,9 +53,9 @@ spec:
             podMonitorSelectorNilUsesHelmValues: false
             serviceMonitorNamespaceSelector: {}
             podMonitorNamespaceSelector: {}
-            
+
             retention: 7d
-            
+
             # https://github.com/prometheus-community/helm-charts/issues/2506#issuecomment-1304632868
             # enableFeatures:
             # - agent
@@ -100,7 +100,7 @@ spec:
           - grafana-oncall-app
           grafana.ini:
             users:
-              auto_assign_org_role: 'Admin'
+              auto_assign_org_role: 'GrafanaAdmin'
             security:
               disable_initial_admin_creation: true
             server:
@@ -111,6 +111,7 @@ spec:
             auth.generic_oauth:
               name: Dex
               enabled: true
+              allow_assign_grafana_admin: true
               allow_sign_up: true
               client_id: "grafana-sso"
               client_secret: $__env{GRAFANA_SSO_CLIENT_SECRET}

@@ -104,8 +104,10 @@ def kanidm_login(accounts: list[str]) -> None:
 def main():
     with Console().status("Completing the remaining sorcery"):
         kanidm_groups = [
-            # TODO better group management
-            {'name': 'editor'},
+            'administrators',
+            'operators',
+            'developers',
+            'users',
         ]
 
         kanidm_oauth_apps = [
@@ -115,8 +117,8 @@ def main():
         kanidm_login(["admin", "idm_admin"])
 
         for group in kanidm_groups:
-            setup_kanidm_group(group['name'])
-  
+            setup_kanidm_group(group)
+
         for app in kanidm_oauth_apps:
             setup_kanidm_oauth_app(app['name'], app['redirect_uri'])
 
