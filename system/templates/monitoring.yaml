@@ -112,7 +112,7 @@ spec:
               name: Dex
               enabled: true
               allow_assign_grafana_admin: true
-              role_attribute_path: "contains(info.groups[*], 'administrators') && 'GrafanaAdmin' || contains(info.groups[*], 'operators') && 'Editor' || 'Viewer'"
+              role_attribute_path: "'GrafanaAdmin'"
               allow_sign_up: true
               client_id: "grafana-sso"
               client_secret: $__env{GRAFANA_SSO_CLIENT_SECRET}
