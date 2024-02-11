@@ -34,7 +34,7 @@ argo-cd:
         name: Dex
         issuer: "https://dex.maibaloc.com/"
         clientID: argocd-sso
-        clientSecret: $argocd-sso-secrets.ARGOCD_SSO_CLIENT_SECRET
+        clientSecret: $argocd-sso-secrets:ARGOCD_SSO_CLIENT_SECRET
         requestedScopes:
         - openid
         - profile
