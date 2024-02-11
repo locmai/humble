@@ -19,6 +19,8 @@ argo-cd:
 
   redis-ha:
     enabled: false
+  dex:
+    enabled: false
 
   configs:
     cm:

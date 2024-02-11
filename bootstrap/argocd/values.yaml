@@ -17,12 +17,15 @@ argo-cd:
       hostname: argocd.maibaloc.com
       tls: true
   applicationSet:
-    enabled: false
+    enabled: true
 
   notifications:
     enabled: false
 
   redis-ha:
+    enabled: false
+
+  dex:
     enabled: false
 
   configs:
