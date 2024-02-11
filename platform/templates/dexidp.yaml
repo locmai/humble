@@ -76,7 +76,7 @@ spec:
             - id: argocd-sso
               name: ArgoCD
               redirectURIs:
-                - 'https://argocd.{{ .Values.global.domain }}/api/dex/callback'
+                - 'https://argocd.{{ .Values.global.domain }}/auth/callback'
               secretEnv: ARGOCD_SSO_CLIENT_SECRET
             - id: oauth2-proxy-sso
               name: 'OAuth2 Proxy'
