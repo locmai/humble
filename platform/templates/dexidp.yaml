@@ -135,6 +135,9 @@ spec:
     name: global-secrets
   target:
     name: argocd-sso-secrets
+    metadata:
+      labels:
+        app.kubernetes.io/part-of: argocd
   data:
     - secretKey: ARGOCD_SSO_CLIENT_SECRET
       remoteRef:
