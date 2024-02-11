@@ -99,8 +99,6 @@ spec:
           plugins:
           - grafana-oncall-app
           grafana.ini:
-            users:
-              auto_assign_org_role: 'Admin'
             security:
               disable_initial_admin_creation: true
             server:
