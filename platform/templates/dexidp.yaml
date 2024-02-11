@@ -73,11 +73,11 @@ spec:
               redirectURIs:
                 - 'https://grafana.{{ .Values.global.domain }}/login/generic_oauth'
               secretEnv: GRAFANA_SSO_CLIENT_SECRET
-              - id: argocd-sso
-                name: ArgoCD
-                redirectURIs:
-                  - 'https://argocd.{{ .Values.global.domain }}/api/dex/callback'
-                secretEnv: ARGOCD_SSO_CLIENT_SECRET
+            - id: argocd-sso
+              name: ArgoCD
+              redirectURIs:
+                - 'https://argocd.{{ .Values.global.domain }}/api/dex/callback'
+              secretEnv: ARGOCD_SSO_CLIENT_SECRET
             - id: oauth2-proxy-sso
               name: 'OAuth2 Proxy'
               redirectURIs:
