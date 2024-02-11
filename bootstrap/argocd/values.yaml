@@ -39,7 +39,7 @@ argo-cd:
         jqPathExpressions:
         - '.webhooks[]?.failurePolicy'
     certificate:
-      enabled: true
+      enabled: false
       domain: argocd.maibaloc.com
     ingress:
       enabled: true
@@ -49,6 +49,7 @@ argo-cd:
         external-dns.alpha.kubernetes.io/target: "humble-tunnel.maibaloc.com"
         external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
       hostname: argocd.maibaloc.com
+      tls: true
   applicationSet:
     enabled: false
 
