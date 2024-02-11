@@ -27,6 +27,16 @@ argo-cd:
 
   configs:
     cm:
+      oidc.config: |
+        name: Dex
+        issuer: "https://dex.{{ .Values.global.domain }}/"
+        clientID: argocd-sso
+        clientSecret: $argocd-sso-secrets.ARGOCD_SSO_CLIENT_SECRET
+        requestedScopes:
+        - openid
+        - profile
+        - email
+        - groups
       statusbadge.enabled: "true"
       resource.exclusions: |
         - apiGroups:
