@@ -20,7 +20,7 @@ spec:
     name: in-cluster
     namespace: dex
   source:
-    repoURL: https://charts.dexidp.io 
+    repoURL: https://charts.dexidp.io
     chart: dex
     targetRevision: 0.16.0
     helm:
@@ -73,6 +73,11 @@ spec:
               redirectURIs:
                 - 'https://grafana.{{ .Values.global.domain }}/login/generic_oauth'
               secretEnv: GRAFANA_SSO_CLIENT_SECRET
+              - id: argocd-sso
+                name: ArgoCD
+                redirectURIs:
+                  - 'https://argocd.{{ .Values.global.domain }}/api/dex/callback'
+                secretEnv: ARGOCD_SSO_CLIENT_SECRET
             - id: oauth2-proxy-sso
               name: 'OAuth2 Proxy'
               redirectURIs:
@@ -105,6 +110,10 @@ spec:
     - secretKey: GRAFANA_SSO_CLIENT_SECRET
       remoteRef:
         key: dex.grafana
+        property: client_secret
+    - secretKey: ARGOCD_SSO_CLIENT_SECRET
+      remoteRef:
+        key: dex.argocd
         property: client_secret
     - secretKey: OAUTH2_PROXY_SSO_CLIENT_SECRET
       remoteRef:
