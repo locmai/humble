@@ -2,8 +2,27 @@ argo-cd:
   server:
     extraArgs:
       - --insecure
-    config:
-      statusbadge.enabled: 'true'
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - &host argocd.172-28-0-3.nip.io
+      tls:
+        - secretName: argocd-tls-certificate
+          hosts:
+            - *host
+  applicationSet:
+    enabled: false
+
+  notifications:
+    enabled: false
+
+  redis-ha:
+    enabled: false
+
+  configs:
+    cm:
+      statusbadge.enabled: "true"
       resource.exclusions: |
         - apiGroups:
           - cilium.io
@@ -24,26 +43,11 @@ argo-cd:
           end
         end
         return hs
-      resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration: |
+      resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration:
+        |
         jqPathExpressions:
         - '.webhooks[]?.clientConfig.caBundle'
-      resource.customizations.ignoreDifferences.admissionregistration.k8s.io_ValidatingWebhookConfiguration: |
+      resource.customizations.ignoreDifferences.admissionregistration.k8s.io_ValidatingWebhookConfiguration:
+        |
         jqPathExpressions:
         - '.webhooks[]?.failurePolicy'
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      hosts:
-        - &host argocd.172-28-0-3.nip.io
-      tls:
-        - secretName: argocd-tls-certificate
-          hosts:
-            - *host
-  applicationSet:
-    enabled: false
-
-  notifications:
-    enabled: false
-  
-  redis-ha:
-    enabled: false
