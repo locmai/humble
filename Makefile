@@ -4,7 +4,7 @@
 
 KUBECONFIG = $(shell pwd)/metal/kubeconfig.prod.yaml
 KUBE_CONFIG_PATH = $(KUBECONFIG)
-TERRAGRUNT_TFPATH = "terraform"
+TERRAGRUNT_TFPATH = "tofu"
 
 default: metal bootstrap global post-install clean
 
@@ -16,7 +16,7 @@ metal:
 
 bootstrap:
 	make -C bootstrap env=prod
-	
+
 global:
 	make -C global env=prod
 

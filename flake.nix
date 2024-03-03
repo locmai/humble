@@ -44,7 +44,7 @@
             pre-commit
             shellcheck
             terragrunt
-	    terraform # TODO replace with OpenTofu, Terraform is no longer FOSS
+            opentofu
             yamllint
 
             (python3.withPackages (p: with p; [
@@ -54,7 +54,7 @@
               netaddr
               pexpect
               rich
-	      cloudflare
+              cloudflare
             ]))
           ];
         };
