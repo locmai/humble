@@ -56,6 +56,10 @@ spec:
                 image:
                   repository: docker.io/fallenbagel/jellyseerr
                   tag: 1.7.0
+              bazarr:
+                image:
+                  repository: lscr.io/linuxserver/bazarr
+                  tag: 1.4.0
         service:
           main:
             ports:
@@ -76,6 +80,9 @@ spec:
                 protocol: HTTP
               jellyseerr:
                 port: 5055
+                protocol: HTTP
+              bazarr:
+                port: 6767
                 protocol: HTTP
         ingress:
           main:
@@ -126,6 +133,14 @@ spec:
                     service:
                       name: main
                       port: jellyseerr
+              - host: &bazarrHost bazarr.{{ .Values.global.domain }}
+                paths:
+                  - path: /
+                    pathType: Prefix
+                    service:
+                      name: main
+                      port: bazarr
+
             tls:
               - secretName: jellyfin-tls-certificate
                 hosts:
@@ -135,6 +150,7 @@ spec:
                   - *radarrHost
                   - *sonarrHost
                   - *jellyseerrHost
+                  - *bazarrHost
         persistence:
           config:
             enabled: true
@@ -175,4 +191,11 @@ spec:
                 jellyseerr:
                   - path: /app/config
                     subPath: jellyseerr/config
+                bazarr:
+                  - path: /config
+                    subPath: bazarr/config
+                  - path: /media/movies
+                    subPath: movies
+                  - path: /media/shows
+                    subPath: shows
 {{- end }}
