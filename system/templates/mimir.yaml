@@ -22,7 +22,7 @@ spec:
   source:
     chart: mimir-distributed
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: 5.2.1
+    targetRevision: 5.2.3
     helm:
       releaseName: mimir
       values: |
