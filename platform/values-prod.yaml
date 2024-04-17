@@ -13,7 +13,7 @@ secretGenerator:
   enabled: true
 
 temporal:
-  enabled: true
+  enabled: false
 
 cassandra:
-  enabled: true
+  enabled: false
