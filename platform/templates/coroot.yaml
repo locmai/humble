@@ -42,20 +42,21 @@ spec:
             size: 10Gi
         node-agent:
           enabled: true
-        ingress:
-          enabled: true
-          className: nginx
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-prod
-            # external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
-            # external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
-          hosts:
-            - host: &host coroot.{{ .Values.global.domain }}
-              paths:
-                - path: /
-                  pathType: ImplementationSpecific
-          tls:
-            - secretName: coroot-tls-certificate
-              hosts:
-                - *host
+        corootCE:
+          ingress:
+            enabled: true
+            className: nginx
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt-prod
+              # external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+              # external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
+            hosts:
+              - host: &host coroot.{{ .Values.global.domain }}
+                paths:
+                  - path: /
+                    pathType: ImplementationSpecific
+            tls:
+              - secretName: coroot-tls-certificate
+                hosts:
+                  - *host
 {{- end }}
