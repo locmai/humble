@@ -1,0 +1,62 @@
+{{- if .Values.coroot.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.argocd.project }}-coroot
+  namespace: {{ .Values.argocd.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.argocd.project }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  destination:
+    name: in-cluster
+    namespace: platform
+  source:
+    repoURL: https://coroot.github.io/helm-charts
+    chart: coroot
+    targetRevision: 0.10.4
+    helm:
+      releaseName: coroot
+      values: |
+        prometheus:
+          enabled: true
+
+        existingPrometheus:
+          enabled: false
+          service:
+            serviceName: prometheus
+            servicePort: 9090
+            serviceNamespace: observability
+          node-agent-podmonitor:
+            enabled: true
+        clickhouse:
+          enabled: true
+          persistence:
+            size: 10Gi
+        node-agent:
+          enabled: true
+        ingress:
+          enabled: true
+          className: nginx
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            # external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+            # external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
+          hosts:
+            - host: &host coroot.{{ .Values.global.domain }}
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
+          tls:
+            - secretName: coroot-tls-certificate
+              hosts:
+                - *host
+{{- end }}
