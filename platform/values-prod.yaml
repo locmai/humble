@@ -18,5 +18,5 @@ temporal:
 cassandra:
   enabled: false
 
-caroot:
+coroot:
   enabled: true
