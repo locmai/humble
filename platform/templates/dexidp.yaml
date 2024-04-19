@@ -83,6 +83,7 @@ spec:
               redirectURIs:
                 - 'https://oauth2.{{ .Values.global.domain }}/oauth2/callback'
                 - 'https://speedtest.{{ .Values.global.domain }}/oauth2/callback'
+                - 'https://coroot{{ .Values.global.domain }}/oauth2/callback'
               secretEnv: OAUTH2_PROXY_SSO_CLIENT_SECRET
 ---
 apiVersion: external-secrets.io/v1beta1
