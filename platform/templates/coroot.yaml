@@ -52,8 +52,6 @@ spec:
               external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
               nginx.ingress.kubernetes.io/auth-url: "https://coroot.{{ .Values.global.domain }}/oauth2/auth"
               nginx.ingress.kubernetes.io/auth-signin: "https://coroot.{{ .Values.global.domain }}/oauth2/start?rd=$escaped_request_uri"
-              # external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
-              # external-dns.alpha.kubernetes.io/target: {{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}
             hosts:
               - host: &host coroot.{{ .Values.global.domain }}
                 paths:
@@ -69,8 +67,8 @@ kind: Ingress
 metadata:
   name: "coroot-auth-proxy"
   annotations:
-    external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    # external-dns.alpha.kubernetes.io/target: "{{ .Values.global.env }}-humble-tunnel.{{ .Values.global.domain }}"
+    # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: 50m
   namespace: dex
 spec:
