@@ -59,7 +59,7 @@ def setup_kanidm_oauth_app(name: str, redirect_uri: str) -> None:
 
     subprocess.run(
         # TODO better group management
-        ["kanidm", "system", "oauth2", "create-scope-map", "--url", f"https://{kanidm_host}", "--name", "admin", name, "editor", "openid", "profile", "email", "groups"],
+        ["kanidm", "system", "oauth2", "create-scope-map", "--url", f"https://{kanidm_host}", "--name", "admin", name, "users", "openid", "profile", "email", "groups"],
         capture_output=True,
         check=True,
     )

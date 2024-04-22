@@ -17,3 +17,6 @@ temporal:
 
 cassandra:
   enabled: false
+
+coroot:
+  enabled: true

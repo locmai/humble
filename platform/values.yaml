@@ -35,3 +35,6 @@ grafana:
 
 cassandra:
   enabled: false
+
+coroot:
+  enabled: false
