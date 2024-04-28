@@ -18,3 +18,7 @@ speedtest:
 
 jellyfin:
   enabled: false
+
+glance:
+  enabled: false
+
