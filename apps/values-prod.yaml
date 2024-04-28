@@ -4,6 +4,9 @@ excalidraw:
 homepage:
   enabled: true
 
+glance:
+  enabled: true
+
 speedtest:
   enabled: true
 
