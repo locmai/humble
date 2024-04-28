@@ -45,11 +45,11 @@ spec:
              hosts:
                - *host         
         config:
-          theme:
-            light: true
-            background-color: 0 0 95
-            primary-color: 0 0 10
-            negative-color: 0 90 50
+          # theme:
+          #   light: true
+          #   background-color: 0 0 95
+          #   primary-color: 0 0 10
+          #   negative-color: 0 90 50
           pages:
             - name: Home
               columns:
