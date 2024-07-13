@@ -31,6 +31,8 @@ spec:
           limits:
             cpu: 100m
             memory: 100Mi
+        image:
+          repository: "otel/opentelemetry-collector-contrib"
         config:
           receivers:
             statsd:
@@ -93,7 +95,7 @@ spec:
             containerPort: 9090
             servicePort: 9090
             protocol: TCP
-    
+
         podMonitor:
           enabled: true
           metricsEndpoints:
