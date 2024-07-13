@@ -3,7 +3,7 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
-      statusbadge.enabled: "true"
+      statusbadge.enabled: true
       resource.exclusions: |
         - apiGroups:
           - cilium.io
@@ -59,7 +59,7 @@ argo-cd:
 
   configs:
     cm:
-      statusbadge.enabled: "true"
+      statusbadge.enabled: true
       resource.exclusions: |
         - apiGroups:
           - cilium.io

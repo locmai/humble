@@ -24,7 +24,7 @@ argo-cd:
 
   configs:
     cm:
-      statusbadge.enabled: "true"
+      statusbadge.enabled: true
       resource.exclusions: |
         - apiGroups:
           - cilium.io
