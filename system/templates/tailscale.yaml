@@ -10,7 +10,7 @@ spec:
   containers:
     - name: tailscale
       imagePullPolicy: Always
-      image: "ghcr.io/tailscale/tailscale:v1.68.1"
+      image: "ghcr.io/tailscale/tailscale:v1.56.1"
       env:
         # Store the state in a k8s secret
         - name: TS_KUBE_SECRET
