@@ -28,12 +28,13 @@ spec:
     name: in-cluster
     namespace: platform
   source:
-    path: 'bootstrap/root'
+    path: "bootstrap/root"
     repoURL: https://github.com/locmai/humble.git
     targetRevision: main
     helm:
       valueFiles:
-      - values-stag.yaml
+        - values.yaml
+        - values-stag.yaml
       values: |
         argocd:
           targetRevision: main
