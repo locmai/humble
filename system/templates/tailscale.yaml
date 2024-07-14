@@ -27,10 +27,6 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
-        securityContext:
-        capabilities:
-          add:
-            - NET_ADMIN
 ---
 apiVersion: v1
 kind: ServiceAccount
