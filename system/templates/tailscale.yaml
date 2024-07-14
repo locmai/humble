@@ -8,30 +8,30 @@ metadata:
 spec:
   serviceAccountName: "tailscale"
   containers:
-  - name: tailscale
-    imagePullPolicy: Always
-    image: "ghcr.io/tailscale/tailscale:latest"
-    env:
-    # Store the state in a k8s secret
-    - name: TS_KUBE_SECRET
-      value: "tailscalestate"
-    - name: TS_USERSPACE
-      value: "true"
-    - name: TS_AUTHKEY
-      valueFrom:
-        secretKeyRef:
-          name: tailscale
-          key: tailscale_authkey
-    - name: TS_ROUTES
-      value: "192.168.1.225/32"
-    securityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
+    - name: tailscale
+      imagePullPolicy: Always
+      image: "ghcr.io/tailscale/tailscale:v1.68.1"
+      env:
+        # Store the state in a k8s secret
+        - name: TS_KUBE_SECRET
+          value: "tailscalestate"
+        - name: TS_USERSPACE
+          value: "true"
+        - name: TS_AUTHKEY
+          valueFrom:
+            secretKeyRef:
+              name: tailscale
+              key: tailscale_authkey
+        - name: TS_ROUTES
+          value: "192.168.1.225/32"
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: tailscale 
+  name: tailscale
   namespace: tailscale
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -40,14 +40,14 @@ metadata:
   name: tailscale
   namespace: tailscale
 rules:
-- apiGroups: [""] # "" indicates the core API group
-  resources: ["secrets"]
-  # Create can not be restricted to a resource name.
-  verbs: ["create"]
-- apiGroups: [""] # "" indicates the core API group
-  resourceNames: ["tailscalestate"]
-  resources: ["secrets"]
-  verbs: ["get", "update", "patch"]
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["secrets"]
+    # Create can not be restricted to a resource name.
+    verbs: ["create"]
+  - apiGroups: [""] # "" indicates the core API group
+    resourceNames: ["tailscalestate"]
+    resources: ["secrets"]
+    verbs: ["get", "update", "patch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -55,8 +55,8 @@ metadata:
   name: tailscale
   namespace: tailscale
 subjects:
-- kind: ServiceAccount
-  name: "tailscale"
+  - kind: ServiceAccount
+    name: "tailscale"
 roleRef:
   kind: Role
   name: tailscale
