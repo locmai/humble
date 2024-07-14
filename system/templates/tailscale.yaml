@@ -25,8 +25,9 @@ spec:
         - name: TS_ROUTES
           value: "192.168.1.225/32"
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
+        capabilities:
+          add:
+            - NET_ADMIN
 ---
 apiVersion: v1
 kind: ServiceAccount
