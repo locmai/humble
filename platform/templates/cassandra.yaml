@@ -22,7 +22,7 @@ spec:
   source:
     chart: cassandra
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 11.3.11
+    targetRevision: 11.3.12
     helm:
       releaseName: cassandra
       values: |
