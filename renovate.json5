@@ -1,48 +1,49 @@
 {
-  "masterIssue": true,
-  "branchPrefix": "renovate-",
-  "separateMajorMinor": false,
-  "assignees": [
-    "@locmai"
+  dependencyDashboard: true,
+  branchPrefix: 'renovate-',
+  separateMajorMinor: false,
+  assignees: [
+    '@locmai',
   ],
-  "ignoreDeps": [],
-  "prHourlyLimit": 0,
-  "prConcurrentLimit": 0,
-  "rebaseLabel": "renovate-rebase",
-  "repositories": [
-    "locmai/humble",
-    "locmai/charts",
+  ignoreDeps: [],
+  prHourlyLimit: 0,
+  prConcurrentLimit: 0,
+  rebaseLabel: 'renovate-rebase',
+  repositories: [
+    'locmai/humble',
+    'locmai/charts',
   ],
-  "packageRules": [
+  packageRules: [
     {
-      "matchPackagePatterns": [
-        "*"
+      matchUpdateTypes: [
+        'minor',
+        'patch',
       ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
+      groupName: 'all non-major dependencies',
+      groupSlug: 'all-minor-patch',
+      matchPackageNames: [
+        '*',
       ],
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch"
-    }
+    },
   ],
-  "extends": [
-    "config:base",
-    "default:pinDigestsDisabled",
-    "default:disablePrControls"
+  extends: [
+    'config:recommended',
+    'default:pinDigestsDisabled',
+    'default:disablePrControls',
   ],
-  "regexManagers": [
+  customManagers: [
     {
-      "fileMatch": [
-        "^.*\/templates\/.*.yaml$",
+      customType: 'regex',
+      fileMatch: [
+        '^.*/templates/.*.yaml$',
       ],
-      "matchStringsStrategy": "combination",
-      "matchStrings": [
-        ".*chart: (?<depName>.*?)\\n",
-        ".*repoURL: (?<registryUrl>.*?)\\n",
-        ".*targetRevision: (?<currentValue>.*?)\\n",
+      matchStringsStrategy: 'combination',
+      matchStrings: [
+        '.*chart: (?<depName>.*?)\\n',
+        '.*repoURL: (?<registryUrl>.*?)\\n',
+        '.*targetRevision: (?<currentValue>.*?)\\n',
       ],
-      "datasourceTemplate": "helm"
-    }
-  ]
+      datasourceTemplate: 'helm',
+    },
+  ],
 }
