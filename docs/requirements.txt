@@ -17,7 +17,7 @@ pymdown-extensions
 pyparsing
 python-dateutil==2.9.0.post0
 PyYAML==6.0.2
-pyyaml_env_tag==0.1
+pyyaml_env_tag==1.1
 requests
 six==1.17.0
 urllib3
