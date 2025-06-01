@@ -22,7 +22,7 @@ spec:
   source:
     repoURL: https://coroot.github.io/helm-charts
     chart: coroot
-    targetRevision: 0.19.6
+    targetRevision: 0.19.7
     helm:
       releaseName: coroot
       values: |
